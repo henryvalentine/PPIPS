@@ -1,0 +1,2277 @@
+﻿
+<div class="row">
+    <div class="col-md-12">
+        <h4 class="page-head-line"> Notification Tracking </h4>
+    </div>
+</div>
+
+<div class="row" ng-controller="notificationTrackController" ng-init="initializeController()">
+   
+  
+
+<div class="row" ng-hide="viewApp == true">
+
+        <table class="table" style="width: 100%" ng-not-track>
+            <thead>
+                <tr style="color: #000">
+                    <th style="width: 2%">
+                        S/N
+                    </th>
+                    <th style="width: 20%">
+                        reference Code
+                    </th>
+                    <th style="width: 20%">
+                        Company
+                    </th>
+                    <th style="width: 20%">
+                        Date Assigned
+                    </th>
+                    <th style="width: 20%">
+                        Expected Completion Date
+                    </th>
+
+                    <th style="width: 12%">
+                        Action
+                    </th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+
+        </table>
+    </div>
+
+
+
+
+    <div class="row" ng-show="viewD" style="width: 90%; border: 3px solid #27ae60;">
+
+
+       
+        <div class="col-md-12 alert alert-danger" role="alert" ng-show="negativefeedback === true">
+            <span class="col-md-11">{{appError}}</span><span class="col-md-1" style="font-size: 20px; text-align: left; cursor: pointer" title="close" ng-click="appError = '';isError = false;">x</span>
+        </div>
+
+
+            <div class=" modal-header">
+                <div class="row">
+                    <div class="row alert alert-success" role="alert" ng-show="positivefeedback === true">
+                        <span class="col-md-11">{{success}}</span><span class="col-md-1" style="font-size: 20px; text-align: left; cursor: pointer" title="close" ng-click="positivefeedback = false">x</span>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h4 class="modal-title">Notification Details</h4>
+                    </div>
+                    <div class="col-md-6">
+                        <a ng-click="initializeApp()" style="float: right" class="btn btn-default acceptbtn"><< Back</a>
+                    </div>
+                  
+                </div>
+            </div>
+            <div class="modal-body">
+
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label class="control-label ">Reference Code*</label>
+                            </div>
+
+                            <div class="col-md-3">
+                                <label class="control-label ">Company*</label>
+                            </div>
+
+                            <div class="col-md-3">
+                                <label class="control-label ">Arrival Date</label>
+                            </div>
+
+
+                            <div class="col-md-3">
+                                <label class="control-label ">Amount Due</label>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <div class="row">
+
+                            <div class="col-md-3">
+                                {{application.ReferenceCode}}
+                            </div>
+
+                            <div class="col-md-3">
+
+                                {{application.ImporterName}}
+                            </div>
+
+                            <div class="col-md-3">
+                                {{application.ArrivalDateStr}}
+                            </div>
+
+
+                            <div class="col-md-3">
+                                {{application.AmountDueStr}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label class="control-label ">Status*</label>
+                            </div>
+
+                            <div class="col-md-3">
+                                <label class="control-label ">Date Applied</label>
+                            </div>
+
+                            <div class="col-md-3">
+                                <label class="control-label ">Discharge Date*</label>
+                            </div>
+
+                            <div class="col-md-3">
+                                <label class="control-label ">Country Of Origin</label>
+                            </div>
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <div class="row">
+
+                            <div class="col-md-3">
+                                {{application.StatusStr}}
+                            </div>
+
+                            <div class="col-md-3">
+
+                                {{application.DateCreatedStr}}
+                            </div>
+
+                            <div class="col-md-3">
+                                {{application.DischargeDateStr}}
+                            </div>
+
+
+                            <div class="col-md-3">
+                                {{application.CountryName}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label class="control-label "> Product Name*</label>
+                            </div>
+
+                            <div class="col-md-3">
+                                <label class="control-label "> Quantity on Vessel</label>
+                            </div>
+
+                            <div class="col-md-3">
+                                <label class="control-label ">Quantity to Discharge*</label>
+                            </div>
+
+                            <div class="col-md-3">
+                                <label class="control-label ">Depot</label>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <div class="row">
+
+                            <div class="col-md-3">
+                                {{application.ProductObject.Name }}({{application.ProductObject.Code }})
+                            </div>
+
+                            <div class="col-md-3">
+
+                                {{application.QuantityOnVesselStr}}
+                            </div>
+
+                            <div class="col-md-3">
+                                {{application.QuantityToDischargeStr}}
+                            </div>
+
+
+                            <div class="col-md-3">
+                                {{application.DepotName}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <br />
+                <br />
+
+            <div class="col-md-6">
+                <h4 class="modal-title">Notification Documents</h4>
+            </div>
+
+                <div class="col-md-12">
+                    
+                </div>
+
+
+            <div class="row">
+
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label class="control-label "> Document Type*</label>
+                            </div>
+
+                            <div class="col-md-3">
+                                <label class="control-label "> Date Uploaded</label>
+                            </div>
+
+
+                            <div class="col-md-3">
+                                <label class="control-label">Valid</label>
+                            </div>
+
+                            <div class="col-md-3">
+                                <label class="control-label ">View</label>
+                            </div>
+
+                          
+
+                        </div>
+                    </div>
+                </div>
+
+            <div class="row" data-ng-repeat="item in application.NotificationDocumentObjects">
+
+                <div class="col-md-12">
+                    <div class="row">
+
+                        <div class="col-md-3">
+                            {{item.DocumentTypeName}}
+                        </div>
+
+                        <div class="col-md-3">
+
+                            {{item.DateUploadedStr}}
+                        </div>
+
+                        <div class="col-md-3">
+
+                            {{item.IsValid}}
+                        </div>
+
+                        <div class="col-md-3">
+
+                         
+                            <button type="button" ng-click="GetDoc(item.DocumentId)" class="btn btn-default acceptbtn">Action</button>
+
+                        </div>
+
+                       
+                    </div>
+                </div>
+            </div>
+
+                
+
+            <div class="row">
+
+
+                    <div class="col-md-12">
+
+
+
+
+                        <table class="table table-striped" ng-show="viewR">
+
+
+                            <tr>
+                                <td><a ng-click="rejectApp(application.Id)" style="float: right" class="btn btn-default rejectBtn">Reject</a></td>
+
+
+
+
+                                <td><input type="button" value="Review" ng-click="processReview(application.Id)" style="float: right" class="btn btn-default acceptbtn" /></td>
+
+
+
+
+                            </tr>
+                        </table>
+
+
+                        <table class="table table-striped" ng-show="viewA">
+
+
+                            <tr>
+                                <td><a ng-click="rejectApp(application.Id)" style="float: right" class="btn btn-default rejectBtn">Reject</a></td>
+
+
+
+
+                                <td><input type="button" value="Approve" ng-click="processReview(application.Id)" style="float: right" class="btn btn-default acceptbtn"/></td>
+
+
+
+
+                            </tr>
+                        </table>
+
+                        <table class="table table-striped" ng-show="viewTeamLeaderApprove">
+                            <tr>
+                                <td>
+                                    <input type="button" value="Print CheckList" ng-click="printCheckList(application.Id)" style="float: right" class="btn btn-default acceptbtn" />
+                                </td>
+                                <td>
+                                    <input type="button" value="Print Vessel Report" ng-click="printRecertification(application.Id)" style="float: right" class="btn btn-default acceptbtn"/>
+                                </td>
+                                <td>
+                                    <input type="button" value="Print Discharge Data" ng-click="printDischargeData(application.Id)" style="float: right" class="btn btn-default acceptbtn" />
+                                </td> 
+                            </tr>
+
+                            <tr>
+                                <td><a ng-click="rejectApp(application.Id)" style="float: right" class="btn btn-default rejectBtn">Reject</a></td>
+
+
+
+
+                                <td><input type="button" value="Approve" ng-click="processReview(application.Id)" style="float: right" class="btn btn-default acceptbtn" /></td>
+
+
+
+
+                            </tr>
+                        </table>
+
+
+                        <div class="row" ng-show="viewTeamLeader">
+
+                            <div class="col-md-12">
+                                <div class="row">
+
+
+                                    <label class="control-label ">Assign Job to Inspector*</label>
+                                    <select ng-model="leader.Info" ng-options="ta as ta.FirstName for ta in application.EmployeeDeskObjects track by ta.Id" data-inset="true" ng-change="assignJob(application.Id)" class=" form-control" required>
+                                        <option value="">-- Select Inspector--</option>
+                                    </select>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="row" ng-show="viewI">
+
+
+                            <div class="col-md-12">
+                                <div class="row">
+
+
+                                    <div class="col-md-3">
+                                        <input type="button" value="Product Q & Q Analysis" ng-click="vesselReport(application.Id)" style="float: right" class="btn btn-default acceptbtn"/>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <input type="button" value="Fiscalisation" ng-click="showTanks(application.Id)" style="float: right" class="btn btn-default acceptbtn"/>
+                                    </div>
+
+                                    <!--<div class="col-md-3">
+                                        <input type="button" value="Submit All Report" data-toggle="modal" data-target="#myFinal" style="float: right" class="btn btn-default acceptbtn"/>
+                                    </div>-->
+
+
+
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+
+                        <div class="row" ng-show="viewJetty">
+
+                            <div class="modal fade" id="jettySubmit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                            <h4 class="modal-title">Are You sure You want to submit this Vessel Report</h4>
+                                        </div>
+                                       
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                            <button type="button" ng-click="reportJetty(application.Id)" class="btn btn-primary">Save changes</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                                <div class="col-md-12">
+                                    <div class="row">
+
+
+                                        <div class="col-md-3">
+                                            <input type="button" value="Product Q & Q Analysis" ng-click="vesselReport(application.Id)" style="float: right" class="btn btn-default acceptbtn" />
+                                        </div>
+
+
+
+                                        <div class="col-md-3">
+                                            <input type="button" value="Submit" data-toggle="modal" data-target="#jettySubmit"  style="float: right" class="btn btn-default acceptbtn" />
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        <div class="row" ng-show="viewDepot">
+
+                            <div class="col-md-12">
+                                <div class="row">
+
+                                    <div class="col-md-3">
+                                        <input type="button" value="Fiscalisation" ng-click="dischargedata(application.Id)" style="float: right" class="btn btn-default acceptbtn" />
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <input type="button" value="Submit All Report" ng-click="report(application.Id)" style="float: right" class="btn btn-default acceptbtn" />
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="row modal-footer">
+                    <div class="col-md-6">
+                    </div>
+                </div>
+
+            </div>
+</div>
+
+
+    <div class="row" ng-show="viewDoc" style="width: 90%; border: 3px solid #27ae60;">
+
+
+        <div class="row alert alert-success" role="alert" ng-show="positivefeedback === true">
+            <span class="col-md-11">{{success}}</span><span class="col-md-1" style="font-size: 20px; text-align: left; cursor: pointer" title="close" ng-click="positivefeedback = false">x</span>
+        </div>
+
+      
+
+        <div class="modal-body">
+
+            <div class="row">
+
+                <div class="col-md-6">
+                    <a ng-click="BackDetailDocument(document.notid)" style="float: right" class="btn btn-default acceptbtn"><< Back</a>
+                </div>
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-12">
+
+                    <iframe src="{{document.DocPath}}" width="900" height="1200"></iframe>
+
+                </div>
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <button type="button" ng-click="DocumentValid(document.Id)" class="btn btn-default acceptbtn">Valid</button>
+                        </div>
+
+                        <div class="col-md-2">
+                            <button type="button" ng-click="DocumentInValid(document.Id)" class="btn btn-default acceptbtn">InValid</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+    <!--Recertification-->
+    <div class="row" ng-show="viewRecertification" style="width: 90%; border: 3px solid #27ae60;">
+
+        <div class="row alert alert-success" role="alert" ng-show="positivefeedback === true">
+            <span class="col-md-11">{{success}}</span><span class="col-md-1" style="font-size: 20px; text-align: left; cursor: pointer" title="close" ng-click="positivefeedback = false">x</span>
+        </div>
+
+        <div class="modal-body">
+            <form id="fsProcessApps11">
+                <div class="row">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h4>Recertification</h4>
+                        </div>
+                        <div class="col-md-6" ng-model="application.Id">
+                            <a ng-click="BackDetailRecertification(application.Id)" style="float: right" class="btn btn-default acceptbtn"><< Back</a>
+                        </div>
+
+                    </div>
+                    <br />
+                    <div>
+
+                        <div class="row">
+
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label class="control-label ">Density*</label>
+                                        <input type="text" data-ng-model="recert.Density" class="form-control"/>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="control-label ">Flash Point*</label>
+                                        <input type="text" data-ng-model="recert.Flashpoint" class="form-control"/>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="control-label ">Initial Boiling Point*</label>
+                                        <input type="text" data-ng-model="recert.InitialBoilingPoint" class="form-control"/>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label class="control-label ">Final Boiling Point*</label>
+                                        <input type="text" data-ng-model="recert.TotalAcidity" class="form-control" />
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="control-label ">Total Acidity*</label>
+                                        <input type="text" data-ng-model="recert.FinalBoilingPoint" class="form-control" />
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="control-label ">Total Sulphur*</label>
+                                        <input type="text" data-ng-model="recert.TotalSulphur" class="form-control" />
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="row">
+
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label class="control-label ">Research Octane Number*</label>
+                                        <input type="text" data-ng-model="recert.ResearchOctaneNumber" class="form-control" />
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="control-label ">REID Vapour Pressure*</label>
+                                        <input type="text" data-ng-model="recert.REIDVapourPressure" class="form-control" />
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="control-label ">Benzene*</label>
+                                        <input type="text" data-ng-model="recert.Benzene" class="form-control" />
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label class="control-label ">Ethanol*</label>
+                                        <input type="text" data-ng-model="recert.Ethanol" class="form-control" />
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="control-label ">Colour</label>
+                                        <select ng-model="recert.Colour" ng-options="prod as prod.Name for prod in ProductColours track by prod.Id" data-inset="true" class=" form-control" required>
+                                            <option value="">-- Select Colour --</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="control-label ">Diesel Index*</label>
+                                        <input type="text" data-ng-model="recert.DieselIndex" class="form-control" />
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label class="control-label ">Freezing Point*</label>
+                                        <input type="text" data-ng-model="recert.FreezingPoint" class="form-control" />
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="control-label ">MSEP*</label>
+                                        <input type="text" data-ng-model="recert.MSEP" class="form-control" />
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="control-label ">Doctor Test*</label>
+                                        <input type="text" data-ng-model="recert.DoctorTest" class="form-control" />
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                    <div class="row">
+
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <label class="control-label ">Captain Name*</label>
+                                    <input type="text" data-ng-model="recert.CaptainName" class="form-control" />
+                                </div>
+                              
+                               
+                            </div>
+                        </div>
+                    </div>
+
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label class="control-label ">Within Limit Variance</label>
+                                <label>
+                                    <input type="radio" ng-model="recert.LimitVariance" name="limit" ng-value="1" />
+                                </label>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="control-label ">Off Limit Variance:</label>
+                                <label>
+                                    <input type="radio" ng-model="recert.LimitVariance" name="limit" ng-value="2" />
+                                </label>
+                            </div>
+
+
+                        </div>
+
+
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label class="control-label ">On Spec:</label>
+                            <label>
+                                <input type="radio" ng-model="recert.Spec" name="spec" ng-value="11"/>
+                            </label>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="control-label ">Off Spec</label>
+                            <label>
+                                <input type="radio" ng-model="recert.Spec" name="spec" ng-value="22"/>
+                            </label>
+                        </div>
+
+
+                    </div>
+                    <div class="row">
+
+                        <div class="col-md-3">
+                            <label class="control-label ">Recommended</label>
+                            <label>
+                                <input type="radio" ng-model="recert.Recommendation" name="recom" ng-value="1111" />
+
+                            </label>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="control-label ">Not Recommended</label>
+
+                            <label>
+                                <input type="radio" ng-model="recert.Recommendation" name="recom" ng-value="2222" />
+                            </label>
+
+                        </div>                         
+                       
+                    </div>
+
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label class="control-label ">Granted:</label>
+                                <label>
+                                    <input type="radio" ng-model="recert.DischargeApproval" name="approval" ng-value="111"/>
+                                </label>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="control-label ">Not Granted</label>
+                                <label>
+                                    <input type="radio" ng-model="recert.DischargeApproval" name="approval" ng-value="222"/>
+                                </label>
+                            </div>
+
+                        </div>
+
+
+                       
+
+                        <table class="table table-striped" ng-model="application.Id">
+
+
+                            <tr>
+
+                                <td><input type="button" value="Save" ng-click="storeRecertification(application.Id)" style="float: right" class="btn btn-default acceptbtn"/></td>
+
+
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+
+
+            </form>
+        </div>
+    </div>
+
+
+    <!--Discharge Data-->
+    <div class="row" ng-show="viewDischargeData" style="width: 90%; border: 3px solid #27ae60;">
+
+        <div class="row alert alert-success" role="alert" ng-show="positivefeedback === true">
+            <span class="col-md-11">{{success}}</span><span class="col-md-1" style="font-size: 20px; text-align: left; cursor: pointer" title="close" ng-click="positivefeedback = false">x</span>
+        </div>
+
+
+
+
+        <div class="modal-body">
+            <form id="fsProcessApps111">
+                <div class="row">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h4>Discharge Data</h4>
+                        </div>
+                        <div class="col-md-4" ng-model="application.Id">
+                            <a ng-click="BackDetailDischargeData(application.Id)" style="float: right" class="btn btn-default acceptbtn"><< Back</a>
+                        </div>
+                        <div class="col-md-4">
+                            <input type="button" value="Print Product QA" ng-click="printRecertification(application.Id)" style="float: right" class="btn btn-default acceptbtn" />
+                        </div>
+                    </div>
+                    <br />
+                <div class="col-md-12" ng-model="application.Id">
+
+                  
+
+                 
+
+                    <div class="row">
+                            <div class="col-md-4">
+                                <h4>Tank Number* </h4>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="row">
+                                  
+                                    <div class="col-md-12">
+                                       
+                                        <input type="text" data-ng-model="store.TankNo" class="form-control" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <h4>Tank Guage* </h4>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label class="control-label ">Before:</label>
+                                        <input type="text" data-ng-model="store.TankGuageBefore" class="form-control"/>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="control-label ">After:</label>
+                                        <input type="text" data-ng-model="store.TankGuageAfter" class="form-control"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <h4>TANK t/c* </h4>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label class="control-label ">Before:</label>
+                                        <input type="text" data-ng-model="store.TankTCBefore" class="form-control"/>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="control-label ">After:</label>
+                                        <input type="text" data-ng-model="store.TankTCAfter" class="form-control"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <h4>CROSS VOL @ Tk Pc LTRS* </h4>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label class="control-label ">Before:</label>
+                                        <input type="text" data-ng-model="store.CrossVol_TkPcLTRSBefore" class="form-control"/>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="control-label ">After:</label>
+                                        <input type="text" data-ng-model="store.CrossVol_TkPcLTRSAfter" class="form-control"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <h4>S G and t/C@Lab* </h4>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label class="control-label ">Before:</label>
+                                        <input type="text" data-ng-model="store.SGtC_LabBefore" class="form-control"/>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="control-label ">After:</label>
+                                        <input type="text" data-ng-model="store.SGtC_LabAfter" class="form-control"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <h4>VOL OF WATER LTRS* </h4>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label class="control-label ">Before:</label>
+                                        <input type="text" data-ng-model="store.VolOfWaterLTRSBefore" class="form-control"/>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="control-label ">After:</label>
+                                        <input type="text" data-ng-model="store.VolOfWaterLTRSAfter" class="form-control"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <h4>VOL CORR FACTOR* </h4>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label class="control-label ">Before:</label>
+                                        <input type="text" data-ng-model="store.VolCorrFactorBefore" class="form-control"/>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="control-label ">After:</label>
+                                        <input type="text" data-ng-model="store.VolCorrFactorAfter" class="form-control"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <br/>
+
+
+                        <div class="row" ng-model="application.Id">
+                            <div class="col-md-6">
+                                <input type="button" value="Save" ng-click="saveDischargeData(application[0].NotificationId)" style="float: right" class="btn btn-default acceptbtn" />
+                            </div>
+                         
+
+                        </div>
+
+
+                    <!--</div>-->
+
+
+
+                </div>
+                </div>
+
+
+
+            </form>
+        </div>
+    </div>
+
+
+
+    <div class="row" ng-show="viewH" style="width: 90%; border: 3px solid #27ae60;">
+
+
+
+
+
+
+        <div class=" modal-header">
+            <div class="row">
+                <div class="row alert alert-success" role="alert" ng-show="positivefeedback === true">
+                    <span class="col-md-11">{{success}}</span><span class="col-md-1" style="font-size: 20px; text-align: left; cursor: pointer" title="close" ng-click="positivefeedback = false">x</span>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <h4 class="modal-title">Notification History</h4>
+                </div>
+                <div class="col-md-6">
+                    <a ng-click="BackDetailHistory()" style="float: right" class="btn btn-default acceptbtn"><< Back</a>
+                </div>
+
+            </div>
+        </div>
+        <div class="modal-body">
+            <form id="fsProcessApps554">
+
+                <div class="row">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label class="control-label ">Employee Name:</label>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="control-label ">Activity Name</label>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="control-label ">Comment</label>
+                        </div>
+                        <!--<div class="col-md-2">
+                            <label class="control-label ">Assigned Time</label>
+                        </div>
+                        <div class="col-md-2">
+                            <label class="control-label ">Finished Time</label>
+                        </div>-->
+
+                    </div>
+                    <div class="row" data-ng-repeat="item in history">
+                        <div class="col-md-3">
+                            {{item.EmployeeName}}
+                        </div>
+
+                        <div class="col-md-3">
+                            {{item.StepName}}
+                        </div>
+                        <div class="col-md-6">
+                            {{item.Remarks}}
+                        </div>
+                        <!--<div class="col-md-2">
+                            <label class="control-label ">{{item.AssignedTimeStr}}</label>
+
+                        </div>
+                        <div class="col-md-2">
+                            <label class="control-label ">{{item.ActualDeliveryDateTimeStr}}</label>
+                        </div>-->
+                    </div>
+
+
+                </div>
+
+
+            </form>
+        </div>
+    </div>
+
+    <!--Vessel Report-->
+<div class="row" ng-show="viewReport" style="width: 90%; border: 3px solid #27ae60;">
+
+    <div class="row alert alert-success" role="alert" ng-show="positivefeedback === true">
+        <span class="col-md-11">{{success}}</span><span class="col-md-1" style="font-size: 20px; text-align: left; cursor: pointer" title="close" ng-click="positivefeedback = false">x</span>
+    </div>
+
+
+    <div class="modal-body">
+        <form id="fsProcessApps1111">
+            <div class="row">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h4>Product QA</h4>
+                    </div>
+                    <div class="col-md-3" ng-model="application.Id">
+                        <a ng-click="BackDetailReport(application.Id)" style="float: right" class="btn btn-default acceptbtn"><< Back</a>
+                    </div>
+                    <div class="col-md-3" ng-model="application.Id">
+                        <input type="button" value="Print CheckList" ng-click="printCheckList(application.Id)" style="float: right" class="btn btn-default acceptbtn"/>
+                    </div>
+                </div>
+                <br/>
+                <div class="col-md-12" ng-model="application.Id">
+
+
+                    <div class="row">
+
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label class="control-label ">Product*</label>
+                                
+                                    <input type="text" data-ng-model="vessel.ProductName" readonly="readonly" class="form-control"/>
+
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="control-label ">Depot*</label>
+
+                                    <input type="text" data-ng-model="vessel.DepotName" readonly="readonly" class="form-control"/>
+
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="control-label ">Inspection Date:</label>
+
+
+                                    <p class="input-group">
+                                        <input type="text" class="form-control" datepicker-popup="{{format}}" is-open="opened1" min-date="" max-date="" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" ng-model="vessel.InspectionDate"/>
+                                        <span class="input-group-btn">
+                                                <button type="button" class="btn btn-default" ng-click="openInspectionDate($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                                            </span>
+                                    </p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+
+                        <div class="col-md-12">
+
+
+                            <div class="col-md-3">
+                                <label class="control-label ">Quantity On Vessel:</label>
+                                <input type="text" data-ng-model="vessel.QuantityOnVessel" class="form-control"/>
+                            </div>
+
+                            <div class="col-md-3">
+                                <label class="control-label ">Quantity On Bill Of Lading:</label>
+                                <input type="text" data-ng-model="vessel.QuantityOnBillOfLading" class="form-control"/>
+                            </div>
+
+                            <div class="col-md-3">
+                                <label class="control-label ">Quantity To Discharge:</label>
+                                <input type="text" data-ng-model="vessel.QuantityDischarged" class="form-control"/>
+                            </div>
+
+                            <div class="col-md-3">
+                                <label class="control-label ">Quantity After STS:</label>
+                                <input type="text" data-ng-model="vessel.QuantityAfterSTS" class="form-control"/>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+
+                        <div class="col-md-12">
+
+                            <div class="row">
+
+
+                                <div class="col-md-4">
+                                    <label class="control-label ">Vessel Arrival Date:</label>
+
+                                    <p class="input-group">
+                                        <input type="text" class="form-control" datepicker-popup="{{format}}" is-open="opened4" min-date="" max-date="" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" ng-model="vessel.VesselArrivalDate"/>
+                                        <span class="input-group-btn">
+                                                <button type="button" class="btn btn-default" ng-click="openVesselArrivalDate($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                                            </span>
+                                    </p>
+
+
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label class="control-label ">Discharge Commencement Date:</label>
+
+                                    <p class="input-group">
+                                        <input type="text" class="form-control" datepicker-popup="{{format}}" is-open="opened2" min-date="" max-date="" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" ng-model="vessel.DischargeCommencementDate"/>
+                                        <span class="input-group-btn">
+                                                <button type="button" class="btn btn-default" ng-click="openDischargeCommencementDate($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                                            </span>
+                                    </p>
+
+
+
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label class="control-label ">Discharge Completion Date:</label>
+
+                                    <p class="input-group">
+                                        <input type="text" class="form-control" datepicker-popup="{{format}}" is-open="opened3" min-date="" max-date="" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" ng-model="vessel.DischargeCompletionDate"/>
+                                        <span class="input-group-btn">
+                                                <button type="button" class="btn btn-default" ng-click="openDischargeCompletionDate($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                                            </span>
+                                    </p>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="row">
+
+                        <div class="col-md-12">
+                            <div class="col-md-12">
+                                <label class="control-label ">Inspector Comment:</label>
+                                <textarea data-ng-model="vessel.InspectorComment" class="form-control"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+
+
+
+
+
+                        <br/>
+
+
+                        <div class="row" ng-model="application.Id">
+                            <div class="col-md-2">
+                                <!--<a ng-click="BackDetailDischargeData()" style="float: right" class="btn btn-primary btn-lg"><< Back</a>-->
+                                <input type="button" value="Save" ng-click="saveVesselReport(application.Id)" style="float: right" class="btn btn-default acceptbtn"/>
+                            </div>
+                            <div class="col-md-2">
+                                <input type="button" value="Save & Continue" ng-click="recertification(application.Id)" style="float: right" class="btn btn-default acceptbtn"/>
+                            </div>
+
+                            <!--<div class="col-md-2">
+                                <input type="button" value="Print" ng-click="printVesselReport(application.Id)" style="float: right" class="btn btn-default acceptbtn"/>
+                            </div>-->
+
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div>
+
+        </form>
+    </div>
+</div>
+
+
+    <!--View Jetty Report-->
+    <div class="row" ng-show="viewJettyReport" style="width: 90%; border: 3px solid #27ae60;">
+
+        <div class="row alert alert-success" role="alert" ng-show="positivefeedback === true">
+            <span class="col-md-11">{{success}}</span><span class="col-md-1" style="font-size: 20px; text-align: left; cursor: pointer" title="close" ng-click="positivefeedback = false">x</span>
+        </div>
+
+
+        <div class="modal-body">
+            <form id="fsProcessApps1111">
+                <div class="row">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h4>Product QA</h4>
+                        </div>
+                        <div class="col-md-3" ng-model="application.Id">
+                            <a ng-click="BackDetailReport(application.Id)" style="float: right" class="btn btn-default acceptbtn"><< Back</a>
+                        </div>
+                        <div class="col-md-3" ng-model="application.Id">
+                            <input type="button" value="Print CheckList" ng-click="printCheckList(application.Id)" style="float: right" class="btn btn-default acceptbtn" />
+                        </div>
+                    </div>
+                    <br />
+                    <div class="col-md-12" ng-model="application.Id">
+
+
+                        <div class="row">
+
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label class="control-label ">Product*</label>
+                                     
+                                        <input type="text" data-ng-model="vessel.ProductName" readonly="readonly" class="form-control" />
+
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="control-label ">Depot*</label>
+
+                                        <input type="text" data-ng-model="vessel.DepotName" readonly="readonly" class="form-control" />
+
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="control-label ">Inspection Date:</label>
+
+
+                                        <p class="input-group">
+                                            <input type="text" class="form-control" datepicker-popup="{{format}}" is-open="opened1" min-date="" max-date="" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" ng-model="vessel.InspectionDate" />
+                                            <span class="input-group-btn">
+                                                <button type="button" class="btn btn-default" ng-click="openInspectionDate($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                                            </span>
+                                        </p>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+
+                            <div class="col-md-12">
+
+
+                                <div class="col-md-3">
+                                    <label class="control-label ">Quantity On Vessel:</label>
+                                    <input type="text" data-ng-model="vessel.QuantityOnVessel" class="form-control" />
+                                </div>
+
+                                <div class="col-md-3">
+                                    <label class="control-label ">Quantity On Bill Of Lading:</label>
+                                    <input type="text" data-ng-model="vessel.QuantityOnBillOfLading" class="form-control" />
+                                </div>
+
+                                <div class="col-md-3">
+                                    <label class="control-label ">Quantity Discharged:</label>
+                                    <input type="text" data-ng-model="vessel.QuantityDischarged" class="form-control" />
+                                </div>
+
+                                <div class="col-md-3">
+                                    <label class="control-label ">Quantity After STS:</label>
+                                    <input type="text" data-ng-model="vessel.QuantityAfterSTS" class="form-control" />
+                                </div>
+
+
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+
+                            <div class="col-md-12">
+
+                                <div class="row">
+
+
+                                    <div class="col-md-4">
+                                        <label class="control-label ">Vessel Arrival Date:</label>
+
+                                        <p class="input-group">
+                                            <input type="text" class="form-control" datepicker-popup="{{format}}" is-open="opened4" min-date="" max-date="" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" ng-model="vessel.VesselArrivalDate" />
+                                            <span class="input-group-btn">
+                                                <button type="button" class="btn btn-default" ng-click="openVesselArrivalDate($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                                            </span>
+                                        </p>
+
+
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <label class="control-label ">Discharge Commencement Date:</label>
+
+                                        <p class="input-group">
+                                            <input type="text" class="form-control" datepicker-popup="{{format}}" is-open="opened2" min-date="" max-date="" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" ng-model="vessel.DischargeCommencementDate" />
+                                            <span class="input-group-btn">
+                                                <button type="button" class="btn btn-default" ng-click="openDischargeCommencementDate($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                                            </span>
+                                        </p>
+
+
+
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <label class="control-label ">Discharge Completion Date:</label>
+
+                                        <p class="input-group">
+                                            <input type="text" class="form-control" datepicker-popup="{{format}}" is-open="opened3" min-date="" max-date="" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" ng-model="vessel.DischargeCompletionDate" />
+                                            <span class="input-group-btn">
+                                                <button type="button" class="btn btn-default" ng-click="openDischargeCompletionDate($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                                            </span>
+                                        </p>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+                        <div class="row">
+
+                            <div class="col-md-12">
+                                <div class="col-md-12">
+                                    <label class="control-label ">Inspector Comment:</label>
+                                    <textarea data-ng-model="vessel.InspectorComment" class="form-control"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+
+
+
+
+
+                            <br />
+
+
+                            <div class="row" ng-model="application.Id">
+                                <div class="col-md-2">
+                                    <input type="button" value="Save" ng-click="saveVesselReport(application.Id)" style="float: right" class="btn btn-default acceptbtn" />
+                                </div>
+                              
+
+                            </div>
+
+
+
+
+
+
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+
+
+    <!--Summary-->
+<div class="row" ng-show="viewSummary" style="width: 90%; border: 3px solid #27ae60;">
+
+
+<div class="row alert alert-success" role="alert" ng-show="positivefeedback === true">
+    <span class="col-md-11">{{success}}</span><span class="col-md-1" style="font-size: 20px; text-align: left; cursor: pointer" title="close" ng-click="positivefeedback = false">x</span>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <a ng-click="BackDetailFirstTank(Id)" style="float: right" class="btn btn-default acceptbtn"><< Back</a>
+    </div>
+    <div class="col-md-4">
+        <!--<input type="button" value="Print" ng-click="printDischargeData(Id)" style="float: right" class="btn btn-default acceptbtn"/>-->
+        <input type="button" value="Print Product QA" ng-click="printRecertification(Id)" style="float: right" class="btn btn-default acceptbtn" />
+
+    </div>
+    <div class="col-md-4">
+        <input type="button" value="Add Product to Storage Tank" ng-click="showTankForm()" style="float: right" class="btn btn-default acceptbtn"/>
+    </div>
+</div>
+
+<div class="modal-body">
+
+<div class="row">
+
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-1">
+                <label class="control-label ">
+                    STORAGE
+                    TANK*
+                </label>
+            </div>
+
+            <div class="col-md-1">
+                <label class="control-label ">
+                    TANK
+                    GAUGE
+                </label>
+            </div>
+
+
+            <div class="col-md-1">
+                <label class="control-label">
+                    TANK
+                    t/c
+                </label>
+            </div>
+
+            <div class="col-md-1">
+                <label class="control-label ">
+                    CROSS VOL
+                    @ Tk Pc LTRS
+                </label>
+            </div>
+
+            <div class="col-md-1">
+                <label class="control-label ">
+                    S G and
+                    t/C@Lab
+                </label>
+            </div>
+
+            <div class="col-md-1">
+                <label class="control-label ">
+                    VOL OF
+                    WATER LTRS
+                </label>
+            </div>
+
+
+            <div class="col-md-1">
+                <label class="control-label">
+                    NET VOL OF OIL
+                    @ Tk t/C
+                </label>
+            </div>
+
+            <div class="col-md-1">
+                <label class="control-label ">
+                    S G@5/15 C
+                </label>
+            </div>
+
+
+
+            <div class="col-md-1">
+                <label class="control-label ">
+                    VOL CORR
+                    FACTOR
+                </label>
+            </div>
+
+            <div class="col-md-1">
+                <label class="control-label ">
+                    NET VOL @
+                    15/15 C
+                </label>
+            </div>
+
+
+            <div class="col-md-1">
+                <label class="control-label">
+                    EQUIV VOL IN M
+                    @15/15 /
+                </label>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+
+<div class="row" data-ng-repeat="item in application">
+
+    <div class="col-md-12">
+        Before:
+        <div class="row">
+
+            <div class="col-md-1">
+                {{item.TankName}}
+            </div>
+
+            <div class="col-md-1">
+
+                {{item.DischargeParameterAfterObject.TankGuage}}
+            </div>
+
+            <div class="col-md-1">
+
+                {{item.DischargeParameterAfterObject.TankTC}}
+            </div>
+            <div class="col-md-1">
+
+                {{item.DischargeParameterAfterObject.CrossVol_TkPcLTRS}}
+            </div>
+
+
+            <div class="col-md-1">
+
+                {{item.DischargeParameterAfterObject.SGtC_Lab}}
+            </div>
+
+            <div class="col-md-1">
+
+                {{item.DischargeParameterAfterObject.VolOfWaterLTRS}}
+            </div>
+            <div class="col-md-1">
+
+                {{item.DischargeParameterAfterObject.NetVolOfOil_TkTc}}
+            </div>
+
+
+            <div class="col-md-1">
+
+                {{item.DischargeParameterAfterObject.SG_515C}}
+            </div>
+
+
+            <div class="col-md-1">
+
+                {{item.DischargeParameterAfterObject.VolCorrFactor}}
+            </div>
+
+            <div class="col-md-1">
+
+                {{item.DischargeParameterAfterObject.NetVolOfOil_TkTc}}
+            </div>
+            <div class="col-md-1">
+
+                {{item.DischargeParameterAfterObject.EquivVolInM_1515C}}
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-12">
+        After:
+        <div class="row">
+
+            <div class="col-md-1">
+                {{item.TankName}}
+            </div>
+
+            <div class="col-md-1">
+
+                {{item.DischargeParameterBeforeObject.TankGuage}}
+            </div>
+
+            <div class="col-md-1">
+
+                {{item.DischargeParameterBeforeObject.TankTC}}
+            </div>
+            <div class="col-md-1">
+
+                {{item.DischargeParameterBeforeObject.CrossVol_TkPcLTRS}}
+            </div>
+
+
+            <div class="col-md-1">
+
+                {{item.DischargeParameterBeforeObject.SGtC_Lab}}
+            </div>
+
+            <div class="col-md-1">
+
+                {{item.DischargeParameterBeforeObject.VolOfWaterLTRS}}
+            </div>
+            <div class="col-md-1">
+
+                {{item.DischargeParameterBeforeObject.NetVolOfOil_TkTc}}
+            </div>
+
+
+            <div class="col-md-1">
+
+                {{item.DischargeParameterBeforeObject.SG_515C}}
+            </div>
+
+
+            <div class="col-md-1">
+
+                {{item.DischargeParameterBeforeObject.VolCorrFactor}}
+            </div>
+
+            <div class="col-md-1">
+
+                {{item.DischargeParameterBeforeObject.NetVolOfOil_TkTc}}
+            </div>
+            <div class="col-md-1">
+
+                {{item.DischargeParameterBeforeObject.EquivVolInM_1515C}}
+            </div>
+
+           
+        </div>
+
+
+        <div class="row">
+
+            <div class="col-md-3">
+
+            </div>
+
+
+
+            <div class="col-md-1">
+
+
+            </div>
+
+
+            <div class="col-md-3">
+                Quantity Received
+            </div>
+
+
+            <div class="col-md-1">
+
+
+            </div>
+
+
+            <div class="col-md-1">
+
+
+            </div>
+
+            <div class="col-md-1">
+
+                {{item.DischargeParameterBeforeObject.NetVolBal}}
+            </div>
+            <div class="col-md-1">
+
+                {{item.DischargeParameterBeforeObject.EquivVolBal}}
+            </div>
+            <div class="col-md-1" ng-model="item.Id">
+
+                <input type="button" value="Edit" ng-click="editTank(item.Id)" style="float: right" class="btn btn-default acceptbtn" />
+
+            </div>
+        </div>
+    </div>
+</div>
+    <br /><br />
+<div class="col-md-12" ng-show="viewAddParameters">
+
+    <div class="row">
+        <div class="col-md-4">
+            <h4>Tank Number* </h4>
+        </div>
+        <div class="col-md-8">
+            <div class="row">
+
+                <div class="col-md-12">
+
+                    <input type="text" data-ng-model="store.TankNo" class="form-control"/>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-4">
+            <h4>Tank Guage* </h4>
+        </div>
+        <div class="col-md-8">
+            <div class="row">
+                <div class="col-md-6">
+                    <label class="control-label ">Before:</label>
+                    <input type="text" data-ng-model="store.TankGuageBefore" class="form-control"/>
+                </div>
+                <div class="col-md-6">
+                    <label class="control-label ">After:</label>
+                    <input type="text" data-ng-model="store.TankGuageAfter" class="form-control"/>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <h4>TANK t/c* </h4>
+        </div>
+        <div class="col-md-8">
+            <div class="row">
+                <div class="col-md-6">
+                    <label class="control-label ">Before:</label>
+                    <input type="text" data-ng-model="store.TankTCBefore" class="form-control"/>
+                </div>
+                <div class="col-md-6">
+                    <label class="control-label ">After:</label>
+                    <input type="text" data-ng-model="store.TankTCAfter" class="form-control"/>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <h4>CROSS VOL @ Tk Pc LTRS* </h4>
+        </div>
+        <div class="col-md-8">
+            <div class="row">
+                <div class="col-md-6">
+                    <label class="control-label ">Before:</label>
+                    <input type="text" data-ng-model="store.CrossVol_TkPcLTRSBefore" class="form-control"/>
+                </div>
+                <div class="col-md-6">
+                    <label class="control-label ">After:</label>
+                    <input type="text" data-ng-model="store.CrossVol_TkPcLTRSAfter" class="form-control"/>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <h4>S G and t/C@Lab* </h4>
+        </div>
+        <div class="col-md-8">
+            <div class="row">
+                <div class="col-md-6">
+                    <label class="control-label ">Before:</label>
+                    <input type="text" data-ng-model="store.SGtC_LabBefore" class="form-control"/>
+                </div>
+                <div class="col-md-6">
+                    <label class="control-label ">After:</label>
+                    <input type="text" data-ng-model="store.SGtC_LabAfter" class="form-control"/>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="row">
+        <div class="col-md-4">
+            <h4>VOL OF WATER LTRS* </h4>
+        </div>
+        <div class="col-md-8">
+            <div class="row">
+                <div class="col-md-6">
+                    <label class="control-label ">Before:</label>
+                    <input type="text" data-ng-model="store.VolOfWaterLTRSBefore" class="form-control"/>
+                </div>
+                <div class="col-md-6">
+                    <label class="control-label ">After:</label>
+                    <input type="text" data-ng-model="store.VolOfWaterLTRSAfter" class="form-control"/>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="row">
+        <div class="col-md-4">
+            <h4>VOL CORR FACTOR* </h4>
+        </div>
+        <div class="col-md-8">
+            <div class="row">
+                <div class="col-md-6">
+                    <label class="control-label ">Before:</label>
+                    <input type="text" data-ng-model="store.VolCorrFactorBefore" class="form-control"/>
+                </div>
+                <div class="col-md-6">
+                    <label class="control-label ">After:</label>
+                    <input type="text" data-ng-model="store.VolCorrFactorAfter" class="form-control"/>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <br/>
+
+
+    <div class="row">
+        <div class="col-md-6">
+            <input type="button" value="Save" ng-click="saveDischargeData(Id)" style="float: right" class="btn btn-default acceptbtn"/>
+        </div>
+
+
+    </div>
+
+</div>
+
+
+    <br /><br />
+    <div class="col-md-12" ng-show="viewEditParameters">
+
+        <div class="row">
+            <div class="col-md-4">
+                <h4>Tank Number* </h4>
+            </div>
+            <div class="col-md-8">
+                <div class="row">
+
+                    <div class="col-md-12">
+
+                        <input type="text" data-ng-model="enter.TankNo" readonly="readonly" class="form-control" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-4">
+                <h4>Tank Guage* </h4>
+            </div>
+            <div class="col-md-8">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label class="control-label ">Before:</label>
+                        <input type="text" data-ng-model="enter.TankGuageBefore" class="form-control" />
+                    </div>
+                    <div class="col-md-6">
+                        <label class="control-label ">After:</label>
+                        <input type="text" data-ng-model="enter.TankGuageAfter" class="form-control" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <h4>TANK t/c* </h4>
+            </div>
+            <div class="col-md-8">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label class="control-label ">Before:</label>
+                        <input type="text" data-ng-model="enter.TankTCBefore" class="form-control" />
+                    </div>
+                    <div class="col-md-6">
+                        <label class="control-label ">After:</label>
+                        <input type="text" data-ng-model="enter.TankTCAfter" class="form-control" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <h4>CROSS VOL @ Tk Pc LTRS* </h4>
+            </div>
+            <div class="col-md-8">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label class="control-label ">Before:</label>
+                        <input type="text" data-ng-model="enter.CrossVol_TkPcLTRSBefore" class="form-control" />
+                    </div>
+                    <div class="col-md-6">
+                        <label class="control-label ">After:</label>
+                        <input type="text" data-ng-model="enter.CrossVol_TkPcLTRSAfter" class="form-control" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <h4>S G and t/C@Lab* </h4>
+            </div>
+            <div class="col-md-8">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label class="control-label ">Before:</label>
+                        <input type="text" data-ng-model="enter.SGtC_LabBefore" class="form-control" />
+                    </div>
+                    <div class="col-md-6">
+                        <label class="control-label ">After:</label>
+                        <input type="text" data-ng-model="enter.SGtC_LabAfter" class="form-control" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="row">
+            <div class="col-md-4">
+                <h4>VOL OF WATER LTRS* </h4>
+            </div>
+            <div class="col-md-8">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label class="control-label ">Before:</label>
+                        <input type="text" data-ng-model="enter.VolOfWaterLTRSBefore" class="form-control" />
+                    </div>
+                    <div class="col-md-6">
+                        <label class="control-label ">After:</label>
+                        <input type="text" data-ng-model="enter.VolOfWaterLTRSAfter" class="form-control" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="row">
+            <div class="col-md-4">
+                <h4>VOL CORR FACTOR* </h4>
+            </div>
+            <div class="col-md-8">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label class="control-label ">Before:</label>
+                        <input type="text" data-ng-model="enter.VolCorrFactorBefore" class="form-control" />
+                    </div>
+                    <div class="col-md-6">
+                        <label class="control-label ">After:</label>
+                        <input type="text" data-ng-model="enter.VolCorrFactorAfter" class="form-control" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <br/>
+
+      
+
+        <br />
+
+        <div class="row">
+            <div class="col-md-6">
+                <input type="button" value="Update" ng-click="updateDischargeData(Id)" style="float: right" class="btn btn-default acceptbtn" />
+            </div>
+
+
+        </div>
+
+    </div>
+
+    <br /><br />
+
+    <div class="row" ng-show="viewComFile">
+
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-6">
+                    <!--<label class="control-label">Dry Tank Certificate:</label>-->
+                    <input type="file" name="file" onchange="angular.element(this).scope().uploadFile(this.files)" />
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!--<div class="row" ng-show="viewTempFile">
+
+        <div class="col-md-12">
+            <div class="row">
+               
+                <div class="col-md-6">
+                    <label class="control-label">Remaining On Board:</label>
+                    <input type="file" name="file2" onchange="angular.element(this).scope().uploadFile2(this.files)"/>
+                </div>
+
+            </div>
+        </div>
+    </div>-->
+
+
+<div class="modal fade" id="myFinal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Action Confirmation</h4>
+                </div>
+                <div class="modal-body">
+                    Are You sure you want to accept this application? 
+
+                    <br />
+                    <!--<div class="row">
+
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-6" ng-hide="viewComFile">
+                                    <label class="control-label">Dry Tank Certificate:</label>
+                                    <input type="file" name="file" onchange=" angular.element(this).scope().uploadFile(this.files) " />
+                                </div>
+
+                                <div class="col-md-6" ng-hide="viewTempFile">
+                                    <label class="control-label">Remaining On Board:</label>
+                                    <input type="file" name="file" onchange=" angular.element(this).scope().uploadFile2(this.files) " />
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>-->
+
+                    <br />
+
+
+
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">No</button>
+                    <input type="button" value="Submit All Report" ng-click="report(Id)" style="float: right" class="btn btn-default acceptbtn" />
+
+                </div>
+            </div>
+        </div>
+    </div>
+<br/><br/>
+
+<div class="row">
+    <div class="col-md-4">
+
+        <input type="button" value="Upload Dry Tank Certificate" ng-click="showDryTank()" ng-show="viewDry" style="float: right" class="btn btn-default acceptbtn"/>
+
+    </div>
+    <div class="col-md-4">
+
+
+        <input type="button" value="Upload Remaining On Board" ng-click="showROM()" ng-show="viewROM" style="float: right" class="btn btn-default acceptbtn" />
+    </div>
+        <div class="col-md-4">
+            <!-- <input type="button" value="Submit All Report" data-toggle="modal" data-target="#myFinal" style="float: right" class="btn btn-default acceptbtn"/>-->
+           <input type="button" value="Submit All Report" ng-click="report(Id)" style="float: right" class="btn btn-default acceptbtn" />
+
+        </div>
+    </div>
+
+    </div>
+</div>
+
+
+
+
+    <div class="row" ng-show="viewFirstTank" style="width: 90%; border: 3px solid #27ae60;">
+
+
+        <div class="row alert alert-success" role="alert" ng-show="positivefeedback === true">
+            <span class="col-md-11">{{success}}</span><span class="col-md-1" style="font-size: 20px; text-align: left; cursor: pointer" title="close" ng-click="positivefeedback = false">x</span>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <a ng-click="BackDetailFirstTank(Id)" style="float: right" class="btn btn-default acceptbtn"><< Back</a>
+            </div>
+
+            <div class="col-md-6">
+                <input type="button" value="Add Product to Storage Tank" ng-click="showTankForm()" style="float: right" class="btn btn-default acceptbtn" />
+            </div>
+        </div>
+        <br /><br />
+        <div class="modal-body">
+
+            
+
+          
+          
+            <div class="col-md-12" ng-show="viewAddParameters" ng-model="Id">
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <h4>Tank Number* </h4>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="row">
+
+                            <div class="col-md-12">
+
+                                <input type="text" data-ng-model="store.TankNo" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <h4>Tank Guage* </h4>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="control-label ">Before:</label>
+                                <input type="text" data-ng-model="store.TankGuageBefore" class="form-control" />
+                            </div>
+                            <div class="col-md-6">
+                                <label class="control-label ">After:</label>
+                                <input type="text" data-ng-model="store.TankGuageAfter" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <h4>TANK t/c* </h4>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="control-label ">Before:</label>
+                                <input type="text" data-ng-model="store.TankTCBefore" class="form-control" />
+                            </div>
+                            <div class="col-md-6">
+                                <label class="control-label ">After:</label>
+                                <input type="text" data-ng-model="store.TankTCAfter" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <h4>CROSS VOL @ Tk Pc LTRS* </h4>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="control-label ">Before:</label>
+                                <input type="text" data-ng-model="store.CrossVol_TkPcLTRSBefore" class="form-control" />
+                            </div>
+                            <div class="col-md-6">
+                                <label class="control-label ">After:</label>
+                                <input type="text" data-ng-model="store.CrossVol_TkPcLTRSAfter" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <h4>S G and t/C@Lab* </h4>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="control-label ">Before:</label>
+                                <input type="text" data-ng-model="store.SGtC_LabBefore" class="form-control" />
+                            </div>
+                            <div class="col-md-6">
+                                <label class="control-label ">After:</label>
+                                <input type="text" data-ng-model="store.SGtC_LabAfter" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <h4>VOL OF WATER LTRS* </h4>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="control-label ">Before:</label>
+                                <input type="text" data-ng-model="store.VolOfWaterLTRSBefore" class="form-control" />
+                            </div>
+                            <div class="col-md-6">
+                                <label class="control-label ">After:</label>
+                                <input type="text" data-ng-model="store.VolOfWaterLTRSAfter" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <h4>VOL CORR FACTOR* </h4>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="control-label ">Before:</label>
+                                <input type="text" data-ng-model="store.VolCorrFactorBefore" class="form-control" />
+                            </div>
+                            <div class="col-md-6">
+                                <label class="control-label ">After:</label>
+                                <input type="text" data-ng-model="store.VolCorrFactorAfter" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <br />
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <input type="button" value="Save" ng-click="saveDischargeData(Id)" style="float: right" class="btn btn-default acceptbtn" />
+                    </div>
+
+
+                </div>
+
+            
+
+            </div>
+
+
+        </div>
+    </div>
+
+<br />
+
+</div>
+
+

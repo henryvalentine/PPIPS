@@ -1,0 +1,243 @@
+﻿
+
+
+
+<fieldset style="border: none; background: whitesmoke" ng-controller="usrJobHistoryController" ng-init="initializeController()">
+
+<div class="row" ng-hide="viewApp == true">
+    <div class="row">
+        <div class="col-md-12">
+            <h4 class="page-head-line">Application History</h4>
+        </div>
+    </div>
+    <table style="width: 100%" ng-history>
+        <thead>
+            <tr style="color: #000">
+                <th style="width: 2%">
+                    S/N
+                </th>
+                <th style="width: 20%">
+                    Payment Reference
+                </th>
+                <th style="width: 20%">
+                    Company
+                </th>
+                <th style="width: 20%">
+                    Total Quantity Quantity(MT)
+                </th>
+                <th style="width: 20%">
+                    Amount(&#8358;)
+                </th>
+                <th style="width: 15%">
+                    Date Applied
+                </th>
+                <th style="width: 8%">
+                    Status
+                </th>
+                <th style="width: 10%">
+                    Action
+                </th>
+            </tr>  
+        </thead>
+        <tbody></tbody>
+
+    </table>
+</div>
+        
+    <br /><br />
+    <div class="row" ng-if="viewApp === true" style="width: 100%; border: 3px solid #27ae60;">
+        <br /><br />
+        <div class="row">
+            <div class="col-md-6">
+                <h4 class="modal-title page-head-no-line"> Application Details</h4>
+            </div>
+            <div class="col-md-6">
+                <a ng-click="viewApp = false;" style="float: right" class="btn btn-default"><< Back</a>
+            </div>
+        </div>
+
+        <div class="row" style="margin-top: 2px;">
+            <div class="col-md-12 alert alert-danger" role="alert" ng-show="isError === true">
+                <span class="col-md-11">{{appError}}</span><span class="col-md-1" style="font-size: 20px; text-align: left; cursor: pointer" title="close" ng-click="appError = '';isError = false;">x</span>
+            </div>
+            <div class="col-md-12 alert alert-success" role="alert" ng-show="isSuccess === true">
+                <span class="col-md-11">{{appSuccess}}</span><span class="col-md-1" style="font-size: 20px; text-align: left; cursor: pointer" title="close" ng-click="appSuccess = '';isSuccess = false;">x</span>
+            </div>
+            <br />
+        </div>
+        <div class="row">
+            <div class="row">
+                <div class="col-md-4">
+                    <label style="font-weight:normal">Company</label>
+                </div>
+                <div class="col-md-8">
+                    <label class="control-label">{{application.CompanyName}}</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <label style="font-weight: normal">Payment Reference(RRR)</label>
+                </div>
+                <div class="col-md-8">
+                    <label class="control-label">{{application.ReferenceCode}}</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <label style="font-weight:normal">Account Number</label>
+                </div>
+                <div class="col-md-8">
+                    <label class="control-label">{{application.BankAccountNumber}}</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <label class="control-label " style="font-weight:normal">Total Quantity(MT):</label>
+                </div>
+                <div class="col-md-8">
+                    <label class="control-label ">{{application.DerivedQuantityStr}}</label>
+                </div>
+            </div>
+            <div class="row" ng-repeat="fee in application.FeeObjects">
+                <div class="col-md-4">
+                    <label class="control-label " style="font-weight: normal">{{fee.FeeTypeName}}</label>
+                </div>
+                <div class="col-md-8">
+                    <label class="control-label ">&#8358;{{fee.Amount | currency:"":0}}</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <label class="control-label " style="font-weight:normal">Total Amount Paid</label>
+                </div>
+                <div class="col-md-6">
+                    <label class="control-label">&#8358;{{application.DerivedValue | currency: " "}}</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <label class="control-label " style="font-weight:normal">Payment Option</label>
+                </div>
+                <div class="col-md-6">
+                    <label class="control-label ">{{application.PaymentOption}}</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <label class="control-label " style="font-weight:normal">Service Description</label>
+                </div>
+                <div class="col-md-6">
+                    <label class="control-label ">Import Permit Application Fee</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <label class="control-label " style="font-weight:normal">Status</label>
+                </div>
+                <div class="col-md-6">
+                    <label class="control-label ">{{application.StatusStr}}</label>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-4">
+                    <h4><b>Product(s) Included</b></h4>
+                </div>
+                <div class="col-md-8"></div>
+            </div>
+            <br />
+            <div class="col-md-12">
+                <table class="table" ng-docs id="tng">
+                    <tr>
+                        <th style="width: 12%">
+                            Product Code
+                        </th>
+                        <th style="width: 12%">
+                            Est. Quantity(MT)
+                        </th>
+                        <th style="width: 11%">
+                            Est. Value($)
+                        </th>
+                        <th style="width: 18%">
+                            Country/Countries of Origin
+                        </th>
+                        <th style="width: 18%">
+                            Discharge Depot
+                        </th>
+                    </tr>
+                    <tr data-ng-repeat="item in application.ApplicationItemObjects">
+                        <td style="width: 12%">{{item.ProductObject.Code}}</td>
+                        <td style="width: 10%">{{item.EstimatedQuantity | number:0}}</td>
+                        <td style="width: 11%">{{item.EstimatedValue | currency: " "}}</td>
+                        <td style="width: 18%">{{item.CountryOfOriginName}}</td>
+                        <td style="width: 18%">{{item.DischargeDepotName}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <br />
+        <div class="col-md-12">
+            <h4><b>Uploaded Document(s)</b></h4>
+        </div>
+        <div class="row">
+            <div class="col-md-12" ng-show="application.DocumentTypeObjects.length < 1">
+                <h4>NONE</h4>
+            </div>
+            <div class="col-md-9">
+                <table class="table">
+                    <tr ng-if="application.DocumentTypeObjects !== null && application.DocumentTypeObjects.length > 0" data-ng-repeat="t in application.DocumentTypeObjects">
+                        <td style="width: 20%"><a href="{{t.DocumentPath}}" ng-show="t.DocumentPath != null && t.DocumentPath.length > 0" style="cursor: pointer; color: #008000" target="_blank" title="View Document">{{t.Name}}</a></td>
+                        <td style="width: 5%">
+                            <img src="/Images/edit.png" style="float: left; cursor: pointer" ng-click="getTlx(t.Id)" ng-if="application.ApplicationStatusCode === 1 || t.ApplicationStatusCode === 3" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <br />
+
+        <div class="row" ng-show="unsuppliedProductDocuments.length > 0">
+            <div class="col-md-12">
+                <h4>Required Document(s): </h4>
+            </div>
+            <div class="row">
+                <ul>
+                    <li>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4>Please provide Bank Reference Letter for the following Product(s) </h4>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top: 4px">
+                            <ol>
+                                <li ng-repeat="apItm in application.ApplicationItemObjects">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <h4>&#8226 &nbsp;{{apItm.ProductObject.Name}} ({{apItm.ProductObject.Code}})</h4>
+                                        </div>
+                                    </div>
+                                    <ol style="margin-top: 14px">
+                                        <li ng-repeat="th in apItm.ProductBankerObjects">
+                                            <div class="row" ng-if="(th.DocumentId == null && th.IsUploaded === false) || (th.DocumentId != null && th.IsUploaded === false)">
+                                                <div class="col-md-5">
+                                                    <label>Attach Document*</label>
+                                                    <input type="file" class="form-control" id="{{th.Id}}" ng-fil ng-file-select="ProcessDocument($event, th)" ng-class="th.status" placeholder="Select Reference Letter" name="file" ng-disabled="processing === true" />
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ol>
+                                </li>
+                            </ol>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <br />
+        </div>
+    </div>
+    <br />
+</fieldset>
+
+

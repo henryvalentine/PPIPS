@@ -1,0 +1,85 @@
+﻿@model IEnumerable<ImportPermitPortal.EF.Model.ProcessTracking>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+<br /><br /><br /><br /><br /><br />
+<table >
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.StepCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StepStatus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StepActivityType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProcessStatus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AssignedTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DueTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ActualDeliveryDateTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Application.ReferenceCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Step.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserProfile.FirstName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.StepCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StepStatus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StepActivityType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProcessStatus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AssignedTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DueTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ActualDeliveryDateTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Application.ReferenceCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Step.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserProfile.FirstName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "label label-success" })  |
+            @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "label label-success" })  |
+            @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "label label-success" }) 
+        </td>
+    </tr>
+}
+
+</table>

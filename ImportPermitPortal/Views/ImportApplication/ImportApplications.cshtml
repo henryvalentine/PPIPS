@@ -1,0 +1,48 @@
+﻿@model IEnumerable<ImportPermitPortal.EF.Model.Application>
+
+@{
+    ViewBag.Title = "Applications";
+}
+<br/>
+<h4>Import Applications</h4>
+
+<table >
+    <tr>
+        <th style="width: 30%">
+          Company
+        </th>
+        <th style="width: 20%">
+            Derived Total QUantity
+        </th>
+        <th style="width: 20%">
+            Derived Total Value
+        </th>
+        <th>
+          Status
+        </th>
+        <th>Action</th>
+    </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Company.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DerivedTotalQUantity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DerivedValue) 
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StatusCode)
+                </td>
+                <td>
+                    <a title="Take a Decision" href="/Application/ToggleApplication?id=@(item.ApplicationId)" style="cursor: pointer"><img src="/Images/edit.png"/></a> &nbsp;&nbsp;
+                    <a title="Details" href="/Application/GetApplication?id=@(item.ApplicationId)" style="cursor: pointer"><img src="/Images/info.png" /></a>
+                </td>
+            </tr>
+        }
+
+</table>

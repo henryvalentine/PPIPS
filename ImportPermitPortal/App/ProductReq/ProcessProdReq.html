@@ -1,0 +1,32 @@
+﻿
+
+<div class="row fsEdit" style="visibility: visible; width: 100%" ng-controller="productReqController">
+    <div class=" modal-header">
+        <div class="row">
+            <div class="col-md-12">
+                <h4 class="modal-title">{{prodReq.Header}}</h4>
+            </div>
+        </div>
+    </div>
+    <div class="modal-body">
+        <form method="POST">
+            <div class="row">
+                <label class="control-label ">Product *</label>
+                <select ng-model="prodReq.Product" ng-options="prod as prod.Name for prod in products track by prod.ProductId" data-inset="true" class=" form-control" required>
+                    <option value="">-- Select Product --</option>
+                </select>
+            </div>
+            <div class="row">
+                <label class="control-label "> Document Type *</label>
+                <select ng-model="prodReq.DocumentType" ng-options="docType as docType.Name for docType in docTypes track by docType.DocumentTypeId" data-inset="true" class=" form-control" required>
+                    <option value="">-- Select Document Type --</option>
+                </select>
+            </div>
+            <div class="row modal-footer">
+                <div>
+                    <input type="button" value="{{buttonText}}" ng-click="processProdReq()" class="btn btn-default" style="margin-top: 7px;" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

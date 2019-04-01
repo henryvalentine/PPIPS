@@ -1,0 +1,87 @@
+﻿
+
+<div class="row fsEdit" style="visibility: visible; width: 100%" ng-controller="stepController">
+    <div class=" modal-header">
+        <div class="row">
+            <div class="col-md-12">
+                <h4 class="modal-title">{{step.Header}}</h4>
+            </div>
+        </div>
+    </div>
+    <div class="modal-body">
+        <form method="POST">
+            <div class="row">
+                <div class="col-md-6">
+                    <label class="control-label ">Name *</label>
+                    <input type="text" data-ng-model="step.Name" class="form-control" />
+                </div>
+
+                <div class="col-md-6">
+                    <label class="control-label ">Import Stage*</label>
+                    <select ng-model="step.Stage" ng-options="sta as sta.Name for sta in ImportStages track by sta.Id" data-inset="true" class=" form-control" required>
+                        <option value="">-- Select Application Stage--</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label class="control-label ">Group*</label>
+                    <select ng-model="step.Group" ng-options="gro as gro.Name for gro in groups track by gro.Id" data-inset="true" class=" form-control" required>
+                        <option value="">-- Select Group--</option>
+                    </select>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="control-label ">Activity Type*</label>
+                    <select ng-model="step.Type" ng-options="ty as ty.Name for ty in stepactivitytypes track by ty.Id" data-inset="true" class=" form-control" required>
+                        <option value="">-- Select Activity Type --</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label class="control-label ">Process*</label>
+                    <select ng-model="step.Process" ng-options="pro as pro.Name for pro in step.Stage.ProcessObjects track by pro.Id" data-inset="true" class=" form-control" required>
+                        <option value="">-- Select Process--</option>
+                    </select>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="control-label ">Previous Step*</label>
+                    <select ng-model="step.Previous" ng-options="pre as pre.Name for pre in step.Stage.StepObjects track by pre.SequenceNumber" data-inset="true" class=" form-control" required>
+                        <option value="">-- Select Previous Step if any--</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label class="control-label ">Expected Delivery duration *</label>
+                    <input type="text" data-ng-model="step.Duration" class="form-control"/>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="control-label ">Is Step Location Dependent?</label>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>
+                                <input type="radio" ng-model="step.LocationDependent" name="location" ng-value="true" />
+                                &nbsp;Yes
+                            </label>
+                        </div>
+                        <div class="col-md-6">
+                            <label>
+                                <input type="radio" ng-model="step.LocationDependent" name="location" ng-value="false" />&nbsp;No
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <div class="row modal-footer">
+            <div>
+                <input type="button" value="{{buttonText}}" ng-click="processStep()" class="btn btn-default" style="margin-top: 7px;" />
+
+            </div>
+        </div>
+</form>
+</div>
+</div>

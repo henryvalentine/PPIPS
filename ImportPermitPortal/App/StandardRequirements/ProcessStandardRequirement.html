@@ -1,0 +1,62 @@
+﻿
+
+<div class="row fsEdit" style="visibility: visible; width: 100%" ng-controller="standardRequirementController">
+    <div class=" modal-header">
+        <div class="row">
+            <div class="col-md-12">
+                <h4 class="modal-title">{{doc.Header}}</h4>
+            </div>
+        </div>
+    </div>
+    <div class="modal-body">
+        <form method="POST">
+            <div class="row">
+                <div class="col-md-6">
+                    <label class="control-label"> Document Title *</label>
+                    <input type="text" data-ng-model="doc.Title" class="form-control" />
+                </div>
+                <div class="col-md-6">
+                    <label class="control-label "> Document Type *</label>
+                    <select ng-model="doc.DocumentType" ng-options="docType as docType.Name for docType in docTypes track by docType.Id" data-inset="true" class=" form-control" required>
+                        <option value="">-- Select Document Type --</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label class="control-label">Date Obtained*</label>
+                    <p class="input-group">
+                        <input type="text" class="form-control datepicker" ng-click="openEnDatep($event)" datepicker-popup="{{endDateformatp}}" is-open="endDateOpenedp"
+                               min-date="minEndDatep" max-date="maxEndDatep"
+                               datepicker-options="endDateOptionsp" date-disabled="disabledp(date, mode)" close-text="Close" ng-model="doc.ValidFrom" />
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="openEnDatep($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                        </span>
+                    </p>
+                </div>
+                <div class="col-md-6">
+                    <label class="control-label">Expiry Date</label>
+                    <p class="input-group">
+                        <input type="text" class="form-control datepicker" ng-click="openEnDate($event)" datepicker-popup="{{endDateformat}}" is-open="endDateOpened"
+                               min-date="minEndDate" max-date="maxEndDate"
+                               datepicker-options="endDateOptions" date-disabled="disabled(date, mode)" close-text="Close" ng-model="doc.ValidTo" />
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="openEnDate($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                        </span>
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <label class="control-label ">Document*</label>
+                    <input type="file" class="form-control" ng-class="trendy" name="file" ng-file-select="ProcessDocument($event)" ng-disabled="processing === true" accept="application/pdf,image/png,image/jpeg" />
+                </div>
+            </div>
+            <div class="row modal-footer">
+                <div>
+                    <input type="button" value="{{buttonText}}" ng-click="processDoc()" ng-disabled="processing === true" class="btn btn-default" style="margin-top: 7px;" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

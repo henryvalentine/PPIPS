@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PPIPSPaymentLiveModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="PaymentDistributionSummary">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ServiceId" Type="int" Nullable="false" />
+    <Property Name="Beneficiary" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Amount" Type="float" Nullable="false" />
+    <Property Name="PaymentReference" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PaymentDate" Type="datetime" Nullable="false" />
+    <Property Name="Status" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PaymentLog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Type" Type="bit" />
+    <Property Name="PaymentReference" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PaymentAmount" Type="float" Nullable="false" />
+    <Property Name="PaymentDate" Type="nvarchar" MaxLength="50" />
+    <Property Name="PaymentCurrency" Type="nvarchar" MaxLength="50" />
+    <Property Name="PaymentMethod" Type="nvarchar" MaxLength="50" />
+    <Property Name="PaymentChannel" Type="nvarchar" MaxLength="50" />
+    <Property Name="ItemName" Type="nvarchar" MaxLength="50" />
+    <Property Name="ItemCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="DepositSlipNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="BankName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Location" Type="nvarchar" MaxLength="50" />
+    <Property Name="CustomerName" Type="nvarchar" MaxLength="50" />
+    <Property Name="PaymentStatus" Type="nvarchar" MaxLength="50" />
+    <Property Name="XmlData" Type="nvarchar(max)" />
+    <Property Name="ExpiryDate" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PaymentReceipt">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TransactionInvoiceId" Type="bigint" Nullable="false" />
+    <Property Name="ReceiptNo" Type="bigint" Nullable="false" />
+    <Property Name="DateCreated" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TransactionInvoice">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PaymentMethod" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PaymentGateway" Type="nvarchar" MaxLength="50" />
+    <Property Name="TotalAmountDue" Type="float" Nullable="false" />
+    <Property Name="AmountPaid" Type="float" Nullable="false" />
+    <Property Name="CurrencyCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="Status" Type="int" Nullable="false" />
+    <Property Name="ServiceDescription" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="IsExpired" Type="bit" />
+    <Property Name="ExpiryDate" Type="date" />
+    <Property Name="BookDate" Type="date" />
+    <Property Name="CreatedDate" Type="date" Nullable="false" />
+    <Property Name="LastModifiedDate" Type="date" Nullable="false" />
+    <Property Name="CustomerId" Type="bigint" Nullable="false" />
+    <Property Name="RRR" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="UnclearedPayment">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PaymentLogId" Type="bigint" />
+    <Property Name="ReferenceCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Amount" Type="float" Nullable="false" />
+    <Property Name="CompanyId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="IsAssigned" Type="bit" />
+    <Property Name="ReferenceNoAssignedTo" Type="nvarchar" MaxLength="50" />
+    <Property Name="DateAssigned" Type="date" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_PaymentReceipt_TransactionInvoice">
+    <End Role="TransactionInvoice" Type="Self.TransactionInvoice" Multiplicity="1" />
+    <End Role="PaymentReceipt" Type="Self.PaymentReceipt" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TransactionInvoice">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PaymentReceipt">
+        <PropertyRef Name="TransactionInvoiceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UnclearedPayment_PaymentLog">
+    <End Role="PaymentLog" Type="Self.PaymentLog" Multiplicity="0..1" />
+    <End Role="UnclearedPayment" Type="Self.UnclearedPayment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PaymentLog">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UnclearedPayment">
+        <PropertyRef Name="PaymentLogId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="PPIPSPaymentLiveModelStoreContainer">
+    <EntitySet Name="PaymentDistributionSummary" EntityType="Self.PaymentDistributionSummary" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PaymentLog" EntityType="Self.PaymentLog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PaymentReceipt" EntityType="Self.PaymentReceipt" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TransactionInvoice" EntityType="Self.TransactionInvoice" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UnclearedPayment" EntityType="Self.UnclearedPayment" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_PaymentReceipt_TransactionInvoice" Association="Self.FK_PaymentReceipt_TransactionInvoice">
+      <End Role="TransactionInvoice" EntitySet="TransactionInvoice" />
+      <End Role="PaymentReceipt" EntitySet="PaymentReceipt" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UnclearedPayment_PaymentLog" Association="Self.FK_UnclearedPayment_PaymentLog">
+      <End Role="PaymentLog" EntitySet="PaymentLog" />
+      <End Role="UnclearedPayment" EntitySet="UnclearedPayment" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

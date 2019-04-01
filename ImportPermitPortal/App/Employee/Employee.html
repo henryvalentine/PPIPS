@@ -1,0 +1,33 @@
+﻿
+
+
+<h4>Dashboard</h4>
+
+<div class="row"  ng-controller="employeeController" ng-init="initializeController()">
+
+    <div ng-employee>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-4">
+                    <label class="control-label ">Applications:</label>
+                </div>
+                <div class="col-md-8">
+                    <label class="control-label ">{{application.ApplicationCount}}</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-4">
+                    <label class="control-label ">Notifications:</label>
+                </div>
+                <div class="col-md-8">
+                    <label class="control-label ">{{application.NotificationCount}}</label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

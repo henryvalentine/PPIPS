@@ -1,0 +1,28 @@
+﻿
+
+<div class="row fsEdit" style="visibility: visible; width: 100%" ng-controller="importElController">
+    <div class=" modal-header">
+        <div class="row">
+            <div class="col-md-12">
+                <h4 class="modal-title">{{impEl.Header}}</h4>
+            </div>
+        </div>
+    </div>
+    <div class="modal-body">
+        <form method="POST">
+            <div class="row">
+                <label class="control-label ">Short Name</label>
+                <input type="text" data-ng-model="impEl.Shortname" class="form-control" />
+            </div>
+            <div class="row">
+                <label class="control-label ">Description</label>
+                <textarea class="form-control" ng-model="impEl.Description">{{impEl.Description}}</textarea>
+            </div>
+            <div class="row modal-footer">
+                <div>
+                    <input type="button" value="{{buttonText}}" ng-click="processImportEligibility()" class="btn btn-default" style="margin-top: 7px;" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

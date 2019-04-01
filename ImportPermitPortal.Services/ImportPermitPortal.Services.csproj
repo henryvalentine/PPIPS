@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{18151049-1922-4E09-9327-13D7DF60430E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ImportPermitPortal.Services</RootNamespace>
+    <AssemblyName>ImportPermitPortal.Services</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Class1.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\CalculatorService.cs" />
+    <Compile Include="Services\DepotTrunkedOutService.cs" />
+    <Compile Include="Services\FaqCategoryService.cs" />
+    <Compile Include="Services\ApplicationContentService.cs" />
+    <Compile Include="Services\IssueCategoryService.cs" />
+    <Compile Include="Services\FaqService.cs" />
+    <Compile Include="Services\IssueService.cs" />
+    <Compile Include="Services\IssueLogService.cs" />
+    <Compile Include="Services\PageService.cs" />
+    <Compile Include="Services\MessageService.cs" />
+    <Compile Include="Services\MessageTemplateService.cs" />
+    <Compile Include="Services\ApplicationIssueService.cs" />
+    <Compile Include="Services\DepotOwnerService.cs" />
+    <Compile Include="Services\DepotService.cs" />
+    <Compile Include="Services\NotificationHistoryService.cs" />
+    <Compile Include="Services\ProductColourService.cs" />
+    <Compile Include="Services\RecertificationHistoryService.cs" />
+    <Compile Include="Services\RecertificationProcessService.cs" />
+    <Compile Include="Services\RecertificationService.cs" />
+    <Compile Include="Services\TransactionInvoiceService.cs" />
+    <Compile Include="Services\ThroughPutService.cs" />
+    <Compile Include="Services\StandardRequirementService.cs" />
+    <Compile Include="Services\StandardRequirementTypeService.cs" />
+    <Compile Include="Services\GeneralInformationService.cs" />
+    <Compile Include="Services\ImportRequirementService.cs" />
+    <Compile Include="Services\ImportClassificationRequirementService.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\ImportClassService.cs" />
+    <Compile Include="Services\ApplicationBankerService.cs" />
+    <Compile Include="Services\ApplicationHistoryService.cs" />
+    <Compile Include="Services\ApplicationService.cs" />
+    <Compile Include="Services\DocumentService.cs" />
+    <Compile Include="Services\InvoiceService.cs" />
+    <Compile Include="Services\NotificationCheckListService.cs" />
+    <Compile Include="Services\PermitService.cs" />
+    <Compile Include="Services\StorageProviderTypeService.cs" />
+    <Compile Include="Services\FeeTypeService.cs" />
+    <Compile Include="Services\CountryService.cs" />
+    <Compile Include="Services\EmployeeDeskService.cs" />
+    <Compile Include="Services\EmployeeHistoryService.cs" />
+    <Compile Include="Services\EmployeeProfileService.cs" />
+    <Compile Include="Services\FeeService.cs" />
+    <Compile Include="Services\CustomCodeService.cs" />
+    <Compile Include="Services\ImportSettingService.cs" />
+    <Compile Include="Services\FormMDetailService.cs" />
+    <Compile Include="Services\ImporterService.cs" />
+    <Compile Include="Services\AccountTypeService.cs" />
+    <Compile Include="Services\DocumentTypeRightService.cs" />
+    <Compile Include="Services\DocumentTypeService.cs" />
+    <Compile Include="Services\ImportStageService.cs" />
+    <Compile Include="Services\GroupService.cs" />
+    <Compile Include="Services\IssueTypeService.cs" />
+    <Compile Include="Services\NotificationInspectionQueueService.cs" />
+    <Compile Include="Services\NotificationService.cs" />
+    <Compile Include="Services\JettyMappingService.cs" />
+    <Compile Include="Services\JettyService.cs" />
+    <Compile Include="Services\PortService.cs" />
+    <Compile Include="Services\ProcessingHistoryService.cs" />
+    <Compile Include="Services\ProcessService.cs" />
+    <Compile Include="Services\ProcessTrackingService.cs" />
+    <Compile Include="Services\ProductRequirementService.cs" />
+    <Compile Include="Services\ProductColumnService.cs" />
+    <Compile Include="Services\RegionService.cs" />
+    <Compile Include="Services\BankService.cs" />
+    <Compile Include="Services\StepActivityTypeService.cs" />
+    <Compile Include="Services\StepService.cs" />
+    <Compile Include="Services\StorageTankService.cs" />
+    <Compile Include="Services\StructureService.cs" />
+    <Compile Include="Services\ProductService.cs" />
+    <Compile Include="Services\ApplicationItemService.cs" />
+    <Compile Include="Services\NotificationVesselService.cs" />
+    <Compile Include="Services\UnitOfMeasurementService.cs" />
+    <Compile Include="Services\VesselService.cs" />
+    <Compile Include="Services\WorkFlowService.cs" />
+    <Compile Include="Services\AspNetUserService.cs" />
+    <Compile Include="Services\ZoneService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ImportPermitPortal.DataObjects\ImportPermitPortal.DataObjects.csproj">
+      <Project>{4236e7cb-7fb6-4306-8337-6993b01e90ec}</Project>
+      <Name>ImportPermitPortal.DataObjects</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ImportPermitPortal.Managers\ImportPermitPortal.Managers.csproj">
+      <Project>{a0442451-2710-43f9-94de-a1b2db8e412e}</Project>
+      <Name>ImportPermitPortal.Managers</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

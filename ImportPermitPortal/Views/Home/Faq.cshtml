@@ -1,0 +1,29 @@
+﻿@model List<ImportPermitPortal.DataObjects.FaqObject>
+@{
+    ViewBag.Title = "Faq";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <h4 class="page-head-line"> FAQs </h4>
+    </div>
+</div>
+<div class="row" >
+    <div class="row">
+        @{
+            foreach (var faq in Model)
+            {
+                <div class="row">
+                    <div class="col-md-4">
+                        <h4>@faq.Question</h4>
+                    </div>
+                    <div class="col-md-8">
+                        <p>@faq.Answer</p>
+                    </div>
+                </div>
+            }
+        }
+        
+    </div>
+</div>

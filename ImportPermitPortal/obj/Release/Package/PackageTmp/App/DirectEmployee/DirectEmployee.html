@@ -1,0 +1,60 @@
+﻿
+
+<div class="row">
+    <div class="col-md-12">
+        <h4 class="page-head-line">Job Assignments</h4>
+    </div>
+</div>
+
+
+<div class="row" ng-controller="employeeProfileController" ng-init="initializeController()">
+
+    <div class="row alert alert-danger" role="alert" ng-show="negativefeedback === true">
+        <span class="col-md-11">{{error}}</span><span class="col-md-1" style="font-size: 20px; text-align: left; cursor: pointer" title="close" ng-click="negativefeedback = false">x</span>
+    </div>
+
+
+<div class="row" ng-hide="viewApp == true">
+
+    <table class="table" style="width: 100%" ng-emp>
+        <thead>
+        <tr style="color: #000">
+            <th style="width: 2%">
+                S/N
+            </th>
+            <th style="width: 20%">
+                reference Code
+            </th>
+            <th style="width: 20%">
+                Assigned Time
+            </th>
+            <th style="width: 20%">
+                Due Time
+            </th>
+
+            <th style="width: 12%">
+                Action
+            </th>
+        </tr>
+        </thead>
+        <tbody></tbody>
+
+    </table>
+</div>
+    
+
+
+
+    
+    
+
+
+
+<div class="row">
+    <div class="col-md-9"></div>
+    <div class="col-md-3">
+
+    </div>
+</div> <br/>
+
+</div>

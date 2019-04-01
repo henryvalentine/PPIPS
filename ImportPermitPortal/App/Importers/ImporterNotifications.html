@@ -1,0 +1,305 @@
+﻿
+
+<div class="row" ng-controller="importerNotificationController" ng-init="initializeController()">
+    
+<div class="row">
+        <div class="col-md-12">
+            <h4 class="page-head-no-line" ng-cloak>Vessel Arrival Notifications : {{importerName}}</h4>
+        </div>
+    </div>
+
+    <div class="row">
+    <div class="row" ng-hide="viewApp == true">
+
+        <table style="width: 100%" ng-ntfs>
+            <thead>
+            <tr style="color: #000">
+                <th style="width: 2%">
+                    S/N
+                </th>
+                <th style="width: 12%">
+                    Payment Reference Code(RRR)
+                </th>
+                <th style="width: 12%">
+                    Permit No.
+                </th>
+                <th style="width: 10%">
+                    Product
+                </th>
+                <th style="width: 15%">
+                    Amount Due/Paid(&#8358;)
+                </th>
+                <th style="width: 15%">
+                    Discharge Quantity
+                </th>
+                <th style="width: 15%">
+                    Arrival Date
+                </th>
+                <th style="width: 15%">
+                    Discharge Date
+                </th>
+                <th style="width: 8%">
+                    Status
+                </th>
+                <th style="width: 7%">
+                    Action
+                </th>
+            </tr>
+            </thead>
+            <tbody></tbody>
+
+        </table>
+    </div>
+        <div class="row" ng-show="viewApp === true" style="width: 90%; border: 3px solid #27ae60;">
+            <div class="col-md-12 alert alert-danger" role="alert" ng-show="negativefeedback === true">
+                <span class="col-md-11">{{appError}}</span><span class="col-md-1" style="font-size: 20px; text-align: left; cursor: pointer" title="close" ng-click="appError = '';isError = false;">x</span>
+            </div>
+            <div class=" modal-header">
+                <div class="row">
+                    <div class="row alert alert-success" role="alert" ng-show="positivefeedback === true">
+                        <span class="col-md-11">{{success}}</span><span class="col-md-1" style="font-size: 20px; text-align: left; cursor: pointer" title="close" ng-click="positivefeedback = false">x</span>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h4 class="modal-title">Notification Details</h4>
+                    </div>
+                    <div class="col-md-6">
+                        <a ng-click="goToNotifications()" style="float: right" class="btn btn-default acceptbtn"><< Back</a>
+                    </div>
+                    <!--<div class="col-md-4">
+                        <a ng-click="viewHistory(application.Id)" style="float: right" class="btn btn-primary btn-lg">History</a>
+                    </div>-->
+                </div>
+            </div>
+            <div class="modal-body">
+
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label class="control-label ">Reference Code*</label>
+                            </div>
+
+                            <div class="col-md-3">
+                                <label class="control-label ">Company*</label>
+                            </div>
+
+                            <div class="col-md-3">
+                                <label class="control-label ">Arrival Date</label>
+                            </div>
+
+
+                            <div class="col-md-3">
+                                <label class="control-label ">Amount Due</label>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <div class="row">
+
+                            <div class="col-md-3">
+                                {{application.ReferenceCode}}
+                            </div>
+
+                            <div class="col-md-3">
+
+                                {{application.ImporterName}}
+                            </div>
+
+                            <div class="col-md-3">
+                                {{application.ArrivalDateStr}}
+                            </div>
+
+
+                            <div class="col-md-3">
+                                {{application.AmountDueStr}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label class="control-label ">Status*</label>
+                            </div>
+
+                            <div class="col-md-3">
+                                <label class="control-label ">Date Applied</label>
+                            </div>
+
+                            <div class="col-md-3">
+                                <label class="control-label ">Discharge Date*</label>
+                            </div>
+
+                            <div class="col-md-3">
+                                <label class="control-label ">Country Of Origin</label>
+                            </div>
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <div class="row">
+
+                            <div class="col-md-3">
+                                {{application.StatusStr}}
+                            </div>
+
+                            <div class="col-md-3">
+
+                                {{application.DateCreatedStr}}
+                            </div>
+
+                            <div class="col-md-3">
+                                {{application.DischargeDateStr}}
+                            </div>
+
+
+                            <div class="col-md-3">
+                                {{application.CountryName}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label class="control-label "> Product Name*</label>
+                            </div>
+
+                            <div class="col-md-3">
+                                <label class="control-label "> Quantity on Vessel</label>
+                            </div>
+
+                            <div class="col-md-3">
+                                <label class="control-label ">Quantity to Discharge*</label>
+                            </div>
+
+                            <div class="col-md-3">
+                                <label class="control-label ">Depot</label>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <div class="row">
+
+                            <div class="col-md-3">
+                                {{application.ProductObject.Name }}({{application.ProductObject.Code }})
+                            </div>
+
+                            <div class="col-md-3">
+
+                                {{application.QuantityOnVesselStr}}
+                            </div>
+
+                            <div class="col-md-3">
+                                {{application.QuantityToDischargeStr}}
+                            </div>
+
+
+                            <div class="col-md-3">
+                                {{application.DepotName}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <br />
+                <br />
+
+                <div class="col-md-6">
+                    <h4 class="modal-title">Notification Documents</h4>
+                </div>
+
+                <div class="col-md-12">
+
+                </div>
+
+
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label class="control-label "> Document Type*</label>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="control-label "> Date Uploaded</label>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="control-label">Validity</label>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="control-label ">Action</label>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" data-ng-repeat="item in application.NotificationDocumentObjects">
+
+                    <div class="col-md-12">
+                        <div class="row">
+
+                            <div class="col-md-3">
+                                {{item.DocumentTypeName}})
+                            </div>
+
+                            <div class="col-md-3">
+
+                                {{item.DateUploadedStr}}
+                            </div>
+
+                            <div class="col-md-3">
+
+                                {{item.IsValid}}
+                            </div>
+
+                            <div class="col-md-3">
+                                <button type="button" ng-click="GetDoc(item.DocumentId)" class="btn btn-default acceptbtn">View</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row modal-footer">
+                    <div class="col-md-6">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>

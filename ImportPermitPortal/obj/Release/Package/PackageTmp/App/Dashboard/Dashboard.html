@@ -1,0 +1,428 @@
+﻿
+<div class="row">
+    <div class="col-md-12">
+        <h4 class="page-head-line">Dashboard</h4>
+    </div>
+</div>
+
+
+<div class="row" ng-controller="defaultController" ng-init="initializeController()">
+    <div class="row" ng-if="IsSupport === true || IsAdmin === true || IsDirector === true" ng-cloak>
+        <table class="table" style="width: 100%">
+            <tr>
+                <td>
+                    <h4>
+                        Item
+                    </h4>
+                </td>
+                <td>
+                    <h4>
+                        Total
+                    </h4>
+                </td>
+                <td>
+                    <h4>
+                        Pending Submission
+                    </h4>
+                </td>
+                <td>
+                    <h4>
+                        Submitted
+                    </h4>
+                </td>
+                <td>
+                    <h4>
+                        Processing
+                    </h4>
+                </td>
+                <td>
+                    <h4>
+                        Approved
+                    </h4>
+                </td>
+                <td>
+                    <h4>
+                        Rejected
+                    </h4>
+                </td>
+            </tr>
+            <tr ng-repeat="report in reports">
+                <td>
+                    <h4>
+                        {{report.ItemName}}
+                    </h4>
+                </td>
+                <td>
+                    <div class="col-md-12">
+                        <div class="dashboard-div-wrapper bk-clr-0">
+                            <a href="{{report.TotalAppHref}}" style="cursor: pointer">
+                                <i class="fa dashboard-div-icon">
+                                    {{report.TotalCount}}
+                                </i>
+                                <h5>View</h5>
+                            </a>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div class="col-md-12">
+                        <div class="dashboard-div-wrapper bk-clr-four">
+                            <a href="{{report.PaidAppHref}}" style="cursor: pointer">
+                                <i class="fa dashboard-div-icon">
+                                    {{report.PaidAppCount}}
+                                </i>
+                                <h5>View</h5>
+                            </a>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div class="col-md-12">
+                        <div class="dashboard-div-wrapper bk-clr-three">
+                            <a href="{{report.SubmittedAppCountHref}}" style="cursor: pointer">
+                                <i class="fa dashboard-div-icon">
+                                    {{report.SubmittedAppCount}}
+                                </i>
+                                <h5>View</h5>
+                            </a>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div class="col-md-12">
+                        <div class="dashboard-div-wrapper bk-clr-two">
+                            <a href="{{report.ProcessingAppHref}}" style="cursor: pointer">
+                                <i class="fa dashboard-div-icon">
+                                    {{report.ProcessingAppCount}}
+                                </i>
+                                <h5>View</h5>
+                            </a>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div class="col-md-12">
+                        <div class="dashboard-div-wrapper bk-clr-one">
+                            <a href="{{report.ApprovedAppHref}}" style="cursor: pointer">
+                                <i class="fa dashboard-div-icon"> {{report.ApprovedAppCount}}</i>
+                                <h5>View</h5>
+                            </a>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div class="col-md-12">
+                        <div class="dashboard-div-wrapper progress-bar-warning">
+                            <a href="{{report.RejectedHref}}" style="cursor: pointer">
+                                <i class="fa dashboard-div-icon"> {{report.RejectedAppCount}}</i>
+                                <h5>View</h5>
+                            </a>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="row" ng-if="IsDepotOwner === true || IsBanker === true || IsApplicant === true || IsAccountant === true || IsEmployee === true" ng-cloak>
+        <div class="row" ng-if="IsAccountant !== true">
+
+            <div class="col-md-3 col-sm-3 col-xs-6">
+                <div class="tile-stats tile-red">
+                    <a href="{{apphref}}" style="cursor: pointer">
+                        <div class="icon">
+                            <i class="icon-bookmark"></i>
+                        </div>
+                        <div class="num">{{appCount}}</div>
+
+                        <h3 style="min-height: 3em;" ng-if="IsApplicant === true || IsBanker  === true || IsEmployee === true">Import Applications</h3>
+                        <h3 style="min-height: 3em;" ng-if=" isdepotowner===true">All Applications</h3>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-3 col-xs-6" ng-if="IsDepotOwner !== true">
+                <div class="tile-stats tile-green">
+                    <a href="{{ntfhref}}" style="cursor: pointer">
+                        <div class="icon">
+                            <i class="icon-feed"></i>
+                        </div>
+                        <div class="num">{{ntfCount}}</div>
+
+                        <h3 style="min-height: 3em;">Vessel Arrival Notifications</h3>
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-6" ng-if="IsEmployee !== true">
+                <div class="tile-stats tile-aqua">
+                    <a href="{{ptfhref}}" style="cursor: pointer">
+                        <div class="icon">
+                            <i class="icon-alarm2"></i>
+                        </div>
+                        <div class="num">{{expCount}}</div>
+
+                        <h3 style="min-height: 3em;" ng-if="IsApplicant===true">Permits Expiring in 30 days </h3>
+                        <h3 style="min-height: 3em;" ng-if="IsDepotOwner===true">Rejected Throuputs</h3>
+                        <h3 style="min-height: 3em;" ng-if="IsBanker===true">Rejected Documents</h3>
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-6" ng-if="IsDepotOwner !== true">
+                <div class="tile-stats tile-orange">
+                    <a href="{{rtfhref}}" style="cursor: pointer">
+                        <div class="icon">
+                            <i class="icon-anchor"></i>
+                        </div>
+                        <div class="num">{{rctCount}}</div>
+
+                        <h3 style="min-height: 3em;">Product Certifications</h3>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="row" ng-if="IsAccountant === true">
+            <div class="col-md-3 col-sm-3 col-xs-6">
+                <div class="tile-stats tile-orange">
+                    <a href="{{apphref}}" style="cursor: pointer">
+                        <div class="icon">
+                            <i class="icon-lamp3"></i>
+                        </div>
+                        <div class="num">{{appCount}}</div>
+
+                        <h3 style="min-height: 3em;" ng-if="IsApplicant === true || IsBanker  === true || IsEmployee  === true">Import Applications</h3>
+                        <h3 style="min-height: 3em;" ng-if="IsDepotOwner === true">All Applications</h3>
+                    </a>
+                </div>
+                </div>
+            <div class="col-md-3 col-sm-3 col-xs-6" ng-if="IsDepotOwner !== true">
+                <a href="{{ntfhref}}" style="cursor: pointer">
+                    <div class="icon">
+                        <i class="icon-feed"></i>
+                    </div>
+                    <div class="num">{{ntfCount}}</div>
+
+                    <h3 style="min-height: 3em;">Vessel Arrival Notifications</h3>
+                </a>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-6" ng-if="IsEmployee !== true">
+                <div class="tile-stats tile-aqua">
+                    <a href="{{ptfhref}}" style="cursor: pointer">
+                        <div class="icon">
+                            <i class="icon-alarm2"></i>
+                        </div>
+                        <div class="num">{{expCount}}</div>
+
+                        <h3 style="min-height: 3em;" ng-if=" IsApplicant===true">Permits Expiring in 30 days </h3>
+                        <h3 style="min-height: 3em;" ng-if=" IsDepotOwner===true">Rejected Throuputs</h3>
+                        <h3 style="min-height: 3em;" ng-if=" IsBanker===true">Rejected Documents</h3>
+                    </a>
+                </div>
+
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-6" ng-if="IsDepotOwner !== true">
+                <div class="tile-stats tile-orange">
+                    <a href="{{rtfhref}}" style="cursor: pointer">
+                        <div class="icon">
+                            <i class="icon-anchor"></i>
+                        </div>
+                        <div class="num">{{rctCount}}</div>
+
+                        <h3 style="min-height: 3em;">Product Certifications</h3>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="row" ng-if="IsVerifier === true" ng-cloak>
+        <div class="col-md-4 col-sm-4 col-xs-6">
+            <div class="dashboard-div-wrapper bk-clr-three">
+                <a href="ngVf.html#AppSignOff/ApplicationInVerification" style="cursor: pointer">
+                    <i class="fa dashboard-div-icon">
+                        {{verifyingAppCount}}
+                    </i>
+                    <h5><br />Applications in Verification</h5>
+                </a>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-4 col-xs-6" ng-if="IsDepotOwner !== true">
+            <div class="dashboard-div-wrapper bk-clr-one">
+                <a href="ngVf.html#AdminApplications/ApprovedApplications" style="cursor: pointer">
+                    <i class="fa dashboard-div-icon">
+                        {{approvedAppCount}}
+                    </i>
+                    <h5><br />Approved Applications</h5>
+                </a>
+            </div>
+        </div>
+    </div>
+    <br /><br />
+    <div class="row table-responsive" ng-if="jobDistributions !== null && jobDistributions.length > 0">
+        <div class="row table-responsive" ng-hide="hasTrack === true">
+            <h5 class="page_head2">Job Distributions</h5>
+
+            <table style="width: 100%" class="table table-striped table-bordered table-hover">
+                <thead>
+                    <tr style="color: #000">
+                        <th>Desk</th>
+                        <th>Total Jobs</th>
+                        <th>Applications</th>
+                        <th>Notifications</th>
+                        <th>Recertifications</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="j in jobDistributions">
+                        <td>{{j.EmployeeName}}</td>
+                        <td>{{j.TotalJobCount}}</td>
+                        <td><a title="View Applications" ng-click="getApps(j.EmployeeId)" style="cursor: pointer; color: #008000; font-weight: bold">{{j.ApplicationCount}}</a></td>
+                        <td><a title="View Message" ng-click="getNtfs(j.EmployeeId)" style="cursor: pointer; color: #008000; font-weight: bold">{{j.NotificationCount}}</a></td>
+                        <td><a title="View Message" ng-click="getRtcs(j.EmployeeId)" style="cursor: pointer; color: #008000; font-weight: bold">{{j.RecertificationCount}}</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="row" ng-show="hasTrack === true">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5 class="page_head2">Applications Assigned to : {{employeeName}}</h5>
+                </div>
+                <div class="col-md-6">
+                    <a ng-click="reset()" style="float: right" class="btn btn-default"><< Back</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table table-striped table-bordered">
+                        <thead>
+                            <tr>
+                                <th style="width: 12%">
+                                    RRR
+                                </th>
+                                <th style="width: 20%">
+                                    Company
+                                </th>
+                                <th style="width: 10%">
+                                    Time Assigned
+                                </th>
+                                <th style="width: 10%">
+                                    Due Time
+                                </th>
+                                <th style="width: 10%">
+                                    Time Processed
+                                </th>
+                                <th style="width: 15%">
+                                    Process
+                                </th>
+                                <th style="width: 15%">
+                                    Step
+                                </th>
+                                <th style="width: 20%">
+                                    Outcome
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="j in getAppProcesses">
+                                <td>{{j.Rrr}}</td>
+                                <td>{{j.CompanyName}}</td>
+                                <td>{{j.AssignedTimeStr}}</td>
+                                <td>{{j.DueTimeStr}}</td>
+                                <td>{{j.ActualDeliveryDateTimeStr}}</td>
+                                <td>{{j.ProcessName}}</td>
+                                <td>{{j.CurrentStepName}}</td>
+                                <td>{{j.OutComeCodeStr}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <br /><br /><br />
+    </div>
+
+    <div class="row table-responsive" ng-if="IsApprover === true;">
+        <h4 class="page_head2">Latest Messages</h4>
+        <br />
+        <table style="width: 100%" class="table table-striped table-bordered table-hover">
+            <thead>
+                <tr style="color: #000">
+                    <th>Message Event</th>
+                    <th>Date Received</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="j in latestMsgs">
+                    <td><a title="View Message" ng-click="getMsg(j.Id)" style="cursor: pointer; color: #008000">{{j.EventTypeName}}</a></td>
+                    <td>{{j.DateSentStr}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="row" ng-if="IsApprover === false || IsApprover == null">
+        <div class="col-md-6">
+
+            <div class="row">
+                <div class="Compose-Message">
+                    <div class="row" style="margin-top: 2px;">
+                        <div class="col-md-12 alert alert-danger" role="alert" ng-show="isError === true">
+                            <span class="col-md-11">{{appError}}</span><span class="col-md-1" style="font-size: 20px; text-align: left; cursor: pointer" title="close" ng-click="appError = '';isError = false;">x</span>
+                        </div>
+                        <div class="col-md-12 alert alert-success" role="alert" ng-show="isSuccess === true">
+                            <span class="col-md-11">{{appSuccess}}</span><span class="col-md-1" style="font-size: 20px; text-align: left; cursor: pointer" title="close" ng-click="appSuccess = '';isSuccess = false;">x</span>
+                        </div>
+                        <br />
+                    </div>
+                    <div class="panel panel-success">
+                        <div class="row panel-heading">
+                            <h4 class="page_head2">Request Support</h4>
+                        </div>
+                        <!-- The $rootScope.issueCategories comes from making the request to /Issue/GetIssueCategories from the application-configuration script file in the scripts folder -->
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label>Select Category : </label>
+                                    <ui-select ng-model="IssueObject.IssueCategoryObject" theme="bootstrap">
+                                        <ui-select-match placeholder=" -- Search Category --">{{$select.selected.Name}}</ui-select-match>
+                                        <ui-select-choices repeat="issCt in issueCategoryList | propsFilter: {Name: $select.search} track by issCt.Id">
+                                            <div ng-bind-html="issCt.Name  | highlight: $select.search"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label>Enter Message : </label>
+                                    <textarea class="form-control" rows="9" ng-model="IssueObject.IssueLogObject.Issue"></textarea>
+                                </div>
+                            </div>
+                            <hr>
+                            <a class="btn btn-success" style="cursor: pointer" ng-click="sendMsg()"><span class="glyphicon glyphicon-envelope"></span> Send Message </a>&nbsp;
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 table-responsive" ng-show="IsUser === true">
+            <h4>Latest Messages</h4>
+            <br />
+            <table style="width: 100%" class="table table-striped table-bordered table-hover">
+                <thead>
+                    <tr style="color: #000">
+                        <th>Message Event</th>
+                        <th>Date Received</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="j in latestMsgs">
+                        <td><a title="View Message" ng-click="getMsg(j.Id)" style="cursor: pointer; color: #008000">{{j.EventTypeName}}</a></td>
+                        <td>{{j.DateSentStr}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

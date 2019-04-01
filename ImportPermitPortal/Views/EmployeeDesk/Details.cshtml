@@ -1,0 +1,54 @@
+﻿@model ImportPermitPortal.EF.Model.EmployeeDesk
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<br /><br /><br /><br /><br /><br />
+
+<div>
+    <h4>Employee Desk</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.JobCount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.JobCount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AvailabilityCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AvailabilityCode)
+        </dd>
+
+     
+
+      
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Group.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Group.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserProfile.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserProfile.FirstName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "control-label", @style = "color: blue" })  |
+    @Html.ActionLink("Back to List", "Index", new { id = Model.Id }, new { @class = "control-label", @style = "color: blue" })
+</p>

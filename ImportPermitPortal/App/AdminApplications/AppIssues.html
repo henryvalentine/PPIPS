@@ -1,0 +1,51 @@
+﻿
+
+<div class="row">
+    <div class="col-md-12">
+        <h4 class="page-head-line"> Application Issues</h4>
+    </div>
+</div>
+
+<div class="row fsEdit" style="visibility: visible; width: 100%" ng-controller="adminApplicationController">
+    <div class=" modal-header">
+    </div>
+    <div class="modal-body">
+        <form>
+            <div class="col-md-12">
+                <table class="table" style="width: 100%">
+                    <tr>
+                        <th style="width: 10%">
+                            Issue Type
+                        </th>
+                        <th style="width: 40%">
+                            Description
+                        </th>
+                        <th style="width: 10%">
+                            Status
+                        </th>
+                        <th style="width: 15%">
+                            Issue Date
+                        </th>
+                        <th style="width: 12%">
+                            Date Amended
+                        </th>
+                    </tr>
+                    <tr data-ng-repeat="item in application.ApplicationIssueObjects">
+                        <td style="width: 10%">{{item.IssueTypeName}}</td>
+                        <td style="width: 20%">{{item.Description}}</td>
+                        <td style="width: 10%">{{item.Status}}</td>
+                        <td style="width: 10%">{{item.IssueDateStr}}</td>
+                        <td style="width: 12%">{{item.AmendedDateStr}}</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="row modal-footer">
+                <div>
+                    <input type="button" value="Close" ng-click="closIssueView()" class="btn btn-default" style="margin-top: 7px;"/>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+                                 
+                                 

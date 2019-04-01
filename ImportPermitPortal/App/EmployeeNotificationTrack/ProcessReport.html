@@ -1,0 +1,61 @@
+﻿
+
+<div class="row fsEdit" style="visibility: visible; width: 100%" ng-controller="notificationTrackController">
+    <div class=" modal-header">
+        <div class="row">
+            <div class="col-md-12">
+                <h4 class="modal-title">Fill Report</h4>
+            </div>
+        </div>
+    </div>
+    <div class="modal-body">
+        <form method="POST">
+
+            <div class="row">
+                <div class="col-md-4">
+                    <label class="control-label ">Product:</label>
+                </div>
+                <div class="col-md-8">
+                    <label class="control-label ">{{application.ProductObject.Name}}</label>
+                </div>
+            </div>
+
+            
+
+            <div class="row">
+                <label class="control-label ">Quantity On Vessel*</label>
+                <input type="text" ng-model="application.QuantityOnVessel" class="form-control"/>
+            </div>
+
+            <div class="row">
+                <label class="control-label ">Quantity to discharge*</label>
+                <input type="text" ng-model="application.QuantityToDischarge" class="form-control" />
+            </div>
+
+            <div class="row">
+                <label class="control-label ">Comment*</label>
+
+                <textarea ng-model="queue.Comment" class="form-control"></textarea>
+            </div>
+           
+
+            <div class="row">
+                <label class="control-label ">Recommendation*</label>
+                <select>
+                    <option value="">-- Select Recommendation--</option>
+                    <option value="1">Recommended</option>
+                    <option value="2">Not Recommended</option>
+                </select>
+            </div>
+           
+          
+
+
+            <div class="row modal-footer">
+                <div>
+                    <input type="button" value="Submit" ng-click="processReport()" class="btn btn-default" style="margin-top: 7px;"/>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

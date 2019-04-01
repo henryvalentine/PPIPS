@@ -1,0 +1,151 @@
+﻿
+
+<div class="row">
+    <div class="col-md-12">
+        <h4 class="page-head-line">Notification Details</h4>
+    </div>
+</div>
+<div class="row fsEdit" style="width: 100%" ng-controller="bnkNotificationDetailsController" ng-init="initializeController()">
+
+    <div class="row" style="visibility: visible; width: 100%; border: 3px solid #27ae60;">
+      
+        <div class="col-md-12">
+            <table class="table">
+                <tr>
+                    <td style="width: 20%">Reference Code</td>
+                    <td style="width: 30%; font-weight: bold">{{notification.ReferenceCode}}</td>
+                </tr>
+                <tr>
+                    <td style="width: 20%">Permit Number</td>
+                    <td style="width: 30%; font-weight: bold">{{notification.PermitValue}}</td>
+                </tr>
+                <tr>
+                    <td style="width: 20%">
+                        <label ng-show="notification.Status === 1" class="control-label ">Total Amount Due</label>
+                        <label ng-show="notification.Status > 1" class="control-label ">Total Amount Paid</label>
+                    </td>
+                    <td style="width: 30%">
+                        <label class="control-label ">&#8358;{{notification.AmountDueStr}}</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 20%">Notification Type</td>
+                    <td style="width: 30%; font-weight: bold">{{notification.NotificationTypeName}}</td>
+                </tr>
+                <tr>
+                    <td style="width: 20%">Cargo Type</td>
+                    <td style="width: 30%; font-weight: bold">{{notification.CargoTypeName}}</td>
+                </tr>
+                <tr>
+                    <td style="width: 20%">Application Status</td>
+                    <td style="width: 30%; font-weight: bold">{{notification.StatusStr}}</td>
+                </tr>
+            </table>
+        </div>
+        <br />
+        <div class="col-md-12">
+            <div class="col-md-12">
+                <h3>Details</h3>
+            </div>
+            <table class="table" style="width: 100%;">
+                <tr>
+                    <th style="width: 15%">
+                        Product Code
+                    </th>
+                    <th style="width: 20%">
+                        Discharge Quantity(MT)
+                    </th>
+                    <th style="width: 15%">
+                        Vessel Arrival Date
+                    </th>
+                    <th style="width: 15%">
+                        Discharge Date
+                    </th>
+                    <th style="width: 20%">
+                        Port of Origin
+                    </th>
+                    <th style="width: 20%">
+                        Discharge Jetty
+                    </th>
+                </tr>
+                <tr>
+                    <td style="width: 15%">{{notification.ProductName}}</td>
+                    <td style="width: 20%">{{notification.ExpectedQuantity | number:0}}</td>
+                    <td style="width: 15%">{{notification.ArrivalDateStr}}</td>
+                    <td style="width: 15%">{{notification.DischargeDateStr}}</td>
+                    <td style="width: 20%">{{notification.PortName}}</td>
+                    <td style="width: 20%">{{notification.JettyName}}</td>
+                </tr>
+            </table>
+        </div>
+        <hr />
+        <div class="col-md-12">
+
+            <div class="col-md-12">
+                <div class="col-md-12">
+                    <h3>Notification Documents: </h3>
+                </div>
+                <br />
+                <div class="col-md-12" ng-show="suppliedDocs.length < 1">
+                    <h4>NONE</h4>
+                </div>
+                <div class="col-md-12">
+                    <ul>
+                        <li ng-repeat="s in suppliedDocs">
+                            <div class="col-md-5">
+                                &#8226 &nbsp; <a href="{{s.DocumentPath}}" ng-show="s.DocumentPath != null && s.DocumentPath.length > 0" style="cursor: pointer; color: #008000" target="_blank" title="View Document">{{s.Name}}</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-md-12" ng-show="bnkDocs.length > 0">
+                <hr />
+                <div class="col-md-12">
+                    <h4>Document(s) to be provided/updated: </h4>
+                </div>
+                <hr />
+                <ul>
+                    <li ng-repeat="doc in bnkDocs">
+                        <div class="row" style="margin-top: 10px;">
+                            <div class="col-md-5">
+                                <label>{{doc.Name}}</label>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-12" ng-show="nextDocs.length > 0">
+                <hr />
+                <div class="col-md-12">
+                    <h4>Document(s) to be provide: </h4>
+                </div>
+                <br />
+                <ul>
+                    <li ng-repeat="s in nextDocs">
+                        <div class="col-md-8">
+                            <label>&#8226 &nbsp;{{s.Name}}</label>
+                        </div>
+                    </li>
+                </ul>
+                <hr />
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-6">
+            </div>
+            <div class="col-md-3">
+
+            </div>
+            <div class="col-md-3">
+                <button class=" btn btn-default" ng-click="gotoNotifications()" style="margin-top: 7px; float: right; color: #000"><< Back</button>
+            </div>
+        </div>
+        <br />
+    </div>
+
+</div>
+
+<br /><br />

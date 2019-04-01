@@ -1,0 +1,83 @@
+﻿
+@using PagedList.Mvc
+@model PagedList.IPagedList<ImportPermitPortal.EF.Model.Step>
+
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<br /><br /><br /><br /><br /><br />
+<h2>Steps</h2>
+@using (Html.BeginForm("Index", "Steps", FormMethod.Get))
+{
+    <p>
+        Find by Step Sequence: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+        <input type="submit" value="Search" />
+    </p>
+} 
+
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table >
+    <tr>
+        <th>
+            Step
+        </th>
+        <th>
+            Step Activity Type
+        </th>
+        <th>
+           
+            @Html.ActionLink("Sequence", "Index", new { sortOrder = ViewBag.SequenceSortParm }, new { @class = "control-label", @style = "color: blue" })
+        </th>
+        <th>
+            Expected Delivery Duration(Minutes)
+        </th>
+        <th>
+            @Html.ActionLink("Process", "Index", new { sortOrder = ViewBag.ProcessSortParm }, new { @class = "control-label", @style = "color: blue" })
+        </th>
+        <th>
+            @Html.ActionLink("Group", "Index", new { sortOrder = ViewBag.GroupSortParm }, new { @class = "control-label", @style = "color: blue" })
+        </th>
+       
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StepActivityType.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SequenceNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ExpectedDeliveryDuration)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Process.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Group.Name)
+        </td>
+        
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }, new { @class = "control-label", @style="color: blue" }) |
+            @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "control-label", @style = "color: blue" }) |    
+            @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "control-label", @style = "color: blue" })
+        </td>
+    </tr>
+}
+    
+</table>
+<br />
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))

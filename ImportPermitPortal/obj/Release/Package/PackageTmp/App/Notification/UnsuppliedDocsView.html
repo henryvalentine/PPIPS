@@ -1,0 +1,60 @@
+﻿
+
+<div class="row fsEdit" style="visibility: visible; width: 100%" ng-controller="continueNotificationController">
+    <div class=" modal-header">
+        <div class="row">
+            <div class="col-md-12">
+                <h4 class="modal-title">Notification Submission</h4>
+            </div>
+            <div class="col-md-12">
+                <h5 class="modal-title">Please resolve the Issue(s) listed below inorder to proceed</h5>
+            </div>
+        </div>
+    </div>
+    <div class="modal-body">
+        <div class="row" ng-if="NotificationRequirementDetails.UnsuppliedDocuments !== null && NotificationRequirementDetails.UnsuppliedDocuments.length > 0">
+            <div class="row">
+                <div class="col-md-12">
+                    <label>Document(s) yet to be submitted.</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <ul>
+                        <li ng-repeat="s in NotificationRequirementDetails.UnsuppliedDocuments">
+                            &#8226 &nbsp;{{s}}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <br/>
+        <div class="row" ng-if="NotificationRequirementDetails.IsExpenditionaryApplicable === true && NotificationRequirementDetails.ExpenditionaryFee.FeeId > 0">
+            <div class="row">
+                <div class="col-md-12 alert alert-danger" role="alert">
+                    <span class="col-md-12">An Expenditionary Fee of {{NotificationRequirementDetails.ExpenditionaryFee.AmountStr}} has been incured due to late submission. <br/>Please click the "Make Payment" button to continue to Payment.</span>
+                </div>
+            </div>
+             <div class="row">
+                <div class="col-md-12">
+                    <h4 class="modal-title">Payment Options</h4>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-3">
+                    <div class="well">
+                        <input type="radio" value="1" required name="paymentOption" ng-model="NotificationRequirementDetails.PaymentTypeId" ng-value="1" /> Online
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="well">
+                        <input type="radio" required name="paymentOption" value="2" ng-model="NotificationRequirementDetails.PaymentTypeId" ng-value="2" /> BANK
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <button class=" btn btn-default" ng-click="getRRR()" style="margin-top: 28px; float: left; color: #000">Make Payment</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

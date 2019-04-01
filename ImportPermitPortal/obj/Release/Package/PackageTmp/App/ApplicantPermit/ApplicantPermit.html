@@ -1,0 +1,165 @@
+﻿
+
+<div class="row" ng-controller="permitController" ng-init="initializeController()">
+    <div class="row" ng-hide="viewApp===true">
+        <div class="row">
+            <div class="col-md-12">
+                <h4 class="page-head-line">My Permits</h4>
+            </div>
+        </div>
+        <div class="row">
+            <table class="table" style="width: 100%" ng-permit>
+                <thead>
+                    <tr style="color: #000">
+                        <th style="width: 3%">
+                            S/N
+                        </th>
+                        <th style="width: 15%">
+                            Permit No
+                        </th>
+                        <th style="width: 20%">
+                            Company
+                        </th>
+                        <th style="width: 15%">
+                            Status
+                        </th>
+                        <th style="width: 15%">
+                            Issue Date
+                        </th>
+                        <th style="width: 15%">
+                            Expiry Date
+                        </th>
+                        <th style="width: 10%">
+                            Action
+                        </th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+
+            </table>
+        </div>
+    </div>
+    <br />
+    <div class="row" ng-show="viewApp===true" style="width: 100%; border: 3px solid #27ae60;">
+        <br /><br />
+        <div class="row">
+            <div class="col-md-6">
+                <h4 class="modal-title page-head-no-line"> Permit Details</h4>
+            </div>
+            <div class="col-md-3">
+                <a ng-click="generatePermit()" style="float: left" class="btn btn-default">Print Permit</a>
+            </div>
+            <div class="col-md-3">
+                <a ng-click="initializeController()" style="float: right" class="btn btn-default"><< Back</a>
+            </div>
+        </div>
+
+        <div class="modal-body">
+            <form>
+
+                <div class="row">
+                    <div class="row">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label style="font-weight:normal">Company</label>
+                            </div>
+                            <div class="col-md-8">
+                                <label class="control-label">{{application.CompanyName}}</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label style="font-weight: normal">Payment Reference(RRR)</label>
+                            </div>
+                            <div class="col-md-8">
+                                <label class="control-label">{{application.Rrr}}</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label style="font-weight:normal">Date Applied</label>
+                            </div>
+                            <div class="col-md-8">
+                                <label class="control-label">{{application.DateAppliedStr}}</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label style="font-weight: normal">Permit Number</label>
+                            </div>
+                            <div class="col-md-8">
+                                <label class="control-label">{{application.PermitNumber}}</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label style="font-weight: normal">Date Issued</label>
+                            </div>
+                            <div class="col-md-8">
+                                <label class="control-label">{{application.DateIssued}}</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label style="font-weight:normal">Expiry Date</label>
+                            </div>
+                            <div class="col-md-8">
+                                <label class="control-label">{{application.ExpiryDate}}</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label class="control-label " style="font-weight:normal">Total Quantity(MT):</label>
+                            </div>
+                            <div class="col-md-8">
+                                <label class="control-label ">{{application.DerivedQuantityStr}}</label>
+                            </div>
+                        </div>
+
+                        <br />
+                        <div class="row">
+                            <div class="col-md-4">
+                                <h4><b>Product(s) Applied for</b></h4>
+                            </div>
+                            <div class="col-md-8"></div>
+                        </div>
+                        <br />
+                        <div class="col-md-12">
+                            <table class="table" ng-docs>
+                                <tr>
+                                    <th style="width: 12%">
+                                        Product Code
+                                    </th>
+                                    <th style="width: 12%">
+                                        Est. Qty(MT)
+                                    </th>
+                                    <th style="width: 11%">
+                                        Imported Qty(MT)
+                                    </th>
+                                    <th style="width: 11%">
+                                        Outstanding Qty(MT)
+                                    </th>
+                                    <th style="width: 18%">
+                                        Country/Countries of Origin
+                                    </th>
+                                </tr>
+                                <tr data-ng-repeat="item in application.ApplicationItemObjects">
+                                    <td style="width: 12%">{{item.ProductCode}}</td>
+                                    <td style="width: 10%">{{item.EstimatedQuantity | number:0}}</td>
+                                    <td style="width: 11%">{{item.ImportedQuantityValue | number:0}}</td>
+                                    <td style="width: 11%">{{item.OutstandingQuantity | number:0}}</td>
+                                    <td style="width: 18%">{{item.CountryOfOriginName}}</td>
+                                </tr>
+                            </table>
+
+                        </div>
+                    </div>
+                    <br />
+                </div>
+                <br />
+
+            </form>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,157 @@
+﻿
+<br />
+<br />
+<br />
+<br />
+<h4>Job History</h4>
+
+
+<fieldset style="border: none; background: whitesmoke" ng-controller="usrJobHistoryController" ng-init="initializeController()">
+
+    <div class="row">
+        <div class="row" ng-hide="viewAppDetails == true">
+            <table  style="width: 100%" ng-history>
+                <thead>
+                    <tr style="color: #000">
+                        <th style="width: 2%">
+                            S/N
+                        </th>
+                        <th style="width: 20%">
+                            Application Reference
+                        </th>
+                        <th style="width: 20%">
+                            Estimated Quantity(MT)
+                        </th>
+                        <th style="width: 20%">
+                            Estimated Value($)
+                        </th>
+                        <th style="width: 15%">
+                            Date Applied
+                        </th>
+                        <th style="width: 15%">
+                            Last Modified
+                        </th>
+                        <th style="width: 15%">
+                            Status
+                        </th>
+                        <th style="width: 12%">
+                            Action
+                        </th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+
+            </table>
+        </div>
+        <div class="row" ng-show="viewAppDetails == true" style="width: 90%; border: 3px solid #27ae60;">
+            <div class=" modal-header">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4 class="modal-title">Application Details</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label class="control-label ">Reference Code:</label>
+                        </div>
+                        <div class="col-md-8">
+                            <label class="control-label ">{{application.ReferenceCode}}</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label class="control-label ">Total Quantity Applied For(MT):</label>
+                        </div>
+                        <div class="col-md-8">
+                            <label class="control-label ">{{application.DerivedQuantityStr}}</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label ng-show="application.StatusCode === 1" class="control-label ">Total Amount Due(&#8358;)</label>
+                            <label ng-show="application.StatusCode > 1" class="control-label ">Total Amount Paid(&#8358;)</label>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="control-label ">{{application.DerivedValue | currency: " "}}</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label class="control-label ">Status</label>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="control-label ">{{application.StatusStr}}</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label class="control-label ">Status</label>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="control-label ">{{application.StatusStr}}</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="row">
+                            <div class="col-md-9">
+                                <h4>Details</h4>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="col-md-12">
+                            <table >
+                                <tr>
+                                    <th style="width: 20%">
+                                        Product
+                                    </th>
+                                    <th style="width: 20%">
+                                        Estimated Quantity(MT)
+                                    </th>
+                                    <th style="width: 20%">
+                                        Estimated Value($)
+                                    </th>
+                                    <th style="width: 20%">
+                                        Port of Origin
+                                    </th>
+                                    <th style="width: 20%">
+                                       Discharge Depot
+                                    </th>
+                                </tr>
+                                <tr data-ng-repeat="item in application.ApplicationItemObjects">
+                                    <td style="width: 20%">{{item.ProductObject.Code}}</td>
+                                    <td style="width: 20%">{{item.EstimatedQuantity}}</td>
+                                    <td style="width: 20%">{{item.EstimatedValue | currency: " "}}</td>
+                                    <td style="width: 20%">{{item.CountryOfOriginName}}</td>
+                                    <td style="width: 20%">{{item.DischargeDepotName}}</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row modal-footer">
+                        <div class="col-md-6">
+                        </div>
+                        <div class="col-md-3">
+                        </div>
+
+                        <div class="col-md-3">
+                            <a ng-click="initializeApp()" style="float: right" class="btn btn-primary btn-large"><< Back</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-9"></div>
+            <div class="col-md-3">
+
+            </div>
+        </div> <br />
+
+    </div>
+</fieldset>
+
+

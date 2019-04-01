@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A0442451-2710-43F9-94DE-A1B2DB8E412E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ImportPermitPortal.Managers</RootNamespace>
+    <AssemblyName>ImportPermitPortal.Managers</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper">
+      <HintPath>..\packages\AutoMapper.3.3.0\lib\net40\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper.Net4">
+      <HintPath>..\packages\AutoMapper.3.3.0\lib\net40\AutoMapper.Net4.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Class1.cs" />
+    <Compile Include="Managers\AccountTypeManager.cs" />
+    <Compile Include="Managers\BusinessTransactions\TransactionManager.cs" />
+    <Compile Include="Managers\CalculatorManager.cs" />
+    <Compile Include="Managers\DepotTrunkedOutManager.cs" />
+    <Compile Include="Managers\ApplicationContentManager.cs" />
+    <Compile Include="Managers\FaqManager.cs" />
+    <Compile Include="Managers\IssueLogManager.cs" />
+    <Compile Include="Managers\IssueManager.cs" />
+    <Compile Include="Managers\IssueCategoryManager.cs" />
+    <Compile Include="Managers\FaqCategoryManager.cs" />
+    <Compile Include="Managers\PageManager.cs" />
+    <Compile Include="Managers\MessageManager.cs" />
+    <Compile Include="Managers\MessageTemplateManager.cs" />
+    <Compile Include="Managers\ProductColourManager.cs" />
+    <Compile Include="Managers\RecertificationHistoryManager.cs" />
+    <Compile Include="Managers\RecertificationManager.cs" />
+    <Compile Include="Managers\RecertificationProcessManager.cs" />
+    <Compile Include="Managers\ThroughPutManager.cs" />
+    <Compile Include="Managers\GeneralInformationManager.cs" />
+    <Compile Include="Managers\DepotManager.cs" />
+    <Compile Include="Managers\ImportClassificationRequirementManager.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Managers\ImportClassManager.cs" />
+    <Compile Include="Managers\NotificationBankerManager.cs" />
+    <Compile Include="Managers\ApplicationHistoryManager.cs" />
+    <Compile Include="Managers\ApplicationManager.cs" />
+    <Compile Include="Managers\DocumentManager.cs" />
+    <Compile Include="Managers\ImportRequirementManager.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Managers\InvoiceItemManager.cs" />
+    <Compile Include="Managers\InvoiceManager.cs" />
+    <Compile Include="Managers\NotificationCheckListManager.cs" />
+    <Compile Include="Managers\NotificationManager.cs" />
+    <Compile Include="Managers\PermitManager.cs" />
+    <Compile Include="Managers\ApplicationIssueManager.cs" />
+    <Compile Include="Managers\DepotOwnerManager.cs" />
+    <Compile Include="Managers\StandardRequirementManager.cs" />
+    <Compile Include="Managers\StandardRequirementTypeManager.cs" />
+    <Compile Include="Managers\StorageProviderTypeManager.cs" />
+    <Compile Include="Managers\StepManager.cs" />
+    <Compile Include="Managers\FeeTypeManager.cs" />
+    <Compile Include="Managers\CountryManager.cs" />
+    <Compile Include="Managers\EmployeeDeskManager.cs" />
+    <Compile Include="Managers\EmployeeHistoryManager.cs" />
+    <Compile Include="Managers\EmployeeProfileManager.cs" />
+    <Compile Include="Managers\FeeManager.cs" />
+    <Compile Include="Managers\FormMManager.cs" />
+    <Compile Include="Managers\ImporterManager.cs" />
+    <Compile Include="Managers\DocumentTypeRightManager.cs" />
+    <Compile Include="Managers\DocumentTypeManager.cs" />
+    <Compile Include="Managers\BankManager.cs" />
+    <Compile Include="Managers\CustomCodeManager.cs" />
+    <Compile Include="Managers\GroupManager.cs" />
+    <Compile Include="Managers\IssueTypeManager.cs" />
+    <Compile Include="Managers\NotificationHistoryManager.cs" />
+    <Compile Include="Managers\NotificationInspectionQueueManager.cs" />
+    <Compile Include="Managers\JettyManager.cs" />
+    <Compile Include="Managers\JettyMappingManager.cs" />
+    <Compile Include="Managers\PortManager.cs" />
+    <Compile Include="Managers\ProcessingHistoryManager.cs" />
+    <Compile Include="Managers\ProcessManager.cs" />
+    <Compile Include="Managers\ProcessTrackingManager.cs" />
+    <Compile Include="Managers\ProductDocumentRequirementManager.cs" />
+    <Compile Include="Managers\ApplicationSettingManager.cs" />
+    <Compile Include="Managers\ProductColumnManager.cs" />
+    <Compile Include="Managers\RegionManager.cs" />
+    <Compile Include="Managers\ImportStageManager.cs" />
+    <Compile Include="Managers\StepActivityTypeManager.cs" />
+    <Compile Include="Managers\StorageTankManager.cs" />
+    <Compile Include="Managers\StructureManager.cs" />
+    <Compile Include="Managers\ProductManager.cs" />
+    <Compile Include="Managers\ApplicationItemManager.cs" />
+    <Compile Include="Managers\NotificationVesselManager.cs" />
+    <Compile Include="Managers\UnitOfMeasurementManager.cs" />
+    <Compile Include="Managers\VesselManager.cs" />
+    <Compile Include="Managers\WorkFlowManager.cs" />
+    <Compile Include="Managers\AspNetUserManager.cs" />
+    <Compile Include="Managers\ZoneManager.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Utilities\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ImportPermitPortal.DataObjects\ImportPermitPortal.DataObjects.csproj">
+      <Project>{4236E7CB-7FB6-4306-8337-6993B01E90EC}</Project>
+      <Name>ImportPermitPortal.DataObjects</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ImportPermitPortal.DynamicMapper\ImportPermitPortal.DynamicMapper.csproj">
+      <Project>{B31737CB-D5ED-448E-AF6F-1358C79172D6}</Project>
+      <Name>ImportPermitPortal.DynamicMapper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ImportPermitPortal.EF\ImportPermitPortal.EF.csproj">
+      <Project>{909D48D3-C560-4BCB-AE57-EE5874ACF8DC}</Project>
+      <Name>ImportPermitPortal.EF</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\AutoMapper.3.3.0\tools\AutoMapper.targets" Condition="Exists('..\packages\AutoMapper.3.3.0\tools\AutoMapper.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

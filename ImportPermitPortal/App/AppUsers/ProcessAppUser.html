@@ -1,0 +1,59 @@
+﻿
+
+<div class="row fsEdit" style="visibility: visible; width: 100%" ng-controller="appUserController">
+    <div class=" modal-header">
+        <div class="row">
+            <div class="col-md-12">
+                <h4 class="modal-title">{{appUser.Header}}</h4>
+            </div>
+        </div>
+    </div>
+    <div class="modal-body">
+        <form method="POST">
+            <div class="row">
+                <div class="col-md-6">
+                    <label class="control-label ">First Name *</label>
+                    <input type="text" data-ng-model="appUser.FirstName" class="form-control" />
+                </div>
+
+                <div class="col-md-6">
+                    <label class="control-label ">Last Name *</label>
+                    <input type="text" data-ng-model="appUser.LastName" class="form-control" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label class="control-label ">Email *</label>
+                    <input type="text" data-ng-model="appUser.Email" class="form-control" />
+                </div>
+
+                <div class="col-md-6">
+                    <label class="control-label ">Phone Number *</label>
+                    <input type="text" data-ng-model="appUser.PhoneNumber" class="form-control" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label class="control-label ">User Role*</label>
+                    <ui-select ng-model="appUser.RoleObject" theme="bootstrap">
+                        <ui-select-match placeholder=" -- Select Role --">{{$select.selected.Name}}</ui-select-match>
+                        <ui-select-choices repeat="role in roles | propsFilter: {Name: $select.search} track by role.Id">
+                            <div ng-bind-html="role.Name  | highlight: $select.search"></div>
+                        </ui-select-choices>
+                    </ui-select>
+                </div>
+            </div>
+
+            <div class="row" ng-hide="add === true">
+                <div class="col-md-4" style="margin-top: 10px"><label class="control-label "><input type="checkbox" ng-model="appUser.IsActive" />Is user Active?</label></div>
+
+            </div>
+            <br/>
+            <div class="row modal-footer">
+                <div>
+                    <input type="button" value="{{buttonText}}" ng-click="processAppUser()" class="btn btn-default" style="margin-top: 7px;" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

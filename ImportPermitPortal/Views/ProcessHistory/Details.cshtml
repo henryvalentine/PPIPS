@@ -1,0 +1,98 @@
+﻿@model ImportPermitPortal.EF.Model.ProcessingHistory
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<br /><br /><br /><br /><br /><br />
+<div>
+    <h4>ProcessingHistory</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.StepStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StepStatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StepActivityType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StepActivityType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProcessStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProcessStatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AssignedTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AssignedTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateLeft)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateLeft)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Comment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Comment)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Outcome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Outcome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Application.ReferenceCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Application.ReferenceCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Step.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Step.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserProfile.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserProfile.FirstName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "label label-success" })  |
+    @Html.ActionLink("Back to List", "Index")
+</p>

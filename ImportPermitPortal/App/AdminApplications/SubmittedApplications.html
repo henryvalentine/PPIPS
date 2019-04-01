@@ -1,0 +1,496 @@
+﻿
+
+<div class="row" ng-controller="adminApplicationController" ng-init="initializeController()">
+    <div class="row" ng-hide="viewApp == true">
+        <div class="row">
+            <div class="col-md-12">
+                <h4 class="page-head-line">Submitted Applications</h4>
+            </div>
+        </div>
+        <table style="width: 100%" ng-s-apps>
+            <thead>
+            <tr style="color: #000">
+                <th style="width: 2%">
+                    S/N
+                </th>
+                <th style="width: 15%">
+                    Reference Code(RRR)
+                </th>
+                <th style="width: 20%">
+                    Company
+                </th>
+                <th style="width: 20%">
+                    Total Quantity(MT)
+                </th>
+                <th style="width: 20%">
+                    Total Amount(&#8358;)
+                </th>
+                <th style="width: 15%">
+                    Date Applied
+                </th>
+                <th style="width: 15%">
+                    Last Modified
+                </th>
+                <th style="width: 15%">
+                    Status
+                </th>
+                <th style="width: 12%">
+                    Action
+                </th>
+            </tr>
+            </thead>
+            <tbody></tbody>
+
+        </table>
+    </div>
+    <div class="row" ng-show="viewApp == true" style="width: 100%; border: 3px solid #27ae60;">
+        <div class=" modal-header">
+            <div class="row">
+                <div class="col-md-6">
+                    <h4 class="modal-title page-head-no-line"> Application Details</h4>
+                </div>
+                <div class="col-md-6">
+                    <a ng-click="initializeApp()" style="float: right" class="btn btn-default"><< Back</a>
+                </div>
+            </div>
+        </div>
+        <div class="modal-body">
+            <form id="fsProcessApps">
+
+                <div class="row">
+                    <div class="col-md-12">
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label style="font-weight:normal">Company</label>
+                            </div>
+                            <div class="col-md-8">
+                                <a class="control-label" style="cursor: pointer; color: #008000" ng-click="getCompanyInfo(application.ImporterId)">{{application.CompanyName}}</a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label style="font-weight:normal">Payment Reference Code(RRR)</label>
+                            </div>
+                            <div class="col-md-8">
+                                <label class="control-label">{{application.ReferenceCode}}</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label class="control-label " style="font-weight:normal">Total Quantity(MT):</label>
+                            </div>
+                            <div class="col-md-8">
+                                <label class="control-label ">{{application.DerivedQuantityStr}}</label>
+                            </div>
+                        </div>
+                        <div class="row" ng-repeat="fee in application.FeeObjects">
+                            <div class="col-md-4">
+                                <label class="control-label" style="font-weight:normal">{{fee.FeeTypeName}}</label>
+                            </div>
+                            <div class="col-md-8">
+                                <label class="control-label ">&#8358;{{fee.Amount | currency:"":0}}</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label ng-show="application.ApplicationStatusCode === 1" class="control-label " style="font-weight:normal">Total Amount Due</label>
+                                <label ng-show="application.ApplicationStatusCode > 1" class="control-label " style="font-weight:normal">Total Amount Paid</label>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="control-label">&#8358;{{application.DerivedValue | currency: " "}}</label>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label class="control-label " style="font-weight:normal">Payment Option</label>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="control-label ">{{application.PaymentOption}}</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label class="control-label " style="font-weight:normal">Service Description</label>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="control-label ">Import Permit Application Fee</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label class="control-label " style="font-weight:normal">Status</label>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="control-label ">{{application.StatusStr}}</label>
+                            </div>
+                        </div>
+                        <br/>
+
+                        <div class="row" ng-show="application.CurrentDesk !== null && application.CurrentDesk.length > 0">
+                            <div class="col-md-4">
+                                <label class="control-label ">Current Desk</label>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="control-label ">{{application.CurrentDesk}}</label>
+                            </div>
+                        </div>
+                        <div class="row" ng-show="application.HistoryCount > 0">
+                            <br />
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label class="control-label ">Processing History</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <a ng-click="viewProcessingHistory()" style="cursor: pointer; color: #008000">View History</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" ng-show="application.IssuesCount > 0">
+                            <br />
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label class="control-label ">Application Issues</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <a ng-click="viewAppIssues()" style="cursor: pointer; color: #008000">View Issues</a>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-4">
+                                <h4><b>Product(s) Included</b></h4>
+                            </div>
+                            <div class="col-md-8"></div>
+                        </div>
+                        <br />
+                        <div class="col-md-12">
+                            <table class="table" ng-docs>
+                                <tr>
+                                    <th style="width: 12%">
+                                        Product Code
+                                    </th>
+                                    <th style="width: 12%">
+                                        Est. Quantity(MT)
+                                    </th>
+                                    <th style="width: 11%">
+                                        Est. Value($)
+                                    </th>
+                                    <th style="width: 18%">
+                                        Country/Countries of Origin
+                                    </th>
+                                    <th style="width: 18%">
+                                        Discharge Depot
+                                    </th>
+                                    <th style="width: 15%">
+                                        Sponsoring Bank(s)
+                                    </th>
+                                </tr>
+                                <tr data-ng-repeat="item in application.ApplicationItemObjects">
+                                    <td style="width: 12%">{{item.ProductObject.Code}}</td>
+                                    <td style="width: 10%">{{item.EstimatedQuantity | number:0}}</td>
+                                    <td style="width: 11%">{{item.EstimatedValue | currency: " "}}</td>
+                                    <td style="width: 18%">{{item.CountryOfOriginName}}</td>
+                                    <td style="width: 18%">{{item.DischargeDepotName}}</td>
+                                    <td style="width: 13%">{{item.ProductBankerName}}</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <br />
+
+                </div>
+                <br />
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4><b>Uploaded Document(s)</b></h4>
+                    </div>
+                    <div class="row">
+                        <br/>
+                        <div class="col-md-12" ng-show="(suppliedDocs.length < 1) && (throughPuts == null || throughPuts.length < 1) && (refLetters == null || refLetters.length < 1)">
+                            <h4>NONE</h4>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="row">
+                                <table class="table" ng-if="suppliedDocs !== null && suppliedDocs.length > 0">
+                                    <tr>
+                                        <th style="width: 20%">
+                                            Document
+                                        </th>
+                                    </tr>
+                                    <tr data-ng-repeat="s in suppliedDocs">
+                                        <td style="width: 20%"><a href="{{s.DocumentPath}}" ng-show="s.DocumentPath != null && s.DocumentPath.length > 0" style="cursor: pointer; color: #008000" target="_blank" title="View Document">{{s.Name}}</a></td>
+                                     </tr>
+                                </table>
+                                <br/>
+                                <div class="row" ng-if="throughPuts !== null && throughPuts.length > 0">
+                                    <div class="row">
+                                        <h5><b>Supplied Throughput Agreement(s)</b></h5>
+                                    </div>
+                                    <table class="table">
+                                        <tr>
+                                            <th style="width: 20%">
+                                                Document
+                                            </th>
+                                        </tr>
+                                        <tr data-ng-repeat="t in throughPuts">
+                                            <td style="width: 20%"><a href="{{t.DocumentPath}}" ng-show="t.DocumentPath != null && t.DocumentPath.length > 0" style="cursor: pointer; color: #008000" target="_blank" title="View Document">{{t.DepotName}} ({{t.ProductCode}})</a></td>
+                                     </tr>
+                                    </table>
+                                </div>
+                                <br/>
+                                <div class="row" ng-if="refLetters !== null && refLetters.length > 0">
+                                    <div class="row">
+                                        <h5><b>Supplied Bank Reference Letter(s)</b></h5>
+                                    </div>
+                                    <table class="table">
+                                        <tr>
+                                            <th style="width: 20%">
+                                                Document
+                                            </th>
+                                        </tr>
+                                        <tr ng-if="refLetters !== null && refLetters.length > 0" data-ng-repeat="t in refLetters">
+                                            <td style="width: 20%"><a href="{{t.DocumentPath}}" ng-show="t.DocumentPath != null && t.DocumentPath.length > 0" style="cursor: pointer; color: #008000" target="_blank" title="View Document">{{t.BankName}} ({{t.ProductCode}})</a></td>
+                                           </tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <br/>
+                            <div class="row" ng-show="bnkDocs.length > 0 || nextDocs.length > 0 || unsuppliedRefLetters.length > 0  || unsuppliedthroughPuts.length > 0">
+                                <div class="col-md-12">
+                                    <h4>Required Document(s) :</h4>
+                                </div>
+                                <br/>
+                                <div class="col-md-12">
+                                    <h5 style="font-weight: bold" ng-show="(bnkDocs.length > 0 || newDpocList.length > 0) && nextDocs.length > 0">(a) To be uploaded by marketer: </h5>
+                                    <h5 style="font-weight: bold" ng-show="(bnkDocs.length > 0 || newDpocList.length > 0) && nextDocs.length < 1">to be uploaded by marketer: </h5>
+                                </div>
+                                <br/>
+                                <ul>
+                                    <li ng-repeat="doc in bnkDocs" style="margin-top: 14px">
+                                        <ul>
+                                            <li ng-repeat="doc in bnkDocs" style="margin-top: 14px">
+                                                <div class="row">
+                                                    <div class="col-md-5">
+                                                        <label>{{doc.Name}} *</label>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li ng-if="unsuppliedthroughPuts.length > 0">
+                                        <br/>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <h4 style="font-weight: normal">&#8226 &nbsp; Throughput Agreement(s)</h4>
+                                            </div>
+                                        </div>
+                                        <div class="row" style="margin-top: 4px">
+                                            <ol>
+                                                <li ng-repeat="apItm in application.ApplicationItemObjects" style="margin-top: 7px">
+                                                    <div class="row" ng-if="apItm.StorageProviderTypeId != 1 && apItm.hasDocs > 0">
+                                                        <div>
+                                                            <div class="col-md-12">
+                                                                <h5 style="font-weight: bold">&#8226 &nbsp; {{apItm.ProductObject.Name}}</h5>
+                                                            </div>
+                                                        </div>
+                                                        <ol style="margin-top: 14px">
+                                                            <li ng-repeat="th in apItm.ThroughPutObjects" style="margin-top: 8px">
+                                                                <div class="row" ng-if="th.DocumentId == null">
+                                                                    <div class="row">
+                                                                        <div class="col-md-12">
+                                                                            <label style="font-weight: normal">{{th.DepotName}}</label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                        </ol>
+                                                    </div>
+                                                </li>
+                                            </ol>
+                                        </div>
+                                    </li>
+                                    <li ng-if="unsuppliedRefLetters.length > 0">
+                                        <ul>
+                                            <li>
+                                                <br/>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <h4 style="font-weight: normal">&#8226 &nbsp; Bank Reference Letter(s)</h4>
+                                                    </div>
+                                                </div>
+                                                <div class="row" style="margin-top: 4px">
+                                                    <ol>
+                                                        <li ng-repeat="apItm in application.ApplicationItemObjects" style="margin-top: 7px">
+                                                            <div>
+                                                                <div class="col-md-12" ng-if="apItm.hasDocs > 0">
+                                                                    <h5 style="font-weight: bold">{{apItm.ProductObject.Name}}</h5>
+                                                                </div>
+                                                            </div>
+                                                            <ol style="margin-top: 14px">
+                                                                <li ng-repeat="th in apItm.ProductBankerObjects" style="margin-top: 8px">
+                                                                    <div class="row" ng-if="th.DocumentId == null">
+                                                                        <div class="row">
+                                                                            <div class="col-md-12">
+                                                                                <label style="font-weight: normal">{{th.BankName}}</label>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </li>
+                                                            </ol>
+                                                        </li>
+                                                    </ol>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                                <br/>
+                            </div>
+                            <div class="row" ng-show="nextDocs.length > 0">
+                                <div class="col-md-12">
+                                    <h5 style="font-weight: bold" ng-show="bnkDocs.length > 0 || unsuppliedthroughPuts.length > 0">(b) To be uploaded by others(eg. Bank): </h5>
+                                    <h5 style="font-weight: bold" ng-show="bnkDocs.length < 1 && unsuppliedthroughPuts.length < 1">Required Document(s) To be uploaded by others(eg. Bank): </h5>
+                                </div>
+                                <br/>
+                                <ul>
+                                    <li ng-repeat="s in nextDocs">
+                                        <div class="col-md-8">
+                                            <label>&#8226 &nbsp;{{s.Name}}</label>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="row" ng-if="stadDocs.length > 0">
+                                <div class="col-md-8">
+                                    <h4>Standard Documents</h4>
+                                </div>
+                                <ul>
+                                    <li ng-repeat="d in stadDocs" style="margin-top: 14px">
+                                        <div class="row" ng-if="d.StandardRequirementId > 0 && d.IsUploaded === true">
+                                            <div class="col-md-12">
+                                                &#8226 &nbsp;<a href="{{d.DocumentPath}}" style="cursor: pointer; color: #008000" target="_blank" title="View Document">{{d.Name}}</a>
+                                            </div>
+                                        </div>
+                                        <div class="row" ng-if="d.StandardRequirementId < 1 && d.IsUploaded === false">
+                                            <div class="col-md-12">
+                                                &#8226 &nbsp;<label style="font-weight: normal">{{d.Name}} *</label>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                <br />
+            <div class="row" ng-show="hasTrack === true">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4>Current Desk</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="table">
+                            <tr>
+                                <th style="width: 20%">
+                                    Assigned To
+                                </th>
+                                <th style="width: 10%">
+                                    Time Assigned
+                                </th>
+                                <th style="width: 10%">
+                                    Due Time
+                                </th>
+                                <th style="width: 10%">
+                                    Time Processed
+                                </th>
+                                <th style="width: 15%">
+                                    Process
+                                </th>
+                                <th style="width: 15%">
+                                    Step
+                                </th>
+                                <th style="width: 20%">
+                                    Outcome
+                                </th>
+                            </tr>
+                            <tr>
+                                <td style="width: 20%">{{currentTrack.EmployeeName}}</td>
+                                <td style="width: 10%">{{currentTrack.AssignedTimeStr}}</td>
+                                <td style="width: 10%">{{currentTrack.DueTimeStr}}</td>
+                                <td style="width: 10%">{{currentTrack.ActualDeliveryDateTimeStr}}</td>
+                                <td style="width: 15%">{{currentTrack.ProcessName}}</td>
+                                <td style="width: 15%">{{currentTrack.CurrentStepName}}</td>
+                                <td style="width: 20%">{{currentTrack.OutComeCodeStr}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <br/>
+                <div class="row" ng-show="hasHistory === true">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4>Application Processing History</h4>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table class="table">
+                                <tr>
+                                    <th style="width: 20%">
+                                        Assigned To
+                                    </th>
+                                    <th style="width: 10%">
+                                        Time Assigned
+                                    </th>
+                                    <th style="width: 10%">
+                                        Due Time
+                                    </th>
+                                    <th style="width: 10%">
+                                        Time Processed
+                                    </th>
+                                    <th style="width: 15%">
+                                        Process
+                                    </th>
+                                    <th style="width: 15%">
+                                        Step
+                                    </th>
+                                    <th style="width: 20%">
+                                        Outcome
+                                    </th>
+                                </tr>
+                                <tr ng-repeat="h in histories">
+                                    <td style="width: 20%">{{h.EmployeeName}}</td>
+                                    <td style="width: 10%">{{h.AssignedTimeStr}}</td>
+                                    <td style="width: 10%">{{h.DueTimeStr}}</td>
+                                    <td style="width: 10%">{{h.FinishedTimeStr}}</td>
+                                    <td style="width: 15%">{{h.ProcessName}}</td>
+                                    <td style="width: 15%">{{h.StepName}}</td>
+                                    <td style="width: 20%">{{h.OutComeCodeStr}}</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+</div>  
+
+
+<!--<div class="row" id=prcss></div>-->

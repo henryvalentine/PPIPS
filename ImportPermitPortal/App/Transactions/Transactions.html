@@ -1,0 +1,93 @@
+﻿
+
+<div class="row">
+    <div class="col-md-12">
+        <h4 class="page-head-line">Query Transactions</h4>
+    </div>
+</div>
+<div class="row" ng-controller="transactionController">
+    <div class="row">
+        <div class="col-md-4">
+            <label class="control-label ">Payment Reference(RRR)*</label>
+            <input type="text" data-ng-model="rrr" class="form-control"/>
+        </div>
+        <div class="col-md-3"><br/>
+            <input type="button" value="Go >>" ng-click="getTransaction(rrr)" class="btn btn-default" style="margin-top: 8px;" />
+        </div>
+    </div>
+    <br/>
+   
+    <div class="row fsEdit" style="visibility: visible; width: 100%; border: 3px solid #27ae60;" ng-show="invoice.Id > 0">
+    <br />
+    <div class="row">
+        <div class="row">
+            <div class="col-md-8">
+                <button class="btn btn-default" id="" style="float: left; color: #000" ng-click="printReceipt()"> Print </button>
+            </div>
+        </div>
+        <br />
+    </div>
+    <div class="row" id="notificationReceipt">
+        <div class="row">
+            <p style="background-color: #FFF; margin: 0px; padding: 0px;" class="compname shadow">
+                <img height="45" width="187" src="/Content/images/importlogo.png"/>
+            </p>
+        </div>
+        <div class=" modal-header">
+            <div class="row" style="margin-top: 15px">
+                <div class="col-md-9">
+                    <h4 class="modal-title">Invoice</h4>
+                </div>
+                <div class="col-md-3">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="modal-body">
+                <div class="row">
+                    <table class="table">
+                        <tr>
+                            <td style="width: 20%">Reference Code</td>
+                            <td style="width: 30%; font-weight: bold">{{invoice.ReferenceCode}}</td>
+                        </tr>
+                        <tr>
+                            <td style="width: 20%">Payment Reference Code(RRR)</td>
+                            <td style="width: 30%; font-weight: bold">{{invoice.RRR}}</td>
+                        </tr>
+                        <tr>
+                            <td style="width: 20%">Customer</td>
+                            <td style="width: 30%; font-weight: bold">{{invoice.ImporterName}}</td>
+                        </tr>
+                        <tr ng-repeat="fee in invoice.InvoiceItemObjects">
+                            <td style="width: 20%">{{fee.FeeTypeName}}</td>
+                            <td style="width: 30%; font-weight: bold">&#8358;{{fee.AmountDue | currency:"":0}}</td>
+                        </tr>
+                        <tr>
+                            <td style="width: 20%" ng-show="invoice.Status > 1">Total Amount Paid</td>
+                            <td style="width: 20%" ng-show="invoice.Status < 2">Total Amount Due</td>
+                            <td style="width: 30%; font-weight: bold">&#8358;{{invoice.TotalAmountDueStr}}</td>
+                        </tr>
+                        <tr>
+                            <td style="width: 20%">Payment Option</td>
+                            <td style="width: 30%; font-weight: bold">{{invoice.PaymentOption}}</td>
+                        </tr>
+                        <tr>
+                            <td style="width: 20%">Service Description</td>
+                            <td style="width: 30%; font-weight: bold">{{invoice.ServiceDescription}}</td>
+                        </tr>
+                        <tr>
+                            <td style="width: 20%">Application Status</td>
+                            <td style="width: 30%; font-weight: bold">{{invoice.StatusStr}}</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col-md-12">
+                    {{invoice.RemitaResponse}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<br /><br /><br />

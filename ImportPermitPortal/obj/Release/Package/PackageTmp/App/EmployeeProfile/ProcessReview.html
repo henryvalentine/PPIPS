@@ -1,0 +1,33 @@
+﻿
+
+<div class="row fsEdit" style="visibility: visible; width: 100%" ng-controller="employeeProfileController">
+    <div class=" modal-header">
+        <div class="row">
+            <div class="col-md-12">
+                <h4 class="modal-title">Are you sure you want to accept this application?</h4>
+            </div>
+        </div>
+    </div>
+    <div class="modal-body">
+        <form method="POST">
+            <div class="row">
+                <label class="control-label ">Any Comment?</label>
+
+                <textarea ng-model="employee.Description" class="form-control"></textarea>
+            </div>
+            <div class="row modal-footer">
+                <div class="row">
+
+                    <div class="col-md-6">
+                       
+                    </div>
+
+                    <div class="col-md-6">
+                        <input type="button" value="Cancel" ng-click="cancel()" class="btn btn-default" style="margin-top: 7px;" />
+                        <input type="button" value="Accept" ng-click="processAcceptApp()" class="btn btn-default" style="margin-top: 7px;" />
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

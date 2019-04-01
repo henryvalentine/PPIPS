@@ -1,0 +1,147 @@
+﻿
+    
+<div class="row">
+    <div class="col-md-12">
+        <h4 class="page-head-line">My Application Documents</h4>
+    </div>
+</div>
+    
+<div class="row" ng-controller="userdocumentController" ng-init="initializeController()" style="width: 100%; border: 3px solid #27ae60;">
+   
+    <div class="row">
+        <div class="row">
+            <div class="col-md-5">
+                <label>Company</label>
+            </div>
+            <div class="col-md-7">
+                <label class="control-label">{{application.CompanyName}}</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-5">
+                <label>Company Category</label>
+            </div>
+            <div class="col-md-7">
+                <label class="control-label">{{application.Eligibility}}</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-5">
+                <label>Total QUantity(MT)</label>
+            </div>
+            <div class="col-md-7">
+                <label class="control-label">{{application.DerivedTotalQUantity}}</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-5">
+                <label>Total Amount Due(&#8358;)</label>
+            </div>
+            <div class="col-md-7">
+                <label class="control-label" style="font-weight: bold">{{application.DerivedValue | currency: " "}}</label>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-4">
+                <h4 style="float: left"><b>Products</b></h4>
+            </div>
+            <div class="col-md-8"></div>
+        </div>
+        <br />
+        <div class="col-md-12">
+            <table >
+                <tr>
+                    <th style="width: 18%">
+                        Product
+                    </th>
+                    <th style="width: 18%">
+                        Estimated Quantity(MT)
+                    </th>
+                    <th style="width: 18%">
+                        Estimated Value($)
+                    </th>
+                    <th style="width: 18%">
+                        Port of Origin
+                    </th>
+                    <th style="width: 18%">
+                        Port of Discharge
+                    </th>
+                </tr>
+                <tr data-ng-repeat="item in application.ApplicationItemObjects">
+                    <td style="width: 20%">{{item.ProductObject.Code}}</td>
+                    <td style="width: 20%">{{item.EstimatedQuantity}}</td>
+                    <td style="width: 20%">{{item.EstimatedValue | currency: " "}}</td>
+                    <td style="width: 20%">{{item.CountryOfOriginName}}</td>
+                    <td style="width: 20%">{{item.DischargeDepotName}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <br />
+    <div class="col-md-12">
+        <h4><b>Application Documents</b></h4>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h4>Documents already supplied: </h4>
+        </div>
+        <br />
+        <div class="col-md-12" ng-show="suppliedDocs.length < 1">
+            <h4>NONE</h4>
+        </div>
+        <div class="row" ng-repeat="s in suppliedDocs">
+            <div class="col-md-12">
+                <label>{{s.Name}}</label>
+            </div>
+            <br />
+        </div>
+    </div>
+    <br />
+    <div class="row" ng-show="StageDocs.length > 0">
+        <div class="col-md-12">
+            <h4>Please provide the following document(s) to support your application: </h4>
+        </div>
+        <br />
+        <div class="row" ng-repeat="doc in StageDocs">
+            <div class="row">
+                <div class="col-md-5">
+                    <label>{{doc.Name}}</label>
+                </div>
+                <div class="col-md-3" style="padding-right: 0px">
+                    <input type="file" class="form-control" id="{{doc.DocumentTypeId}}j" ng-file-select="ProcessDocument($event)" placeholder="Select Document " name="file" />
+                </div>
+                <div class="col-md-1" style="padding-left: 0px">
+                    <div class="row" style="padding-left: 7px; margin-top: 14px" id="infoDiv{{doc.DocumentTypeId}}"></div>
+                </div>
+            </div>
+            <br />
+        </div>
+        <br />
+    </div>
+    <div class="row">
+        <div class="col-md-12" ng-show="nextDocs.length > 0">
+            <h4>Other Documents to be supplied before this application can be submitted: </h4>
+        </div>
+        <br />
+        <div class="row" ng-repeat="c in nextDocs">
+            <div class="col-md-12">
+                <label>{{c.Name}}</label>
+            </div>
+            <br />
+        </div>
+    </div>
+    <div class="row modal-footer">
+        <div class="col-md-7">
+
+        </div>
+        <div class="col-md-3">
+            <a href="ngy.html#Application/MyApplications" ng-disabled="fetchingInfo == true" class=" btn btn-default" style="margin-top: 7px; float: right; color: #000"><< Applications</a>
+        </div>
+        <div class="col-md-1">
+            
+        </div>
+    </div>
+    <br />
+</div>
+<br /><br />

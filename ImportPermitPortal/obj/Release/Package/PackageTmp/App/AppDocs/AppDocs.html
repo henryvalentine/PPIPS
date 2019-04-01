@@ -1,0 +1,139 @@
+﻿
+<br />
+<br />
+<br />
+<br />
+
+
+<fieldset style="border: none; background: whitesmoke" ng-controller="appDocsController">
+
+    <div class="row">
+        <div class="col-md-12">
+            <h4>Application Details</h4>
+        </div>
+        <br/>
+        <div class="row">
+            <div class="row">
+                <div class="col-md-5">
+                    <label>Company</label>
+                </div>
+                <div class="col-md-7">
+                    <label class="control-label">{{application.CompanyName}}</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-5">
+                    <label>Company Category</label>
+                </div>
+                <div class="col-md-7">
+                    <label class="control-label">{{application.Eligibility}}</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-5">
+                    <label>Total QUantity(MT)</label>
+                </div>
+                <div class="col-md-7">
+                    <label class="control-label">{{application.DerivedTotalQUantity}}</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-5">
+                    <label>Total Amount Due(&#8358;)</label>
+                </div>
+                <div class="col-md-7">
+                    <label class="control-label" style="font-weight: bold">{{application.DerivedValue | currency: " "}}</label>
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-4">
+                    <h4>Products</h4>
+                </div>
+                <div class="col-md-6"></div>
+            </div>
+            <br/>
+            <div class="col-md-12">
+                <table >
+                    <tr>
+                        <th style="width: 18%">
+                            Product
+                        </th>
+                        <th style="width: 18%">
+                            Estimated Quantity(MT)
+                        </th>
+                        <th style="width: 18%">
+                            Estimated Value($)
+                        </th>
+                        <th style="width: 18%">
+                            Port of Origin
+                        </th>
+                        <th style="width: 18%">
+                            Port of Discharge
+                        </th>
+                    </tr>
+                    <tr data-ng-repeat="item in application.ApplicationItemObjects">
+                        <td style="width: 20%">{{item.ProductObject.Code}}</td>
+                        <td style="width: 20%">{{item.EstimatedQuantity}}</td>
+                        <td style="width: 20%">{{item.EstimatedValue | currency: " "}}</td>
+                        <td style="width: 20%">{{item.CountryOfOriginName}}</td>
+                        <td style="width: 20%">{{item.DischargeDepotName}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <br/>
+        <div class="col-md-12">
+            <h4>Application Documents</h4>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <h4>Documents already supplied: </h4>
+            </div>
+            <br/>
+            <div class="col-md-12" ng-show="suppliedDocs.length < 1">
+                <h4>NONE</h4>
+            </div>
+            <ul>
+                <li ng-repeat="s in suppliedDocs">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <label>{{s.Name}}</label>
+                        </div>
+                        <div class="col-md-2">
+                            <a href="{{s.DocumentPath}}" target="_blank" title="View Document"><img src="/Images/info.png" style="float: left" /></a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <br/>
+        <div class="row" ng-show="bnkDocs.length > 0">
+            <div class="col-md-12">
+                <h4>Unsuplied Documents: </h4>
+            </div>
+            <br/>
+            <div class="row" ng-repeat="doc in bnkDocs">
+                <div class="row">
+                    <div class="col-md-12">
+                        <label>{{doc.Name}}</label>
+                    </div>
+                </div>
+                <br/>
+            </div>
+            <br/>
+        </div>
+    </div>
+    <br />
+    <div class="row modal-footer">
+        <div class="col-md-8"></div>
+        <div class="col-md-4">
+            <button ng-click="backToHistory()" class="btn btn-default" style="margin-top: 7px; float: right; color: #000"><< Job History</button>
+        </div>
+    </div>
+    <hr />
+    <br />
+</fieldset>
+
+

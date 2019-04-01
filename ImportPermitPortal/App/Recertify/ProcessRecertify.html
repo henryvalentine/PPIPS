@@ -1,0 +1,32 @@
+﻿
+
+<div class="row fsEdit" style="visibility: visible; width: 100%" ng-controller="recertificationController">
+    <div class=" modal-header">
+        <div class="row">
+            <div class="col-md-12">
+                <h4 class="modal-title">{{recertification.Header}}</h4>
+            </div>
+        </div>
+    </div>
+    <div class="modal-body">
+        <form method="POST">
+            
+
+            <div class="row">
+                <label class="control-label ">Product to Recertify*</label>
+                <select ng-model="recertification.ReferenceCode" ng-options="sta as sta.Code for sta in Recerts track by sta.Id" data-inset="true" class=" form-control" required>
+                    <option value="">-- Select Product--</option>
+                </select>
+            </div>
+            
+
+              
+            
+            <div class="row modal-footer">
+                <div>
+                    <input type="button" value="Continue" ng-click="processRecertification()" class="btn btn-default" style="margin-top: 7px;" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,36 @@
+﻿
+
+<div class="row fsEdit" style="visibility: visible; width: 100%" ng-controller="employeeProfileController">
+    <div class=" modal-header">
+        <div class="row">
+            <div class="col-md-12">
+                <h4 class="modal-title">State the issue</h4>
+            </div>
+        </div>
+    </div>
+    <div class="modal-body">
+        <form method="POST">
+
+            <div class="row">
+                <label class="control-label ">Issue Type*</label>
+                <select ng-model="employee.IssueType" ng-options="is as is.Name for is in issuetypes track by is.Id" data-inset="true" class=" form-control" required>
+                    <option value="">-- Select Issue Type--</option>
+                </select>
+            </div>
+
+            <div class="row">
+                <label class="control-label ">Reason*</label>
+               
+                <textarea ng-model="employee.Description" class="form-control"></textarea>
+            </div>
+           
+           
+
+            <div class="row modal-footer">
+                <div>
+                    <input type="button" value="Submit" ng-click="processAppRejection()" class="btn btn-default" style="margin-top: 7px;"/>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

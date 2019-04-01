@@ -1,0 +1,68 @@
+﻿@using System.Web.Mvc.Html
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>PIPP</title>
+    <script src="~/Scripts/jquery-2.1.1.min.js"></script>
+    <script src="~/Scripts/angular-file-upload-shim.min.js"></script>
+    <script data-main="main.js" src="/Scripts/require.js"></script>
+    <!--<script src="/Scripts/datePickerUtils.js"></script>-->
+    <!--<script src="~/Scripts/angular-file-upload.min.js"></script>-->
+
+
+    <link href="/Content/bootstrap.css" rel="stylesheet" />
+    <link href="/Content/ngDialog.css" rel="stylesheet" />
+    <link href="/Content/ngDialog-theme-flat.css" rel="stylesheet" />
+    <link href="/Content/ngDialog-theme-default.css" rel="stylesheet" />
+    <link href="/Content/site.css" rel="stylesheet" />
+    <link href="/Content/feedbackmessage.css" rel="stylesheet" />
+    <link href="/Content/formControls.css" rel="stylesheet" />
+    <!--<link href="/Content/style.less" rel="stylesheet" />-->
+</head>
+
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top" style="background-color: #008000; color: #fff">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="/ngy.html">
+                            <p style="background-color:#FFF; margin-bottom:10px; box-shadow:" class="compname shadow">
+                                <img height="50" width="70" src="/Content/images/Untitled-72.png" />
+                            </p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="ngy.html#Application/MyApplications" style="color: #fff">My Applications</a>
+                    </li>
+                    <li>
+                        <a href="ngy.html#Application/MyDocuments" style="color: #fff">Documents</a>
+                    </li>
+                    <li>
+                        <a href="/Home/Index" style="color: #fff">Home</a>
+                    </li>
+                </ul>
+                <div class="col-md-6">
+                    <section id="login" style="color: #fff">
+                        @Html.Partial("_LoginPartial")
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div ng-view class="container body-content" style="margin-bottom: 7%">
+    </div>
+</body>
+</html>
+
+<!--<div style="padding-top:20px; ">
+    <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)"><div ng-bind-html="MessageBox" style="display: none"></div></alert>
+</div>-->

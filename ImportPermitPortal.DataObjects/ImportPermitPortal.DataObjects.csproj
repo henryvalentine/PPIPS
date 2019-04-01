@@ -1,0 +1,288 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4236E7CB-7FB6-4306-8337-6993B01E90EC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ImportPermitPortal.DataObjects</RootNamespace>
+    <AssemblyName>ImportPermitPortal.DataObjects</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CustomizedObjects\CustomizedFaqObject.cs" />
+    <Compile Include="CustomizedObjects\CustomizedApplicationCountryObject.cs" />
+    <Compile Include="CustomizedObjects\CustomizedBankObject.cs" />
+    <Compile Include="CustomizedObjects\CustomizedBankUserObject.cs" />
+    <Compile Include="CustomizedObjects\CustomizedIssueObject.cs" />
+    <Compile Include="CustomizedObjects\CustomizedProductBankerObject.cs" />
+    <Compile Include="CustomizedObjects\CustomizedBankBranchObject.cs" />
+    <Compile Include="CustomizedObjects\CustomizedCalculatorObject.cs" />
+    <Compile Include="CustomizedObjects\CustomizedDepotDischargeObject.cs" />
+    <Compile Include="CustomizedObjects\CustomizedDepotTrunkedOutObject.cs" />
+    <Compile Include="CustomizedObjects\CustomizedDischargeParameterAfterObject.cs" />
+    <Compile Include="CustomizedObjects\CustomizedDischargeParameterBeforeObject.cs" />
+    <Compile Include="CustomizedObjects\CustomizedInvoiceItemObject.cs" />
+    <Compile Include="CustomizedObjects\CustomizedInvoiceObject.cs" />
+    <Compile Include="CustomizedObjects\CustomizedMessageObject.cs" />
+    <Compile Include="CustomizedObjects\CustomizedMessageTemplateObject.cs" />
+    <Compile Include="CustomizedObjects\CustomizedNotificationIssueObject.cs" />
+    <Compile Include="CustomizedObjects\CustomizedRecertificationHistoryObject.cs" />
+    <Compile Include="CustomizedObjects\CustomizedRecertificationIssueObject.cs" />
+    <Compile Include="CustomizedObjects\CustomizedRecertificationObject.cs" />
+    <Compile Include="CustomizedObjects\CustomizedRecertificationProcessObject.cs" />
+    <Compile Include="CustomizedObjects\EmployeeNotificationObject.cs" />
+    <Compile Include="CustomizedObjects\LineItem.cs" />
+    <Compile Include="CustomizedObjects\CustomizedPaymentLogObject.cs" />
+    <Compile Include="CustomizedObjects\PaymentResult.cs" />
+    <Compile Include="CustomizedObjects\ResponseObject.cs" />
+    <Compile Include="CustomizedObjects\LicenseRefObject.cs" />
+    <Compile Include="CustomizedObjects\CustomizedStandardRequirementObject.cs" />
+    <Compile Include="CustomizedObjects\CompanyAddressObject.cs" />
+    <Compile Include="CustomizedObjects\CustomizedDepotObject.cs" />
+    <Compile Include="CustomizedObjects\CustomizedStorageTankObject.cs" />
+    <Compile Include="CustomizedObjects\CustomizedImportClassObject.cs" />
+    <Compile Include="CustomizedObjects\CustomizedStorageProviderTypeObject.cs" />
+    <Compile Include="CustomizedObjects\GeneralInformationObject.cs" />
+    <Compile Include="CustomizedObjects\CustomizedImportStageObject.cs" />
+    <Compile Include="CustomizedObjects\CustomizedNotificationBankerObject.cs" />
+    <Compile Include="CustomizedObjects\CustomizedApplicationItemObject.cs" />
+    <Compile Include="CustomizedObjects\CustomizedApplicationObject.cs" />
+    <Compile Include="CustomizedObjects\CustomizedDocumentTypeObject.cs" />
+    <Compile Include="CustomizedObjects\CustomizedNotificationCheckListObject.cs" />
+    <Compile Include="CustomizedObjects\CustomizedNotificationDischageDataObject.cs" />
+    <Compile Include="CustomizedObjects\CustomizedPermitObject.cs" />
+    <Compile Include="CustomizedObjects\CustomizedStorageProviderRequirementObject.cs" />
+    <Compile Include="CustomizedObjects\ClassificationObject.cs" />
+    <Compile Include="CustomizedObjects\AppDocObject.cs" />
+    <Compile Include="CustomizedObjects\CalculationFactor.cs" />
+    <Compile Include="CustomizedObjects\CustomizedApplicationDocumentObject.cs" />
+    <Compile Include="CustomizedObjects\CustomizedApplicationIssueObject.cs" />
+    <Compile Include="CustomizedObjects\CustomizedApplicationSettingObject.cs" />
+    <Compile Include="CustomizedObjects\CustomizedApplicationStageObject.cs" />
+    <Compile Include="CustomizedObjects\CustomizedImportClassificationRequirement.cs" />
+    <Compile Include="CustomizedObjects\CustomizedImportRequirement.cs" />
+    <Compile Include="CustomizedObjects\CustomizedNotificationDocumentObject.cs" />
+    <Compile Include="CustomizedObjects\CustomizedNotificationHistoryObject.cs" />
+    <Compile Include="CustomizedObjects\CustomizedNotificationInspectionObject.cs" />
+    <Compile Include="CustomizedObjects\CustomizedPaymentReceiptObject.cs" />
+    <Compile Include="CustomizedObjects\CustomizedCompanyEligibilityObject.cs" />
+    <Compile Include="CustomizedObjects\CustomizedCompanyObject.cs" />
+    <Compile Include="CustomizedObjects\CustomizedContactPersonObject.cs" />
+    <Compile Include="CustomizedObjects\CustomizedCountryObject.cs" />
+    <Compile Include="CustomizedObjects\CustomizedDocumentObject.cs" />
+    <Compile Include="CustomizedObjects\CustomizedDocumentRequirement.cs" />
+    <Compile Include="CustomizedObjects\CustomizedDocumentTypeRight.cs" />
+    <Compile Include="CustomizedObjects\CustomizedEmployeeDeskObject.cs" />
+    <Compile Include="CustomizedObjects\CustomizedFeeObject.cs" />
+    <Compile Include="CustomizedObjects\CustomizedFormMDetailObject.cs" />
+    <Compile Include="CustomizedObjects\CustomizedJettyMappingObject.cs" />
+    <Compile Include="CustomizedObjects\CustomizedJettyObject.cs" />
+    <Compile Include="CustomizedObjects\CustomizedNotificationInspectionQueueObject.cs" />
+    <Compile Include="CustomizedObjects\CustomizedNotificationObject.cs" />
+    <Compile Include="CustomizedObjects\CustomizedNotificationTrackObject.cs" />
+    <Compile Include="CustomizedObjects\CustomizedNotificationVesselObject.cs" />
+    <Compile Include="CustomizedObjects\CustomizedPortObject.cs" />
+    <Compile Include="CustomizedObjects\CustomizedProcessingHistoryObject.cs" />
+    <Compile Include="CustomizedObjects\CustomizedProcessObject.cs" />
+    <Compile Include="CustomizedObjects\CustomizedProcessTrackingObject.cs" />
+    <Compile Include="CustomizedObjects\CustomizedProductColumnObject.cs" />
+    <Compile Include="CustomizedObjects\CustomizedProductObject.cs" />
+    <Compile Include="CustomizedObjects\CustomizedProductRequirementObject.cs" />
+    <Compile Include="CustomizedObjects\CustomizedStepObject.cs" />
+    <Compile Include="CustomizedObjects\CustomizedUserProfileObject.cs" />
+    <Compile Include="CustomizedObjects\CustomizedVesselObject.cs" />
+    <Compile Include="CustomizedObjects\EmployeeProfileObject.cs" />
+    <Compile Include="CustomizedObjects\EmployeeStepObject.cs" />
+    <Compile Include="CustomizedObjects\HistoryDataObject.cs" />
+    <Compile Include="CustomizedObjects\CustomizedThroughPutObject.cs" />
+    <Compile Include="CustomizedObjects\SplitPayment.cs" />
+    <Compile Include="DataObjects\ApplicationContentObject.cs" />
+    <Compile Include="DataObjects\ApplicationCountryObject.cs" />
+    <Compile Include="DataObjects\BankUserObject.cs" />
+    <Compile Include="DataObjects\DocumentIssueObject.cs" />
+    <Compile Include="DataObjects\ExpenditionaryInvoiceObject.cs" />
+    <Compile Include="DataObjects\DepotDischargeObject.cs" />
+    <Compile Include="DataObjects\DepotTrunkedOutObject.cs" />
+    <Compile Include="DataObjects\FaqObject.cs" />
+    <Compile Include="DataObjects\FaqCategoryObject.cs" />
+    <Compile Include="DataObjects\IssueObject.cs" />
+    <Compile Include="DataObjects\IssueCategory.cs" />
+    <Compile Include="DataObjects\IssueLogObject.cs" />
+    <Compile Include="DataObjects\JobDistributionObject.cs" />
+    <Compile Include="DataObjects\PaymentDistributionSummaryObject.cs" />
+    <Compile Include="DataObjects\MessageObject.cs" />
+    <Compile Include="DataObjects\MessageTemplateObject.cs" />
+    <Compile Include="DataObjects\NotificationIssueObject.cs" />
+    <Compile Include="DataObjects\PageObject.cs" />
+    <Compile Include="DataObjects\PaymentLogObject.cs" />
+    <Compile Include="DataObjects\PaymentReceiptObject.cs" />
+    <Compile Include="DataObjects\ProductBankerObject.cs" />
+    <Compile Include="DataObjects\ProductColourObject.cs" />
+    <Compile Include="DataObjects\RecertificationHistoryObject.cs" />
+    <Compile Include="DataObjects\RecertificationIssueObject.cs" />
+    <Compile Include="DataObjects\RecertificationObject.cs" />
+    <Compile Include="DataObjects\RecertificationProcessObject.cs" />
+    <Compile Include="DataObjects\CustomizedStandardRequirementTypeObject.cs" />
+    <Compile Include="DataObjects\ReportCalc.cs" />
+    <Compile Include="DataObjects\SignOffDocumentObject.cs" />
+    <Compile Include="DataObjects\ThroughPutObject.cs" />
+    <Compile Include="DataObjects\StandardRequirementObject.cs" />
+    <Compile Include="DataObjects\StandardRequirementTypeObject.cs" />
+    <Compile Include="DataObjects\ImporterAddressObject.cs" />
+    <Compile Include="DataObjects\AddressObject.cs" />
+    <Compile Include="DataObjects\NotificationBankerObject.cs" />
+    <Compile Include="DataObjects\DepotOwnerObject.cs" />
+    <Compile Include="DataObjects\TransactionInvoiceObject.cs" />
+    <Compile Include="DataObjects\UnclearedPaymentObject.cs" />
+    <Compile Include="DataObjects\UnitOfMeasurementObject.cs" />
+    <Compile Include="DataObjects\ApplicationObject.cs" />
+    <Compile Include="DataObjects\CalculatorObject.cs" />
+    <Compile Include="DataObjects\DischargeParameterAfterObject.cs" />
+    <Compile Include="DataObjects\DischargeParameterBeforeObject.cs" />
+    <Compile Include="DataObjects\ImportClassObject.cs" />
+    <Compile Include="DataObjects\InvoiceItemObject.cs" />
+    <Compile Include="CustomizedObjects\SystemUserObject.cs" />
+    <Compile Include="DataObjects\AccountTypeObject.cs" />
+    <Compile Include="DataObjects\ApplicationDocumentObject.cs" />
+    <Compile Include="DataObjects\ApplicationIssueObject.cs" />
+    <Compile Include="DataObjects\ApplicationItemObject.cs" />
+    <Compile Include="DataObjects\ApplicationLicenseMappingObject.cs" />
+    <Compile Include="DataObjects\ImportSettingObject.cs" />
+    <Compile Include="DataObjects\ApplicationTypeObject.cs" />
+    <Compile Include="DataObjects\AspNetRoleObject.cs" />
+    <Compile Include="DataObjects\AspNetUserObject.cs" />
+    <Compile Include="DataObjects\AspNetUserClaimObject.cs" />
+    <Compile Include="DataObjects\AspNetUserLoginObject.cs" />
+    <Compile Include="DataObjects\BankObject.cs" />
+    <Compile Include="DataObjects\BankBranchObject.cs" />
+    <Compile Include="DataObjects\BankJobHistoryObject.cs" />
+    <Compile Include="DataObjects\BillOfLadingDataObject.cs" />
+    <Compile Include="DataObjects\CompanyCategoryObject.cs" />
+    <Compile Include="DataObjects\CompanyDocumentObject.cs" />
+    <Compile Include="DataObjects\ContactPersonObject.cs" />
+    <Compile Include="DataObjects\CountryObject.cs" />
+    <Compile Include="DataObjects\CustomCodeObject.cs" />
+    <Compile Include="DataObjects\DepotObject.cs" />
+    <Compile Include="DataObjects\DocumentObject.cs" />
+    <Compile Include="DataObjects\DocumentTypeObject.cs" />
+    <Compile Include="DataObjects\DocumentTypeRightObject.cs" />
+    <Compile Include="DataObjects\EmployeeDeskObject.cs" />
+    <Compile Include="DataObjects\EmployeeRoleObject.cs" />
+    <Compile Include="DataObjects\FeeObject.cs" />
+    <Compile Include="DataObjects\FeeTypeObject.cs" />
+    <Compile Include="DataObjects\FormMDetailObject.cs" />
+    <Compile Include="DataObjects\GroupObject.cs" />
+    <Compile Include="DataObjects\ImportApplicationHistoryObject.cs" />
+    <Compile Include="DataObjects\ImportClassificationRequirementObject.cs" />
+    <Compile Include="DataObjects\ImportEligibilityObject.cs" />
+    <Compile Include="DataObjects\ImporterObject.cs" />
+    <Compile Include="DataObjects\ImportPermitObject.cs" />
+    <Compile Include="DataObjects\ImportRecertificationResultObject.cs" />
+    <Compile Include="DataObjects\ImportRequirementObject.cs" />
+    <Compile Include="DataObjects\ImportStageObject.cs" />
+    <Compile Include="DataObjects\InvoiceObject.cs" />
+    <Compile Include="DataObjects\IssueTypeObject.cs" />
+    <Compile Include="DataObjects\JettyObject.cs" />
+    <Compile Include="DataObjects\JettyMappingObject.cs" />
+    <Compile Include="DataObjects\LabParameterObject.cs" />
+    <Compile Include="DataObjects\LinkObject.cs" />
+    <Compile Include="DataObjects\NotificationObject.cs" />
+    <Compile Include="DataObjects\NotificationCheckListObject.cs" />
+    <Compile Include="DataObjects\NotificationCheckListOutcomeObject.cs" />
+    <Compile Include="DataObjects\NotificationDischageDataObject.cs" />
+    <Compile Include="DataObjects\NotificationDocumentObject.cs" />
+    <Compile Include="DataObjects\NotificationHistoryObject.cs" />
+    <Compile Include="DataObjects\NotificationInspectionObject.cs" />
+    <Compile Include="DataObjects\NotificationInspectionQueueObject.cs" />
+    <Compile Include="DataObjects\NotificationTrackObject.cs" />
+    <Compile Include="DataObjects\NotificationVesselObject.cs" />
+    <Compile Include="DataObjects\ParameterObject.cs" />
+    <Compile Include="DataObjects\PaymentDetailObject.cs" />
+    <Compile Include="DataObjects\PermitApplicationObject.cs" />
+    <Compile Include="DataObjects\PermitObject.cs" />
+    <Compile Include="DataObjects\PersonObject.cs" />
+    <Compile Include="DataObjects\PObject.cs" />
+    <Compile Include="DataObjects\PortObject.cs" />
+    <Compile Include="DataObjects\ProcessObject.cs" />
+    <Compile Include="DataObjects\ProcessesInWorkFlowObject.cs" />
+    <Compile Include="DataObjects\ProcessingHistoryObject.cs" />
+    <Compile Include="DataObjects\ProcessTrackingObject.cs" />
+    <Compile Include="DataObjects\ProductObject.cs" />
+    <Compile Include="DataObjects\ProductColumnObject.cs" />
+    <Compile Include="DataObjects\ProductDocumentRequirementObject.cs" />
+    <Compile Include="DataObjects\ProductsLicenseRequirementObject.cs" />
+    <Compile Include="DataObjects\RecertificationResultObject.cs" />
+    <Compile Include="DataObjects\ReferenceLicenseObject.cs" />
+    <Compile Include="DataObjects\ReferenceLicenseTypeObject.cs" />
+    <Compile Include="DataObjects\RegionObject.cs" />
+    <Compile Include="DataObjects\StepObject.cs" />
+    <Compile Include="DataObjects\StepActivityTypeObject.cs" />
+    <Compile Include="DataObjects\StepsInGroupObject.cs" />
+    <Compile Include="DataObjects\StorageProviderRequirementObject.cs" />
+    <Compile Include="DataObjects\StorageProviderTypeObject.cs" />
+    <Compile Include="DataObjects\StorageTankObject.cs" />
+    <Compile Include="DataObjects\StructureObject.cs" />
+    <Compile Include="DataObjects\TransactionObject.cs" />
+    <Compile Include="DataObjects\UserLinkObject.cs" />
+    <Compile Include="DataObjects\UserProfileObject.cs" />
+    <Compile Include="DataObjects\VesselObject.cs" />
+    <Compile Include="DataObjects\VesselArrivalDocumentObject.cs" />
+    <Compile Include="DataObjects\VesselArrivalNoticeObject.cs" />
+    <Compile Include="DataObjects\WorkFlowObject.cs" />
+    <Compile Include="DataObjects\ZoneObject.cs" />
+    <Compile Include="Helpers\EnumManager.cs" />
+    <Compile Include="Helpers\ErrorLogger.cs" />
+    <Compile Include="Helpers\GenericValidator.cs" />
+    <Compile Include="Helpers\PhysicalToVirtualPathMapper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

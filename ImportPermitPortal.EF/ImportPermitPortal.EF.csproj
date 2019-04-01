@@ -1,0 +1,505 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{909D48D3-C560-4BCB-AE57-EE5874ACF8DC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ImportPermitPortal.EF</RootNamespace>
+    <AssemblyName>ImportPermitPortal.EF</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CustomizedModel\CustomizedPermit.cs" />
+    <Compile Include="CustomizedModel\CustomizedImportApplication.cs" />
+    <Compile Include="Model\AccountType.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Address.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\AddressType.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Application.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ApplicationContent.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ApplicationCountry.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ApplicationDepot.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ApplicationDocument.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ApplicationIssue.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ApplicationItem.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ApplicationLicenseMapping.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ApplicationType.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\AspNetRole.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\AspNetUser.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\AspNetUserClaim.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\AspNetUserLogin.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Bank.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\BankBranch.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\BankUser.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\BillOfLadingData.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Calculator.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\City.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CompanyCategory.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CompanyDocument.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Country.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CustomCode.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\C__MigrationHistory.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Depot.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DepotDischarge.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DepotOwner.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DepotTrunkedOut.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DischargeParameterAfter.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DischargeParameterBefore.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Document.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DocumentIssue.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DocumentType.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DocumentTypeRight.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\EmployeeDesk.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ExpenditionaryInvoice.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Faq.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\FaqCategory.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Fee.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\FeeType.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\FormMDetail.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Group.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ImportApplicationHistory.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ImportClass.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ImportClassificationRequirement.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Importer.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ImporterAddress.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ImportPermitPortalModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ImportPermitPortalModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ImportPermitPortalModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ImportPermitPortalModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ImportPermitPortalModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ImportRequirement.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ImportSetting.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ImportStage.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Invoice.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\InvoiceItem.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Issue.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\IssueCategory.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\IssueLog.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\IssueType.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Jetty.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\JettyMapping.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\LabParameter.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Link.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Message.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\MessageTemplate.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Notification.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\NotificationBanker.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\NotificationCheckList.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\NotificationCheckListOutcome.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\NotificationDischageData.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\NotificationDocument.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\NotificationHistory.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\NotificationInspection.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\NotificationInspectionQueue.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\NotificationIssue.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\NotificationVessel.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Page.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PaymentDetail.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PaymentDistributionSummary.cs">
+      <DependentUpon>PPIPSPaymentModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PaymentLog.cs">
+      <DependentUpon>PPIPSPaymentModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PaymentReceipt.cs">
+      <DependentUpon>PPIPSPaymentModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Permit.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PermitApplication.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Person.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Port.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PPIPSPaymentModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PPIPSPaymentModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PPIPSPaymentModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PPIPSPaymentModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PPIPSPaymentModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PPIPSPaymentModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Process.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ProcessingHistory.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ProcessTracking.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Product.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ProductBanker.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ProductColour.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ProductColumn.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ProductDocumentRequirement.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Recertification.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\RecertificationHistory.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\RecertificationIssue.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\RecertificationProcess.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\RecertificationResult.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ReferenceLicense.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ReferenceLicenseType.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Region.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\SignOffDocument.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\StandardRequirement.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\StandardRequirementType.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Step.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\StepActivityType.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\StepsInGroup.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\StorageProviderRequirement.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\StorageProviderType.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\StorageTank.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Structure.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ThroughPut.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Transaction.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\TransactionInvoice.cs">
+      <DependentUpon>PPIPSPaymentModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\UnclearedPayment.cs">
+      <DependentUpon>PPIPSPaymentModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\UnitOfMeasurement.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\UserLink.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\UserProfile.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Vessel.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\VesselArrivalDocument.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\VesselArrivalNotice.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\WorkFlow.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Zone.cs">
+      <DependentUpon>ImportPermitPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <EntityDeploy Include="Model\PPIPSPaymentModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>PPIPSPaymentModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <EntityDeploy Include="Model\ImportPermitPortalModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ImportPermitPortalModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Model\ImportPermitPortalModel.edmx.diagram">
+      <DependentUpon>ImportPermitPortalModel.edmx</DependentUpon>
+    </None>
+    <None Include="Model\PPIPSPaymentModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PPIPSPaymentModel.edmx</DependentUpon>
+      <LastGenOutput>PPIPSPaymentModel.Context.cs</LastGenOutput>
+    </None>
+    <None Include="Model\PPIPSPaymentModel.edmx.diagram">
+      <DependentUpon>PPIPSPaymentModel.edmx</DependentUpon>
+    </None>
+    <None Include="Model\PPIPSPaymentModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PPIPSPaymentModel.edmx</DependentUpon>
+      <LastGenOutput>PPIPSPaymentModel.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Model\ImportPermitPortalModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ImportPermitPortalModel.edmx</DependentUpon>
+      <LastGenOutput>ImportPermitPortalModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model\ImportPermitPortalModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ImportPermitPortalModel.edmx</DependentUpon>
+      <LastGenOutput>ImportPermitPortalModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

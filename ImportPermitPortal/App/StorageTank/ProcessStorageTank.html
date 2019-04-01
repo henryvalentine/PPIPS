@@ -1,0 +1,49 @@
+﻿
+
+<div class="row fsEdit" style="visibility: visible; width: 100%" ng-controller="storageTankController">
+    <div class=" modal-header">
+        <div class="row">
+            <div class="col-md-12">
+                <h4 class="modal-title">{{storageTank.Header}}</h4>
+            </div>
+        </div>
+    </div>
+    <div class="modal-body">
+        <form method="POST">
+            <div class="row">
+                <label class="control-label ">Tank Number *</label>
+                <input type="text" data-ng-model="storageTank.TankNo" class="form-control" />
+            </div>
+
+            <div class="row">
+                <label class="control-label ">Depot*</label>
+                <select ng-model="storageTank.Depot" ng-options="sta as sta.Name for sta in Depots track by sta.Id" data-inset="true" class=" form-control" required>
+                    <option value="">-- Select Depot--</option>
+                </select>
+            </div>
+            <div class="row">
+                <label class="control-label ">Product*</label>
+                <select ng-model="storageTank.Product" ng-options="pr as pr.Name for pr in Products track by pr.ProductId" data-inset="true" class=" form-control" required>
+                    <option value="">-- Select Product--</option>
+                </select>
+            </div>
+            <div class="row">
+                <label class="control-label ">Capacity*</label>
+                <input type="text" data-ng-model="storageTank.Capacity" class="form-control"/>
+            </div>
+
+            <div class="row">
+                <label class="control-label ">Unit Of Measurement*</label>
+                <select ng-model="storageTank.UoMId" ng-options="pro as pro.Name for pro in Measurements track by pro.Id" data-inset="true" class=" form-control" required>
+                    <option value="">-- Select Measurement--</option>
+                </select>
+            </div>
+
+            <div class="row modal-footer">
+                <div>
+                    <input type="button" value="{{buttonText}}" ng-click="processStorageTank()" class="btn btn-default" style="margin-top: 7px;" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

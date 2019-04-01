@@ -1,0 +1,73 @@
+﻿
+
+<div class="row fsEdit" style="visibility: visible; width: 100%" ng-controller="issueController">
+    <div class=" modal-header">
+        <div class="row">
+            <div class="col-md-12">
+                <h4 class="modal-title">Issue Details</h4>
+            </div>
+        </div>
+    </div>
+    <div class="modal-body">
+        <form method="POST">
+
+            <div class="row">
+                <div class="col-md-4">
+                    <label class="control-label " style="font-weight: normal">Issue Category</label>
+                </div>
+                <div class="col-md-8">
+                    <label class="control-label ">{{issue.IssueCategoryName}}</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <label class="control-label " style="font-weight: normal">Affected Company</label>
+                </div>
+                <div class="col-md-8">
+                    <label class="control-label ">{{issue.AffectedCompanyName}}</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <label style="font-weight: normal">Reported Issue</label>
+                </div>
+                <div class="col-md-8">
+                    <p class="control-label ">{{issue.Issue}}</p>
+                </div>
+            </div>
+
+             <div class="row">
+                <div class="col-md-4">
+                    <label class="control-label " style="font-weight: normal">Resolved By </label>
+                </div>
+                <div class="col-md-8">
+                    <label class="control-label ">{{issue.ResolvedByName}}</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <label style="font-weight: normal">Issue Status : </label>
+                </div>
+                <div class="col-md-8">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label class="control-label">
+                                <input type="radio" ng-model="faq.Status" ng-value="Pending" />&nbsp;Issue Pending
+                            </label>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="control-label">
+                                <input type="radio" ng-model="faq.Status" ng-value="Resolved" />&nbsp;Issue Resolved
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row modal-footer">
+                <div>
+                    <input type="button" value="Save" ng-click="processIssue()" class="btn btn-default" style="margin-top: 7px;" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

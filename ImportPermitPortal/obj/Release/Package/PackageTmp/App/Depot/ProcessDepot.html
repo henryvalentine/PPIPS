@@ -1,0 +1,109 @@
+﻿
+
+<div class="row fsEdit" style="width: 100%" ng-controller="depotController">
+    <div class=" modal-header">
+        <div class="row">
+            <div class="col-md-12">
+                <h4 class="modal-title">{{UserProfileObject.Header}}</h4>
+            </div>
+        </div>
+    </div>
+    <div class="modal-body">
+        <form method="POST">
+            <div class="row">
+                <div class="col-md-6">
+                    <h4 class="modal-title">Depot Information</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label class="control-label ">Depot Name *</label>
+                    <input type="text" class="form-control" ng-model="UserProfileObject.CompanyName"/>
+                </div>
+                <div class="col-md-6">
+                    <label class="control-label ">Jetty *</label>
+                    <select ng-model="UserProfileObject.Jetty" ng-options="jetty as jetty.Name for jetty in jetties track by jetty.Id" data-inset="true" class=" form-control" required>
+                        <option value="">-- Select Jetty --</option>
+                    </select>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h4 class="modal-title">License Information</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label class="control-label ">License Number *</label>
+                        <input type="text" class="form-control" ng-model="UserProfileObject.DepotLicense" /> 
+                    </div>
+                    <div class="col-md-3">
+                        <label class="control-label ">Date Issued *</label>
+                        <p class="input-group">
+                            <input type="text" class="form-control datepicker" ng-click="openEnDatep($event)" datepicker-popup="{{endDateformatp}}" is-open="endDateOpenedp"
+                                   min-date="minEndDatep" max-date="maxEndDatep"
+                                   datepicker-options="endDateOptionsp" date-disabled="disabledp(date, mode)" close-text="Close" ng-model="UserProfileObject.IssueDate" />
+                            <span class="input-group-btn">
+                                <button type="button" class="btn btn-default" ng-click="openEnDatep($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                            </span>
+                        </p>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="control-label ">Expiry Date *</label>
+                        <p class="input-group">
+                            <input type="text" class="form-control datepicker" ng-click="openEnDate($event)" datepicker-popup="{{endDateformat}}" is-open="endDateOpened"
+                                   min-date="minEndDate" max-date="maxEndDate"
+                                   datepicker-options="endDateOptions" date-disabled="disabled(date, mode)" close-text="Close" ng-model="UserProfileObject.ExpiryDate" />
+                            <span class="input-group-btn">
+                                <button type="button" class="btn btn-default" ng-click="openEnDate($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                            </span>
+                        </p>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="control-label "><input type="checkbox" ng-model="UserProfileObject.Status"/>Is License Valid? </label>
+                    </div>
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h4 class="modal-title">Admin/Contact Information</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label class="control-label ">Last Name *</label>
+                        <input type="text" class="form-control" ng-model="UserProfileObject.LastName"/>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="control-label ">Other Name(s) *</label>
+                        <input type="text" class="form-control" ng-model="UserProfileObject.FirstName"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label class="control-label ">Email *</label>
+                        <input type="text" class="form-control" name="Email" ng-model="UserProfileObject.Email"/>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="control-label ">PhoneNumber *</label>
+                        <input type="text" ng-model="UserProfileObject.PhoneNumber" class="form-control"/>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="row modal-footer">
+                <div class="col-md-9">
+                    <label class="control-label" ng-show="edit == true" style="float: left"><input type="checkbox" ng-model="UserProfileObject.IsActive" />&nbsp;Is User Active?</label>
+                </div>
+                <div class="col-md-3">
+                    <input type="button" value="{{buttonText}}" ng-click="processDepot()" class="btn btn-default" style="margin-top: 7px; float: right" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+

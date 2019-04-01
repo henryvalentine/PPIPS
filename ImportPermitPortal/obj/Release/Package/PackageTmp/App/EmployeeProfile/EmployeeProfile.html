@@ -1,0 +1,418 @@
+﻿<div class="row" ng-controller="employeeProfileController" ng-init="initializeController()">
+
+    <div class="row" ng-hide="viewApp == true">
+        <div class="row">
+            <div class="col-md-12">
+                <h4 class="page-head-line"> Application Process Trackings </h4>
+            </div>
+        </div>
+       
+        <table class="table" style="width: 100%" ng-emp>
+            <thead>
+                <tr style="color: #000">
+                    <th style="width: 2%">
+                        S/N
+                    </th>
+                    <th style="width: 20%">
+                        Payment Reference
+                    </th>
+                    <th style="width: 20%">
+                        Company
+                    </th>
+                    <th style="width: 20%">
+                        Date Assigned
+                    </th>
+                    <th style="width: 20%">
+                        Expected Completion Date
+                    </th>
+
+                    <th style="width: 12%">
+                        Action
+                    </th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+
+        </table>
+    </div>
+    <div class="row" ng-show="viewApp == true" style="width: 100%; border: 3px solid #27ae60;">
+        <div class=" modal-header">
+            <div class="row">
+
+
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <h4 class="modal-title">Application Details</h4>
+                </div>
+                <div class="col-md-6">
+                    <a ng-click="initializeApp()" style="float: right" class="btn btn-default acceptbtn"><< Back</a>
+                </div>
+            </div>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="row">
+                    <div class="modal-body">
+                        <div class="row">
+
+                            <div class="row">
+
+                                <div class="col-md-12">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <label class="control-label">Payment Reference:</label>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                            <label class="control-label">Total Quantity Applied:</label>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                            <label class="control-label">Total Amount(&#8358;)</label>
+                                        </div>
+
+
+                                        <div class="col-md-3">
+                                            <label class="control-label">Status</label>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="row">
+
+                                <div class="col-md-12">
+                                    <div class="row">
+
+                                        <div class="col-md-3">
+                                            {{application.Rrr}}
+                                        </div>
+
+                                        <div class="col-md-3">
+
+                                            {{application.DerivedTotalQUantity | number:0}}
+                                        </div>
+
+                                        <div class="col-md-3">
+                                            {{application.DerivedValue | currency: " "}}
+                                        </div>
+
+
+                                        <div class="col-md-3">
+                                            {{application.StatusStr}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                            <div class="row">
+
+                                <div class="col-md-12">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <label class="control-label">Importer Name:</label>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                            <label class="control-label">Application Type:</label>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                            <label class="control-label">Previous Permit Number</label>
+                                        </div>
+
+
+                                        <div class="col-md-3">
+                                            <label class="control-label">Date Applied</label>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="row">
+
+                                <div class="col-md-12">
+                                    <div class="row">
+
+                                        <div class="col-md-3">
+                                            {{application.CompanyName}}
+                                        </div>
+
+                                        <div class="col-md-3">
+
+                                            {{application.ApplicationTypeName}}
+                                        </div>
+
+                                        <div class="col-md-3">
+                                            {{application.PermitStr}}
+                                        </div>
+
+
+                                        <div class="col-md-3">
+                                            {{application.DateAppliedStr}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <br /><br />
+
+
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="row">
+                                <h4>Details</h4>
+                            </div>
+                            <table class="table" ng-docs>
+                                <tr>
+                                    <th style="width: 12%">
+                                        Product Code
+                                    </th>
+                                    <th style="width: 12%">
+                                        Est. Quantity(MT)
+                                    </th>
+                                    <th style="width: 11%">
+                                        Est. Value($)
+                                    </th>
+                                    <th style="width: 18%">
+                                        Country/Countries of Origin
+                                    </th>
+                                    <th style="width: 18%">
+                                        Discharge Depot
+                                    </th>
+                                    <th style="width: 15%">
+                                        Sponsoring Bank(s)
+                                    </th>
+                                </tr>
+                                <tr data-ng-repeat="item in application.ApplicationItemObjects">
+                                    <td style="width: 12%">{{item.ProductObject.Code}}</td>
+                                    <td style="width: 10%">{{item.EstimatedQuantity | number:0}}</td>
+                                    <td style="width: 11%">{{item.EstimatedValue | currency: " "}}</td>
+                                    <td style="width: 18%">{{item.CountryOfOriginName}}</td>
+                                    <td style="width: 18%">{{item.DischargeDepotName}}</td>
+                                    <td style="width: 13%">{{item.ProductBankerName}}</td>
+                                </tr>
+                            </table>
+                        </div>
+
+
+                    </div>
+                </div>
+                <br />
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4><b>Uploaded Document(s)</b></h4>
+                        </div>
+                        <br />
+                        <div class="row">
+
+                            <div class="col-md-6">
+                                <div class="row">
+                                    <h5><b>Application Document(s)</b></h5>
+                                </div>
+                                <div class="row">
+                                    <table class="table">
+                                        <tr>
+                                            <th style="width: 5%">
+                                                S/N
+                                            </th>
+                                            <th style="width: 20%">
+                                                Document
+                                            </th>
+                                            <th style="width: 5%">
+                                                Status
+                                            </th>
+                                            <th style="width: 5%">
+                                                Action
+                                            </th>
+                                        </tr>
+                                        <tr data-ng-repeat="s in suppliedDocs">
+                                            <td style="width: 5%">{{s.index}}</td>
+                                            <td style="width: 20%"><a href="{{s.DocumentPath}}" ng-show="s.DocumentPath != null && s.DocumentPath.length > 0" style="cursor: pointer; color: #008000" target="_blank" title="View Document">{{s.Name}}</a></td>
+                                            <td style="width: 5%">{{s.StatusStr}}</td>
+                                            <td style="width: 20%">
+                                                <a href="{{s.DocumentPath}}" ta target="_blank" id="mage"><span class="btn btn-primary btn-sm">View</span></a>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+                                <br />
+                                <div class="row" ng-if="throughPuts !== null && throughPuts.length > 0">
+                                    <div class="row">
+                                        <h5><b>Throughput Agreement(s)</b></h5>
+                                    </div>
+                                    <div class="row">
+                                        <table class="table">
+                                            <tr>
+                                                <th style="width: 5%">
+                                                    S/N
+                                                </th>
+                                                <th style="width: 20%">
+                                                    Document
+                                                </th>
+                                                <th style="width: 5%">
+                                                    Status
+                                                </th>
+                                                <th style="width: 5%">
+                                                    Action
+                                                </th>
+                                            </tr>
+                                            <tr data-ng-repeat="t in throughPuts">
+                                                <td style="width: 5%">{{t.index}}</td>
+                                                <td style="width: 20%"><a href="{{t.DocumentPath}}" ng-show="t.DocumentPath != null && t.DocumentPath.length > 0" style="cursor: pointer; color: #008000" target="_blank" title="View Document">{{t.DepotName}} ({{t.ProductCode}})</a></td>
+                                                <td style="width: 5%">{{t.StatusStr}}</td>
+                                                <td style="width: 20%">
+                                                    <a href="{{t.DocumentPath}}" ta target="_blank" id="mage"><span class="btn btn-primary btn-sm">View</span></a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="row" ng-if="refLetters !== null && refLetters.length > 0">
+                                    <div class="row">
+                                        <h5><b>Bank Reference Letter(s)</b></h5>
+                                    </div>
+                                    <div class="row">
+                                        <table class="table">
+                                            <tr>
+                                                <th style="width: 5%">
+                                                    S/N
+                                                </th>
+                                                <th style="width: 20%">
+                                                    Document
+                                                </th>
+                                                <th style="width: 5%">
+                                                    Status
+                                                </th>
+                                                <th style="width: 5%">
+                                                    Action
+                                                </th>
+                                            </tr>
+                                            <tr data-ng-repeat="t in refLetters">
+                                                <td style="width: 5%">{{t.index}}</td>
+                                                <td style="width: 20%"><a href="{{t.DocumentPath}}" ng-show="t.DocumentPath != null && t.DocumentPath.length > 0" style="cursor: pointer; color: #008000" target="_blank" title="View Document">{{t.BankName}} ({{t.ProductCode}})</a></td>
+                                                <td style="width: 5%">{{t.DocumentStatus}}</td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="row" ng-if="stadDocs !== null && stadDocs.length > 0">
+                                    <div class="col-md-12">
+                                        <h5><b>Standard Documents</b></h5>
+                                    </div>
+                                    <div class="row">
+                                        <table class="table">
+                                            <tr>
+                                                <th style="width: 5%">
+                                                    S/N
+                                                </th>
+                                                <th style="width: 20%">
+                                                    Document
+                                                </th>
+                                                <th style="width: 5%">
+                                                    Status
+                                                </th>
+                                                <th style="width: 5%">
+                                                    Action
+                                                </th>
+                                            </tr>
+                                            <tr data-ng-repeat="t in stadDocs">
+                                                <td style="width: 5%">{{t.index}}</td>
+                                                <td style="width: 20%"><a href="{{t.DocumentPath}}" ng-show="t.DocumentPath != null && t.DocumentPath.length > 0" style="cursor: pointer; color: #008000" target="_blank" title="View Document">{{t.Name}}</a></td>
+                                                <td style="width: 5%">{{t.StatusStr}}</td>
+                                                <td style="width: 20%">
+                                                    <a href="{{t.DocumentPath}}" ta target="_blank" id="mage"><span class="btn btn-primary btn-sm">View</span></a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                    </div>
+                    <br />
+                </div>
+
+                <br />
+                <div class="row">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <h4>Application History</h4>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="col-md-12">
+                        <table class="table">
+                            <tr>
+                                <th style="width: 20%">
+                                    Employee Name
+                                </th>
+                                <th style="width: 20%">
+                                    Step
+                                </th>
+                                <th style="width: 20%">
+                                    Assigned Time
+                                </th>
+                                <th style="width: 20%">
+                                    Delivery Time
+                                </th>
+                                <th style="width: 20%">
+                                    Remark
+                                </th>
+
+                            </tr>
+                            <tr data-ng-repeat="item in application.ProcessingHistoryObjects">
+                                <td style="width: 20%">{{item.EmployeeName}}</td>
+                                <td style="width: 20%">{{item.StepName}}</td>
+                                <td style="width: 20%">{{item.AssignedTimeStr}}</td>
+                                <td style="width: 20%">{{item.ActualDeliveryDateTimeStr}}</td>
+                                <td style="width: 20%">{{item.Remarks}}</td>
+
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="row modal-footer">
+                <table class="table table-striped" ng-show="viewR">
+
+                    <tr>
+
+                        <td><a ng-click="rejectApp(application.Id)" style="float: right" class="btn btn-default rejectBtn">Reject</a></td>
+
+                        <td><input type="button" value="Review" ng-click="acceptApp(application.Id)" style="float: right" class="btn btn-default acceptbtn" /></td>
+
+                    </tr>
+                </table>
+                <table class="table table-striped" ng-show="viewA">
+
+
+                    <tr>
+
+                        <td><a ng-click="rejectApp(application.Id)" style="float: right" class="btn btn-default rejectBtn">Reject</a></td>
+
+                        <td><input type="button" value="Approve" ng-click="acceptApp(application.Id)" style="float: right" class="btn btn-default acceptbtn" /></td>
+
+
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+</div>

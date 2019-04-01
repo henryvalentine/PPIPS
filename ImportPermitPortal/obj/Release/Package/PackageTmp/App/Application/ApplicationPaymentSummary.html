@@ -1,0 +1,154 @@
+﻿
+<div class="row">
+    <div class="col-md-12">
+        <h4 class="page-head-no-line">Application Form</h4>
+    </div>
+</div>
+<div class="row fsEdit" style="width: 100%" ng-controller="applicationController" ng-init="initializeController()">
+    
+    <div class="row fsEdit" style="visibility: visible; width: 100%; border: 3px solid #27ae60;">
+        <br />
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row alert alert-success" role="alert" ng-show="positivefeedback === true">
+                    <span class="col-md-11">{{success}}</span><span class="col-md-1" style="font-size: 20px; text-align: left; cursor: pointer" title="close" ng-click="positivefeedback = false">x</span>
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-8">
+                <button class="btn btn-default" id="" style="float: left; color: #000" ng-click="printReceipt()"> Print </button>
+            </div>
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="col-md-6">
+
+                    </div>
+                    <div class="col-md-6">
+                      
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row alert alert-success" role="alert" ng-show="positivefeedback === true">
+                    <span class="col-md-11">{{success}}</span><span class="col-md-1" style="font-size: 20px; text-align: left; cursor: pointer" title="close" ng-click="positivefeedback = false">x</span>
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="row" id="receipt">
+            <div class="row">
+                <p style="background-color: #FFF; margin: 0px; padding: 0px;" class="compname shadow">
+                    <img height="45" width="187" src="/Content/images/importlogo.png"/>
+                </p>
+            </div>
+            <div class=" modal-header">
+                <div class="row" style="margin-top: 15px">
+                    <div class="col-md-9">
+                        <h4 class="modal-title">Payment Slip</h4>
+                    </div>
+                    <div class="col-md-3">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="modal-body">
+                    <div class="row">
+                        <table class="table">
+                            <tr>
+                                <td style="width: 20%">Reference Code</td>
+                                <td style="width: 30%; font-weight: bold">{{item.ReferenceCode}}</td>
+                            </tr>
+                            <tr>
+                                <td style="width: 20%">Payment Reference Code(RRR)</td>
+                                <td style="width: 30%; font-weight: bold">{{rrr}}</td>
+                            </tr>
+                            <tr>
+                                <td style="width: 20%">Customer</td>
+                                <td style="width: 30%; font-weight: bold">{{item.CompanyName}}</td>
+                            </tr>
+                            <tr>
+                                <td style="width: 20%">Total Quantity(MT)</td>
+                                <td style="width: 30%; font-weight: bold">{{item.DerivedTotalQUantity | number:0}}</td>
+                            </tr>
+                            <tr ng-repeat="fee in item.fees">
+                                <td style="width: 20%">{{fee.FeeTypeName}}</td>
+                                <td style="width: 30%; font-weight: bold">&#8358;{{fee.Amount | currency:"":0}}</td>
+                            </tr>
+                            <tr>
+                                <td style="width: 20%">Total Amount Due</td>
+                                <td style="width: 30%; font-weight: bold">&#8358;{{item.DerivedValue | currency:"":0}}</td>
+                            </tr>
+                            <tr>
+                                <td style="width: 20%">Payment Option</td>
+                                <td style="width: 30%; font-weight: bold">{{item.PaymentOption}}</td>
+                            </tr>
+                            <tr>
+                                <td style="width: 20%">Service Description</td>
+                                <td style="width: 30%; font-weight: bold">Import Permit Application Fee</td>
+                            </tr>
+                            <tr>
+                                <td style="width: 20%">Application Status</td>
+                                <td style="width: 30%; font-weight: bold">Pending</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4>Details</h4>
+                        </div>
+                        <table class="table" ng-docs>
+                            <tr>
+                                <th style="width: 12%">
+                                    Product Code
+                                </th>
+                                <th style="width: 12%">
+                                    Est. Quantity(MT)
+                                </th>
+                                <th style="width: 11%">
+                                    Est. Value($)
+                                </th>
+                                <th style="width: 18%">
+                                    Country/Countries of Origin
+                                </th>
+                                <th style="width: 18%">
+                                    Discharge Depot
+                                </th>
+                                <th style="width: 15%">
+                                    Sponsoring Bank(s)
+                                </th>
+                            </tr>
+                            <tr data-ng-repeat="pr in item.ApplicationItemObjects">
+                                <td style="width: 12%">{{pr.ProductObject.Code}}</td>
+                                <td style="width: 10%">{{pr.EstimatedQuantity | number:0}}</td>
+                                <td style="width: 11%">{{pr.EstimatedValue | currency: " "}}</td>
+                                <td style="width: 18%">{{pr.CountryOfOriginName}}</td>
+                                <td style="width: 18%">{{pr.DischargeDepotName}}</td>
+                                <td style="width: 13%">{{pr.ProductBankerName}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br />
+        <div class="row" ng-if="item.Rrr.length > 0 && item.Rrr !== 'Not Available'">
+            <div class="row">
+                <div class="col-md-8">
+
+                </div>
+                <div class="col-md-4">
+                    <a style="float: right; color: #000" ng-click="pay()" class="btn btn-default" ng-if="application.PaymentTypeId < 2" href="#" ng-disable="processing === true">Continue to Remita >></a>
+                </div>
+            </div>
+            <br /><br />
+        </div>
+    </div>
+</div>
+
+<br /><br />

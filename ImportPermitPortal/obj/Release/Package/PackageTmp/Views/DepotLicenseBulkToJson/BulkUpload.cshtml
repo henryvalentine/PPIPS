@@ -1,0 +1,48 @@
+﻿
+@{
+    ViewBag.Title = "Bulk Upload";
+}
+<br /><br /><br /><br />
+<br /><br />
+<h4>Depot License Bulk Upload</h4>
+<div id="auth" class="row" style="width: 40%; border: 3px solid #27ae60;">
+    <div class="col-md-12">
+    </div>
+    <form id="userForm">
+        <br />
+        <div class="row">
+            <div class="col-md-12">
+                <input id="file" placeholder="Select file" class="form-control" type="file">
+            </div>
+        </div>
+        <br/>
+        <div class="row">
+            <div class="col-md-9" style="padding-right: 0px;">
+
+            </div>
+            <div class="col-md-3" style="padding-left: 0px;">
+                @*<button id="upload" style="float: right;" class="btn btn-primary">Upload</button>*@
+            </div>
+        </div>
+        <br/>
+    </form>
+</div>
+<script type="text/javascript">
+    $('#file').on('change', function (z)
+    {
+        var input = z.target.files;
+        if (input.length > 0) {
+            var xhr = new XMLHttpRequest();
+            var fd = new FormData();
+            fd.append("file", input[0]);
+            xhr.open("POST", "/DepotLicenseBulkToJson/BulkUpload/", true);
+            xhr.send(fd);
+            xhr.addEventListener("load", function (event) {
+                var feedback = event.target.response;
+                if (feedback.Code < 1) {
+                   
+                }
+            }, false);
+        }
+    });
+        </script>

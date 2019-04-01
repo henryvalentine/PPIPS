@@ -1,0 +1,149 @@
+﻿
+
+<div class="row">
+    <div class="col-md-12">
+        <h4 class="page-head-line"> Product Certification </h4>
+    </div>
+</div>
+
+<div class="row" ng-controller="recertificationController" ng-init="initializeController()">
+    <div class="row" ng-hide="viewApp == true">
+        <table class="table" style="width: 100%" ng-recertification>
+            <thead>
+                <tr style="color: #000">
+                    <th style="width: 3%">
+                        S/N
+                    </th>
+                    <th style="width: 20%">
+                        Reference Code
+                    </th>
+                    <th style="width: 20%">
+                        Date Applied
+                    </th>
+                    <th style="width: 20%">
+                        Status
+                    </th>
+
+                    <th style="width: 20%">
+                        Action
+                    </th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+
+        </table>
+    </div>
+    <br />
+
+
+
+    <div class="row" ng-show="viewD" style="width: 90%; border: 3px solid #27ae60;">
+
+
+
+
+
+
+        <div class=" modal-header">
+            <div class="row">
+                <div class="row alert alert-success" role="alert" ng-show="positivefeedback === true">
+                    <span class="col-md-11">{{success}}</span><span class="col-md-1" style="font-size: 20px; text-align: left; cursor: pointer" title="close" ng-click="positivefeedback = false">x</span>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <h4 class="modal-title">Recertification Documents</h4>
+                </div>
+                <div class="col-md-4">
+                    <a ng-click="initializeApp()" style="float: right" class="btn btn-primary btn-lg"><< Back</a>
+                </div>
+              
+            </div>
+        </div>
+        <div class="modal-body">
+            <form id="fsProcessApps55">
+
+                <div class="row">
+                  
+                    <br />
+                    <div class="col-md-12">
+                        <table class="table table-striped">
+                            <tr>
+                                <th style="width: 20%">
+                                    Document Type
+                                </th>
+                                <th style="width: 20%">
+                                    Date Uploaded
+                                </th>
+                                <th style="width: 20%">
+                                    View
+                                </th>
+
+
+                            </tr>
+                            <tr data-ng-repeat="item in docs">
+                                <td style="width: 20%">{{item.DocumentTypeName}}</td>
+                                <td style="width: 20%">{{item.DateUploadedStr}}</td>
+                                <td style="width: 20%">
+                                    <a href="{{item.DocumentPath}}" target="_blank" id="mage"><span class="btn btn-primary btn-sm">View</span></a>
+                                </td>
+
+
+                            </tr>
+
+                        </table>
+
+
+
+                        <table class="table table-striped" ng-show="viewR">
+
+
+                            <tr>
+                                <td></td>
+
+
+
+                                <td><input type="button" value="Review" ng-click="processReview(application.Id)" style="float: right" class="btn btn-primary btn-lg" /></td>
+
+
+
+
+                            </tr>
+                        </table>
+
+
+                        <table class="table table-striped" ng-show="viewA">
+
+
+                            <tr>
+                                <td></td>
+
+
+
+                                <td><input type="button" value="Approve" ng-click="processReview(application.Id)" style="float: right" class="btn btn-primary btn-lg" /></td>
+
+
+
+
+                            </tr>
+                        </table>
+
+
+
+                    </div>
+                </div>
+
+
+
+
+
+                <div class="row modal-footer">
+                    <div class="col-md-6">
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

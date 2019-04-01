@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Favicons -->
+
+    <script src="Scripts/jquery-2.1.1.min.js"></script>
+    <script src="/Scripts/angular.min.js"></script>
+    <script data-main="main.js" src="/Scripts/require.js"></script>
+
+    <link href="/Content/bootstrap.css" rel="stylesheet" />
+    <link href="/Content/docs.min.css" rel="stylesheet" />
+    <link href="/Content/font-awesome.css" rel="stylesheet" />
+    <link href="/Content/site.css" rel="stylesheet" />
+    <link href="/Content/feedbackmessage.css" rel="stylesheet" />
+    <link href="/Content/formControls.css" rel="stylesheet" />
+</head>
+<body ng-controller="masterController">
+
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <ul class="nav navbar-nav">
+                <li style="margin-top: 3px; width: 187px; height: 48px;">
+                    <a href="/Account/Login">
+                        <p class="compname shadow" style="background-color: #fff; margin-left: -15px; margin-bottom: 3px;margin-top: 0px;">
+                            <img height="50" width="187" src="/Content/images/importlogo.png" />
+                        </p>
+                    </a>
+
+                </li>
+                <li>
+
+                </li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="/Account/Login">Login</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div ng-view class="container body-content" style="min-height: 100%;">
+    </div>
+
+    <hr style="margin:10px;padding:0px;">
+
+    <footer  class="footer">
+        <p style="margin-top: 0.9%">
+            <a ng-repeat="c in contents" style="color: #008000" href="{{c.Href}}" ng-cloak>{{c.Title}} <span style="color: #000; cursor: default">|</span></a>
+            <a style="color: #008000" href="ngc.html#Faq/Faq">FAQs <span style="color: #000; cursor: default">|</span></a> <a style="color: #008000" href="ngc.html#generalinfo/contact">Contact Us</a>
+        </p>
+
+    </footer>
+
+    <div class="angular-center-container" ng-show="busy === true">
+        <div class="angular-centered">
+            <img src="Images/busy.GIF" />
+        </div>
+    </div>
+</body>
+</html>
+
+<!--<div style="padding-top:20px; ">
+        <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)"><div ng-bind-html="MessageBox" style="display: none"></div></alert>
+    </div>-->
+
+
+
+  
+

@@ -1,0 +1,30 @@
+﻿
+
+<div class="row fsEdit" style="visibility: visible; width: 100%" ng-controller="portController">
+    <div class=" modal-header">
+        <div class="row">
+            <div class="col-md-12">
+                <h4 class="modal-title">{{port.Header}}</h4>
+            </div>
+        </div>
+    </div>
+    <div class="modal-body">
+        <form method="POST">
+            <div class="row">
+                <label class="control-label ">Name *</label>
+                <input type="text" data-ng-model="port.Name" class="form-control"/>
+            </div>
+            <div class="row">
+                <label class="control-label ">Country *</label>
+                <select ng-model="port.Country" ng-options="co as co.Name for co in countrys track by co.Id" data-inset="true" class=" form-control" required>
+                    <option value="">-- Select Country --</option>
+                </select>
+            </div>
+            <div class="row modal-footer">
+                <div>
+                    <input type="button" value="{{buttonText}}" ng-click="processPort()" class="btn btn-default" style="margin-top: 7px;" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,40 @@
+﻿
+
+<div class="row">
+    <div class="col-md-12">
+        <h4 class="page-head-line"> Fees </h4>
+    </div>
+</div>
+<div class="row" ng-controller="feeController" ng-init="initializeController()">
+    <div class="row">
+        <div class="col-md-3">
+            <input type="button" value="Print" ng-click="printForm('DataTables_Table_2')" class="btn btn-default" style="margin-top: 7px;" />
+        </div>
+    </div><br />
+    <div class="row" id="reqContainer">
+        <table style="width: 100%" ng-fee>
+            <thead>
+                <tr style="color: #000">
+                    <th style="width: 3%">
+                        S/N
+                    </th>
+                    <th style="width: 30%">
+                        Fee Type
+                    </th>
+                    <th style="width: 30%">
+                        Application Stage
+                    </th>
+                    <th style="width: 30%">
+                        Amount
+                    </th>
+                    <th style="width: 10%">
+                        Action
+                    </th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+
+        </table>
+    </div>
+
+</div>

@@ -1,0 +1,1971 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{267F1A20-8020-4EA0-80F5-8FF0C20F62CB}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ImportPermitPortal</RootNamespace>
+    <AssemblyName>ImportPermitPortal</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort>44305</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>disabled</IISExpressWindowsAuthentication>
+    <IISExpressUseClassicPipelineMode>false</IISExpressUseClassicPipelineMode>
+    <UseGlobalApplicationHostFile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Mandrill.net">
+      <HintPath>..\packages\Mandrill.net.1.0.1\lib\net45\Mandrill.net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.1.0\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.1.0\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.1.0\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Owin.3.0.0\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Owin.Security.3.0.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.2.1.0\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.2.1.0\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="MigraDoc.DocumentObjectModel">
+      <HintPath>..\packages\dll\MigraDoc.DocumentObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="MigraDoc.Rendering">
+      <HintPath>..\packages\dll\MigraDoc.Rendering.dll</HintPath>
+    </Reference>
+    <Reference Include="MigraDoc.RtfRendering">
+      <HintPath>..\packages\dll\MigraDoc.RtfRendering.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PagedList">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="PdfSharp, Version=1.32.3057.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\dll\PdfSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="PdfSharp.Charting, Version=1.32.3057.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\dll\PdfSharp.Charting.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp, Version=105.2.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.105.2.3\lib\net45\RestSharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SendGrid.SmtpApi">
+      <HintPath>..\packages\SendGrid.SmtpApi.1.2.1\lib\net40\SendGrid.SmtpApi.dll</HintPath>
+    </Reference>
+    <Reference Include="SendGridMail">
+      <HintPath>..\packages\Sendgrid.5.1.0\lib\SendGridMail.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.0.0\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.1\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.0.0\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.5.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.0.0\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.0.0\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.0.0\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.2.0.0\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Facebook">
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.2.0.0\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.2.0.0\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter">
+      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.2.0.0\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount">
+      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.2.0.0\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="BizObjects\DatabaseObject.cs" />
+    <Compile Include="BizObjects\EmployeeStepObject.cs" />
+    <Compile Include="BizObjects\Enum.cs" />
+    <Compile Include="BizObjects\Helper.cs" />
+    <Compile Include="BizObjects\LogicObject.cs" />
+    <Compile Include="BizObjects\Reporter.cs" />
+    <Compile Include="BizObjects\See.cs" />
+    <Compile Include="BizObjects\ViewObject.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\BankBranchBulkController.cs" />
+    <Compile Include="Controllers\BankUserBulkController.cs" />
+    <Compile Include="Controllers\ApplicationContentController.cs" />
+    <Compile Include="Controllers\FaqController.cs" />
+    <Compile Include="Controllers\IssueCategoryController.cs" />
+    <Compile Include="Controllers\IssueController.cs" />
+    <Compile Include="Controllers\FaqCategoryController.cs" />
+    <Compile Include="Controllers\PermitBulkToJsonController.cs" />
+    <Compile Include="Controllers\DepotLicenseBulkToJsonController.cs" />
+    <Compile Include="Controllers\DepotTrunkedOutController.cs" />
+    <Compile Include="Controllers\ImporterController.cs" />
+    <Compile Include="Controllers\Setups\ProductColourController.cs" />
+    <Compile Include="Controllers\VesselLicenseBulkController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controllers\MessageTemplateController.cs" />
+    <Compile Include="Controllers\PaymentSplitterController.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controllers\RecertificationController.cs" />
+    <Compile Include="Controllers\Setups\DepotController.cs" />
+    <Compile Include="Controllers\ThroughPutController.cs" />
+    <Compile Include="Controllers\TransactionController.cs" />
+    <Compile Include="Controllers\ApplicationIssueController.cs" />
+    <Compile Include="Controllers\CalculatorController.cs" />
+    <Compile Include="Controllers\Setups\DepotOwnerController.cs" />
+    <Compile Include="Controllers\StandardRequirementTypeController.cs" />
+    <Compile Include="Controllers\ImportClassController.cs" />
+    <Compile Include="Controllers\ApplicationController.cs" />
+    <Compile Include="Controllers\CompanyDocumentController.cs" />
+    <Compile Include="Controllers\DocumentController.cs" />
+    <Compile Include="Controllers\EmployeeProfileController.cs" />
+    <Compile Include="Controllers\GeneralInformationController.cs" />
+    <Compile Include="Controllers\ImportRequirementController.cs" />
+    <Compile Include="Controllers\ImportClassificationRequirementController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controllers\Setups\StorageTankController.cs" />
+    <Compile Include="Controllers\Setups\UnitOfMeasurementController.cs" />
+    <Compile Include="Controllers\StorageProviderTypeController.cs" />
+    <Compile Include="Controllers\Setups\IssueTypeController.cs" />
+    <Compile Include="Controllers\Setups\JettyController.cs" />
+    <Compile Include="Controllers\Setups\JettymappingController.cs" />
+    <Compile Include="Controllers\Setups\PortController.cs" />
+    <Compile Include="Controllers\VerifyPermitController.cs" />
+    <Compile Include="Controllers\FeeTypeController.cs" />
+    <Compile Include="Controllers\DocumentTypeController.cs" />
+    <Compile Include="Controllers\EmployeeHistoryController.cs" />
+    <Compile Include="Controllers\NotificationInspectionQueueController.cs" />
+    <Compile Include="Controllers\NotificationVesselController.cs" />
+    <Compile Include="Controllers\PermitController.cs" />
+    <Compile Include="Controllers\ProcessingHistoryController.cs" />
+    <Compile Include="Controllers\ProcessTrackingController.cs" />
+    <Compile Include="Controllers\FeeController.cs" />
+    <Compile Include="Controllers\Setups\NotificationCheckListController.cs" />
+    <Compile Include="Controllers\Setups\StepController.cs" />
+    <Compile Include="Controllers\VesselController.cs" />
+    <Compile Include="Controllers\NotificationController.cs" />
+    <Compile Include="Controllers\CustomCodeController.cs" />
+    <Compile Include="Controllers\GeneralSettingController.cs" />
+    <Compile Include="Controllers\ImportSettingController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\BankController.cs" />
+    <Compile Include="Controllers\Setups\ApplicationIssuesController.cs" />
+    <Compile Include="Controllers\Setups\CountryController.cs" />
+    <Compile Include="Controllers\Setups\EmployeeDeskController.cs" />
+    <Compile Include="Controllers\Setups\GroupController.cs" />
+    <Compile Include="Controllers\Setups\ProcessController.cs" />
+    <Compile Include="Controllers\Setups\RegionController.cs" />
+    <Compile Include="Controllers\Setups\StepActivityTypeController.cs" />
+    <Compile Include="Controllers\Setups\WorkFlowController.cs" />
+    <Compile Include="Controllers\ProductColumnController.cs" />
+    <Compile Include="Controllers\Setups\ZoneController.cs" />
+    <Compile Include="Controllers\StructureController.cs" />
+    <Compile Include="Controllers\AccountTypeController.cs" />
+    <Compile Include="Controllers\ProductDocumentRequirementController.cs" />
+    <Compile Include="Controllers\DocumentTypeRightController.cs" />
+    <Compile Include="Controllers\ApplicationStageController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="default.aspx.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="default.aspx.designer.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\Hasher.cs" />
+    <Compile Include="Helpers\JsonHelpers.cs" />
+    <Compile Include="Helpers\ClientIpHelper.cs" />
+    <Compile Include="Helpers\ServiceHelper.cs" />
+    <Compile Include="Helpers\ServiceRequest.cs" />
+    <Compile Include="Helpers\GenericObject.cs" />
+    <Compile Include="Helpers\EnumToObjList.cs" />
+    <Compile Include="Helpers\GenericHelpers.cs" />
+    <Compile Include="Helpers\JQueryDataTableParamModel.cs" />
+    <Compile Include="Helpers\SplitPaymentHelper.cs" />
+    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\CustomizedModel\CustomizedDocument.cs" />
+    <Compile Include="Models\CustomizedModel\CustomizedImportApplication.cs" />
+    <Compile Include="Models\CustomizedModel\DocumentViewModel.cs" />
+    <Compile Include="Models\CustomizedModel\ViewImportApplication.cs" />
+    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App\AdminApplications\Applications.html" />
+    <Content Include="App\AdminApplications\ApplicationsController.js" />
+    <Content Include="App\AdminNotifications\PaidNotifications.html" />
+    <Content Include="App\AdminNotifications\PaidNotificationsController.js" />
+    <Content Include="App\AppSignOff\ApplicationInVerification.html" />
+    <Content Include="App\AppSignOff\ApplicationInVerificationController.js" />
+    <Content Include="App\AdminApplications\PendingSubmission.html" />
+    <Content Include="App\AdminApplications\PendingSubmissionController.js" />
+    <Content Include="App\AdminNotifications\Notifications.html" />
+    <Content Include="App\AdminNotifications\NotificationsController.js" />
+    <Content Include="App\Application\EditApplication.html" />
+    <Content Include="App\Application\EditApplicationController.js" />
+    <Content Include="App\ApplicationDetail\EditProduct.html" />
+    <Content Include="App\AppUsers\ChangePassword.html" />
+    <Content Include="App\BnkAdmin\BranchesController.js" />
+    <Content Include="App\BnkAdmin\Branches.html" />
+    <Content Include="App\BnkAdmin\ProcessBulkBranch.html" />
+    <Content Include="App\BnkAppUsr\Notifications.html" />
+    <Content Include="App\BnkAppUsr\NotificationsController.js" />
+    <Content Include="App\FaqCategories\FaqCategories.html" />
+    <Content Include="App\FaqCategories\FaqCategoriesController.js" />
+    <Content Include="App\FaqCategories\ProcessFaqCategory.html" />
+    <Content Include="App\ApplicationContents\ApplicationContents.html" />
+    <Content Include="App\ApplicationContents\ApplicationContentsController.js" />
+    <Content Include="App\ApplicationContents\ProcessApplicationContent.html" />
+    <Content Include="App\Faq\Faq.html" />
+    <Content Include="App\Faq\FaqController.js" />
+    <Content Include="App\Faqs\Faqs.html" />
+    <Content Include="App\Faqs\FaqsController.js" />
+    <Content Include="App\Faqs\ProcessFaq.html" />
+    <Content Include="App\generalinfo\applicationprocess.html" />
+    <Content Include="App\generalinfo\disclaimer.html" />
+    <Content Include="App\generalinfo\applicationprocessController.js" />
+    <Content Include="App\generalinfo\contactController.js" />
+    <Content Include="App\generalinfo\privacypolicyController.js" />
+    <Content Include="App\generalinfo\externallinks.html" />
+    <Content Include="App\generalinfo\generalinformation.html" />
+    <Content Include="App\generalinfo\disclaimerController.js" />
+    <Content Include="App\generalinfo\generalinformationController.js" />
+    <Content Include="App\generalinfo\privacypolicy.html" />
+    <Content Include="App\Issues\Issues.html" />
+    <Content Include="App\Issues\IssuesController.js" />
+    <Content Include="App\Issues\ProcessIssue.html" />
+    <Content Include="App\IssueCategories\IssueCategories.html" />
+    <Content Include="App\IssueCategories\IssueCategoriesController.js" />
+    <Content Include="App\IssueCategories\ProcessIssueCategory.html" />
+    <Content Include="App\Notification\ChangeDepot.html" />
+    <Content Include="App\Notification\UnsuppliedDocsView.html" />
+    <Content Include="App\Services\FaqCategoryService.js" />
+    <Content Include="App\Services\applicationContentServices.js" />
+    <Content Include="App\Services\contentServices.js" />
+    <Content Include="App\Services\faqServices.js" />
+    <Content Include="App\Services\issueServices.js" />
+    <Content Include="App\Services\issueCategoryService.js" />
+    <Content Include="App\Users\BulkUploadFeedback.html" />
+    <Content Include="App\Users\ChangePassword.html" />
+    <Content Include="App\BnkAdmin\ProcessBranch.html" />
+    <Content Include="App\EmployeeDesk\ChangePassword.html" />
+    <Content Include="App\Admin\Receipt.html" />
+    <Content Include="App\Admin\ReceiptController.js" />
+    <Content Include="App\Admin\Receipts.html" />
+    <Content Include="App\Admin\ReceiptsController.js" />
+    <Content Include="App\Reports\SystemStatistics.html" />
+    <Content Include="App\Reports\SystemStatisticsController.js" />
+    <Content Include="App\AdminApplications\RejectedApplications.html" />
+    <Content Include="App\AdminApplications\ApprovedApplications.html" />
+    <Content Include="App\AdminApplications\RejectedApplicationsController.js" />
+    <Content Include="App\AdminApplications\ApprovedApplicationsController.js" />
+    <Content Include="App\AdminApplications\ProcessingApplications.html" />
+    <Content Include="App\AdminApplications\PaidApplications.html" />
+    <Content Include="App\AdminApplications\ProcessingApplicationsController.js" />
+    <Content Include="App\AdminApplications\PaidApplicationsController.js" />
+    <Content Include="App\AdminNotifications\ApprovedNotifications.html" />
+    <Content Include="App\AdminNotifications\ApprovedNotificationsController.js" />
+    <Content Include="App\AdminNotifications\ProcessingNotifications.html" />
+    <Content Include="App\AdminNotifications\RejectedNotifications.html" />
+    <Content Include="App\AdminNotifications\ProcessingNotificationsController.js" />
+    <Content Include="App\AdminNotifications\RejectedNotificationsController.js" />
+    <Content Include="App\AdminNotifications\SubmittedNotifications.html" />
+    <Content Include="App\AdminNotifications\SubmittedNotificationsController.js" />
+    <Content Include="App\Admin\AppSupport.html" />
+    <Content Include="App\Admin\AppSupportController.js" />
+    <Content Include="App\Admin\TransactionDetails.html" />
+    <Content Include="App\ChangePassword\ChangePasswordController.js" />
+    <Content Include="App\ChangePassword\ChangePassword.html" />
+    <Content Include="App\AdminRecertifications\AdminRecertifications.html" />
+    <Content Include="App\AdminRecertifications\AdminRecertificationsController.js" />
+    <Content Include="App\AppUsers\AppUsers.html" />
+    <Content Include="App\AppUsers\AppUsersController.js" />
+    <Content Include="App\AppUsers\ProcessAppUser.html" />
+    <Content Include="App\Admin\Invoice.html" />
+    <Content Include="App\Admin\InvoiceController.js" />
+    <Content Include="App\Admin\Invoices.html" />
+    <Content Include="App\Admin\InvoicesController.js" />
+    <Content Include="App\Transactions\TransactionsController.js" />
+    <Content Include="App\Transactions\Transactions.html" />
+    <Content Include="App\Importers\ImporterRecertifications.html" />
+    <Content Include="App\Importers\ImporterRecertificationsController.js" />
+    <Content Include="App\Importers\ImporterPermits.html" />
+    <Content Include="App\Importers\ImporterPermitsController.js" />
+    <Content Include="App\Importers\ImporterNotifications.html" />
+    <Content Include="App\Importers\ImporterNotificationsController.js" />
+    <Content Include="App\Importers\Importer.html" />
+    <Content Include="App\Importers\ImporterController.js" />
+    <Content Include="App\Importers\ImporterApplications.html" />
+    <Content Include="App\Importers\Importers.html" />
+    <Content Include="App\Importers\ImporterApplicationsController.js" />
+    <Content Include="App\Importers\ImportersController.js" />
+    <Content Include="App\ApplicationIssue\ApplicationIssue.html" />
+    <Content Include="App\ApplicationIssue\ApplicationIssueController.js" />
+    <Content Include="App\Dashboard\MyMessagesController.js" />
+    <Content Include="App\Dashboard\MyMessages.html" />
+    <Content Include="App\Dashboard\ViewMessageDetail.html" />
+    <Content Include="App\Dashboard\ViewMessage.html" />
+    <Content Include="App\FeeStructure\FeeStructureController.js" />
+    <Content Include="App\FeeStructure\FeeStructure.html" />
+    <Content Include="App\Importers\ProcessApplicantPermit.html" />
+    <Content Include="App\Services\AdminRecertificationService.js" />
+    <Content Include="App\Services\appUserServices.js" />
+    <Content Include="App\Services\importerService.js" />
+    <Content Include="App\Services\importerAppService.js" />
+    <Content Include="App\Services\vesselServices.js" />
+    <Content Include="App\UserNotifications\AdminNotifications.html" />
+    <Content Include="App\UserNotifications\AdminNotificationsController.js" />
+    <Content Include="App\Users\ProcessBulkUserBranch.html" />
+    <Content Include="App\Vessels\Vessels.html" />
+    <Content Include="App\Vessels\VesselsController.js" />
+    <Content Include="App\Vessels\ProcessVessel.html" />
+    <Content Include="App\DepotOwner\ThroughputHistoryController.js" />
+    <Content Include="App\DepotOwner\ThroughputHistory.html" />
+    <Content Include="App\DepotOwner\ProcessDocument.html" />
+    <Content Include="App\DepotOwner\ProcessDocumentController.js" />
+    <Content Include="App\DepotOwner\DepotOwner.html" />
+    <Content Include="App\DepotOwner\DepotOwnerController.js" />
+    <Content Include="App\Depot\Depot.html" />
+    <Content Include="App\Depot\DepotController.js" />
+    <Content Include="App\Depot\ProcessDepot.html" />
+    <Content Include="App\Calculator\Calculator.html" />
+    <Content Include="App\Calculator\CalculatorController.js" />
+    <Content Include="App\EmployeeNotificationHistory\EmployeeNotificationHistory.html" />
+    <Content Include="App\EmployeeNotificationHistory\EmployeeNotificationHistoryController.js" />
+    <Content Include="App\EmployeeNotificationTrack\ProcessRejection.html" />
+    <Content Include="App\EmployeeProfile\ProcessReview.html" />
+    <Content Include="App\EmployeeRecertificationHistory\EmployeeRecertificationHistory.html" />
+    <Content Include="App\EmployeeRecertificationHistory\EmployeeRecertificationHistoryController.js" />
+    <Content Include="App\EmployeeRecertification\EmployeeRecertification.html" />
+    <Content Include="App\EmployeeRecertification\EmployeeRecertificationController.js" />
+    <Content Include="App\EmployeeRecertification\ProcessRejection.html" />
+    <Content Include="App\EmployeeRecertification\ProcessReview.html" />
+    <Content Include="App\Employee\Employee.html" />
+    <Content Include="App\Employee\EmployeeController.js" />
+    <Content Include="App\CompanyAddress\CompanyAddressController.js" />
+    <Content Include="App\CompanyAddress\CompanyAddress.html" />
+    <Content Include="App\MessageTemplates\MessageTemplates.html" />
+    <Content Include="App\MessageTemplates\MessageTemplatesController.js" />
+    <Content Include="App\MessageTemplates\ProcessMessageTemplate.html" />
+    <Content Include="App\Invoices\Invoices.html" />
+    <Content Include="App\Invoices\InvoicesController.js" />
+    <Content Include="App\Invoices\Invoice.html" />
+    <Content Include="App\Invoices\InvoiceController.js" />
+    <Content Include="App\Receipts\Receipt.html" />
+    <Content Include="App\Receipts\ReceiptController.js" />
+    <Content Include="App\Receipts\Receipts.html" />
+    <Content Include="App\Receipts\ReceiptsController.js" />
+    <Content Include="App\Recertify\ProcessRecertify.html" />
+    <Content Include="App\Recertify\Recertify.html" />
+    <Content Include="App\Recertify\RecertifyController.js" />
+    <Content Include="App\Services\DepotOwnerService.js" />
+    <Content Include="App\Services\depotOwnerServices.js" />
+    <Content Include="App\Services\documentTypeServices - Copy.js" />
+    <Content Include="App\Services\EmployeeNotificationHistoryService.js" />
+    <Content Include="App\Services\EmployeeRecertificationHistoryService.js" />
+    <Content Include="App\Services\EmployeeRecertificationService.js" />
+    <Content Include="App\Services\EmployeeService.js" />
+    <Content Include="App\Services\feeServices.js" />
+    <Content Include="App\Services\receiptServices.js" />
+    <Content Include="App\Services\invoiceServices.js" />
+    <Content Include="App\Services\RecertificationService.js" />
+    <Content Include="App\StandardRequirementType\StandardRequirementType.html" />
+    <Content Include="App\StandardRequirementType\StandardRequirementTypeController.js" />
+    <Content Include="App\StandardRequirementType\ProcessStandardRequirementType.html" />
+    <Content Include="App\ImportClasses\ImportClasses.html" />
+    <Content Include="App\ImportClasses\ImportClassesController.js" />
+    <Content Include="App\ImportClasses\ProcessImportClass.html" />
+    <Content Include="App\AdminApplications\SubmittedApplications.html" />
+    <Content Include="App\AdminApplications\SubmittedApplicationsController.js" />
+    <Content Include="App\AdminApplications\AppIssues.html" />
+    <Content Include="App\AdminApplications\PrecessingHistory.html" />
+    <Content Include="App\ImportRequirements\ImportRequirements.html" />
+    <Content Include="App\ImportRequirements\ImportRequirementsController.js" />
+    <Content Include="App\ImportRequirements\ProcessImportRequirementReq.html" />
+    <Content Include="App\ImportClassificationRequirements\ProcessImportClassificationReq.html" />
+    <Content Include="App\ImportClassificationRequirements\ImportClassificationRequirements.html" />
+    <Content Include="App\ImportClassificationRequirements\ImportClassificationRequirementsController.js" />
+    <Content Include="App\ApplicantPermit\ApplicantPermit.html" />
+    <Content Include="App\ApplicantPermit\ApplicantPermitController.js" />
+    <Content Include="App\ApplicantPermit\ProcessApplicantPermit.html" />
+    <Content Include="App\ProcessHistory\ProcessHistory.html" />
+    <Content Include="App\ProcessHistory\ProcessHistoryController.js" />
+    <Content Include="App\Services\ApplicationIssueService.js" />
+    <Content Include="App\Services\depotServices.js" />
+    <Content Include="App\Services\importReqServices.js" />
+    <Content Include="App\Services\importClassServices.js" />
+    <Content Include="App\Services\generalInformationServices.js" />
+    <Content Include="App\Services\importClassificationReqServices.js" />
+    <Content Include="App\Services\ProcessHistoryService.js" />
+    <Content Include="App\Services\UnitOfMeasurementService.js" />
+    <Content Include="App\StandardRequirements\StandardRequirements.html" />
+    <Content Include="App\StandardRequirements\StandardRequirementsController.js" />
+    <Content Include="App\StandardRequirements\ProcessStandardRequirement.html" />
+    <Content Include="App\EmployeeNotificationTrack\ProcessReportCheckList.html" />
+    <Content Include="App\EmployeeNotificationTrack\ProcessReview.html" />
+    <Content Include="App\GeneralInformation\GeneralInformation.html" />
+    <Content Include="App\GeneralInformation\GeneralInformationController.js" />
+    <Content Include="App\GeneralInformation\Documents.html" />
+    <Content Include="App\GeneralInformation\DocumentsController.js" />
+    <Content Include="App\ApplicationDetail\ApplicationDetail.html" />
+    <Content Include="App\ApplicationDetail\ApplicationDetailController.js" />
+    <Content Include="App\ApplicationDetail\BankerDetail.html" />
+    <Content Include="App\ApplicationDetail\BankerDetailController.js" />
+    <Content Include="App\ApplicationDetail\ConfirmSubmit.html" />
+    <Content Include="App\ApplicationDetail\UserDocuments.html" />
+    <Content Include="App\ApplicationDetail\UserDocumentsController.js" />
+    <Content Include="App\Application\AddProduct.html" />
+    <Content Include="App\Application\Application.html" />
+    <Content Include="App\Application\ApplicationController.js" />
+    <Content Include="App\Application\ApplicationPaymentSummary.html" />
+    <Content Include="App\Application\ApplicationPaymentSummaryController.js" />
+    <Content Include="App\Application\MyApplications.html" />
+    <Content Include="App\Application\MyApplicationsController.js" />
+    <Content Include="App\Application\MyDocuments.html" />
+    <Content Include="App\Application\MyDocumentsController.js" />
+    <Content Include="App\BnkAdmin\BnkAdmin.html" />
+    <Content Include="App\BnkAdmin\BnkAdminController.js" />
+    <Content Include="App\BnkAdmin\bnkAdminNotificationDetails.html" />
+    <Content Include="App\BnkAdmin\bnkAdminNotificationDetailsController.js" />
+    <Content Include="App\BnkAdmin\BnkAdminNotificationHistory.html" />
+    <Content Include="App\BnkAdmin\BnkAdminNotificationHistoryController.js" />
+    <Content Include="App\BnkAdmin\BnkAdminNotifications.html" />
+    <Content Include="App\BnkAdmin\BnkAdminNotificationsController.js" />
+    <Content Include="App\BnkAppUsr\BnkAppUsr.html" />
+    <Content Include="App\BnkAppUsr\BnkAppUsrController.js" />
+    <Content Include="App\BnkAppUsr\bnkNotificationDetails.html" />
+    <Content Include="App\BnkAppUsr\bnkNotificationDetailsController.js" />
+    <Content Include="App\BnkAppUsr\NotificationHistory.html" />
+    <Content Include="App\BnkAppUsr\NotificationHistoryController.js" />
+    <Content Include="App\BnkAppUsr\ProcessFormM.html" />
+    <Content Include="App\BnkAppUsr\UploadNotificationDocs.html" />
+    <Content Include="App\BnkAppUsr\UploadNotificationDocsController.js" />
+    <Content Include="App\BnkAppUsr\UsrJobHistory.html" />
+    <Content Include="App\BnkAppUsr\UsrJobHistoryController.js" />
+    <Content Include="App\Country\Country.html" />
+    <Content Include="App\Country\CountryController.js" />
+    <Content Include="App\Country\ProcessCountry.html" />
+    <Content Include="App\DirectEmployee\DirectEmployee.html" />
+    <Content Include="App\DirectEmployee\DirectEmployeeController.js" />
+    <Content Include="App\FeeType\FeeType.html" />
+    <Content Include="App\FeeType\FeeTypeController.js" />
+    <Content Include="App\FeeType\ProcessFeeType.html" />
+    <Content Include="App\DocumentType\DocumentType.html" />
+    <Content Include="App\DocumentType\DocumentTypeController.js" />
+    <Content Include="App\DocumentType\ProcessDocumentType.html" />
+    <Content Include="App\AppDocs\AppDocs.html" />
+    <Content Include="App\AppDocs\AppDocsController.js" />
+    <Content Include="App\AccountType\AccountType.html" />
+    <Content Include="App\AccountType\AccountTypeController.js" />
+    <Content Include="App\AccountType\ProcessAccountType.html" />
+    <Content Include="App\AdminNotifications\PendingSubmission.html" />
+    <Content Include="App\AdminNotifications\PendingSubmissionController.js" />
+    <Content Include="App\EmployeeDesk\EmployeeDesk.html" />
+    <Content Include="App\EmployeeDesk\EmployeeDeskController.js" />
+    <Content Include="App\EmployeeDesk\ProcessEmployeeDesk.html" />
+    <Content Include="App\EmployeeHistory\EmployeeHistory.html" />
+    <Content Include="App\EmployeeHistory\EmployeeHistoryController.js" />
+    <Content Include="App\EmployeeNotificationTrack\EmployeeNotificationTrack.html" />
+    <Content Include="App\EmployeeNotificationTrack\EmployeeNotificationTrackController.js" />
+    <Content Include="App\EmployeeNotificationTrack\ProcessReport.html" />
+    <Content Include="App\EmployeeProfile\EmployeeProfile.html" />
+    <Content Include="App\EmployeeProfile\EmployeeProfileController.js" />
+    <Content Include="App\EmployeeProfile\ProcessRejection.html" />
+    <Content Include="App\Group\Group.html" />
+    <Content Include="App\Group\GroupController.js" />
+    <Content Include="App\Group\ProcessGroup.html" />
+    <Content Include="App\IssueType\IssueType.html" />
+    <Content Include="App\IssueType\IssueTypeController.js" />
+    <Content Include="App\IssueType\ProcessIssueType.html" />
+    <Content Include="App\JettyMapping\JettyMapping.html" />
+    <Content Include="App\JettyMapping\JettymappingController.js" />
+    <Content Include="App\JettyMapping\ProcessJettyMapping.html" />
+    <Content Include="App\Jetty\Jetty.html" />
+    <Content Include="App\Jetty\JettyController.js" />
+    <Content Include="App\Jetty\ProcessJetty.html" />
+    <Content Include="App\NotificationCheckList\NotificationCheckList.html" />
+    <Content Include="App\NotificationCheckList\NotificationCheckListController.js" />
+    <Content Include="App\NotificationCheckList\ProcessNotificationCheckList.html" />
+    <Content Include="App\NotificationDischargeData\NotificationDischargeData.html" />
+    <Content Include="App\NotificationDischargeData\NotificationDischargeDataController.js" />
+    <Content Include="App\NotificationDischargeData\ProcessNotificationDischargeData.html" />
+    <Content Include="App\Notification\NotificationDetailsController.js" />
+    <Content Include="App\Notification\NotificationDetails.html" />
+    <Content Include="App\Notification\ContinueNotificationController.js" />
+    <Content Include="App\Notification\ContinueNotification.html" />
+    <Content Include="App\Notification\Notification.html" />
+    <Content Include="App\Notification\NotificationController.js" />
+    <Content Include="App\Notification\EditNotification.html" />
+    <Content Include="App\Notification\EditNotificationController.js" />
+    <Content Include="App\Notification\MyNotifications.html" />
+    <Content Include="App\Notification\MyNotificationsController.js" />
+    <Content Include="App\AppStage\AppStageController.js" />
+    <Content Include="App\AppStage\AppStage.html" />
+    <Content Include="App\Banks\ProcessBankUsers.html" />
+    <Content Include="App\ApplicationSetting\ApplicationSetting.html" />
+    <Content Include="App\ApplicationSetting\ApplicationSettingController.js" />
+    <Content Include="App\DocumentTypeRight\DocumentTypeRight.html" />
+    <Content Include="App\DocumentTypeRight\DocumentTypeRightController.js" />
+    <Content Include="App\DocumentReq\DocumentReq.html" />
+    <Content Include="App\AppStage\ProcessAppStage.html" />
+    <Content Include="App\DocumentReq\ProcessDocReq.html" />
+    <Content Include="App\GeneralSettings\GeneralSettings.html" />
+    <Content Include="App\GeneralSettings\GeneralSettingsController.js" />
+    <Content Include="App\Banks\ProcessBank.html" />
+    <Content Include="App\Banks\Banks.html" />
+    <Content Include="App\Banks\BanksController.js" />
+    <Content Include="App\CustomCode\CustomCode.html" />
+    <Content Include="App\CustomCode\CustomCodeController.js" />
+    <Content Include="App\CustomCode\ProcessCustomCode.html" />
+    <Content Include="App\JobHistory\JobHistory.html" />
+    <Content Include="App\JobHistory\JobHistoryController.js" />
+    <Content Include="App\Dashboard\Dashboard.html" />
+    <Content Include="App\Permit\Permit.html" />
+    <Content Include="App\Permit\PermitController.js" />
+    <Content Include="App\Permit\ProcessPermit.html" />
+    <Content Include="App\Port\Port.html" />
+    <Content Include="App\Port\PortController.js" />
+    <Content Include="App\Port\ProcessPort.html" />
+    <Content Include="App\Process\Process.html" />
+    <Content Include="App\Process\ProcessController.js" />
+    <Content Include="App\Process\ProcessProcess.html" />
+    <Content Include="App\ProductColumn\ProcessProductColumn.html" />
+    <Content Include="App\ProductColumn\ProductColumn.html" />
+    <Content Include="App\ProductColumn\ProductColumnController.js" />
+    <Content Include="App\Fee\ProcessFee.html" />
+    <Content Include="App\Fee\Fee.html" />
+    <Content Include="App\Fee\FeeController.js" />
+    <Content Include="App\Services\storageProviderTypeServices.js" />
+    <Content Include="App\StorageProviderRequirements\ProcessStorageProviderReq.html" />
+    <Content Include="App\StorageProviderRequirements\StorageProviderRequirements.html" />
+    <Content Include="App\StorageProviderRequirements\StorageProviderRequirementsController.js" />
+    <Content Include="App\Products\ProcessProduct.html" />
+    <Content Include="App\DocumentTypeRight\ProcessDocTypeRight.html" />
+    <Content Include="App\ProductReq\ProcessProdReq.html" />
+    <Content Include="App\DocumentReq\DocumentReqController.js" />
+    <Content Include="App\ProductReq\ProductReqController.js" />
+    <Content Include="App\ProductReq\ProductReq.html" />
+    <Content Include="App\Region\ProcessRegion.html" />
+    <Content Include="App\Region\Region.html" />
+    <Content Include="App\Region\RegionController.js" />
+    <Content Include="App\Services\ajaxServices.js" />
+    <Content Include="App\Services\applicationServices.js" />
+    <Content Include="App\Services\BnkAdminServices.js" />
+    <Content Include="App\Services\bnkUsrServices.js" />
+    <Content Include="App\Services\IssueTypeService.js" />
+    <Content Include="App\Services\CalculatorService.js" />
+    <Content Include="App\Services\EmployeeActivateAccountService.js" />
+    <Content Include="App\Services\EmployeeNotificationTrackService.js" />
+    <Content Include="App\Services\feeTypeServices.js" />
+    <Content Include="App\Services\standardReqTypeServices.js" />
+    <Content Include="App\Services\AdminApplicationServices.js" />
+    <Content Include="App\Services\accountTypeServices.js" />
+    <Content Include="App\Services\CountryService.js" />
+    <Content Include="App\Services\EmployeeDeskService.js" />
+    <Content Include="App\Services\EmployeeHistoryService.js" />
+    <Content Include="App\Services\EmployeeProfileService.js" />
+    <Content Include="App\Services\GroupService.js" />
+    <Content Include="App\Services\JettyMappingService.js" />
+    <Content Include="App\Services\JettyService.js" />
+    <Content Include="App\Services\NotificationCheckListService.js" />
+    <Content Include="App\Services\notificationServices.js" />
+    <Content Include="App\Services\appSettingServices.js" />
+    <Content Include="App\Services\NotificationTypeService.js" />
+    <Content Include="App\Services\PermitService.js" />
+    <Content Include="App\Services\PortService.js" />
+    <Content Include="App\Services\processService.js" />
+    <Content Include="App\Services\productColumnServices.js" />
+    <Content Include="App\Services\ImportEligibilityServices.js" />
+    <Content Include="App\Services\bnkNotificationServices.js" />
+    <Content Include="App\Services\messageTemplateService.js" />
+    <Content Include="App\Services\RegionService.js" />
+    <Content Include="App\Services\StepActivityTypeService.js" />
+    <Content Include="App\Services\StepService.js" />
+    <Content Include="App\Services\StorageTankService.js" />
+    <Content Include="App\Services\userNotificationServices.js" />
+    <Content Include="App\Services\VerifyPermitService.js" />
+    <Content Include="App\Services\workFlowService.js" />
+    <Content Include="App\Services\ZoneService.js" />
+    <Content Include="App\StandardReq\StandardReq.html" />
+    <Content Include="App\ImportEligibility\ImportEligibility.html" />
+    <Content Include="App\StandardReq\StandardReqController.js" />
+    <Content Include="App\StandardReq\ProcessStandardReq.html" />
+    <Content Include="App\ImportEligibility\ProcessImportEligibility.html" />
+    <Content Include="App\ImportEligibility\ImportEligibilityController.js" />
+    <Content Include="App\Products\ProductsController.js" />
+    <Content Include="App\Products\Products.html" />
+    <Content Include="App\Services\applicationStageService.js" />
+    <Content Include="App\Services\bankServices.js" />
+    <Content Include="App\Services\documentRequirementService.js" />
+    <Content Include="App\Services\documentServices.js" />
+    <Content Include="App\Services\documentTypeRightServices.js" />
+    <Content Include="App\Services\companyDocumentServices.js" />
+    <Content Include="App\Services\CustomCodeServices.js" />
+    <Content Include="App\Services\productRequirementServices.js" />
+    <Content Include="App\Services\productServices.js" />
+    <Content Include="App\Services\userAppServices.js" />
+    <Content Include="App\Services\userDocumentServices.js" />
+    <Content Include="App\StepActivityType\ProcessStepActivityType.html" />
+    <Content Include="App\StepActivityType\StepActivityType.html" />
+    <Content Include="App\StepActivityType\StepActivityTypeController.js" />
+    <Content Include="App\Step\ProcessStep.html" />
+    <Content Include="App\Step\Step.html" />
+    <Content Include="App\Step\StepController.js" />
+    <Content Include="App\StorageTank\ProcessStorageTank.html" />
+    <Content Include="App\StorageTank\StorageTank.html" />
+    <Content Include="App\StorageTank\StorageTankController.js" />
+    <Content Include="App\UnitOfMeasurement\ProcessUnitOfMeasurement.html" />
+    <Content Include="App\UnitOfMeasurement\UnitOfMeasurement.html" />
+    <Content Include="App\UnitOfMeasurement\UnitOfMeasurementController.js" />
+    <Content Include="App\Users\ProcessUsers.html" />
+    <Content Include="App\Users\Users.html" />
+    <Content Include="App\Users\UsersController.js" />
+    <Content Include="App\UsrAppDocs\UsrAppDocs.html" />
+    <Content Include="App\UsrAppDocs\UsrAppDocsController.js" />
+    <Content Include="App\UsrJobHistory\UsrJobHistory.html" />
+    <Content Include="App\UsrJobHistory\UsrJobHistoryController.js" />
+    <Content Include="App\VerifyPermit\VerifyPermit.html" />
+    <Content Include="App\VerifyPermit\VerifyPermitController.js" />
+    <Content Include="App\WorkFlow\ProcessWorkFlow.html" />
+    <Content Include="App\WorkFlow\WorkFlow.html" />
+    <Content Include="App\WorkFlow\WorkFlowController.js" />
+    <Content Include="App\WorkFlow\WorkFlowService.js" />
+    <Content Include="App\Zone\ProcessZone.html" />
+    <Content Include="App\Zone\Zone.html" />
+    <Content Include="App\Zone\ZoneController.js" />
+    <Content Include="App_Data\ErrorLog.txt" />
+    <Content Include="Content\component.css" />
+    <Content Include="Content\css.css" />
+    <Content Include="Content\demo.css" />
+    <Content Include="Content\demoadpacks.css" />
+    <Content Include="Content\docs.min.css" />
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\icons.css" />
+    <Content Include="Content\icons\icons.dev.svg" />
+    <Content Include="Content\icons\icons.svg" />
+    <Content Include="Content\mSite.css" />
+    <Content Include="Content\normalize.css" />
+    <Content Include="Content\select.css" />
+    <Content Include="Content\select2.css" />
+    <Content Include="default.aspx" />
+    <Content Include="default.html" />
+    <Content Include="depot_Owner.html" />
+    <Content Include="Content\bootstrap-datepicker.css" />
+    <Content Include="Content\bootstrap-datepicker3.css" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\custom.css" />
+    <Content Include="Content\feedbackmessage.css" />
+    <Content Include="Content\formControls.css" />
+    <Content Include="Content\images\add2.png" />
+    <Content Include="Content\images\ajax-loader.gif" />
+    <Content Include="Content\images\cancel.png" />
+    <Content Include="Content\images\check.png" />
+    <Content Include="Content\images\check_opt%281%29.png" />
+    <Content Include="Content\images\coatofArms.png" />
+    <Content Include="Content\images\dpr_bg_login.png" />
+    <Content Include="Content\images\dpr_connect.png" />
+    <Content Include="Content\images\importlogo.png" />
+    <Content Include="Content\images\next.png" />
+    <Content Include="Content\images\noImage.png" />
+    <Content Include="Content\images\refresh_opt%282%29.png" />
+    <Content Include="Content\images\Untitled-72.png" />
+    <Content Include="Content\isteven-multi-select.css" />
+    <Content Include="Content\jquery.dataTables.css" />
+    <Content Include="Content\MainStyle.css" />
+    <Content Include="Content\modal.css" />
+    <Content Include="Content\ngDialog-theme-default.css" />
+    <Content Include="Content\ngDialog-theme-flat.css" />
+    <Content Include="Content\ngDialog.css" />
+    <Content Include="Content\PagedList.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Images\382%281%29.GIF" />
+    <Content Include="Images\382%285%29.GIF" />
+    <Content Include="Images\access.gif" />
+    <Content Include="Images\addNew.png" />
+    <Content Include="Images\addUser.png" />
+    <Content Include="Images\adminUser.png" />
+    <Content Include="Images\anonymous_avatar.png" />
+    <Content Include="Images\busy.GIF" />
+    <Content Include="Images\changePassword.jpg" />
+    <Content Include="Images\coat-of-arm.jpg" />
+    <Content Include="Images\continue.png" />
+    <Content Include="Images\creditCards.jpg" />
+    <Content Include="Images\dashboard.PNG" />
+    <Content Include="Images\delete.png" />
+    <Content Include="Images\details.png" />
+    <Content Include="Images\downloadExcel.png" />
+    <Content Include="Images\dpr_ppips_payment_options.png" />
+    <Content Include="Images\dpr_ppips_payment_options2.png" />
+    <Content Include="Images\echo.jpg" />
+    <Content Include="Images\editUser.png" />
+    <Content Include="Images\edit.png" />
+    <Content Include="Images\error.png" />
+    <Content Include="Images\fidelity.gif" />
+    <Content Include="Images\firstbank.gif" />
+    <Content Include="Images\Generic%281%29.png" />
+    <Content Include="Images\Generic.png" />
+    <Content Include="Images\HB.png" />
+    <Content Include="Images\info.png" />
+    <Content Include="Images\interface\arrow_left.png" />
+    <Content Include="Images\interface\arrow_right.png" />
+    <Content Include="Images\interface\breadcrumb_home.png" />
+    <Content Include="Images\interface\datepicker_trigger.png" />
+    <Content Include="Images\interface\filter.png" />
+    <Content Include="Images\interface\lightbox_overlay.png" />
+    <Content Include="Images\interface\loader.gif" />
+    <Content Include="Images\interface\minus.png" />
+    <Content Include="Images\interface\nav_arrow_left.png" />
+    <Content Include="Images\interface\nav_arrow_right.png" />
+    <Content Include="Images\interface\plupload_done.png" />
+    <Content Include="Images\interface\plupload_error.png" />
+    <Content Include="Images\interface\plupload_remove.png" />
+    <Content Include="Images\interface\plupload_title.png" />
+    <Content Include="Images\interface\plus.png" />
+    <Content Include="Images\interface\slider_handle.png" />
+    <Content Include="Images\interface\tables\filter.png" />
+    <Content Include="Images\interface\tables\sort_asc.png" />
+    <Content Include="Images\interface\tables\sort_asc_disabled.png" />
+    <Content Include="Images\interface\tables\sort_both.png" />
+    <Content Include="Images\interface\tables\sort_desc.png" />
+    <Content Include="Images\interface\tables\sort_desc_disabled.png" />
+    <Content Include="Images\interface\typing.gif" />
+    <Content Include="Images\interface\user_arrow_default.png" />
+    <Content Include="Images\interface\user_arrow_hover.png" />
+    <Content Include="Images\interface\user_menu_arrow.png" />
+    <Content Include="Images\interface\vertical_arrows.png" />
+    <Content Include="Images\interface\zoom.png" />
+    <Content Include="Images\load.GIF" />
+    <Content Include="Images\lock.jpg" />
+    <Content Include="Images\min-loader.gif" />
+    <Content Include="Images\newBankImages.jpg" />
+    <Content Include="Images\ok-16.jpg" />
+    <Content Include="Images\ok-24.jpg" />
+    <Content Include="Images\pay.png" />
+    <Content Include="Images\printer.jpg" />
+    <Content Include="Images\remove.png" />
+    <Content Include="Images\save.png" />
+    <Content Include="Images\search.png" />
+    <Content Include="Images\seewhy.png" />
+    <Content Include="Images\sterling.jpg" />
+    <Content Include="Images\success.png" />
+    <Content Include="Images\uba.gif" />
+    <Content Include="Images\union.jpg" />
+    <Content Include="Images\updatedocs.png" />
+    <Content Include="Images\view.png" />
+    <Content Include="Images\zenith.png" />
+    <Content Include="loginFolder\bootstrap.css" />
+    <Content Include="loginFolder\img\access.gif" />
+    <Content Include="loginFolder\img\Captcha.png" />
+    <Content Include="loginFolder\img\coat-of-arm.jpg" />
+    <Content Include="loginFolder\img\diamond.gif" />
+    <Content Include="loginFolder\img\Echo.jpg" />
+    <Content Include="loginFolder\img\fidelity.gif" />
+    <Content Include="loginFolder\img\firstbank.gif" />
+    <Content Include="loginFolder\img\gtbank.jpg" />
+    <Content Include="loginFolder\img\HB.png" />
+    <Content Include="loginFolder\img\hse.jpg" />
+    <Content Include="loginFolder\img\icon-lg1.png" />
+    <Content Include="loginFolder\img\icon-lg2.png" />
+    <Content Include="loginFolder\img\icon-lg3.png" />
+    <Content Include="loginFolder\img\index-bg.png" />
+    <Content Include="loginFolder\img\index-bg2.png" />
+    <Content Include="loginFolder\img\index_1.png" />
+    <Content Include="loginFolder\img\index_2.png" />
+    <Content Include="loginFolder\img\index_3.png" />
+    <Content Include="loginFolder\img\interswitch.jpg" />
+    <Content Include="loginFolder\img\Interswitch_Verve_Mastercard.gif" />
+    <Content Include="loginFolder\img\loading.gif" />
+    <Content Include="loginFolder\img\logo.png" />
+    <Content Include="loginFolder\img\mainlogo.png" />
+    <Content Include="loginFolder\img\mastercard.jpg" />
+    <Content Include="loginFolder\img\pdf-icon.png" />
+    <Content Include="loginFolder\img\sort_asc.png" />
+    <Content Include="loginFolder\img\sort_both.png" />
+    <Content Include="loginFolder\img\sort_desc.png" />
+    <Content Include="loginFolder\img\sterling.jpg" />
+    <Content Include="loginFolder\img\title-bg.png" />
+    <Content Include="loginFolder\img\touse2.jpg" />
+    <Content Include="loginFolder\img\uba.gif" />
+    <Content Include="loginFolder\img\uba.jpg" />
+    <Content Include="loginFolder\img\union.jpg" />
+    <Content Include="loginFolder\img\zenith.jpg" />
+    <Content Include="loginFolder\img\zenith.png" />
+    <Content Include="loginFolder\jquery.min.js" />
+    <Content Include="loginFolder\main.css" />
+    <Content Include="main.js" />
+    <Content Include="App\Dashboard\DashboardController.js" />
+    <Content Include="ngc.html" />
+    <Content Include="nga.html" />
+    <Content Include="ngappr.html" />
+    <Content Include="ngi.html" />
+    <Content Include="ngs.html" />
+    <Content Include="nge.html" />
+    <Content Include="ngx.html" />
+    <Content Include="bnkUsr.html" />
+    <Content Include="bnkAd.html" />
+    <Content Include="ngVf.html" />
+    <Content Include="ngy.html" />
+    <Content Include="pages\applicationprocess.html" />
+    <Content Include="pages\disclaimer.html" />
+    <Content Include="pages\externallinks.html" />
+    <Content Include="pages\generalinformation.html" />
+    <Content Include="Scripts\angular-animate.js" />
+    <Content Include="Scripts\angular-animate.min.js" />
+    <Content Include="Scripts\angular-aria.js" />
+    <Content Include="Scripts\angular-aria.min.js" />
+    <Content Include="Scripts\angular-block-ui.js" />
+    <Content Include="Scripts\angular-block-ui.min.js" />
+    <Content Include="Scripts\angular-cookies.js" />
+    <Content Include="Scripts\angular-cookies.min.js" />
+    <Content Include="Scripts\angular-csp.css" />
+    <Content Include="Scripts\angular-file-upload-shim.min.js" />
+    <Content Include="Scripts\angular-file-upload.min.js" />
+    <Content Include="Scripts\angular-idle.min.js" />
+    <Content Include="Scripts\angular-loader.js" />
+    <Content Include="Scripts\angular-loader.min.js" />
+    <Content Include="Scripts\angular-messages.js" />
+    <Content Include="Scripts\angular-messages.min.js" />
+    <Content Include="Scripts\angular-mocks.js" />
+    <Content Include="Scripts\angular-resource.js" />
+    <Content Include="Scripts\angular-resource.min.js" />
+    <Content Include="Scripts\angular-route.js" />
+    <Content Include="Scripts\angular-route.min.js" />
+    <Content Include="Scripts\angular-sanitize.js" />
+    <Content Include="Scripts\angular-sanitize.min.js" />
+    <Content Include="Scripts\angular-scenario.js" />
+    <Content Include="Scripts\angular-touch.js" />
+    <Content Include="Scripts\angular-touch.min.js" />
+    <Content Include="Scripts\angular.js" />
+    <Content Include="Scripts\angular.min.js" />
+    <Content Include="Scripts\angularAMD.js" />
+    <Content Include="Scripts\application-configuration.js" />
+    <Content Include="Scripts\App\app.js" />
+    <Content Include="Scripts\bootstrap-typeahead.js" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Scripts\angular-animate.min.js.map" />
+    <Content Include="Scripts\angular-aria.min.js.map" />
+    <Content Include="Scripts\angular-cookies.min.js.map" />
+    <Content Include="Scripts\angular-loader.min.js.map" />
+    <Content Include="Scripts\angular-messages.min.js.map" />
+    <Content Include="Scripts\angular-resource.min.js.map" />
+    <Content Include="Scripts\angular-route.min.js.map" />
+    <Content Include="Scripts\angular-sanitize.min.js.map" />
+    <Content Include="Scripts\angular-touch.min.js.map" />
+    <Content Include="Scripts\angular.min.js.map" />
+    <Content Include="Scripts\classie.js" />
+    <Content Include="Scripts\cmaster.js" />
+    <Content Include="Scripts\errors.json" />
+    <Content Include="Landing.cshtml" />
+    <Content Include="PermDoc\permitup.pdf" />
+    <Content Include="PermDoc\table.pdf" />
+    <Content Include="PermDoc\permitdown.pdf" />
+    <Content Include="InspectionDoc\Checklist.pdf" />
+    <Content Include="InspectionDoc\Checklist2.pdf" />
+    <Content Include="InspectionDoc\discharge.pdf" />
+    <Content Include="InspectionDoc\table.pdf" />
+    <Content Include="InspectionDoc\VesselReport.pdf" />
+    <Content Include="InspectionDoc\VesselReport2.pdf" />
+    <Content Include="PermDoc\perm.pdf" />
+    <Content Include="PermDoc\permit.pdf" />
+    <Content Include="PermDoc\table2.pdf" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="BulkTemplates\BulkUsers.xlsx" />
+    <Content Include="BulkTemplates\BankBranch.xlsx" />
+    <Content Include="App\generalinfo\contact.html" />
+    <Content Include="Content\icons\icons.eot" />
+    <Content Include="Content\icons\icons.ttf" />
+    <Content Include="Content\icons\icons.woff" />
+    <Content Include="Content\otherStyle.less" />
+    <None Include="Properties\PublishProfiles\PPIPSPublish.pubxml" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\clientSideDuplicateValidator.js" />
+    <Content Include="Scripts\dataTableDescription.js" />
+    <Content Include="Scripts\datePicker.js" />
+    <Content Include="Scripts\datePickerUtils.js" />
+    <Content Include="Scripts\dateScript.js" />
+    <Content Include="Scripts\fileReader.js" />
+    <Content Include="Scripts\FormRefresher.js" />
+    <Content Include="Scripts\gnmenu.js" />
+    <Content Include="Scripts\hsmodal.js" />
+    <Content Include="Scripts\html5.js" />
+    <Content Include="Scripts\i18n\angular-locale_aa-dj.js" />
+    <Content Include="Scripts\i18n\angular-locale_aa-er.js" />
+    <Content Include="Scripts\i18n\angular-locale_aa-et.js" />
+    <Content Include="Scripts\i18n\angular-locale_aa.js" />
+    <Content Include="Scripts\i18n\angular-locale_af-na.js" />
+    <Content Include="Scripts\i18n\angular-locale_af-za.js" />
+    <Content Include="Scripts\i18n\angular-locale_af.js" />
+    <Content Include="Scripts\i18n\angular-locale_agq-cm.js" />
+    <Content Include="Scripts\i18n\angular-locale_agq.js" />
+    <Content Include="Scripts\i18n\angular-locale_ak-gh.js" />
+    <Content Include="Scripts\i18n\angular-locale_ak.js" />
+    <Content Include="Scripts\i18n\angular-locale_am-et.js" />
+    <Content Include="Scripts\i18n\angular-locale_am.js" />
+    <Content Include="Scripts\i18n\angular-locale_ar-001.js" />
+    <Content Include="Scripts\i18n\angular-locale_ar-ae.js" />
+    <Content Include="Scripts\i18n\angular-locale_ar-bh.js" />
+    <Content Include="Scripts\i18n\angular-locale_ar-dj.js" />
+    <Content Include="Scripts\i18n\angular-locale_ar-dz.js" />
+    <Content Include="Scripts\i18n\angular-locale_ar-eg.js" />
+    <Content Include="Scripts\i18n\angular-locale_ar-eh.js" />
+    <Content Include="Scripts\i18n\angular-locale_ar-er.js" />
+    <Content Include="Scripts\i18n\angular-locale_ar-il.js" />
+    <Content Include="Scripts\i18n\angular-locale_ar-iq.js" />
+    <Content Include="Scripts\i18n\angular-locale_ar-jo.js" />
+    <Content Include="Scripts\i18n\angular-locale_ar-km.js" />
+    <Content Include="Scripts\i18n\angular-locale_ar-kw.js" />
+    <Content Include="Scripts\i18n\angular-locale_ar-lb.js" />
+    <Content Include="Scripts\i18n\angular-locale_ar-ly.js" />
+    <Content Include="Scripts\i18n\angular-locale_ar-ma.js" />
+    <Content Include="Scripts\i18n\angular-locale_ar-mr.js" />
+    <Content Include="Scripts\i18n\angular-locale_ar-om.js" />
+    <Content Include="Scripts\i18n\angular-locale_ar-ps.js" />
+    <Content Include="Scripts\i18n\angular-locale_ar-qa.js" />
+    <Content Include="Scripts\i18n\angular-locale_ar-sa.js" />
+    <Content Include="Scripts\i18n\angular-locale_ar-sd.js" />
+    <Content Include="Scripts\i18n\angular-locale_ar-so.js" />
+    <Content Include="Scripts\i18n\angular-locale_ar-ss.js" />
+    <Content Include="Scripts\i18n\angular-locale_ar-sy.js" />
+    <Content Include="Scripts\i18n\angular-locale_ar-td.js" />
+    <Content Include="Scripts\i18n\angular-locale_ar-tn.js" />
+    <Content Include="Scripts\i18n\angular-locale_ar-ye.js" />
+    <Content Include="Scripts\i18n\angular-locale_ar.js" />
+    <Content Include="Scripts\i18n\angular-locale_as-in.js" />
+    <Content Include="Scripts\i18n\angular-locale_as.js" />
+    <Content Include="Scripts\i18n\angular-locale_asa-tz.js" />
+    <Content Include="Scripts\i18n\angular-locale_asa.js" />
+    <Content Include="Scripts\i18n\angular-locale_ast-es.js" />
+    <Content Include="Scripts\i18n\angular-locale_ast.js" />
+    <Content Include="Scripts\i18n\angular-locale_az-cyrl-az.js" />
+    <Content Include="Scripts\i18n\angular-locale_az-cyrl.js" />
+    <Content Include="Scripts\i18n\angular-locale_az-latn-az.js" />
+    <Content Include="Scripts\i18n\angular-locale_az-latn.js" />
+    <Content Include="Scripts\i18n\angular-locale_az.js" />
+    <Content Include="Scripts\i18n\angular-locale_bas-cm.js" />
+    <Content Include="Scripts\i18n\angular-locale_bas.js" />
+    <Content Include="Scripts\i18n\angular-locale_be-by.js" />
+    <Content Include="Scripts\i18n\angular-locale_be.js" />
+    <Content Include="Scripts\i18n\angular-locale_bem-zm.js" />
+    <Content Include="Scripts\i18n\angular-locale_bem.js" />
+    <Content Include="Scripts\i18n\angular-locale_bez-tz.js" />
+    <Content Include="Scripts\i18n\angular-locale_bez.js" />
+    <Content Include="Scripts\i18n\angular-locale_bg-bg.js" />
+    <Content Include="Scripts\i18n\angular-locale_bg.js" />
+    <Content Include="Scripts\i18n\angular-locale_bm-latn-ml.js" />
+    <Content Include="Scripts\i18n\angular-locale_bm-latn.js" />
+    <Content Include="Scripts\i18n\angular-locale_bm-ml.js" />
+    <Content Include="Scripts\i18n\angular-locale_bm.js" />
+    <Content Include="Scripts\i18n\angular-locale_bn-bd.js" />
+    <Content Include="Scripts\i18n\angular-locale_bn-in.js" />
+    <Content Include="Scripts\i18n\angular-locale_bn.js" />
+    <Content Include="Scripts\i18n\angular-locale_bo-cn.js" />
+    <Content Include="Scripts\i18n\angular-locale_bo-in.js" />
+    <Content Include="Scripts\i18n\angular-locale_bo.js" />
+    <Content Include="Scripts\i18n\angular-locale_br-fr.js" />
+    <Content Include="Scripts\i18n\angular-locale_br.js" />
+    <Content Include="Scripts\i18n\angular-locale_brx-in.js" />
+    <Content Include="Scripts\i18n\angular-locale_brx.js" />
+    <Content Include="Scripts\i18n\angular-locale_bs-cyrl-ba.js" />
+    <Content Include="Scripts\i18n\angular-locale_bs-cyrl.js" />
+    <Content Include="Scripts\i18n\angular-locale_bs-latn-ba.js" />
+    <Content Include="Scripts\i18n\angular-locale_bs-latn.js" />
+    <Content Include="Scripts\i18n\angular-locale_bs.js" />
+    <Content Include="Scripts\i18n\angular-locale_byn-er.js" />
+    <Content Include="Scripts\i18n\angular-locale_byn.js" />
+    <Content Include="Scripts\i18n\angular-locale_ca-ad.js" />
+    <Content Include="Scripts\i18n\angular-locale_ca-es-valencia.js" />
+    <Content Include="Scripts\i18n\angular-locale_ca-es.js" />
+    <Content Include="Scripts\i18n\angular-locale_ca-fr.js" />
+    <Content Include="Scripts\i18n\angular-locale_ca-it.js" />
+    <Content Include="Scripts\i18n\angular-locale_ca.js" />
+    <Content Include="Scripts\i18n\angular-locale_cgg-ug.js" />
+    <Content Include="Scripts\i18n\angular-locale_cgg.js" />
+    <Content Include="Scripts\i18n\angular-locale_chr-us.js" />
+    <Content Include="Scripts\i18n\angular-locale_chr.js" />
+    <Content Include="Scripts\i18n\angular-locale_ckb-arab-iq.js" />
+    <Content Include="Scripts\i18n\angular-locale_ckb-arab-ir.js" />
+    <Content Include="Scripts\i18n\angular-locale_ckb-arab.js" />
+    <Content Include="Scripts\i18n\angular-locale_ckb-iq.js" />
+    <Content Include="Scripts\i18n\angular-locale_ckb-ir.js" />
+    <Content Include="Scripts\i18n\angular-locale_ckb-latn-iq.js" />
+    <Content Include="Scripts\i18n\angular-locale_ckb-latn.js" />
+    <Content Include="Scripts\i18n\angular-locale_ckb.js" />
+    <Content Include="Scripts\i18n\angular-locale_cs-cz.js" />
+    <Content Include="Scripts\i18n\angular-locale_cs.js" />
+    <Content Include="Scripts\i18n\angular-locale_cy-gb.js" />
+    <Content Include="Scripts\i18n\angular-locale_cy.js" />
+    <Content Include="Scripts\i18n\angular-locale_da-dk.js" />
+    <Content Include="Scripts\i18n\angular-locale_da-gl.js" />
+    <Content Include="Scripts\i18n\angular-locale_da.js" />
+    <Content Include="Scripts\i18n\angular-locale_dav-ke.js" />
+    <Content Include="Scripts\i18n\angular-locale_dav.js" />
+    <Content Include="Scripts\i18n\angular-locale_de-at.js" />
+    <Content Include="Scripts\i18n\angular-locale_de-be.js" />
+    <Content Include="Scripts\i18n\angular-locale_de-ch.js" />
+    <Content Include="Scripts\i18n\angular-locale_de-de.js" />
+    <Content Include="Scripts\i18n\angular-locale_de-li.js" />
+    <Content Include="Scripts\i18n\angular-locale_de-lu.js" />
+    <Content Include="Scripts\i18n\angular-locale_de.js" />
+    <Content Include="Scripts\i18n\angular-locale_dje-ne.js" />
+    <Content Include="Scripts\i18n\angular-locale_dje.js" />
+    <Content Include="Scripts\i18n\angular-locale_dsb-de.js" />
+    <Content Include="Scripts\i18n\angular-locale_dsb.js" />
+    <Content Include="Scripts\i18n\angular-locale_dua-cm.js" />
+    <Content Include="Scripts\i18n\angular-locale_dua.js" />
+    <Content Include="Scripts\i18n\angular-locale_dyo-sn.js" />
+    <Content Include="Scripts\i18n\angular-locale_dyo.js" />
+    <Content Include="Scripts\i18n\angular-locale_dz-bt.js" />
+    <Content Include="Scripts\i18n\angular-locale_dz.js" />
+    <Content Include="Scripts\i18n\angular-locale_ebu-ke.js" />
+    <Content Include="Scripts\i18n\angular-locale_ebu.js" />
+    <Content Include="Scripts\i18n\angular-locale_ee-gh.js" />
+    <Content Include="Scripts\i18n\angular-locale_ee-tg.js" />
+    <Content Include="Scripts\i18n\angular-locale_ee.js" />
+    <Content Include="Scripts\i18n\angular-locale_el-cy.js" />
+    <Content Include="Scripts\i18n\angular-locale_el-gr.js" />
+    <Content Include="Scripts\i18n\angular-locale_el.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-001.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-150.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-ag.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-ai.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-as.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-au.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-bb.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-be.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-bm.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-bs.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-bw.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-bz.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-ca.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-cc.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-ck.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-cm.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-cx.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-dg.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-dm.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-dsrt-us.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-dsrt.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-er.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-fj.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-fk.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-fm.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-gb.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-gd.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-gg.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-gh.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-gi.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-gm.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-gu.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-gy.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-hk.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-ie.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-im.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-in.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-io.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-iso.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-je.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-jm.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-ke.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-ki.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-kn.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-ky.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-lc.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-lr.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-ls.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-mg.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-mh.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-mo.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-mp.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-ms.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-mt.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-mu.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-mw.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-my.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-na.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-nf.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-ng.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-nr.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-nu.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-nz.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-pg.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-ph.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-pk.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-pn.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-pr.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-pw.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-rw.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-sb.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-sc.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-sd.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-sg.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-sh.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-sl.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-ss.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-sx.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-sz.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-tc.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-tk.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-to.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-tt.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-tv.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-tz.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-ug.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-um.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-us.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-vc.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-vg.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-vi.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-vu.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-ws.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-za.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-zm.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-zw.js" />
+    <Content Include="Scripts\i18n\angular-locale_en.js" />
+    <Content Include="Scripts\i18n\angular-locale_eo-001.js" />
+    <Content Include="Scripts\i18n\angular-locale_eo.js" />
+    <Content Include="Scripts\i18n\angular-locale_es-419.js" />
+    <Content Include="Scripts\i18n\angular-locale_es-ar.js" />
+    <Content Include="Scripts\i18n\angular-locale_es-bo.js" />
+    <Content Include="Scripts\i18n\angular-locale_es-cl.js" />
+    <Content Include="Scripts\i18n\angular-locale_es-co.js" />
+    <Content Include="Scripts\i18n\angular-locale_es-cr.js" />
+    <Content Include="Scripts\i18n\angular-locale_es-cu.js" />
+    <Content Include="Scripts\i18n\angular-locale_es-do.js" />
+    <Content Include="Scripts\i18n\angular-locale_es-ea.js" />
+    <Content Include="Scripts\i18n\angular-locale_es-ec.js" />
+    <Content Include="Scripts\i18n\angular-locale_es-es.js" />
+    <Content Include="Scripts\i18n\angular-locale_es-gq.js" />
+    <Content Include="Scripts\i18n\angular-locale_es-gt.js" />
+    <Content Include="Scripts\i18n\angular-locale_es-hn.js" />
+    <Content Include="Scripts\i18n\angular-locale_es-ic.js" />
+    <Content Include="Scripts\i18n\angular-locale_es-mx.js" />
+    <Content Include="Scripts\i18n\angular-locale_es-ni.js" />
+    <Content Include="Scripts\i18n\angular-locale_es-pa.js" />
+    <Content Include="Scripts\i18n\angular-locale_es-pe.js" />
+    <Content Include="Scripts\i18n\angular-locale_es-ph.js" />
+    <Content Include="Scripts\i18n\angular-locale_es-pr.js" />
+    <Content Include="Scripts\i18n\angular-locale_es-py.js" />
+    <Content Include="Scripts\i18n\angular-locale_es-sv.js" />
+    <Content Include="Scripts\i18n\angular-locale_es-us.js" />
+    <Content Include="Scripts\i18n\angular-locale_es-uy.js" />
+    <Content Include="Scripts\i18n\angular-locale_es-ve.js" />
+    <Content Include="Scripts\i18n\angular-locale_es.js" />
+    <Content Include="Scripts\i18n\angular-locale_et-ee.js" />
+    <Content Include="Scripts\i18n\angular-locale_et.js" />
+    <Content Include="Scripts\i18n\angular-locale_eu-es.js" />
+    <Content Include="Scripts\i18n\angular-locale_eu.js" />
+    <Content Include="Scripts\i18n\angular-locale_ewo-cm.js" />
+    <Content Include="Scripts\i18n\angular-locale_ewo.js" />
+    <Content Include="Scripts\i18n\angular-locale_fa-af.js" />
+    <Content Include="Scripts\i18n\angular-locale_fa-ir.js" />
+    <Content Include="Scripts\i18n\angular-locale_fa.js" />
+    <Content Include="Scripts\i18n\angular-locale_ff-cm.js" />
+    <Content Include="Scripts\i18n\angular-locale_ff-gn.js" />
+    <Content Include="Scripts\i18n\angular-locale_ff-mr.js" />
+    <Content Include="Scripts\i18n\angular-locale_ff-sn.js" />
+    <Content Include="Scripts\i18n\angular-locale_ff.js" />
+    <Content Include="Scripts\i18n\angular-locale_fi-fi.js" />
+    <Content Include="Scripts\i18n\angular-locale_fi.js" />
+    <Content Include="Scripts\i18n\angular-locale_fil-ph.js" />
+    <Content Include="Scripts\i18n\angular-locale_fil.js" />
+    <Content Include="Scripts\i18n\angular-locale_fo-fo.js" />
+    <Content Include="Scripts\i18n\angular-locale_fo.js" />
+    <Content Include="Scripts\i18n\angular-locale_fr-be.js" />
+    <Content Include="Scripts\i18n\angular-locale_fr-bf.js" />
+    <Content Include="Scripts\i18n\angular-locale_fr-bi.js" />
+    <Content Include="Scripts\i18n\angular-locale_fr-bj.js" />
+    <Content Include="Scripts\i18n\angular-locale_fr-bl.js" />
+    <Content Include="Scripts\i18n\angular-locale_fr-ca.js" />
+    <Content Include="Scripts\i18n\angular-locale_fr-cd.js" />
+    <Content Include="Scripts\i18n\angular-locale_fr-cf.js" />
+    <Content Include="Scripts\i18n\angular-locale_fr-cg.js" />
+    <Content Include="Scripts\i18n\angular-locale_fr-ch.js" />
+    <Content Include="Scripts\i18n\angular-locale_fr-ci.js" />
+    <Content Include="Scripts\i18n\angular-locale_fr-cm.js" />
+    <Content Include="Scripts\i18n\angular-locale_fr-dj.js" />
+    <Content Include="Scripts\i18n\angular-locale_fr-dz.js" />
+    <Content Include="Scripts\i18n\angular-locale_fr-fr.js" />
+    <Content Include="Scripts\i18n\angular-locale_fr-ga.js" />
+    <Content Include="Scripts\i18n\angular-locale_fr-gf.js" />
+    <Content Include="Scripts\i18n\angular-locale_fr-gn.js" />
+    <Content Include="Scripts\i18n\angular-locale_fr-gp.js" />
+    <Content Include="Scripts\i18n\angular-locale_fr-gq.js" />
+    <Content Include="Scripts\i18n\angular-locale_fr-ht.js" />
+    <Content Include="Scripts\i18n\angular-locale_fr-km.js" />
+    <Content Include="Scripts\i18n\angular-locale_fr-lu.js" />
+    <Content Include="Scripts\i18n\angular-locale_fr-ma.js" />
+    <Content Include="Scripts\i18n\angular-locale_fr-mc.js" />
+    <Content Include="Scripts\i18n\angular-locale_fr-mf.js" />
+    <Content Include="Scripts\i18n\angular-locale_fr-mg.js" />
+    <Content Include="Scripts\i18n\angular-locale_fr-ml.js" />
+    <Content Include="Scripts\i18n\angular-locale_fr-mq.js" />
+    <Content Include="Scripts\i18n\angular-locale_fr-mr.js" />
+    <Content Include="Scripts\i18n\angular-locale_fr-mu.js" />
+    <Content Include="Scripts\i18n\angular-locale_fr-nc.js" />
+    <Content Include="Scripts\i18n\angular-locale_fr-ne.js" />
+    <Content Include="Scripts\i18n\angular-locale_fr-pf.js" />
+    <Content Include="Scripts\i18n\angular-locale_fr-pm.js" />
+    <Content Include="Scripts\i18n\angular-locale_fr-re.js" />
+    <Content Include="Scripts\i18n\angular-locale_fr-rw.js" />
+    <Content Include="Scripts\i18n\angular-locale_fr-sc.js" />
+    <Content Include="Scripts\i18n\angular-locale_fr-sn.js" />
+    <Content Include="Scripts\i18n\angular-locale_fr-sy.js" />
+    <Content Include="Scripts\i18n\angular-locale_fr-td.js" />
+    <Content Include="Scripts\i18n\angular-locale_fr-tg.js" />
+    <Content Include="Scripts\i18n\angular-locale_fr-tn.js" />
+    <Content Include="Scripts\i18n\angular-locale_fr-vu.js" />
+    <Content Include="Scripts\i18n\angular-locale_fr-wf.js" />
+    <Content Include="Scripts\i18n\angular-locale_fr-yt.js" />
+    <Content Include="Scripts\i18n\angular-locale_fr.js" />
+    <Content Include="Scripts\i18n\angular-locale_fur-it.js" />
+    <Content Include="Scripts\i18n\angular-locale_fur.js" />
+    <Content Include="Scripts\i18n\angular-locale_fy-nl.js" />
+    <Content Include="Scripts\i18n\angular-locale_fy.js" />
+    <Content Include="Scripts\i18n\angular-locale_ga-ie.js" />
+    <Content Include="Scripts\i18n\angular-locale_ga.js" />
+    <Content Include="Scripts\i18n\angular-locale_gd-gb.js" />
+    <Content Include="Scripts\i18n\angular-locale_gd.js" />
+    <Content Include="Scripts\i18n\angular-locale_gl-es.js" />
+    <Content Include="Scripts\i18n\angular-locale_gl.js" />
+    <Content Include="Scripts\i18n\angular-locale_gsw-ch.js" />
+    <Content Include="Scripts\i18n\angular-locale_gsw-fr.js" />
+    <Content Include="Scripts\i18n\angular-locale_gsw-li.js" />
+    <Content Include="Scripts\i18n\angular-locale_gsw.js" />
+    <Content Include="Scripts\i18n\angular-locale_gu-in.js" />
+    <Content Include="Scripts\i18n\angular-locale_gu.js" />
+    <Content Include="Scripts\i18n\angular-locale_guz-ke.js" />
+    <Content Include="Scripts\i18n\angular-locale_guz.js" />
+    <Content Include="Scripts\i18n\angular-locale_gv-im.js" />
+    <Content Include="Scripts\i18n\angular-locale_gv.js" />
+    <Content Include="Scripts\i18n\angular-locale_ha-latn-gh.js" />
+    <Content Include="Scripts\i18n\angular-locale_ha-latn-ne.js" />
+    <Content Include="Scripts\i18n\angular-locale_ha-latn-ng.js" />
+    <Content Include="Scripts\i18n\angular-locale_ha-latn.js" />
+    <Content Include="Scripts\i18n\angular-locale_ha.js" />
+    <Content Include="Scripts\i18n\angular-locale_haw-us.js" />
+    <Content Include="Scripts\i18n\angular-locale_haw.js" />
+    <Content Include="Scripts\i18n\angular-locale_he-il.js" />
+    <Content Include="Scripts\i18n\angular-locale_he.js" />
+    <Content Include="Scripts\i18n\angular-locale_hi-in.js" />
+    <Content Include="Scripts\i18n\angular-locale_hi.js" />
+    <Content Include="Scripts\i18n\angular-locale_hr-ba.js" />
+    <Content Include="Scripts\i18n\angular-locale_hr-hr.js" />
+    <Content Include="Scripts\i18n\angular-locale_hr.js" />
+    <Content Include="Scripts\i18n\angular-locale_hsb-de.js" />
+    <Content Include="Scripts\i18n\angular-locale_hsb.js" />
+    <Content Include="Scripts\i18n\angular-locale_hu-hu.js" />
+    <Content Include="Scripts\i18n\angular-locale_hu.js" />
+    <Content Include="Scripts\i18n\angular-locale_hy-am.js" />
+    <Content Include="Scripts\i18n\angular-locale_hy.js" />
+    <Content Include="Scripts\i18n\angular-locale_ia-fr.js" />
+    <Content Include="Scripts\i18n\angular-locale_ia.js" />
+    <Content Include="Scripts\i18n\angular-locale_id-id.js" />
+    <Content Include="Scripts\i18n\angular-locale_id.js" />
+    <Content Include="Scripts\i18n\angular-locale_ig-ng.js" />
+    <Content Include="Scripts\i18n\angular-locale_ig.js" />
+    <Content Include="Scripts\i18n\angular-locale_ii-cn.js" />
+    <Content Include="Scripts\i18n\angular-locale_ii.js" />
+    <Content Include="Scripts\i18n\angular-locale_in.js" />
+    <Content Include="Scripts\i18n\angular-locale_is-is.js" />
+    <Content Include="Scripts\i18n\angular-locale_is.js" />
+    <Content Include="Scripts\i18n\angular-locale_it-ch.js" />
+    <Content Include="Scripts\i18n\angular-locale_it-it.js" />
+    <Content Include="Scripts\i18n\angular-locale_it-sm.js" />
+    <Content Include="Scripts\i18n\angular-locale_it.js" />
+    <Content Include="Scripts\i18n\angular-locale_iw.js" />
+    <Content Include="Scripts\i18n\angular-locale_ja-jp.js" />
+    <Content Include="Scripts\i18n\angular-locale_ja.js" />
+    <Content Include="Scripts\i18n\angular-locale_jgo-cm.js" />
+    <Content Include="Scripts\i18n\angular-locale_jgo.js" />
+    <Content Include="Scripts\i18n\angular-locale_jmc-tz.js" />
+    <Content Include="Scripts\i18n\angular-locale_jmc.js" />
+    <Content Include="Scripts\i18n\angular-locale_ka-ge.js" />
+    <Content Include="Scripts\i18n\angular-locale_ka.js" />
+    <Content Include="Scripts\i18n\angular-locale_kab-dz.js" />
+    <Content Include="Scripts\i18n\angular-locale_kab.js" />
+    <Content Include="Scripts\i18n\angular-locale_kam-ke.js" />
+    <Content Include="Scripts\i18n\angular-locale_kam.js" />
+    <Content Include="Scripts\i18n\angular-locale_kde-tz.js" />
+    <Content Include="Scripts\i18n\angular-locale_kde.js" />
+    <Content Include="Scripts\i18n\angular-locale_kea-cv.js" />
+    <Content Include="Scripts\i18n\angular-locale_kea.js" />
+    <Content Include="Scripts\i18n\angular-locale_khq-ml.js" />
+    <Content Include="Scripts\i18n\angular-locale_khq.js" />
+    <Content Include="Scripts\i18n\angular-locale_ki-ke.js" />
+    <Content Include="Scripts\i18n\angular-locale_ki.js" />
+    <Content Include="Scripts\i18n\angular-locale_kk-cyrl-kz.js" />
+    <Content Include="Scripts\i18n\angular-locale_kk-cyrl.js" />
+    <Content Include="Scripts\i18n\angular-locale_kk.js" />
+    <Content Include="Scripts\i18n\angular-locale_kkj-cm.js" />
+    <Content Include="Scripts\i18n\angular-locale_kkj.js" />
+    <Content Include="Scripts\i18n\angular-locale_kl-gl.js" />
+    <Content Include="Scripts\i18n\angular-locale_kl.js" />
+    <Content Include="Scripts\i18n\angular-locale_kln-ke.js" />
+    <Content Include="Scripts\i18n\angular-locale_kln.js" />
+    <Content Include="Scripts\i18n\angular-locale_km-kh.js" />
+    <Content Include="Scripts\i18n\angular-locale_km.js" />
+    <Content Include="Scripts\i18n\angular-locale_kn-in.js" />
+    <Content Include="Scripts\i18n\angular-locale_kn.js" />
+    <Content Include="Scripts\i18n\angular-locale_ko-kp.js" />
+    <Content Include="Scripts\i18n\angular-locale_ko-kr.js" />
+    <Content Include="Scripts\i18n\angular-locale_ko.js" />
+    <Content Include="Scripts\i18n\angular-locale_kok-in.js" />
+    <Content Include="Scripts\i18n\angular-locale_kok.js" />
+    <Content Include="Scripts\i18n\angular-locale_ks-arab-in.js" />
+    <Content Include="Scripts\i18n\angular-locale_ks-arab.js" />
+    <Content Include="Scripts\i18n\angular-locale_ks.js" />
+    <Content Include="Scripts\i18n\angular-locale_ksb-tz.js" />
+    <Content Include="Scripts\i18n\angular-locale_ksb.js" />
+    <Content Include="Scripts\i18n\angular-locale_ksf-cm.js" />
+    <Content Include="Scripts\i18n\angular-locale_ksf.js" />
+    <Content Include="Scripts\i18n\angular-locale_ksh-de.js" />
+    <Content Include="Scripts\i18n\angular-locale_ksh.js" />
+    <Content Include="Scripts\i18n\angular-locale_kw-gb.js" />
+    <Content Include="Scripts\i18n\angular-locale_kw.js" />
+    <Content Include="Scripts\i18n\angular-locale_ky-cyrl-kg.js" />
+    <Content Include="Scripts\i18n\angular-locale_ky-cyrl.js" />
+    <Content Include="Scripts\i18n\angular-locale_ky.js" />
+    <Content Include="Scripts\i18n\angular-locale_lag-tz.js" />
+    <Content Include="Scripts\i18n\angular-locale_lag.js" />
+    <Content Include="Scripts\i18n\angular-locale_lb-lu.js" />
+    <Content Include="Scripts\i18n\angular-locale_lb.js" />
+    <Content Include="Scripts\i18n\angular-locale_lg-ug.js" />
+    <Content Include="Scripts\i18n\angular-locale_lg.js" />
+    <Content Include="Scripts\i18n\angular-locale_lkt-us.js" />
+    <Content Include="Scripts\i18n\angular-locale_lkt.js" />
+    <Content Include="Scripts\i18n\angular-locale_ln-ao.js" />
+    <Content Include="Scripts\i18n\angular-locale_ln-cd.js" />
+    <Content Include="Scripts\i18n\angular-locale_ln-cf.js" />
+    <Content Include="Scripts\i18n\angular-locale_ln-cg.js" />
+    <Content Include="Scripts\i18n\angular-locale_ln.js" />
+    <Content Include="Scripts\i18n\angular-locale_lo-la.js" />
+    <Content Include="Scripts\i18n\angular-locale_lo.js" />
+    <Content Include="Scripts\i18n\angular-locale_lt-lt.js" />
+    <Content Include="Scripts\i18n\angular-locale_lt.js" />
+    <Content Include="Scripts\i18n\angular-locale_lu-cd.js" />
+    <Content Include="Scripts\i18n\angular-locale_lu.js" />
+    <Content Include="Scripts\i18n\angular-locale_luo-ke.js" />
+    <Content Include="Scripts\i18n\angular-locale_luo.js" />
+    <Content Include="Scripts\i18n\angular-locale_luy-ke.js" />
+    <Content Include="Scripts\i18n\angular-locale_luy.js" />
+    <Content Include="Scripts\i18n\angular-locale_lv-lv.js" />
+    <Content Include="Scripts\i18n\angular-locale_lv.js" />
+    <Content Include="Scripts\i18n\angular-locale_mas-ke.js" />
+    <Content Include="Scripts\i18n\angular-locale_mas-tz.js" />
+    <Content Include="Scripts\i18n\angular-locale_mas.js" />
+    <Content Include="Scripts\i18n\angular-locale_mer-ke.js" />
+    <Content Include="Scripts\i18n\angular-locale_mer.js" />
+    <Content Include="Scripts\i18n\angular-locale_mfe-mu.js" />
+    <Content Include="Scripts\i18n\angular-locale_mfe.js" />
+    <Content Include="Scripts\i18n\angular-locale_mg-mg.js" />
+    <Content Include="Scripts\i18n\angular-locale_mg.js" />
+    <Content Include="Scripts\i18n\angular-locale_mgh-mz.js" />
+    <Content Include="Scripts\i18n\angular-locale_mgh.js" />
+    <Content Include="Scripts\i18n\angular-locale_mgo-cm.js" />
+    <Content Include="Scripts\i18n\angular-locale_mgo.js" />
+    <Content Include="Scripts\i18n\angular-locale_mk-mk.js" />
+    <Content Include="Scripts\i18n\angular-locale_mk.js" />
+    <Content Include="Scripts\i18n\angular-locale_ml-in.js" />
+    <Content Include="Scripts\i18n\angular-locale_ml.js" />
+    <Content Include="Scripts\i18n\angular-locale_mn-cyrl-mn.js" />
+    <Content Include="Scripts\i18n\angular-locale_mn-cyrl.js" />
+    <Content Include="Scripts\i18n\angular-locale_mn.js" />
+    <Content Include="Scripts\i18n\angular-locale_mr-in.js" />
+    <Content Include="Scripts\i18n\angular-locale_mr.js" />
+    <Content Include="Scripts\i18n\angular-locale_ms-bn.js" />
+    <Content Include="Scripts\i18n\angular-locale_ms-latn-bn.js" />
+    <Content Include="Scripts\i18n\angular-locale_ms-latn-my.js" />
+    <Content Include="Scripts\i18n\angular-locale_ms-latn-sg.js" />
+    <Content Include="Scripts\i18n\angular-locale_ms-latn.js" />
+    <Content Include="Scripts\i18n\angular-locale_ms-my.js" />
+    <Content Include="Scripts\i18n\angular-locale_ms.js" />
+    <Content Include="Scripts\i18n\angular-locale_mt-mt.js" />
+    <Content Include="Scripts\i18n\angular-locale_mt.js" />
+    <Content Include="Scripts\i18n\angular-locale_mua-cm.js" />
+    <Content Include="Scripts\i18n\angular-locale_mua.js" />
+    <Content Include="Scripts\i18n\angular-locale_my-mm.js" />
+    <Content Include="Scripts\i18n\angular-locale_my.js" />
+    <Content Include="Scripts\i18n\angular-locale_naq-na.js" />
+    <Content Include="Scripts\i18n\angular-locale_naq.js" />
+    <Content Include="Scripts\i18n\angular-locale_nb-no.js" />
+    <Content Include="Scripts\i18n\angular-locale_nb-sj.js" />
+    <Content Include="Scripts\i18n\angular-locale_nb.js" />
+    <Content Include="Scripts\i18n\angular-locale_nd-zw.js" />
+    <Content Include="Scripts\i18n\angular-locale_nd.js" />
+    <Content Include="Scripts\i18n\angular-locale_ne-in.js" />
+    <Content Include="Scripts\i18n\angular-locale_ne-np.js" />
+    <Content Include="Scripts\i18n\angular-locale_ne.js" />
+    <Content Include="Scripts\i18n\angular-locale_nl-aw.js" />
+    <Content Include="Scripts\i18n\angular-locale_nl-be.js" />
+    <Content Include="Scripts\i18n\angular-locale_nl-bq.js" />
+    <Content Include="Scripts\i18n\angular-locale_nl-cw.js" />
+    <Content Include="Scripts\i18n\angular-locale_nl-nl.js" />
+    <Content Include="Scripts\i18n\angular-locale_nl-sr.js" />
+    <Content Include="Scripts\i18n\angular-locale_nl-sx.js" />
+    <Content Include="Scripts\i18n\angular-locale_nl.js" />
+    <Content Include="Scripts\i18n\angular-locale_nmg-cm.js" />
+    <Content Include="Scripts\i18n\angular-locale_nmg.js" />
+    <Content Include="Scripts\i18n\angular-locale_nn-no.js" />
+    <Content Include="Scripts\i18n\angular-locale_nn.js" />
+    <Content Include="Scripts\i18n\angular-locale_nnh-cm.js" />
+    <Content Include="Scripts\i18n\angular-locale_nnh.js" />
+    <Content Include="Scripts\i18n\angular-locale_no-no.js" />
+    <Content Include="Scripts\i18n\angular-locale_no.js" />
+    <Content Include="Scripts\i18n\angular-locale_nr-za.js" />
+    <Content Include="Scripts\i18n\angular-locale_nr.js" />
+    <Content Include="Scripts\i18n\angular-locale_nso-za.js" />
+    <Content Include="Scripts\i18n\angular-locale_nso.js" />
+    <Content Include="Scripts\i18n\angular-locale_nus-sd.js" />
+    <Content Include="Scripts\i18n\angular-locale_nus.js" />
+    <Content Include="Scripts\i18n\angular-locale_nyn-ug.js" />
+    <Content Include="Scripts\i18n\angular-locale_nyn.js" />
+    <Content Include="Scripts\i18n\angular-locale_om-et.js" />
+    <Content Include="Scripts\i18n\angular-locale_om-ke.js" />
+    <Content Include="Scripts\i18n\angular-locale_om.js" />
+    <Content Include="Scripts\i18n\angular-locale_or-in.js" />
+    <Content Include="Scripts\i18n\angular-locale_or.js" />
+    <Content Include="Scripts\i18n\angular-locale_os-ge.js" />
+    <Content Include="Scripts\i18n\angular-locale_os-ru.js" />
+    <Content Include="Scripts\i18n\angular-locale_os.js" />
+    <Content Include="Scripts\i18n\angular-locale_pa-arab-pk.js" />
+    <Content Include="Scripts\i18n\angular-locale_pa-arab.js" />
+    <Content Include="Scripts\i18n\angular-locale_pa-guru-in.js" />
+    <Content Include="Scripts\i18n\angular-locale_pa-guru.js" />
+    <Content Include="Scripts\i18n\angular-locale_pa.js" />
+    <Content Include="Scripts\i18n\angular-locale_pl-pl.js" />
+    <Content Include="Scripts\i18n\angular-locale_pl.js" />
+    <Content Include="Scripts\i18n\angular-locale_ps-af.js" />
+    <Content Include="Scripts\i18n\angular-locale_ps.js" />
+    <Content Include="Scripts\i18n\angular-locale_pt-ao.js" />
+    <Content Include="Scripts\i18n\angular-locale_pt-br.js" />
+    <Content Include="Scripts\i18n\angular-locale_pt-cv.js" />
+    <Content Include="Scripts\i18n\angular-locale_pt-gw.js" />
+    <Content Include="Scripts\i18n\angular-locale_pt-mo.js" />
+    <Content Include="Scripts\i18n\angular-locale_pt-mz.js" />
+    <Content Include="Scripts\i18n\angular-locale_pt-pt.js" />
+    <Content Include="Scripts\i18n\angular-locale_pt-st.js" />
+    <Content Include="Scripts\i18n\angular-locale_pt-tl.js" />
+    <Content Include="Scripts\i18n\angular-locale_pt.js" />
+    <Content Include="Scripts\i18n\angular-locale_qu-bo.js" />
+    <Content Include="Scripts\i18n\angular-locale_qu-ec.js" />
+    <Content Include="Scripts\i18n\angular-locale_qu-pe.js" />
+    <Content Include="Scripts\i18n\angular-locale_qu.js" />
+    <Content Include="Scripts\i18n\angular-locale_rm-ch.js" />
+    <Content Include="Scripts\i18n\angular-locale_rm.js" />
+    <Content Include="Scripts\i18n\angular-locale_rn-bi.js" />
+    <Content Include="Scripts\i18n\angular-locale_rn.js" />
+    <Content Include="Scripts\i18n\angular-locale_ro-md.js" />
+    <Content Include="Scripts\i18n\angular-locale_ro-ro.js" />
+    <Content Include="Scripts\i18n\angular-locale_ro.js" />
+    <Content Include="Scripts\i18n\angular-locale_rof-tz.js" />
+    <Content Include="Scripts\i18n\angular-locale_rof.js" />
+    <Content Include="Scripts\i18n\angular-locale_ru-by.js" />
+    <Content Include="Scripts\i18n\angular-locale_ru-kg.js" />
+    <Content Include="Scripts\i18n\angular-locale_ru-kz.js" />
+    <Content Include="Scripts\i18n\angular-locale_ru-md.js" />
+    <Content Include="Scripts\i18n\angular-locale_ru-ru.js" />
+    <Content Include="Scripts\i18n\angular-locale_ru-ua.js" />
+    <Content Include="Scripts\i18n\angular-locale_ru.js" />
+    <Content Include="Scripts\i18n\angular-locale_rw-rw.js" />
+    <Content Include="Scripts\i18n\angular-locale_rw.js" />
+    <Content Include="Scripts\i18n\angular-locale_rwk-tz.js" />
+    <Content Include="Scripts\i18n\angular-locale_rwk.js" />
+    <Content Include="Scripts\i18n\angular-locale_sah-ru.js" />
+    <Content Include="Scripts\i18n\angular-locale_sah.js" />
+    <Content Include="Scripts\i18n\angular-locale_saq-ke.js" />
+    <Content Include="Scripts\i18n\angular-locale_saq.js" />
+    <Content Include="Scripts\i18n\angular-locale_sbp-tz.js" />
+    <Content Include="Scripts\i18n\angular-locale_sbp.js" />
+    <Content Include="Scripts\i18n\angular-locale_se-fi.js" />
+    <Content Include="Scripts\i18n\angular-locale_se-no.js" />
+    <Content Include="Scripts\i18n\angular-locale_se-se.js" />
+    <Content Include="Scripts\i18n\angular-locale_se.js" />
+    <Content Include="Scripts\i18n\angular-locale_seh-mz.js" />
+    <Content Include="Scripts\i18n\angular-locale_seh.js" />
+    <Content Include="Scripts\i18n\angular-locale_ses-ml.js" />
+    <Content Include="Scripts\i18n\angular-locale_ses.js" />
+    <Content Include="Scripts\i18n\angular-locale_sg-cf.js" />
+    <Content Include="Scripts\i18n\angular-locale_sg.js" />
+    <Content Include="Scripts\i18n\angular-locale_shi-latn-ma.js" />
+    <Content Include="Scripts\i18n\angular-locale_shi-latn.js" />
+    <Content Include="Scripts\i18n\angular-locale_shi-tfng-ma.js" />
+    <Content Include="Scripts\i18n\angular-locale_shi-tfng.js" />
+    <Content Include="Scripts\i18n\angular-locale_shi.js" />
+    <Content Include="Scripts\i18n\angular-locale_si-lk.js" />
+    <Content Include="Scripts\i18n\angular-locale_si.js" />
+    <Content Include="Scripts\i18n\angular-locale_sk-sk.js" />
+    <Content Include="Scripts\i18n\angular-locale_sk.js" />
+    <Content Include="Scripts\i18n\angular-locale_sl-si.js" />
+    <Content Include="Scripts\i18n\angular-locale_sl.js" />
+    <Content Include="Scripts\i18n\angular-locale_smn-fi.js" />
+    <Content Include="Scripts\i18n\angular-locale_smn.js" />
+    <Content Include="Scripts\i18n\angular-locale_sn-zw.js" />
+    <Content Include="Scripts\i18n\angular-locale_sn.js" />
+    <Content Include="Scripts\i18n\angular-locale_so-dj.js" />
+    <Content Include="Scripts\i18n\angular-locale_so-et.js" />
+    <Content Include="Scripts\i18n\angular-locale_so-ke.js" />
+    <Content Include="Scripts\i18n\angular-locale_so-so.js" />
+    <Content Include="Scripts\i18n\angular-locale_so.js" />
+    <Content Include="Scripts\i18n\angular-locale_sq-al.js" />
+    <Content Include="Scripts\i18n\angular-locale_sq-mk.js" />
+    <Content Include="Scripts\i18n\angular-locale_sq-xk.js" />
+    <Content Include="Scripts\i18n\angular-locale_sq.js" />
+    <Content Include="Scripts\i18n\angular-locale_sr-cyrl-ba.js" />
+    <Content Include="Scripts\i18n\angular-locale_sr-cyrl-me.js" />
+    <Content Include="Scripts\i18n\angular-locale_sr-cyrl-rs.js" />
+    <Content Include="Scripts\i18n\angular-locale_sr-cyrl-xk.js" />
+    <Content Include="Scripts\i18n\angular-locale_sr-cyrl.js" />
+    <Content Include="Scripts\i18n\angular-locale_sr-latn-ba.js" />
+    <Content Include="Scripts\i18n\angular-locale_sr-latn-me.js" />
+    <Content Include="Scripts\i18n\angular-locale_sr-latn-rs.js" />
+    <Content Include="Scripts\i18n\angular-locale_sr-latn-xk.js" />
+    <Content Include="Scripts\i18n\angular-locale_sr-latn.js" />
+    <Content Include="Scripts\i18n\angular-locale_sr.js" />
+    <Content Include="Scripts\i18n\angular-locale_ss-sz.js" />
+    <Content Include="Scripts\i18n\angular-locale_ss-za.js" />
+    <Content Include="Scripts\i18n\angular-locale_ss.js" />
+    <Content Include="Scripts\i18n\angular-locale_ssy-er.js" />
+    <Content Include="Scripts\i18n\angular-locale_ssy.js" />
+    <Content Include="Scripts\i18n\angular-locale_st-ls.js" />
+    <Content Include="Scripts\i18n\angular-locale_st-za.js" />
+    <Content Include="Scripts\i18n\angular-locale_st.js" />
+    <Content Include="Scripts\i18n\angular-locale_sv-ax.js" />
+    <Content Include="Scripts\i18n\angular-locale_sv-fi.js" />
+    <Content Include="Scripts\i18n\angular-locale_sv-se.js" />
+    <Content Include="Scripts\i18n\angular-locale_sv.js" />
+    <Content Include="Scripts\i18n\angular-locale_sw-ke.js" />
+    <Content Include="Scripts\i18n\angular-locale_sw-tz.js" />
+    <Content Include="Scripts\i18n\angular-locale_sw-ug.js" />
+    <Content Include="Scripts\i18n\angular-locale_sw.js" />
+    <Content Include="Scripts\i18n\angular-locale_swc-cd.js" />
+    <Content Include="Scripts\i18n\angular-locale_swc.js" />
+    <Content Include="Scripts\i18n\angular-locale_ta-in.js" />
+    <Content Include="Scripts\i18n\angular-locale_ta-lk.js" />
+    <Content Include="Scripts\i18n\angular-locale_ta-my.js" />
+    <Content Include="Scripts\i18n\angular-locale_ta-sg.js" />
+    <Content Include="Scripts\i18n\angular-locale_ta.js" />
+    <Content Include="Scripts\i18n\angular-locale_te-in.js" />
+    <Content Include="Scripts\i18n\angular-locale_te.js" />
+    <Content Include="Scripts\i18n\angular-locale_teo-ke.js" />
+    <Content Include="Scripts\i18n\angular-locale_teo-ug.js" />
+    <Content Include="Scripts\i18n\angular-locale_teo.js" />
+    <Content Include="Scripts\i18n\angular-locale_tg-cyrl-tj.js" />
+    <Content Include="Scripts\i18n\angular-locale_tg-cyrl.js" />
+    <Content Include="Scripts\i18n\angular-locale_tg.js" />
+    <Content Include="Scripts\i18n\angular-locale_th-th.js" />
+    <Content Include="Scripts\i18n\angular-locale_th.js" />
+    <Content Include="Scripts\i18n\angular-locale_ti-er.js" />
+    <Content Include="Scripts\i18n\angular-locale_ti-et.js" />
+    <Content Include="Scripts\i18n\angular-locale_ti.js" />
+    <Content Include="Scripts\i18n\angular-locale_tig-er.js" />
+    <Content Include="Scripts\i18n\angular-locale_tig.js" />
+    <Content Include="Scripts\i18n\angular-locale_tl.js" />
+    <Content Include="Scripts\i18n\angular-locale_tn-bw.js" />
+    <Content Include="Scripts\i18n\angular-locale_tn-za.js" />
+    <Content Include="Scripts\i18n\angular-locale_tn.js" />
+    <Content Include="Scripts\i18n\angular-locale_to-to.js" />
+    <Content Include="Scripts\i18n\angular-locale_to.js" />
+    <Content Include="Scripts\i18n\angular-locale_tr-cy.js" />
+    <Content Include="Scripts\i18n\angular-locale_tr-tr.js" />
+    <Content Include="Scripts\i18n\angular-locale_tr.js" />
+    <Content Include="Scripts\i18n\angular-locale_ts-za.js" />
+    <Content Include="Scripts\i18n\angular-locale_ts.js" />
+    <Content Include="Scripts\i18n\angular-locale_twq-ne.js" />
+    <Content Include="Scripts\i18n\angular-locale_twq.js" />
+    <Content Include="Scripts\i18n\angular-locale_tzm-latn-ma.js" />
+    <Content Include="Scripts\i18n\angular-locale_tzm-latn.js" />
+    <Content Include="Scripts\i18n\angular-locale_tzm.js" />
+    <Content Include="Scripts\i18n\angular-locale_ug-arab-cn.js" />
+    <Content Include="Scripts\i18n\angular-locale_ug-arab.js" />
+    <Content Include="Scripts\i18n\angular-locale_ug.js" />
+    <Content Include="Scripts\i18n\angular-locale_uk-ua.js" />
+    <Content Include="Scripts\i18n\angular-locale_uk.js" />
+    <Content Include="Scripts\i18n\angular-locale_ur-in.js" />
+    <Content Include="Scripts\i18n\angular-locale_ur-pk.js" />
+    <Content Include="Scripts\i18n\angular-locale_ur.js" />
+    <Content Include="Scripts\i18n\angular-locale_uz-arab-af.js" />
+    <Content Include="Scripts\i18n\angular-locale_uz-arab.js" />
+    <Content Include="Scripts\i18n\angular-locale_uz-cyrl-uz.js" />
+    <Content Include="Scripts\i18n\angular-locale_uz-cyrl.js" />
+    <Content Include="Scripts\i18n\angular-locale_uz-latn-uz.js" />
+    <Content Include="Scripts\i18n\angular-locale_uz-latn.js" />
+    <Content Include="Scripts\i18n\angular-locale_uz.js" />
+    <Content Include="Scripts\i18n\angular-locale_vai-latn-lr.js" />
+    <Content Include="Scripts\i18n\angular-locale_vai-latn.js" />
+    <Content Include="Scripts\i18n\angular-locale_vai-vaii-lr.js" />
+    <Content Include="Scripts\i18n\angular-locale_vai-vaii.js" />
+    <Content Include="Scripts\i18n\angular-locale_vai.js" />
+    <Content Include="Scripts\i18n\angular-locale_ve-za.js" />
+    <Content Include="Scripts\i18n\angular-locale_ve.js" />
+    <Content Include="Scripts\i18n\angular-locale_vi-vn.js" />
+    <Content Include="Scripts\i18n\angular-locale_vi.js" />
+    <Content Include="Scripts\i18n\angular-locale_vo-001.js" />
+    <Content Include="Scripts\i18n\angular-locale_vo.js" />
+    <Content Include="Scripts\i18n\angular-locale_vun-tz.js" />
+    <Content Include="Scripts\i18n\angular-locale_vun.js" />
+    <Content Include="Scripts\i18n\angular-locale_wae-ch.js" />
+    <Content Include="Scripts\i18n\angular-locale_wae.js" />
+    <Content Include="Scripts\i18n\angular-locale_wal-et.js" />
+    <Content Include="Scripts\i18n\angular-locale_wal.js" />
+    <Content Include="Scripts\i18n\angular-locale_xh-za.js" />
+    <Content Include="Scripts\i18n\angular-locale_xh.js" />
+    <Content Include="Scripts\i18n\angular-locale_xog-ug.js" />
+    <Content Include="Scripts\i18n\angular-locale_xog.js" />
+    <Content Include="Scripts\i18n\angular-locale_yav-cm.js" />
+    <Content Include="Scripts\i18n\angular-locale_yav.js" />
+    <Content Include="Scripts\i18n\angular-locale_yi-001.js" />
+    <Content Include="Scripts\i18n\angular-locale_yi.js" />
+    <Content Include="Scripts\i18n\angular-locale_yo-bj.js" />
+    <Content Include="Scripts\i18n\angular-locale_yo-ng.js" />
+    <Content Include="Scripts\i18n\angular-locale_yo.js" />
+    <Content Include="Scripts\i18n\angular-locale_zgh-ma.js" />
+    <Content Include="Scripts\i18n\angular-locale_zgh.js" />
+    <Content Include="Scripts\i18n\angular-locale_zh-cn.js" />
+    <Content Include="Scripts\i18n\angular-locale_zh-hans-cn.js" />
+    <Content Include="Scripts\i18n\angular-locale_zh-hans-hk.js" />
+    <Content Include="Scripts\i18n\angular-locale_zh-hans-mo.js" />
+    <Content Include="Scripts\i18n\angular-locale_zh-hans-sg.js" />
+    <Content Include="Scripts\i18n\angular-locale_zh-hans.js" />
+    <Content Include="Scripts\i18n\angular-locale_zh-hant-hk.js" />
+    <Content Include="Scripts\i18n\angular-locale_zh-hant-mo.js" />
+    <Content Include="Scripts\i18n\angular-locale_zh-hant-tw.js" />
+    <Content Include="Scripts\i18n\angular-locale_zh-hant.js" />
+    <Content Include="Scripts\i18n\angular-locale_zh-hk.js" />
+    <Content Include="Scripts\i18n\angular-locale_zh-tw.js" />
+    <Content Include="Scripts\i18n\angular-locale_zh.js" />
+    <Content Include="Scripts\i18n\angular-locale_zu-za.js" />
+    <Content Include="Scripts\i18n\angular-locale_zu.js" />
+    <Content Include="Scripts\isteven-multi-select.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\jquery-2.1.1.min.map" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <None Include="Scripts\jquery-2.1.1.intellisense.js" />
+    <Content Include="Scripts\jquery-2.1.1.js" />
+    <Content Include="Scripts\jquery-2.1.1.min.js" />
+    <Content Include="Scripts\jquery-ui-1.11.1.js" />
+    <Content Include="Scripts\jquery-ui.min-1.11.1.js" />
+    <Content Include="Scripts\jquery.dataTables.js" />
+    <Content Include="Scripts\jquery.datetimepicker.js" />
+    <Content Include="Scripts\jquery.signalR-2.1.2.js" />
+    <Content Include="Scripts\jquery.signalR-2.1.2.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\knockout-3.2.0.debug.js" />
+    <Content Include="Scripts\knockout-3.2.0.js" />
+    <Content Include="Scripts\masks.js" />
+    <Content Include="Scripts\Modal.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\modernizr.custom.js" />
+    <Content Include="Scripts\ngDialog.js" />
+    <Content Include="Scripts\ngStorage.min.js" />
+    <Content Include="Scripts\npm.js" />
+    <Content Include="Scripts\r.js" />
+    <Content Include="Scripts\require.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\select.min.js" />
+    <Content Include="Scripts\typeahead.bundle.js" />
+    <Content Include="Scripts\ui-bootstrap-tpls-0.11.2.js" />
+    <Content Include="Scripts\ui-bootstrap-tpls-0.11.2.min.js" />
+    <Content Include="Scripts\numberToWord.js" />
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\Account\_ChangePasswordPartial.cshtml" />
+    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\Account\_RemoveAccountPartial.cshtml" />
+    <Content Include="Views\Account\_SetPasswordPartial.cshtml" />
+    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Manage.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Scripts\version.json" />
+    <Content Include="Views\Account\Landing.cshtml" />
+    <Content Include="Views\Account\SignOn.cshtml" />
+    <Content Include="Views\Permits\Create.cshtml" />
+    <Content Include="Views\Permits\Delete.cshtml" />
+    <Content Include="Views\Permits\Details.cshtml" />
+    <Content Include="Views\Permits\Edit.cshtml" />
+    <Content Include="Views\Permits\GetDocDetails.cshtml" />
+    <Content Include="Views\Permits\Index - Copy.cshtml" />
+    <Content Include="Views\Permits\Index.cshtml" />
+    <Content Include="Views\Permits\ViewPermit.cshtml" />
+    <Content Include="Views\StepActivityType\Create.cshtml" />
+    <Content Include="Views\StepActivityType\Delete.cshtml" />
+    <Content Include="Views\StepActivityType\Details.cshtml" />
+    <Content Include="Views\StepActivityType\Edit.cshtml" />
+    <Content Include="Views\StepActivityType\Index.cshtml" />
+    <Content Include="Views\Account\RegisterUser.cshtml" />
+    <Content Include="Views\Account\AccountCreationSuccess.cshtml" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Views\Transaction\Invoice.cshtml" />
+    <Content Include="Views\Transaction\Invoice2.cshtml" />
+    <Content Include="Views\Transaction\WebPayment2.cshtml" />
+    <Content Include="Views\Transaction\WebPayment.cshtml" />
+    <Content Include="Views\Account\ConfirmPasswordReset.cshtml" />
+    <Content Include="Views\DepotLicenseBulkToJson\BulkUpload.cshtml" />
+    <Content Include="Views\VesselLicenseBulk\BulkUpload.cshtml" />
+    <Content Include="Views\PermitBulkToJson\BulkUpload.cshtml" />
+    <Content Include="Views\Transaction\RRRResponse.cshtml" />
+    <Content Include="Views\Home\Disclaimer.cshtml" />
+    <Content Include="Views\Home\GeneralInformation.cshtml" />
+    <Content Include="Views\Home\PrivacyPolicy.cshtml" />
+    <Content Include="Views\Home\HowItWorks.cshtml" />
+    <Content Include="Views\Home\Faq.cshtml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ImportPermitPortal.DataObjects\ImportPermitPortal.DataObjects.csproj">
+      <Project>{4236E7CB-7FB6-4306-8337-6993B01E90EC}</Project>
+      <Name>ImportPermitPortal.DataObjects</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ImportPermitPortal.EF\ImportPermitPortal.EF.csproj">
+      <Project>{909D48D3-C560-4BCB-AE57-EE5874ACF8DC}</Project>
+      <Name>ImportPermitPortal.EF</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ImportPermitPortal.Services\ImportPermitPortal.Services.csproj">
+      <Project>{18151049-1922-4E09-9327-13D7DF60430E}</Project>
+      <Name>ImportPermitPortal.Services</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="packages.config" />
+    <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ApplicationThroughPuts\" />
+    <Folder Include="App\ApplicationStage\" />
+    <Folder Include="BankBranchBulkUploads\" />
+    <Folder Include="bin\" />
+    <Folder Include="BulkUploads\" />
+    <Folder Include="BulkUserUploads\" />
+    <Folder Include="ImportDocuments\SignOffDocuments\" />
+    <Folder Include="Manuals\" />
+    <Folder Include="StandardRequirements\" />
+    <Folder Include="TempDoc\" />
+    <Folder Include="tempFiles\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>20017</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:20017/</IISUrl>
+          <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
+          <IISAppRootUrl>http://localhost:20017/</IISAppRootUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="..\packages\AutoMapper.3.3.0\tools\AutoMapper.targets" Condition="Exists('..\packages\AutoMapper.3.3.0\tools\AutoMapper.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

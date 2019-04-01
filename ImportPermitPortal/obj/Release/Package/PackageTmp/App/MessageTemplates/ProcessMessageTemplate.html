@@ -1,0 +1,44 @@
+﻿
+
+<div class="row fsEdit" style="visibility: visible; width: 100%" ng-controller="messageTemplateController">
+    <div class=" modal-header">
+        <div class="row">
+            <div class="col-md-12">
+                <h4 class="modal-title">{{messageTemplate.Header}}</h4>
+            </div>
+        </div>
+    </div>
+    <div class="modal-body">
+        <form method="POST">
+            <div class="row">
+                <div class="col-md-6">
+                    <label class="control-label ">Subject *</label>
+                    <input type="text" class="form-control" ng-model="messageTemplate.Subject" />
+                </div>
+                <div class="col-md-6">
+                    <label class="control-label ">Message Event *</label>
+                    <select ng-model="messageTemplate.EventType" ng-options="msgEvent as msgEvent.Name for msgEvent in messageEvents track by msgEvent.Id" data-inset="true" class=" form-control" required>
+                        <option value="">-- Message Event --</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <label class="control-label ">Message Content *</label>
+                    <textarea class="form-control" style="min-height: 30%; width: 100%" ng-model="messageTemplate.MessageContent">{{messageTemplate.MessageContent}}</textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <label class="control-label ">Message Footer *</label>
+                    <textarea class="form-control" style="min-height: 30%; width: 100%" ng-model="messageTemplate.Footer">{{messageTemplate.Footer}}</textarea>
+                </div>
+            </div>
+            <div class="row modal-footer">
+                <div>
+                    <input type="button" value="{{buttonText}}" ng-click="processMessageTemplate()" class="btn btn-default" style="margin-top: 7px;" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

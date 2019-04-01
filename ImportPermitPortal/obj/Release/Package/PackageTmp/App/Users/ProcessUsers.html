@@ -1,0 +1,67 @@
+﻿
+
+<div class="row fsEdit" style="width: 100%" ng-controller="bnkUsrMgrController">
+    <div class=" modal-header">
+        <div class="row">
+            <div class="col-md-12">
+                <h4 class="modal-title">{{user.Header}}</h4>
+            </div>
+        </div>
+    </div>
+    <div class="modal-body">
+        <form method="POST">
+            <div class="row">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label class="control-label ">Last Name *</label>
+                        <input type="text" class="form-control" ng-model="user.LastName" />
+                    </div>
+                    <div class="col-md-6">
+                        <label class="control-label ">Other Name(s) *</label>
+                        <input type="text" class="form-control" ng-model="user.FirstName"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label class="control-label ">Email *</label>
+                        <input type="text" class="form-control" name="Email" ng-model="user.Email"/>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="control-label ">PhoneNumber *</label>
+                        <input type="text" ng-model="user.PhoneNumber" class="form-control"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label class="control-label ">User Branch*</label>
+                        <ui-select ng-model="user.BranchObject" theme="bootstrap">
+                            <ui-select-match placeholder=" -- Select Branch --">{{$select.selected.Name}}</ui-select-match>
+                            <ui-select-choices repeat="branch in branches | propsFilter: {Name: $select.search} track by branch.Id">
+                                <div ng-bind-html="branch.Name  | highlight: $select.search"></div> 
+                            </ui-select-choices>
+                        </ui-select>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="control-label ">User Role*</label>
+                        <ui-select ng-model="user.RoleObject" theme="bootstrap">
+                            <ui-select-match placeholder=" -- Select Role --">{{$select.selected.Name}}</ui-select-match>
+                            <ui-select-choices repeat="role in roles | propsFilter: {Name: $select.search} track by role.Id">
+                                <div ng-bind-html="role.Name  | highlight: $select.search"></div>
+                            </ui-select-choices>
+                        </ui-select>
+                    </div>
+                </div>
+                <br />
+                <div class="row modal-footer">
+                    <div class="col-md-9">
+                        <label class="control-label" ng-if="edit == true" style="float: left"><input type="checkbox" ng-model="user.IsActive" />&nbsp;Is User Active?</label>
+                    </div>
+                    <div class="col-md-3">
+                        <input type="button" value="{{buttonText}}" ng-click="processUser()" class="btn btn-default" style="margin-top: 7px; float:right" />
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+

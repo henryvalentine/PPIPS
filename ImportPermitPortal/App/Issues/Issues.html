@@ -1,0 +1,39 @@
+﻿
+
+<div class="row">
+    <div class="col-md-12">
+        <h4 class="page-head-line"> Issues </h4>
+    </div>
+</div>
+<div class="row" ng-controller="issueController" ng-init="initializeController()">
+  
+    <div class="row" id="reqContainer">
+        <table style="width: 100%" ng-issue>
+            <thead>
+                <tr style="color: #000">
+                    <th style="width: 3%">
+                        S/N
+                    </th>
+                    <th style="width: 15%">
+                        Category
+                    </th>
+                    <th style="width: 25%">
+                        Affected Company
+                    </th>
+                    <th style="width: 25%">
+                        Resolved By
+                    </th>
+                    <th style="width: 10%">
+                        Status
+                    </th>
+                    <th style="width: 10%">
+                        Action
+                    </th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+
+        </table>
+    </div>
+
+</div>

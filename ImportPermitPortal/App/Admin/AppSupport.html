@@ -1,0 +1,260 @@
+﻿
+
+<div class="row">
+    <div class="col-md-12">
+        <h4 class="page-head-no-line">Application Support</h4>
+    </div>
+</div>
+<div class="row fsEdit" style="width: 100%; border: 3px solid #27ae60;" ng-controller="appBankerDetailController" ng-init="initializeController()">
+    <br />
+<div class="row">
+    <div class="col-md-4" style="padding-right: 0px;">
+        <label class="control-label "> Search Application by Reference Code *</label>
+        <input type="text" ng-model="referenceCode" class=" form-control" required/>
+    </div>
+    <div class="col-md-1" style="padding-left: 7px; padding-right: 0px">
+        <br/><br/>
+        <img src="/Images/search.png" ng-click="getAppByReference()" title="Search" style="cursor: pointer; float: left"/>
+    </div>
+    <div class="col-md-1" style="padding-left: 7px; margin-top: 5px">
+
+    </div>
+</div>
+    <br /><br />
+    <div class="row" ng-if="application.Id > 0">
+        <br />
+        <div class="row">
+            <div class="col-md-12">
+            </div>
+            <br />
+            <div class="row">
+                <div class="row">
+                    <div class="col-md-4">
+                        <label style="font-weight:normal">Company</label>
+                    </div>
+                    <div class="col-md-8">
+                        <label class="control-label">{{application.CompanyName}}</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <label style="font-weight:normal">Payment Reference Code(RRR)</label>
+                    </div>
+                    <div class="col-md-8">
+                        <label class="control-label">{{application.ReferenceCode}}</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <label class="control-label " style="font-weight:normal">Total Quantity(MT):</label>
+                    </div>
+                    <div class="col-md-8">
+                        <label class="control-label ">{{application.DerivedQuantityStr}}</label>
+                    </div>
+                </div>
+                <div class="row" ng-repeat="fee in application.FeeObjects">
+                    <div class="col-md-4">
+                        <label class="control-label " style="font-weight:normal">{{fee.FeeTypeName}}</label>
+                    </div>
+                    <div class="col-md-8">
+                        <label class="control-label ">&#8358;{{fee.Amount | currency:"":0}}</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <label ng-show="application.ApplicationStatusCode === 1" class="control-label " style="font-weight:normal">Total Amount Due</label>
+                        <label ng-show="application.ApplicationStatusCode > 1" class="control-label " style="font-weight:normal">Total Amount Paid</label>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="control-label">&#8358;{{application.DerivedValue | currency: " "}}</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <label class="control-label " style="font-weight:normal">Payment Option</label>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="control-label ">{{application.PaymentOption}}</label>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <label class="control-label " style="font-weight:normal">Service Description</label>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="control-label ">Import Permit Application Fee</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <label class="control-label " style="font-weight:normal">Status</label>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="control-label " style="font-weight:normal">{{application.StatusStr}}</label>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-4">
+                        <h4><b>Details</b></h4>
+                    </div>
+                    <div class="col-md-8"></div>
+                </div>
+                <br />
+                <div class="col-md-12">
+                    <table class="table" ng-docs>
+                        <tr>
+                            <th style="width: 12%">
+                                Product Code
+                            </th>
+                            <th style="width: 12%">
+                                Est. Quantity(MT)
+                            </th>
+                            <th style="width: 11%">
+                                Est. Value($)
+                            </th>
+                            <th style="width: 18%">
+                                Country/Countries of Origin
+                            </th>
+                            <th style="width: 18%">
+                                Discharge Depot
+                            </th>
+                            <th style="width: 15%">
+                                Sponsoring Bank(s)
+                            </th>
+                        </tr>
+                        <tr data-ng-repeat="item in application.ApplicationItemObjects">
+                            <td style="width: 12%">{{item.ProductObject.Code}}</td>
+                            <td style="width: 10%">{{item.EstimatedQuantity | number:0}}</td>
+                            <td style="width: 11%">{{item.EstimatedValue | currency: " "}}</td>
+                            <td style="width: 18%">{{item.CountryOfOriginName}}</td>
+                            <td style="width: 18%">{{item.DischargeDepotName}}</td>
+                            <td style="width: 13%">{{item.ProductBankerName}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <br />
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <h4><b>Uploaded Document(s)</b></h4>
+                </div>
+                <div class="row">
+                    <br />
+                    <div class="col-md-12" ng-show="suppliedDocs.length < 1 && refLetters === null && refLetters.length < 1">
+                        <h4>NONE</h4>
+                    </div>
+                    <div class="col-md-9">
+                        <table class="table">
+                            <tr>
+                                <th style="width: 5%">
+                                    S/N
+                                </th>
+                                <th style="width: 20%">
+                                    Document
+                                </th>
+                                <th style="width: 5%">
+                                    Status
+                                </th>
+                                <th style="width: 5%">
+                                    Action
+                                </th>
+                            </tr>
+                            <tr data-ng-repeat="s in suppliedDocs">
+                                <td style="width: 5%">{{s.index}}</td>
+                                <td style="width: 20%"><a href="{{s.DocumentPath}}" ng-show="s.DocumentPath != null && s.DocumentPath.length > 0" style="cursor: pointer; color: #008000" target="_blank" title="View Document">{{s.Name}}</a></td>
+                                <td style="width: 5%">{{s.StatusStr}}</td>
+                                <td style="width: 5%">
+                                    <img src="/Images/edit.png" style="float: left; cursor: pointer" ng-click="editDoc(s.DocumentId)" ng-show="s.StageId === 1"/>
+                                </td>
+                            </tr>
+                            <tr ng-if="throughPuts !== null && throughPuts.length > 0">
+                                <td style="width: 5%"></td>
+                                <td style="width: 20%"><h5><b>Supplied Throughput Agreement(s)</b></h5></td>
+                                <td style="width: 5%"></td>
+                                <td style="width: 5%"></td>
+                            </tr>
+                            <tr ng-if="throughPuts !== null && throughPuts.length > 0" data-ng-repeat="t in throughPuts">
+                                <td style="width: 5%">{{t.index}}</td>
+                                <td style="width: 20%"><a href="{{t.DocumentPath}}" ng-show="t.DocumentPath != null && t.DocumentPath.length > 0" style="cursor: pointer; color: #008000" target="_blank" title="View Document">{{t.DepotName}} ({{t.ProductCode}})</a></td>
+                                <td style="width: 5%">{{t.StatusStr}}</td>
+                                <td style="width: 5%">
+                                    <img src="/Images/edit.png" style="float: left; cursor: pointer" ng-click="getTh(t.Id)" />
+                                </td>
+                            </tr>
+                            <tr ng-if="refLetters !== null && refLetters.length > 0">
+                                <td style="width: 5%"></td>
+                                <td style="width: 20%"><h5><b>Supplied Bank Reference Letter(s)</b></h5></td>
+                                <td style="width: 5%"></td>
+                                <td style="width: 5%"></td>
+                            </tr>
+                            <tr ng-if="refLetters !== null && refLetters.length > 0" data-ng-repeat="t in refLetters">
+                                <td style="width: 5%">{{t.index}}</td>
+                                <td style="width: 20%"><a href="{{t.DocumentPath}}" ng-show="t.DocumentPath != null && t.DocumentPath.length > 0" style="cursor: pointer; color: #008000" target="_blank" title="View Document">{{t.BankName}} ({{t.ProductCode}})</a></td>
+                                <td style="width: 5%">{{t.DocumentStatus}}</td>
+                                <td style="width: 5%">
+                                    <img src="/Images/edit.png" style="float: left; cursor: pointer" ng-click="getBnkDoc(t.Id)" />
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <br /><br />
+                <div class="row" ng-if="application.ApplicationStatusCode > 1">
+                    <div class="col-md-6">
+                        <div class="row">
+
+                            <ul>
+                                <li ng-if="unsuppliedRefLetters.length > 0">
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <h4>Bank Reference Letter(s)</h4>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="margin-top: 8px">
+                                        <ol>
+                                            <li ng-repeat="apItm in application.ApplicationItemObjects track by apItm.Id" style="margin-top: 7px">
+                                                <div>
+                                                    <div class="col-md-12" ng-if="apItm.hasDocs > 0">
+                                                        <h4>{{apItm.ProductObject.Name}}</h4>
+                                                    </div>
+                                                </div>
+                                                <ol style="margin-top: 14px">
+                                                    <li ng-repeat="th in apItm.ProductBankerObjects track by th.Id" style="margin-top: 8px">
+                                                        <div class="row" ng-if="(th.DocumentId == null && th.IsUploaded === false) || (th.DocumentId != null && th.IsUploaded === false)">
+                                                            <div class="row">
+                                                                <div class="col-md-12">
+                                                                    <label>{{th.BankName}}</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-5">
+                                                                    <label style="font-weight: normal">Attach Reference Letter*</label>
+                                                                    <input type="file" class="form-control" id="{{th.Id}}" ng-fil ng-file-select="ProcessBankDoc($event, th)" ng-class="th.status" placeholder="Select Reference Letter" name="file" accept="application/pdf,image/png,image/jpeg" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                </ol>
+                                            </li>
+                                        </ol>
+                                    </div>
+                                </li>
+                            </ul>
+                            <br />
+                        </div>
+                    </div>
+                </div>
+                <br />
+            </div>
+        </div>
+        <br />
+    </div>
+</div>
+<br /><br />

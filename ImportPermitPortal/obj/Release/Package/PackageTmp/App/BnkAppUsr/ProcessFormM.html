@@ -1,0 +1,67 @@
+﻿
+
+<div class="row fsEdit" style="width: 100%" ng-controller="bnkUsereNotificationController">
+    <div class=" modal-header">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-4">
+                    <label>Form M Details for : </label>
+                </div>
+                <div class="col-md-8">
+                    <h4 class="modal-title"><b>{{notification.ProductCode}}</b></h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-body">
+        <form method="POST">
+            <div class="row">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label class="control-label ">FormM Reference *</label>
+                        <input type="text" class="form-control" ng-model="formM.FormMReference" ng-disabled="isLegit === false;" />
+                    </div>
+                    <div class="col-md-6">
+                        <label class="control-label ">Letter Of Credit No. *</label>
+                        <input type="text" class="form-control" ng-model="formM.LetterOfCreditNo" ng-disabled="isLegit === false;" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label class="control-label ">Product Quantity *</label>
+                        <input type="text" class="form-control" ng-model="formM.Quantity" ui-number-mask="0" ng-disabled="isLegit === false;" />
+                    </div>
+                    <div class="col-md-6">
+                        <label class="control-label">Date Issued*</label>
+                        <p class="input-group">
+                            <input type="text" class="form-control datepicker" ng-click="openEnDate($event)" datepicker-popup="dd/MM/yyyy" is-open="endDateOpened"
+                                   min-date="minEndDate" max-date="maxEndDate"
+                                   datepicker-options="endDateOptions" date-disabled="disabled(date, mode)" close-text="Close" ng-model="formM.DateIssued" ng-disabled="isLegit === false;" />
+                            <span class="input-group-btn">
+                                <button type="button" class="btn btn-default" ng-click="openEnDate($event)" ng-disabled="isLegit === false;"><i class="glyphicon glyphicon-calendar"></i></button>
+                            </span>
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6" style="padding-right: 0px" ng-if="isLegit === true;">
+                        <label class="control-label">Attach Document(<i style="color: brown">Max. size  : 4MB</i>)*</label>
+                        <input type="file" class="form-control" ng-file-select="ProcessFormMDoc($event)" placeholder="Select Document " name="file" ng-disabled="isLegit === false;" />
+                    </div>
+                    <div class="col-md-6" style="padding-right: 0px" ng-if="isLegit === false;">
+                        <a href="{{formM.DocumentPath}}" style="cursor: pointer; color: #008000" target="_blank" title="View Document">Attached Form M</a>
+                    </div>
+                </div>
+                <br />
+                <div class="row modal-footer">
+                    <div class="col-md-9">
+                    </div>
+                    <div class="col-md-3">
+                        <input type="button" value="{{buttonText}}" ng-click="processformM()" class="btn btn-default" style="margin-top: 7px; float:right" ng-if="isLegit === true;" />
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+

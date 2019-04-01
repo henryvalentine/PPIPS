@@ -1,0 +1,183 @@
+﻿
+<div class="row fsEdit" ng-controller="notificationIndexController" ng-init="initializeController()">
+    <div class="row" ng-hide="viewApp === true">
+        <div class="row">
+            <div class="col-md-12">
+                <h4 class="page-head-line">Notifications</h4>
+            </div>
+        </div>
+        <table style="width: 100%" ng-bnk-ntfs>
+            <thead>
+                <tr style="color: #000">
+                    <th style="width: 5%">
+                        S/N
+                    </th>
+                    <th style="width: 15%">
+                        Payment Reference(RRR)
+                    </th>
+                    <th style="width: 20%">
+                        Company
+                    </th>
+                    <th style="width: 10%">
+                        Product
+                    </th>
+                    <th style="width: 10%">
+                        Quantity
+                    </th>
+                    <th style="width: 20%">
+                        Vessel Expected Arrival Date
+                    </th>
+                    <th style="width: 8%">
+                        Status
+                    </th>
+                    <th style="width: 10%">
+                        Action
+                    </th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+
+        </table>
+    </div>
+    
+    <div class="row" style="width: 100%; border: 3px solid #27ae60;" ng-show="viewApp === true">
+       
+        <br /><br />
+        <div class="row">
+            <div class="col-md-6">
+                <h4 class="modal-title page-head-no-line"> Notification Details</h4>
+            </div>
+            <div class="col-md-6">
+                <a ng-click="viewApp = false;" style="float: right" class="btn btn-default"><< Back</a>
+            </div>
+        </div>
+        <br />
+        <div class="col-md-12">
+            <table class="table">
+                <tr>
+                    <td style="width: 20%">Company</td>
+                    <td style="width: 30%; font-weight: bold">{{notification.ImporterName}}</td>
+                </tr>
+                <tr>
+                    <td style="width: 20%">Payment Reference (RRR)</td>
+                    <td style="width: 30%; font-weight: bold">{{notification.Rrr}}</td>
+                </tr>
+                <tr>
+                    <td style="width: 20%">Permit Number</td>
+                    <td style="width: 30%; font-weight: bold">{{notification.PermitValue}}</td>
+                </tr>
+                <tr>
+                    <td style="width: 20%">
+                        <label class="control-label " style="font-weight: normal">Total Amount Paid</label>
+                    </td>
+                    <td style="width: 30%">
+                        <label class="control-label ">&#8358;{{notification.AmountDueStr}}</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 20%">Notification Type</td>
+                    <td style="width: 30%; font-weight: bold">{{notification.NotificationTypeName}}</td>
+                </tr>
+                <tr>
+                    <td style="width: 20%">Cargo Type</td>
+                    <td style="width: 30%; font-weight: bold">{{notification.CargoTypeName}}</td>
+                </tr>
+                <tr>
+                    <td style="width: 20%">Application Status</td>
+                    <td style="width: 30%; font-weight: bold">{{notification.StatusStr}}</td>
+                </tr>
+            </table>
+        </div>
+        <br />
+        <div class="col-md-12">
+            <div class="col-md-12">
+                <h4>Product</h4>
+            </div>
+            <table class="table" style="width: 100%;">
+                <tr>
+                    <th style="width: 15%">
+                        Product Code
+                    </th>
+                    <th style="width: 20%">
+                        Discharge Quantity(MT)
+                    </th>
+                    <th style="width: 15%">
+                        Vessel Arrival Date
+                    </th>
+                    <th style="width: 15%">
+                        Discharge Date
+                    </th>
+                    <th style="width: 20%">
+                        Port of Origin
+                    </th>
+                    <th style="width: 20%">
+                        Discharge Depot
+                    </th>
+                </tr>
+                <tr>
+                    <td style="width: 15%">{{notification.ProductCode}}</td>
+                    <td style="width: 20%">{{notification.QuantityToDischargeStr}}</td>
+                    <td style="width: 15%">{{notification.ArrivalDateStr}}</td>
+                    <td style="width: 15%">{{notification.DischargeDateStr}}</td>
+                    <td style="width: 20%">{{notification.PortName}}</td>
+                    <td style="width: 20%">{{notification.DepotName}}</td>
+
+                </tr>
+            </table>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="row">
+                <div class="col-md-7">
+                    <h4>Notification Documents: </h4>
+                </div>
+            </div>
+            <br />
+            <div class="row" ng-show="suppliedDocs.length < 1">
+                <div class="col-md-7">
+                    <h4>NONE</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-9" ng-show="suppliedDocs.length > 0">
+                    <table class="table">
+                        <tr>
+                            <th style="width: 5%">
+                                S/N
+                            </th>
+                            <th style="width: 20%">
+                                Document
+                            </th>
+                        </tr>
+                        <tr data-ng-repeat="s in suppliedDocs">
+                            <td style="width: 5%">{{s.index}}</td>
+                            <td style="width: 20%"><a href="{{s.DocumentPath}}" ng-show="s.DocumentPath != null && s.DocumentPath.length > 0" style="cursor: pointer; color: #008000" target="_blank" title="View Document">{{s.Name}}</a></td>
+                           
+                        </tr>
+                      
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12" ng-show="bnkDocs.length > 0">
+                <hr/>
+                <div class="col-md-12">
+                    <h4>Document(s) to be provided: </h4>
+                </div>
+                <hr/>
+                <ul>
+                    <li ng-repeat="doc in bnkDocs">
+                        <div class="row" style="margin-top: 10px;">
+                            <div class="col-md-4">
+                                <label>{{doc.Name}}</label>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br /><br />

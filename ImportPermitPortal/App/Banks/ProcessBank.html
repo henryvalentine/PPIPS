@@ -1,0 +1,32 @@
+﻿
+
+<div class="row fsEdit" style="visibility: visible; width: 100%" ng-controller="bankController">
+    <div class=" modal-header">
+        <div class="row">
+            <div class="col-md-12">
+                <h4 class="modal-title">{{bank.Header}}</h4>
+            </div>
+        </div>
+    </div>
+    <div class="modal-body">
+        <form method="POST">
+            <div class="row">
+                <label class="control-label ">Name *</label>
+                <input type="text" data-ng-model="bank.Name" class="form-control" />
+            </div>
+            <div class="row">
+                <label class="control-label "> Sort Code *</label>
+                <input type="text" data-ng-model="bank.SortCode" class="form-control"/>
+            </div>
+            <div class="row">
+                <label class="control-label "> Notification Email</label>
+                <input type="email" data-ng-model="bank.NotificationEmail" class="form-control" />
+            </div>
+            <div class="row modal-footer">
+                <div>
+                    <input type="button" value="{{buttonText}}" ng-click="processBank()" class="btn btn-default" style="margin-top: 7px;" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

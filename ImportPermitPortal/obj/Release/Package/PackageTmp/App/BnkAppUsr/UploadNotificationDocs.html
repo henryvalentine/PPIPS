@@ -1,0 +1,214 @@
+﻿
+<div class="row fsEdit" ng-controller="bnkUsereNotificationController" ng-init="initializeController()">
+    <div class="row" style="width: 100%; border: 3px solid #27ae60;">
+        <div class="col-md-12 alert alert-danger" role="alert" ng-show="isError === true">
+            <span class="col-md-11">{{appError}}</span><span class="col-md-1" style="font-size: 20px; text-align: left; cursor: pointer" title="close" ng-click="appError = '';isError = false;">x</span>
+        </div>
+        <div class="col-md-12 alert alert-success" role="alert" ng-show="isSuccess === true">
+            <span class="col-md-11">{{appSuccess}}</span><span class="col-md-1" style="font-size: 20px; text-align: left; cursor: pointer" title="close" ng-click="appSuccess = '';isSuccess = false;">x</span>
+        </div>
+        <br />
+        <div class="row">
+            <div class="row">
+                <div class="col-md-6">
+                    <h4 class="modal-title page-head-no-line"> Notification Details</h4>
+                </div>
+                <div class="col-md-6">
+                 
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="col-md-12">
+            <table class="table">
+                <tr>
+                    <td style="width: 20%">Company</td>
+                    <td style="width: 30%; font-weight: bold">{{notification.ImporterName}}</td>
+                </tr>
+                <tr>
+                    <td style="width: 20%">Payment Reference (RRR)</td>
+                    <td style="width: 30%; font-weight: bold">{{notification.Rrr}}</td>
+                </tr>
+                <tr>
+                    <td style="width: 20%">Permit Number</td>
+                    <td style="width: 30%; font-weight: bold">{{notification.PermitValue}}</td>
+                </tr>
+                <tr>
+                    <td style="width: 20%">
+                        <label class="control-label " style="font-weight: normal">Total Amount Paid</label>
+                    </td>
+                    <td style="width: 30%">
+                        <label class="control-label ">&#8358;{{notification.AmountDueStr}}</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 20%">Notification Type</td>
+                    <td style="width: 30%; font-weight: bold">{{notification.NotificationTypeName}}</td>
+                </tr>
+                <tr>
+                    <td style="width: 20%">Cargo Type</td>
+                    <td style="width: 30%; font-weight: bold">{{notification.CargoTypeName}}</td>
+                </tr>
+                <tr>
+                    <td style="width: 20%">Notification Status</td>
+                    <td style="width: 30%; font-weight: bold">{{notification.StatusStr}}</td>
+                </tr>
+            </table>
+        </div>
+        <br />
+        <div class="col-md-12">
+            <div class="col-md-12">
+                <h4>Product</h4>
+            </div>
+            <table class="table" style="width: 100%;">
+                <tr>
+                    <th style="width: 15%">
+                        Product Code
+                    </th>
+                    <th style="width: 20%">
+                        Discharge Quantity(MT)
+                    </th>
+                    <th style="width: 15%">
+                        Vessel Arrival Date
+                    </th>
+                    <th style="width: 15%">
+                        Discharge Date
+                    </th>
+                    <th style="width: 20%">
+                        Port of Origin
+                    </th>
+                    <th style="width: 20%">
+                        Discharge Depot
+                    </th>
+                </tr>
+                <tr>
+                    <td style="width: 15%">{{notification.ProductCode}}</td>
+                    <td style="width: 20%">{{notification.QuantityToDischargeStr}}</td>
+                    <td style="width: 15%">{{notification.ArrivalDateStr}}</td>
+                    <td style="width: 15%">{{notification.DischargeDateStr}}</td>
+                    <td style="width: 20%">{{notification.PortName}}</td>
+                    <td style="width: 20%">{{notification.DepotName}}</td>
+
+                </tr>
+            </table>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="row">
+                <div class="col-md-7">
+                    <h4>Notification Documents: </h4>
+                </div>
+            </div>
+            <br />
+            <div class="row" ng-show="suppliedDocs.length < 1">
+                <div class="col-md-7">
+                    <h4>NONE</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-9" ng-show="suppliedDocs.length > 0">
+                    <table class="table">
+                        <tr>
+                            <th style="width: 5%">
+                                S/N
+                            </th>
+                            <th style="width: 20%">
+                                Document
+                            </th>
+                            <th style="width: 5%">
+                                Action
+                            </th>
+                        </tr>
+                        <tr data-ng-repeat="s in suppliedDocs">
+                            <td style="width: 5%">{{s.index}}</td>
+                            <td style="width: 20%"><a href="{{s.DocumentPath}}" ng-show="s.DocumentPath != null && s.DocumentPath.length > 0" style="cursor: pointer; color: #008000" target="_blank" title="View Document">{{s.Name}}</a></td>
+                            <td style="width: 5%">
+                                <img src="/Images/edit.png" style="float: left; cursor: pointer" ng-click="editDoc(s.DocumentId)" ng-if="s.IsBankDoc === true && notification.Status < 3" />
+                            </td>
+                        </tr>
+                        <!--<tr ng-if="fnLt !== null && fnLt.DocumentId > 0 && fnLt.DocumentPath != null && fnLt.DocumentPath.length > 0">
+                            <td style="width: 5%">{{fnLt.index}}</td>
+                            <td style="width: 20%"><a href="{{fnLt.DocumentPath}}" style="cursor: pointer; color: #008000" target="_blank" title="View Document">{{fnLt.DocumentTypeName}}</a></td>
+                            <td style="width: 5%">
+                                <img src="/Images/edit.png" style="float: left; cursor: pointer" ng-click="editFinLtDoc(fnLt)" ng-if="notification.Status < 3"/>
+                            </td>
+                        </tr>-->
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12" ng-show="bnkDocs.length > 0">
+                <hr />
+                <div class="col-md-12">
+                    <h4>Document(s) to be provided: </h4>
+                </div>
+                <hr />
+                <ul>
+                    <li ng-repeat="doc in bnkDocs">
+                        <div class="row" style="margin-top: 10px;">
+                            <div class="col-md-4">
+                                <label>{{doc.Name}}(<i style="color: brown">Max. size : 4MB</i>)*</label>
+                                <input type="file" class="form-control" id="{{doc.DocumentTypeId}}j" ng-file-select="ProcessDocument($event)" placeholder="Select Document " name="file" />
+                            </div>
+                            <div class="col-md-1" style="padding-left: 0px">
+                                <div class="row" style="padding-left: 7px; margin-top: 14px" id="infoDiv{{doc.DocumentTypeId}}"></div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <br />
+        <div class="row" style="margin-top: 2%;margin-bottom: 2%">
+            <div class="col-md-12">
+                <button class=" btn btn-default" style="cursor: pointer; color: #008000" ng-click="editFormM()" title="{{formMBtnText}}">{{formMBtnText}}</button>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="row">
+                <div class="col-md-12">
+                    <h4>Product Financing: </h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <label class="control-label ">Financed Quantity*</label>
+                    <input type="text" data-ng-model="appBanker.FinancedQuantity" class="form-control" ui-number-mask="0" ng-disabled="isLegit === false;" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <label class="control-label "> Transaction Amount*</label>
+                    <div class="input-group">
+                        <span class="input-group-addon">$</span>
+                        <input type="text" data-ng-model="appBanker.TransactionAmount" class="form-control" ui-number-mask="0" ng-disabled="isLegit === false;" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4" ng-if="fnLt.DocumentPath !== null && fnLt.DocumentPath.length > 0;">
+                    <label class="control-label ">Update Telex Copy(<i style="color: brown">Max. size  : 4MB</i>)  | <a href="{{fnLt.DocumentPath}}" style="cursor: pointer; color: #008000" target="_blank" title="View Document">View</a></label> 
+                    <input type="file" class="form-control" ng-file-select="saveDocToSession($event)" placeholder="Select Document " name="file" ng-class="genClass" ng-disabled="isLegit === false;" />
+                </div>
+                <div class="col-md-4" ng-if="fnLt.DocumentPath == undefined ||fnLt.DocumentPath == null || fnLt.DocumentPath.length < 1;">
+                    <label class="control-label"> Attach Telex Copy(<i style="color: brown">Max. size : 4MB</i>)*</label>
+                    <input type="file" class="form-control" ng-file-select="saveDocToSession($event)" placeholder="Select Document " name="file" ng-class="genClass" ng-disabled="isLegit === false;" />
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-4">
+                    <button class=" btn btn-default" ng-click="processAppBankerInfo()" ng-disabled="processinLt === true" style="float: right; color: #000" ng-if="isLegit === true;">Save</button>
+                </div>
+                <div class="col-md-4">
+
+                </div>
+            </div>
+        </div>
+        <br />
+    </div>
+</div>
+
+<br /><br />

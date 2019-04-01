@@ -1,0 +1,106 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<br /><br /><br /><br />
+<h3>General Settings</h3>
+<br />
+<style type="text/css">
+    a {
+        color: #008b8b;
+        text-decoration: none;
+    }
+
+        a:hover {
+            color: #008080;
+            text-decoration: underline;
+        }
+        a:visited {
+            color: #008080;
+            text-decoration: underline;
+        }
+    ul li {
+        list-style-type: square;
+    }
+</style>
+
+<div class="row" ng-controller="generalSettingsController">
+    <div class="row">
+        <div class="col-md-3">
+            <ul>
+                <h4>Routing Rules</h4>
+                <li>
+
+                    <ul>
+                        <li>
+                            <a href="/WorkFlow/Index">Work Flow</a>
+                        </li>
+                        <li><a href="/Steps/Index">Steps</a></li>
+                        <li><a href="/Process/Index">Processes</a></li>
+
+                        <li><a href="/StepActivityType/Index">Step Activity Types</a></li>
+                        <li><a href="/IssueType/Index">Application Issue Types</a></li>
+                    </ul>
+                </li>
+                <h4>Application</h4>
+
+                <li>
+                   
+                    <ul>
+                        <li><a href="ngx.html#AppStage/AppStage">Application Statges</a></li>
+                        <li><a href="ngx.html#Products/Products">Products</a></li>
+                        <li><a href="ngx.html#Banks/Banks">Banks</a></li>
+                        <li>
+                            <a href="ngx.html#StandardReq/StandardReq">Standard Requiremnts</a>
+                        </li>
+                        <li>
+                            <a href="ngx.html#ApplicationSetting/ApplicationSetting">Application Settings</a>
+                        </li>
+                        <li>
+                            <a href="ngx.html#CustomCode/CustomCode">Custom Codes</a>
+                        </li>
+                        <li>
+                            <a href="ngx.html#ProductColumn/ProductColumn">Product Added Requirements</a>
+                        </li>
+                        <li>
+                            <a href="ngx.html#ProductReq/ProductReq">Product Requirements</a>
+                        </li>
+                        <li ng-show="applicant == true">
+                            <a href="ngx.html#DocumentReq/DocumentReq">Document Requirements</a>
+                        </li>
+                        <li>
+                            <a href="ngx.html#DocumentTypeRight/DocumentTypeRight">Document Rights</a>
+                        </li>
+                    </ul>
+                </li>
+
+            </ul>
+        </div>
+
+        <div class="col-md-3">
+            <ul>
+                <h4>Users & Roles</h4>
+                <li>
+
+                    <ul>
+                        <li>
+                            <a href="/Group/Index">Groups</a>
+                        </li>
+                        <li>
+                            <a href="/EmployeeRoles/Index">Employee Roles</a>
+                        </li>
+                        <li>
+                            <a href="/EmployeeDesk/Index">Employee Desk</a>
+                        </li>
+                    </ul>
+                </li>
+
+            </ul>
+        </div>
+        <div class="col-md-3">
+
+        </div>
+    </div>
+</div>

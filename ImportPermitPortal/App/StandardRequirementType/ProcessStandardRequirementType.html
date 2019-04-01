@@ -1,0 +1,24 @@
+﻿
+
+<div class="row fsEdit" style="width: 100%" ng-controller="standardReqTypeController">
+    <div class=" modal-header">
+        <div class="row">
+            <div class="col-md-12">
+                <h4 class="modal-title">{{standardReqType.Header}}</h4>
+            </div>
+        </div>
+    </div>
+    <div class="modal-body">
+        <form method="POST">
+            <div class="row">
+                <label class="control-label ">Name *</label>
+                <input type="text" data-ng-model="standardReqType.Name" class="form-control" />
+            </div>
+            <div class="row modal-footer">
+                <div>
+                    <input type="button" value="{{buttonText}}" ng-click="processDocType()" class="btn btn-default" style="margin-top: 7px;" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

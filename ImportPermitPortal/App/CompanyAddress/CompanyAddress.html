@@ -1,0 +1,58 @@
+﻿
+<div class="row">
+    <div class="col-md-12">
+        <h4 class="page-head-line">Company Operational Address</h4>
+    </div>
+</div>
+
+<div class="row fsEdit" style="width: 100%; border: 3px solid #27ae60;" ng-controller="companyAddressController" ng-init="initializeController()">
+    <div class="modal-body">
+        <form method="POST">
+            <div class="row">
+                <div class="row">
+                    <div class="col-md-3" style="padding-right: 0px">
+                        <h4>Company Operational Address</h4>
+                    </div>
+                </div>
+                <br/>
+                <div class="row">
+                    <div class="row" ng-repeat="addObj in addressObjects">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="control-label ">Address Line 1*</label>
+                                <input type="text" data-ng-model="addObj.AddressLine1" class="form-control"/>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="control-label ">Address Line 2</label>
+                                <input type="text" data-ng-model="addObj.AddressLine2" class="form-control"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="control-label ">Country*</label>
+                                <select ng-model="addObj.CountryObject" ng-options="country as country.Name for country in countries track by country.Id" class=" form-control" required>
+                                    <option value="">-- Select Country --</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="control-label ">City*</label>
+                                <select ng-model="addObj.CityObject" ng-options="city as city.Name for city in addObj.CountryObject.CityObjects track by city.CityId" class=" form-control" required>
+                                    <option value="">-- Select City --</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row modal-footer">
+                <div class="col-md-6">
+                </div>
+                <div class="col-md-6">
+                    <input type="button" value="Continue >>" ng-click="processCompanyAddress()" class="btn btn-default" style="margin-top: 7px; float: right"/>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<br /><br /><br /><br />
+<br /><br />

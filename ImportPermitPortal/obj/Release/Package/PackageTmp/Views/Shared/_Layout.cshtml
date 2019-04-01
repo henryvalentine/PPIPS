@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+
+    <script src="/Scripts/jquery-2.1.1.min.js"></script>
+    <script src="/Scripts/jquery-ui.min-1.11.1.js"></script>
+    <script src="/Scripts/angular.min.js"></script>
+    <script src="/Scripts/bootstrap.min.js"></script>
+  
+   <link href="/Content/bootstrap.css" rel="stylesheet" />
+    <link href="/Content/ngDialog.css" rel="stylesheet" />
+    <link href="/Content/ngDialog-theme-flat.css" rel="stylesheet" />
+    <link href="/Content/ngDialog-theme-default.css" rel="stylesheet" />
+    <link href="/Content/site.css" rel="stylesheet" />
+    <link href="/Content/feedbackmessage.css" rel="stylesheet" />
+    <link href="/Content/formControls.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top" style=" color: #fff">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                
+                <a href="/" style="margin:0px; width:187px; height:48px;">
+                    <p style=" background-color:#fff; margin:0px;" class="compname shadow">
+                        <img height="48" width="187" src="/Content/images/importlogo.png" />
+                    </p>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+    </div>
+    <footer class="footer"  style="position: relative">
+        <div style="margin-top: 0px; text-align: center;" class="container">
+            <p style="margin-top: 0.9%">
+                <a style="color: #008000" href="/Home/GeneralInformation">General Information</a> |
+                <a style="color: #008000" href="/Home/HowItWorks">How it works</a> |
+                <a style="color: #008000" href="/Home/Faq">FAQs</a>|
+                <a style="color: #008000" href="/Home/PrivacyPolicy">Privacy Policy</a> |
+                <a style="color: #008000" href="/Home/Disclaimer">Disclaimer</a> |
+                <a style="color: #008000" href="/Home/Contact">Contact Us</a> |
+                <a style="color: #008000" href="/">Home</a> 
+            </p>
+            <p>© 2015 Department of Petroleum Resources </p>
+        </div>
+    </footer>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

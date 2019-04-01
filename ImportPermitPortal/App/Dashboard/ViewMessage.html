@@ -1,0 +1,27 @@
+﻿
+
+<div class="row fsEdit demo" style="visibility: visible; width: 100%" ng-controller="defaultController">
+    <div class=" modal-header">
+        <div class="row">
+            <div class="col-md-12">
+                <h4 class="modal-title">{{mssg.EventTypeName}}</h4>
+            </div>
+        </div>
+    </div>
+    <div class="modal-body">
+        <form>
+            <div class="row">
+                <div class="col-md-12" style="overflow-scrolling: auto">
+                    <p ng-bind-html="html">
+
+                    </p>
+                </div>
+            </div>
+            <div class="row modal-footer">
+                <div>
+                    <input type="button" value="Close" ng-click="closeMsg()" class="btn btn-default" style="margin-top: 7px;" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

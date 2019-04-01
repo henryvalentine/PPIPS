@@ -1,0 +1,433 @@
+﻿
+
+<div class="row">
+    <div class="col-md-12">
+        <h4 class="page-head-no-line">Application Information</h4>
+    </div>
+</div>
+<div class="row fsEdit" style="width: 100%; border: 3px solid #27ae60;" ng-controller="appBankerDetailController" ng-init="initializeController()">
+
+<div class="row">
+    <div class="col-md-12">
+    </div>
+    <br/>
+    <div class="row">
+        <div class="row">
+            <div class="col-md-4">
+                <label>Company</label>
+            </div>
+            <div class="col-md-8">
+                <label class="control-label">{{application.CompanyName}}</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <label>Payment Reference Code(RRR)</label>
+            </div>
+            <div class="col-md-8">
+                <label class="control-label">{{application.Rrr}}</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <label class="control-label ">Total Quantity(MT):</label>
+            </div>
+            <div class="col-md-8">
+                <label class="control-label ">{{application.DerivedQuantityStr}}</label>
+            </div>
+        </div>
+        <div class="row" ng-repeat="fee in application.FeeObjects">
+            <div class="col-md-4">
+                <label class="control-label ">{{fee.FeeTypeName}}</label>
+            </div>
+            <div class="col-md-8">
+                <label class="control-label ">&#8358;{{fee.Amount | currency:"":0}}</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <label ng-show="application.ApplicationStatusCode === 1" class="control-label ">Total Amount Due</label>
+                <label ng-show="application.ApplicationStatusCode > 1" class="control-label ">Total Amount Paid</label>
+            </div>
+            <div class="col-md-6">
+                <label class="control-label">&#8358;{{application.DerivedValue | currency: " "}}</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <label class="control-label ">Payment Option</label>
+            </div>
+            <div class="col-md-6">
+                <label class="control-label ">{{application.PaymentOption}}</label>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-4">
+                <label class="control-label ">Service Description</label>
+            </div>
+            <div class="col-md-6">
+                <label class="control-label ">Import Permit Application Fee</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <label class="control-label ">Status</label>
+            </div>
+            <div class="col-md-6">
+                <label class="control-label ">{{application.StatusStr}}</label>
+            </div>
+        </div>
+        <br/>
+        <div class="row">
+            <div class="col-md-4">
+                <h4><b>Details</b></h4>
+            </div>
+            <div class="col-md-8"></div>
+        </div>
+        <br/>
+        <div class="col-md-12">
+            <table class="table" ng-docs>
+                <tr>
+                    <th style="width: 12%">
+                        Product Code
+                    </th>
+                    <th style="width: 12%">
+                        Est. Quantity(MT)
+                    </th>
+                    <th style="width: 11%">
+                        Est. Value($)
+                    </th>
+                    <th style="width: 16%">
+                        Country/Countries of Origin
+                    </th>
+                    <th style="width: 15%">
+                        Discharge Depot
+                    </th>
+                    <th style="width: 15%">
+                        Sponsoring Bank(s)
+                    </th>
+                    <th style="width: 5%">
+                       Action
+                    </th>
+                </tr>
+                <tr data-ng-repeat="item in application.ApplicationItemObjects">
+                    <td style="width: 12%">{{item.ProductObject.Code}}</td>
+                    <td style="width: 10%">{{item.EstimatedQuantity | number:0}}</td>
+                    <td style="width: 11%">{{item.EstimatedValue | currency: " "}}</td>
+                    <td style="width: 18%">{{item.CountryOfOriginName}}</td>
+                    <td style="width: 18%">{{item.DischargeDepotName}}</td>
+                    <td style="width: 13%">{{item.ProductBankerName}}</td>
+                    <td style="width: 5%">
+                        <a title="Edit" ng-click="getProduct(item.ProductObject.ProductId)" style="cursor: pointer"><img src="/Images/edit.png" /></a> &nbsp;
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+ <br />
+    <div class="row">
+        <div class="row">
+            <div class="col-md-12">
+                <h4>Bank Accounts*</h4>
+            </div>
+        </div>
+        <div class="row" ng-repeat="ai in application.ApplicationItemObjects">
+            <div class="col-md-3" ng-repeat="pb in ai.ProductBankerObjects">
+                <label>{{pb.BankName2}}</label>
+                <input type="text" class="form-control" ng-model="pb.BankAccountNumber"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <button ng-click="updateBankAccounts()" class="btn btn-default" style="margin-top: 7px; color: #000; float: left">Save</button>
+            </div>
+        </div>
+    </div>
+    <br />
+<div class="modal-body">
+    <div class="row">
+        <div class="col-md-12">
+            <h4><b>Uploaded Document(s)</b></h4>
+        </div>
+        <div class="row">
+            <br/>
+            <div class="col-md-12" ng-show="suppliedDocs.length < 1 && throughPuts === null && throughPuts.length < 1">
+                <h4>NONE</h4>
+            </div>
+            <div class="col-md-9">
+                <table class="table" ng-if="suppliedDocs !== null && suppliedDocs.length > 0">
+                    <tr>
+                        <th style="width: 20%">
+                            Document
+                        </th>
+                        <th style="width: 5%">
+                            Action
+                        </th>
+                    </tr>
+                    <tr data-ng-repeat="s in suppliedDocs">
+                        <td style="width: 20%"><a href="{{s.DocumentPath}}" ng-show="s.DocumentPath != null && s.DocumentPath.length > 0" style="cursor: pointer; color: #008000" target="_blank" title="View Document">{{s.Name}}</a></td>
+                     <td style="width: 5%">
+                            <img src="/Images/edit.png" style="float: left; cursor: pointer" ng-click="editDoc(s.DocumentId)" ng-if="s.StageId === 1 && (s.Status === 1 || s.Status === 3)" />
+                        </td>
+                    </tr>
+
+                </table>
+            </div>
+            <br />
+            <div class="col-md-9" ng-if="throughPuts !== null && throughPuts.length > 0">
+                <div class="row">
+                    <h5><b>Supplied Throughput Agreement(s)</b></h5>
+                </div>
+                <table class="table">
+                    <tr>
+                        <th style="width: 20%">
+                            Document
+                        </th>
+                        <th style="width: 5%">
+                            Action
+                        </th>
+                    </tr>
+                    <tr ng-if="throughPuts !== null && throughPuts.length > 0" data-ng-repeat="t in throughPuts">
+                        <td style="width: 20%"><a href="{{t.DocumentPath}}" ng-show="t.DocumentPath != null && t.DocumentPath.length > 0" style="cursor: pointer; color: #008000" target="_blank" title="View Document">{{t.DepotName}} ({{t.ProductCode}})</a></td>
+                     <td style="width: 5%">
+                            <img src="/Images/edit.png" style="float: left; cursor: pointer" ng-click="getTh(t.Id)" ng-if="t.Status === 1 || t.Status === 3" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <br />
+        </div>
+        <br/><br />
+    <div class="row">
+        <div class="col-md-6">
+            <div class="row" ng-show="bnkDocs.length > 0 || nextDocs.length > 0 || unsuppliedthroughPuts.length > 0">
+                <div class="col-md-12">
+                    <h4>Required Document(s) :</h4>
+                </div>
+                <br />
+                <div class="col-md-12">
+                    <h5 style="font-weight: bold" ng-show="(bnkDocs.length > 0 || newDpocList.length > 0) && nextDocs.length > 0">(a) To be uploaded by marketer: </h5>
+                    <h5 style="font-weight: bold" ng-show="(bnkDocs.length > 0 || newDpocList.length > 0) && nextDocs.length < 1">to be uploaded by marketer: </h5>
+                </div>
+                <br />
+                <ul>
+                    <li ng-repeat="doc in bnkDocs" style="margin-top: 14px">
+                        <ul>
+                            <li ng-repeat="doc in bnkDocs" style="margin-top: 14px">
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <label>{{doc.Name}} *</label>
+                                        <input type="file" class="form-control" id="{{doc.DocumentTypeId}}j" ng-file-select="ProcessDocument($event)" placeholder="Select Document " name="file" />
+                                    </div>
+                                    <div class="col-md-1" style="padding-left: 0px">
+                                        <div class="row" style="padding-left: 7px; margin-top: 14px" id="infoDiv{{doc.DocumentTypeId}}"></div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li ng-if="unsuppliedthroughPuts.length > 0">
+                        <br />
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4>&#8226 &nbsp; Throughput Agreement(s)</h4>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top: 8px">
+                            <ol>
+                                <li ng-repeat="apItm in application.ApplicationItemObjects" style="margin-top: 7px">
+                                    <div class="row" ng-if="apItm.StorageProviderTypeId !== 1">
+                                        <div>
+                                            <div class="col-md-12">
+                                                <h4>{{apItm.ProductObject.Name}}</h4>
+                                            </div>
+                                        </div>
+                                        <ol style="margin-top: 14px">
+                                            <li ng-repeat="th in apItm.ThroughPutObjects" style="margin-top: 8px">
+                                                <div class="row" ng-if="(th.DocumentId == null && th.IsUploaded === false) || (th.DocumentId != null && th.IsUploaded === false)">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <label>{{th.DepotName}}</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-4">
+                                                            <label style="font-weight: normal">Quantity to Store*</label>
+                                                            <input type="text" class="form-control" ng-model="th.Quantity" placeholder="Quantity to Store" ui-number-mask="0" />
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <label style="font-weight: normal">Attach Throughput*</label>
+                                                            <input type="file" class="form-control" id="{{th.Id}}" ng-fil ng-file-select="ProcessThroughput($event, th)" ng-class="th.status" placeholder="Select Throughput" name="file" accept="application/pdf,image/png,image/jpeg" />
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                            <br />
+                                                            <button ng-click="submitThroughput(th)" class="btn btn-default" style="margin-top: 7px; color: #000; float: left" ng-disabled="processing === true">Submit</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ol>
+                                    </div>
+                                </li>
+                            </ol>
+                        </div>
+                    </li>
+
+                    <li ng-if="unsuppliedRefLetters.length > 0">
+                        <ul>
+                            <li>
+                                <br />
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h4 style="font-weight: normal">&#8226 &nbsp; Bank Reference Letter(s)</h4>
+                                    </div>
+                                </div>
+                                <div class="row" style="margin-top: 4px">
+                                    <ol>
+                                        <li ng-repeat="apItm in application.ApplicationItemObjects" style="margin-top: 7px">
+                                            <div>
+                                                <div class="col-md-12" ng-if="apItm.hasDocs > 0">
+                                                    <h5 style="font-weight: bold">{{apItm.ProductObject.Name}}</h5>
+                                                </div>
+                                            </div>
+                                            <ol style="margin-top: 14px">
+                                                <li ng-repeat="th in apItm.ProductBankerObjects" style="margin-top: 8px">
+                                                    <div class="row" ng-if="th.DocumentId == null">
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <label style="font-weight: normal">{{th.BankName}}</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ol>
+                                        </li>
+                                    </ol>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <br />
+            </div>
+            <div class="row" ng-show="nextDocs.length > 0">
+                <div class="col-md-12">
+                    <h5 style="font-weight: bold" ng-show="bnkDocs.length > 0 || unsuppliedthroughPuts.length > 0">(b) To be uploaded by others(eg. Bank): </h5>
+                    <h5 style="font-weight: bold" ng-show="bnkDocs.length < 1 && unsuppliedthroughPuts.length < 1">Required Document(s) To be uploaded by others(eg. Bank): </h5>
+                </div>
+                <br/>
+                <ul>
+                    <li ng-repeat="s in nextDocs">
+                        <div class="col-md-8">
+                            <label>&#8226 &nbsp;{{s.Name}}</label>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="row" ng-if="stadDocs.length > 0 || ( taxClrnc !== null && taxClrnc.Id === 3)">
+                <div class="col-md-8">
+                    <h4>Standard Documents</h4>
+                </div>
+                <ul>
+                    <li ng-repeat="d in stadDocs" style="margin-top: 14px">
+                        <div class="row" ng-if="d.Id !== 3">
+                            <div class="col-md-12" ng-if="(d.IsUploaded === false && d.StandardRequirementId < 1) || (d.IsUploaded === false && d.StandardRequirementId > 0)">
+                                <label>{{d.Name}} *</label>
+                                <input type="file" class="form-control" id="{{d.DocumentTypeId}}j" ng-file-select="ProcessDoc($event, d)" ng-class="{{d.className}}" plac placeholder="Select Document " name="{{d.Name}}" ng-disabled="processing === true" accept="application/pdf,image/png,image/jpeg" />
+                            </div>
+                            <div class="row" ng-if="d.IsUploaded === true && d.StandardRequirementId > 0">
+                                <div class="col-md-11">
+                                    <a href="{{d.DocumentPath}}" ng-show="d.DocumentPath != null && d.DocumentPath.length > 0" style="cursor: pointer; color: #008000" target="_blank" title="View Document">{{d.Name}}</a>
+                                </div>
+                                <!--<div class="col-md-1">
+                                    <img src="/Images/edit.png" style="float: left; cursor: pointer" ng-click="getStd(d)" title="Edit" ng-if="d.Status === 1 || d.Status === 3"/>
+                                </div>-->
+                            </div>
+                        </div>
+                    </li>
+                    <li ng-if="taxClrnc.Id === 3 && taxClrnc.StandardRequirementId > 0 && taxClrnc.IsUploaded === true">
+                        <div class="row">
+                            <br/>
+                            <div class="col-md-12">
+                                <a href="{{taxClrnc.DocumentPath}}" style="cursor: pointer; color: #008000" target="_blank" title="View Document">{{taxClrnc.Name}}</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li ng-if="taxClrnc.Id === 3 && taxClrnc.StandardRequirementId < 1 && taxClrnc.IsUploaded === false">
+                        <br />
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label style="font-weight: normal">{{taxClrnc.Name}} *</label>
+                                <input type="file" class="form-control" ng-file-select="saveTaxDoc($event)" ng-class="trendy" placeholder="Select Document " name="file" accept="application/pdf,image/png,image/jpeg" />
+                            </div>
+                            <div class="col-md-4">
+                                <label class="control-label" style="font-weight: normal">Date Obtained *</label>
+                                <p class="input-group">
+                                    <input type="text" class="form-control datepicker" ng-click="open($event, 'IsOpened')" datepicker-popup="{{endDateformatp}}" is-open="doc.IsOpened"
+                                            min-date="minEndDatep" max-date="maxEndDatep"
+                                            datepicker-options="endDateOptionsp" date-disabled="disabledp(date, mode)" name="IsOpened" close-text="Close" ng-model="doc.ValidFrom" />
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-default" ng-click="open($event, 'IsOpened')"><i class="glyphicon glyphicon-calendar"></i></button>
+                                    </span>
+                                </p>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="control-label" style="font-weight: normal">Expiry Date</label>
+                                <p class="input-group">
+                                    <input type="text" class="form-control datepicker" ng-click="open($event, 'IsExpOpened')" datepicker-popup="{{endDateformat}}" is-open="doc.IsExpOpened"
+                                            min-date="minEndDate" max-date="maxEndDate"
+                                            datepicker-options="endDateOptions" date-disabled="disabled(date, mode)" name="IsExpOpened" close-text="Close" ng-model="doc.ValidTo" />
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-default" ng-click="open($event, 'IsExpOpened')"><i class="glyphicon glyphicon-calendar"></i></button>
+                                    </span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <button ng-click="submitTax()" class="btn btn-default" style="margin-top: 7px; color: #000; float: left" ng-disabled="processing === true">Submit</button>
+                            </div>
+                            <div class="col-md-9">
+
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+        <br /><br />
+        <div class="row">
+            <div class="col-md-12">
+                <br />
+                <h4>Declaration</h4>
+                <label>
+                    <input type="checkbox" ng-model="accept" />
+                    &nbsp; I DECLARE THAT ALL THE PARTICULARS SET OUT IN THIS APPLICATION ARE TRUE IN THE KNOWLEDGE THAT IF FOUND TO BE FALSE OR WRONG IN ANY MATERIAL RESPECT, THIS
+                    PERMIT WILL NOT BE VALID.
+                </label>
+            </div>
+        </div>
+    </div>
+    <br/>
+   
+    <br/><br/>
+    <div class="row modal-footer">
+        <div class="col-md-4"></div>
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <button ng-click="checkAppSubmit()" ng-disabled="processing === true" class="btn btn-default" style="margin-top: 7px; float: right; color: #000" ng-show="application.ApplicationStatusCode === 2">Submit Application >></button>
+        </div>
+    </div>
+
+</div>
+    <br />
+</div>
+<br /><br />

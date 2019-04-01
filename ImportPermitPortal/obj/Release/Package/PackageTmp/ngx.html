@@ -1,0 +1,256 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Favicons -->
+
+    <link href="/Content/bootstrap.css" rel="stylesheet" />
+    <link href="/Content/isteven-multi-select.css" rel="stylesheet" />
+    <link href="/Content/docs.min.css" rel="stylesheet" />
+    <link href="/Content/font-awesome.css" rel="stylesheet" />
+    <link href="/Content/ngDialog.css" rel="stylesheet" />
+    <link href="/Content/select.css" rel="stylesheet" />
+    <link href="/Content/select2.css" rel="stylesheet" />
+    <link href="/Content/ngDialog-theme-flat.css" rel="stylesheet" />
+    <link href="/Content/ngDialog-theme-default.css" rel="stylesheet" />
+    <link href="/Content/jquery.dataTables.css" rel="stylesheet" />
+    <link href="/Content/feedbackmessage.css" rel="stylesheet" />
+    <link href="/Content/formControls.css" rel="stylesheet" />
+    <link href="/Content/msite.css" rel="stylesheet" />
+    <link href="/Content/icons.css" rel="stylesheet" />
+
+</head>
+
+<body ng-controller="masterController" ng-init="getAuthUser()">
+
+    <div id="admin-header" class="navbar navbar-inverse" role="navigation">
+        <div class="navbar-header">
+            <a class="navbar-brand" style="color: #fff;" href="#">
+                <img src="/Content/images/importlogo.png" style="margin-top: -10px; Height: 42px;" alt="DPR-PPIPS">
+            </a>
+            <a class="sidebar-toggle"><i class="icon-paragraph-justify2"></i></a>
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-icons">
+                <span class="sr-only">Toggle navbar</span>
+                <i class="icon-grid3"></i>
+            </button>
+            <button type="button" class="navbar-toggle offcanvas">
+                <span class="sr-only">Toggle navigation</span>
+                <i class="icon-paragraph-justify2"></i>
+            </button>
+        </div>
+
+        <ul id="navbar-icons" class="nav navbar-nav navbar-right" ng-show="authenticated == true">
+
+            <li class="user dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" ng-cloak>
+                    <span>
+                        {{authUserName}}
+                    </span>
+                    <i class="caret"></i>
+                </a>
+                <ul class="dropdown-menu usermenu">
+                    <!-- User image -->
+                    <li class="header light-blue">
+                        <img src="/Images/anonymous_avatar.png" />
+                        <p>
+                            {{authUserName}}
+                        </p>
+                    </li>
+
+                    <!-- Menu Footer-->
+                    <li class="xfooter">
+                        <div class="pull-left" style="margin-top: 10px;">
+                            <a href="ngx.html#ChangePassword/ChangePassword" class="btn btn-default btn-sm">Settings</a>
+                        </div>
+                        <div class="pull-right" style="margin-top: 10px;">
+
+                            <a href="javascript:document.getElementById('logoutForm').submit()" title="Log out" class="btn btn-default btn-sm">
+                                <span style="cursor: pointer">Log out</span>
+                            </a>
+                            <form method="post" action="/Account/LogOff" id="logoutForm" class="hide"></form>
+
+                        </div>
+                        <div class="clearfix"></div>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div class="page-container">
+
+        <!-- Sidebar -->
+        <div class="sidebar">
+
+            <div class="sidebar-content">
+
+                <!-- User dropdown -->
+                <div class="user-menu dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <img alt="" src="http://placehold.it/300">
+                        <div class="user-info">
+                            <p>
+                                {{authUserName}}
+                            </p>
+                        </div>
+                    </a>
+                    <div class="popup dropdown-menu dropdown-menu-right">
+                        <div class="thumbnail">
+                            <div class="thumb">
+                                <img alt="" src="http://placehold.it/300">
+                            </div>
+
+                            <div class="caption text-center">
+                                <h5>
+                                    <p>
+                                        {{authUserName}}
+                                    </p>
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /user dropdown -->
+                <!-- Main navigation -->
+                <ul class="navigation">
+
+                    <li>
+                        <a href="#"><span>Dashboard</span> <i class="icon-screen2"></i></a>
+                    </li>
+                    <li>
+                        <a href="ngx.html#Importers/Importers"><span>Importers</span> <i class="icon-aid"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><span>Importation</span> <i class="icon-certificate"></i></a>
+                        <ul>
+                            <li>
+                                <a href="ngx.html#AdminApplications/Applications"> Applications</a>
+                            </li>
+                            <li>
+                                <a href="ngx.html#Permit/Permit"> Permits</a>
+                            </li>
+                            <li>
+                                <a href="ngx.html#ApplicationIssue/ApplicationIssue"> Application Issues</a>
+                            </li>
+                            <li>
+                                <a href="ngx.html#ProcessHistory/ProcessHistory">Application History</a>
+                            </li>
+                            <li>
+                                <a href="ngx.html#AdminNotifications/Notifications"> Vessel Arrival Notifications</a>
+                            </li>
+                            <li>
+                                <a href="ngx.html#AdminRecertifications/AdminRecertifications">Recertification</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><span>Transaction</span> <i class="icon-notification"></i></a>
+                        <ul>
+                            <li>
+                                <a href="ngx.html#Admin/Invoices">Invoices</a>
+                            </li>
+                            <li>
+                                <a href="ngx.html#Admin/Receipts">Payment History</a>
+                            </li>
+                            <li>
+                                <a href="ngx.html#Calculator/Calculator">Calculator</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><span>Support</span> <i class="icon-images"></i></a>
+                        <ul>
+                            <li>
+                                <a href="ngx.html#Admin/AppSupport">Application Support</a>
+                            </li>
+                            <li>
+                                <a href="#">Notification Support</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="ngx.html#GeneralSettings/GeneralSettings"><span>General Settings</span> <i class="icon-settings"></i></a>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+        <!-- /sidebar -->
+        <!-- Page content -->
+        <div class="page-content">
+
+            <section id="admin-main">
+                <div ng-view>
+                </div>
+            </section>
+
+            <!-- Footer -->
+            <div class="xfooter clearfix">
+
+                <p style="margin-top: 0.9%">
+                    <a ng-repeat="c in contents" style="color: #008000" href="{{c.Href}}" ng-cloak>{{c.Title}} <span style="color: #000; cursor: default">|</span></a>
+                    <a style="color: #008000" href="ngy.html#Faq/Faq">FAQs <span style="color: #000; cursor: default">|</span></a> <a style="color: #008000" href="ngy.html#generalinfo/contact">Contact Us</a>
+                </p>
+                <p>© 2015 Department of Petroleum Resources </p>
+
+            </div>
+            <!-- /footer -->
+        </div>
+        <!-- /page content -->
+    </div>
+
+    <div class="angular-center-container" ng-show="busy === true">
+        <div class="angular-centered">
+            <img src="Images/busy.GIF" />
+        </div>
+    </div>
+    <!-- LiveZilla Tracking Code (ALWAYS PLACE IN BODY ELEMENT) -->
+    <div id="livezilla_tracking" style="display: none"></div>
+    <script type="text/javascript">
+        var script = document.createElement("script");
+        script.async = true;
+        script.type = "text/javascript";
+        var src = "https://livezilla.dpr.gov.ng/server.php?a=12950&request=track&output=jcrpt&ovlp=MjI_&ovlc=IzczYmUyOA__&ovlct=I2ZmZmZmZg__&ovlt=T25saW5lIC0gQ2hhdCB3aXRoIHVz&ovlto=T2ZmbGluZSAtIExlYXZlIGEgbWVzc2FnZQ__&ovls=MQ_&eca=MQ__&ecw=Mjgw&ech=OTA_&ecmb=Mjc_&echt=UXVlc3Rpb25zPw__&echst=Q2hhdCB3aXRoIHVzIGxpdmU_&ecoht=UXVlc3Rpb25zPw__&ecohst=UGxlYXNlIGxlYXZlIGEgbWVzc2FnZQ__&ecfs=I0YwRkZENQ__&ecfe=I0QzRjI5OQ__&echc=IzZFQTMwQw__&ecslw=Mg__&ecsgs=IzY1OUYyQQ__&ecsge=IzczQkUyOA__&ecsa=MQ__&ecsb=NA__&ecsx=Mw__&ecsy=Mw__&ecsc=IzQ2NDY0Ng__&nse=" +
+        Math.random();
+        setTimeout("script.src=src;document.getElementById('livezilla_tracking').appendChild(script)", 1);
+    </script><noscript>
+        <img src="https://livezilla.dpr.gov.ng/server.php?a=12950&amp;request=track&amp;output=nojcrpt" width="0" height="0" style="visibility: hidden;" alt="">
+    </noscript>
+    <!--
+
+    http://www.LiveZilla.net Tracking Code -->
+
+    <script type="text/ng-template" id="warning-dialog.html">
+        <div class="modal-header">
+            <h3>You're Idle. Do Something!</h3>
+        </div>
+        <div idle-countdown="countdown" ng-init="countdown=5" class="modal-body">
+            <progressbar max="5" value="5" animate="false" class="progress-striped active">You'll be logged out in {{countdown}} second(s).</progressbar>
+        </div>
+
+    </script>
+
+
+    <script src="Scripts/jquery-2.1.1.min.js"></script>
+    <script src="Scripts/numberToWord.js"></script>
+    <script src="Scripts/angular-file-upload-shim.min.js"></script>
+    <script src="Scripts/jquery.dataTables.js"></script>
+    <script src="Scripts/cmaster.js"></script>
+    <!--<script src="/Scripts/bootstrap.min.js"></script>-->
+    <script data-main="main.js" src="/Scripts/require.js"></script>
+    <script src="Scripts/dataTableDescription.js"></script>
+
+
+</body>
+</html>
+
+  
+

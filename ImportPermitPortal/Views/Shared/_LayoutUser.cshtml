@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    
+    <script src="/Scripts/jquery-2.1.1.min.js"></script>
+    @*<script src="/Scripts/angular-file-upload-shim.min.js"></script>*@
+    @*<script src="/Scripts/angular.min.js"></script>*@
+    <script data-main="/main.js" src="/Scripts/require.js"></script>
+    <!--<script src="/Scripts/datePickerUtils.js"></script>-->
+    <!--<script src="Scripts/angular-file-upload.min.js"></script>-->
+    
+   <link href="/Content/bootstrap.css" rel="stylesheet" />
+    <link href="/Content/ngDialog.css" rel="stylesheet" />
+    <link href="/Content/ngDialog-theme-flat.css" rel="stylesheet" />
+    <link href="/Content/ngDialog-theme-default.css" rel="stylesheet" />
+    <link href="/Content/site.css" rel="stylesheet" />
+    <link href="/Content/feedbackmessage.css" rel="stylesheet" />
+    <link href="/Content/formControls.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top" style="background-color: #008000; color: #fff">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @*@Html.ActionLink("Petroleum Products Import Permi Portal", "MyApplications", "Application", null, new { @class = "navbar-brand" })*@
+               
+                <a href="/Application/MyApplications">
+                    <p style="background-color:#FFF; margin-bottom:10px;" class="compname shadow">
+                        <img height="50" width="70" src="/Content/images/Untitled-72.png" />
+                    </p> @*&nbsp;Petroleum Products Import Permi Portal*@
+                </a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                   
+                    <li> <a href="/Group/Create" style="color: #fff">Group</a></li>
+                   
+                </ul>
+                <div class="col-md-4" ng-show="authenticated == true">
+                    <form method="post" action="/Account/LogOff" id="logoutForm" class="navbar-right">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li>
+                                <a href="/Account/Manage" style="color: #fff">Hello {{authUserName}}!</a>
+                            </li>
+                            <li><a href="javascript:document.getElementById('logoutForm').submit()" style="color: #fff">Log off</a></li>
+                        </ul>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <br />
+        <br />
+        <br />
+        <br /><br /><br />
+        <hr />
+        <footer>
+            @*<p>&copy; @DateTime.Now.Year</p>*@
+        </footer>
+    </div>
+    
+    @RenderSection("scripts", required: false)
+</body>
+</html>

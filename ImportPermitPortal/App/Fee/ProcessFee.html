@@ -1,0 +1,80 @@
+﻿
+
+<div class="row fsEdit" style="visibility: visible; width: 100%" ng-controller="feeController">
+    <div class=" modal-header">
+        <div class="row">
+            <div class="col-md-12">
+                <h4 class="modal-title">{{fee.Header}}</h4>
+            </div>
+        </div>
+    </div>
+    <div class="modal-body">
+        <form method="POST">
+
+            <div class="row">
+                <div class="col-md-4">
+                    <label class="control-label " style="font-weight: normal">Application Stage *</label>
+                    <select ng-model="fee.ImportStage" ng-options="appStage as appStage.Name for appStage in ImportStages track by appStage.Id" data-inset="true" class=" form-control" required>
+                        <option value="">-- Application Stage --</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <label class="control-label " style="font-weight: normal">Fee Type *</label>
+                    <select ng-model="fee.FeeType" ng-options="feeType as feeType.Name for feeType in feeTypes track by feeType.FeeTypeId" data-inset="true" class=" form-control" required>
+                        <option value="">-- Fee Type --</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <label class="control-label " style="font-weight: normal">Amount *</label>
+                    <div class="input-group">
+                        <span class="input-group-addon">&#8358;</span>
+                        <input type="text" data-ng-model="fee.Amount" class="form-control" ui-number-mask="0" />
+                    </div>
+                </div>
+            </div>
+            <div class="row" ng-show="fee.FeeType.FeeTypeId > 1">
+                <div class="row">
+                    <div class="col-md-4">
+                        <label class="control-label " style="font-weight: normal">Principal Split *</label>
+                        <div class="input-group">
+                            <span class="input-group-addon">&#8358;</span>
+                            <input type="text" data-ng-model="fee.PrincipalSplit" class="form-control" ui-number-mask="0" />
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="control-label " style="font-weight: normal">Vendor Split *</label>
+                        <div class="input-group">
+                            <span class="input-group-addon">&#8358;</span>
+                            <input type="text" data-ng-model="fee.VendorSplit" class="form-control" ui-number-mask="0" />
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="control-label " style="font-weight: normal">Payment Gateway Split *</label>
+                        <div class="input-group">
+                            <span class="input-group-addon">&#8358;</span>
+                            <input type="text" data-ng-model="fee.PaymentGatewaySplit" class="form-control" ui-number-mask="0" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-5">
+                        <label style="font-weight: normal">
+                            <input type="checkbox" ng-model="fee.BillableToPrincipal" />&nbsp;Bill To Principal?
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <label class="control-label " style="font-weight: normal">Description</label>
+                    <textarea type="text" class="form-control" ng-model="fee.Description">{{fee.Description}}</textarea>
+                </div>
+            </div>
+            <div class="row modal-footer">
+                <div>
+                    <input type="button" value="{{buttonText}}" ng-click="processFee()" class="btn btn-default" style="margin-top: 7px;"/>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

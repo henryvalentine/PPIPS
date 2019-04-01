@@ -1,0 +1,36 @@
+﻿
+
+<div class="row fsEdit" style="visibility: visible; width: 100%" ng-controller="countryController">
+    <div class=" modal-header">
+        <div class="row">
+            <div class="col-md-12">
+                <h4 class="modal-title">{{country.Header}}</h4>
+            </div>
+        </div>
+    </div>
+    <div class="modal-body">
+        <form method="POST">
+
+            <div class="row">
+                <label class="control-label ">Name *</label>
+                <input type="text" data-ng-model="country.Name" class="form-control"/>
+            </div>
+            <div class="row">
+                <label class="control-label ">Country Code *</label>
+                <input type="text" data-ng-model="country.Code" class="form-control" />
+            </div>
+            <div class="row">
+                <label class="control-label ">Region*</label>
+                <select ng-model="country.Region" ng-options="prod as prod.Name for prod in regions track by prod.Id" data-inset="true" class=" form-control" required>
+                    <option value="">-- Select Region --</option>
+                </select>
+            </div>
+
+            <div class="row modal-footer">
+                <div>
+                    <input type="button" value="{{buttonText}}" ng-click="processCountry()" class="btn btn-default" style="margin-top: 7px;"/>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

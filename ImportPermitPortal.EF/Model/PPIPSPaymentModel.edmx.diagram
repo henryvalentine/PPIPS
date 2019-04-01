@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="304a06a5880846c48887012bb3b7925f" Name="Diagram1">
+        <EntityTypeShape EntityType="PPIPSPaymentLiveModel.PaymentDistributionSummary" Width="1.5" PointX="2.75" PointY="5.75" />
+        <EntityTypeShape EntityType="PPIPSPaymentLiveModel.PaymentLog" Width="1.5" PointX="0.75" PointY="1" />
+        <EntityTypeShape EntityType="PPIPSPaymentLiveModel.PaymentReceipt" Width="1.5" PointX="8" PointY="2.125" />
+        <EntityTypeShape EntityType="PPIPSPaymentLiveModel.TransactionInvoice" Width="1.5" PointX="5.75" PointY="1" />
+        <EntityTypeShape EntityType="PPIPSPaymentLiveModel.UnclearedPayment" Width="1.5" PointX="3" PointY="1.875" />
+        <AssociationConnector Association="PPIPSPaymentLiveModel.FK_UnclearedPayment_PaymentLog" />
+        <AssociationConnector Association="PPIPSPaymentLiveModel.FK_PaymentReceipt_TransactionInvoice" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,126 @@
+﻿
+
+<div class="row fsEdit" style="width: 100%" ng-controller="receiptController" ng-init="initializeController()">
+    
+    <div class="row fsEdit" style="visibility: visible; width: 100%; border: 3px solid #27ae60;" ng-show="receipt.Id > 0">
+        <br />
+        <div class="row">
+            <div class="col-md-8">
+                <button class="btn btn-default" id="" style="float: left; color: #000" ng-click="printReceipt()"> Print </button>
+            </div>
+        </div>
+        <br />
+        <div class="row" id="applicationReceipt">
+            <div class=" modal-header">
+                <div class="row">
+                    <div class="col-md-9">
+                        <h4 class="modal-title">Payment Receipt</h4>
+                    </div>
+                    <div class="col-md-3">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <p style="background-color: #FFF; margin: 0px; padding: 0px;" class="compname shadow">
+                        <img height="" width="140" src="/Images/coat-of-arm.jpg"/>
+                    </p>
+                </div>
+                <div class="col-md-9">
+                    <div class="row">
+                        <div class="col-md-10">
+                            <h4>
+                                Department of Petroleum Resources (DPR)
+                            </h4>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <label style="font-weight: normal">Receipt No:</label>
+                        </div>
+                        <div class="col-md-10">
+                            <label>{{receipt.ReceiptNoStr}}</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-11">
+                            <label style="font-weight: normal">(Valid only for licenses fees paid to Federal Government of Nigeria through the Department of Petroleum Resources)</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="row">
+                    <div class="col-md-3">
+                        <label style="font-weight: normal">Received from: </label>
+                    </div>
+                    <div class="col-md-9">
+                        <label>{{receipt.ImporterName}}</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label style="font-weight: normal">The sum of: </label>
+                    </div>
+                    <div class="col-md-9">
+                        <label>{{receipt.AmountInWords}}</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label style="font-weight: normal">Mode of Payment:</label>
+                    </div>
+                    <div class="col-md-9">
+                        <label>{{receipt.PaymentOption}}</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label style="font-weight: normal">Date:</label>
+                    </div>
+                    <div class="col-md-9">
+                        <label>{{receipt.DateAddedStr}}</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label style="font-weight: normal">In Respect of:</label>
+                    </div>
+                    <div class="col-md-9">
+                        <label>{{receipt.ServiceDescription}}</label>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-3">
+                        <label style="font-weight: normal">Revenue Budget Head:</label>
+                    </div>
+                    <div class="col-md-5">
+                        <label style="width: 100%; border-bottom: 0.5px black solid"></label>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-5">
+                        <label style="width: 90%; border-bottom: 0.5px black solid"></label>
+                    </div>
+                    <div class="col-md-3">
+                        <label style="width: 90%; border-bottom: 0.5px black solid"></label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-5">
+                        <label style="font-weight: normal">For Dept. of Pet Resources</label>
+                    </div>
+                    <div class="col-md-3">
+                        <label style="font-weight: normal">Signature & Date</label>
+                    </div>
+                </div>
+            </div>
+            <br /><br /><br />
+        </div>
+    </div>
+</div>
+
+<br /><br /><br />

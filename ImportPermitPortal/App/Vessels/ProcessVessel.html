@@ -1,0 +1,83 @@
+﻿
+
+<div class="row fsEdit" style="width: 100%" ng-controller="vesselController">
+    <div class=" modal-header">
+        <div class="row">
+            <div class="col-md-12">
+                <h4 class="modal-title">{{vessel.Header}}</h4>
+            </div>
+        </div>
+    </div>
+    <div class="modal-body">
+        <form method="POST">
+            <div class="row">
+                <div class="col-md-6">
+                    <h4 class="modal-title">Vessel Information</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <label class="control-label ">Company *</label>
+                    <input type="text" class="form-control" ng-model="vessel.CompanyName"/>
+                </div>
+                <div class="col-md-4">
+                    <label class="control-label ">Vessel Name *</label>
+                    <input type="text" class="form-control" ng-model="vessel.Name"/>
+                </div>
+                <div class="col-md-4">
+                    <label class="control-label ">Vessel Capacity(MT) *</label>
+                    <input type="text" class="form-control" ng-model="vessel.Capacity" ui-number-mask="0" />
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h4 class="modal-title">Vessel License Information</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label class="control-label ">License Number *</label>
+                        <input type="text" class="form-control" ng-model="vessel.VesselLicense" /> 
+                    </div>
+                    <div class="col-md-3">
+                        <label class="control-label ">Date Issued *</label>
+                        <p class="input-group">
+                            <input type="text" class="form-control datepicker" ng-click="openEnDatep($event)" datepicker-popup="{{endDateformatp}}" is-open="endDateOpenedp"
+                                   min-date="minEndDatep" max-date="maxEndDatep"
+                                   datepicker-options="endDateOptionsp" date-disabled="disabledp(date, mode)" close-text="Close" ng-model="vessel.IssueDate" />
+                            <span class="input-group-btn">
+                                <button type="button" class="btn btn-default" ng-click="openEnDatep($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                            </span>
+                        </p>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="control-label ">Expiry Date *</label>
+                        <p class="input-group">
+                            <input type="text" class="form-control datepicker" ng-click="openEnDate($event)" datepicker-popup="{{endDateformat}}" is-open="endDateOpened"
+                                   min-date="minEndDate" max-date="maxEndDate"
+                                   datepicker-options="endDateOptions" date-disabled="disabled(date, mode)" close-text="Close" ng-model="vessel.ExpiryDate" />
+                            <span class="input-group-btn">
+                                <button type="button" class="btn btn-default" ng-click="openEnDate($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                            </span>
+                        </p>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="control-label "><input type="checkbox" ng-model="vessel.Status"/>Is License Valid? </label>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="row modal-footer">
+                <div class="col-md-9">
+                    
+                </div>
+                <div class="col-md-3">
+                    <input type="button" value="{{buttonText}}" ng-click="processVessel()" class="btn btn-default" style="margin-top: 7px; float: right" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+

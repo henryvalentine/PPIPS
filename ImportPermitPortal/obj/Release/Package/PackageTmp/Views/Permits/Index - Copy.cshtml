@@ -1,0 +1,83 @@
+﻿
+@{
+    ViewBag.Title = "Permits";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>@ViewBag.mess</h2>
+
+<div class="box-body table-responsive no-padding">
+    <div class="row" id="tbl">
+        <table id="permitTable">
+            <thead>
+                <tr style="color: #000">
+                    <th style="width: 3%; text-align: left">
+                        S/N
+                    </th>
+                    <th style="width: 12%; text-align: left">
+                        Permit No
+                    </th>
+                    <th style="width: 12%; text-align: left">
+                        Status
+                    </th>
+                    <th style="width: 12%; text-align: left">
+                        Issue Date
+                    </th>
+                    <th style="width: 12%; text-align: left">
+                        Expiry Date
+                    </th>
+                    <th style="width: 20%; text-align: left">
+                        Application Reference Code
+                    </th>
+                    <th style="width: 7%">
+                        Action
+                    </th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+    <div class="row" id="doc">
+        <object width="400" height="400" id="docEmbed" data=""></object>
+        <br />
+        <button class="btn btn-primary" onclick="close()" >Close</button>
+    </div>
+    </div>
+
+<script type="text/javascript">
+    
+    $(window).load(function ()
+    {
+        close();
+        var tableOptions = {};
+        tableOptions.sourceUrl = "/Permits/GetPermits";
+        tableOptions.itemId = 'Id';
+        tableOptions.columnHeaders = ['PermitNo', 'Status', 'IssueDateStr', 'ExpiryDateStr', 'ReferenceCode'];
+        var ttc = permitTableManager($('#permitTable'), tableOptions, '/Permits/GetDocDetails');
+        ttc.removeAttr('width').attr('width', 'auto');
+    });    
+
+    function getDoc(id)
+    {
+        if(id < 1)
+        {
+            alert('Invalid selection');
+            return;
+        }
+
+        $.get("/Permits/GetDocDetails?id=" + id, function (data)
+        {
+            $("#docEmbed").attr('data', data);
+            $("#tbl").hide('fast');
+            $("#doc").show('slow');
+        });
+    }
+
+    function close()
+    {       
+        $("#tbl").show('fast');
+        $("#doc").hide('slow');
+       
+    }
+   
+</script>

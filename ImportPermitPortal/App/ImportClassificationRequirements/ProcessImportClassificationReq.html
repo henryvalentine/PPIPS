@@ -1,0 +1,46 @@
+﻿
+
+<div class="row fsEdit" style="visibility: visible; width: 100%" ng-controller="importClassReqController">
+    <div class=" modal-header">
+        <div class="row">
+            <div class="col-md-12">
+                <h4 class="modal-title">{{prod.Header}}</h4>
+            </div>
+        </div>
+    </div>
+    <div class="modal-body">
+        <form method="POST">
+            <div class="row">
+                <label class="control-label ">Import Class *</label>
+                <select ng-model="prod.ImportClassObject" ng-options="iclass as iclass.Name for iclass in classes track by iclass.Id" data-inset="true" class=" form-control" required>
+                    <option value="">-- Select Import Class --</option>
+                </select>
+            </div>
+            <div class="row">
+                <label class="control-label ">Import Stage *</label>
+                <select ng-model="prod.ImportStageObject" ng-options="iStage as iStage.Name for iStage in importStages track by iStage.Id" data-inset="true" class=" form-control" required>
+                    <option value="">-- Select Import Stage --</option>
+                </select>
+            </div>
+            <div class="row">
+                <div class="row">
+                    <h3>Requirement(s)*</h3>
+                </div>
+                <div class="row" isteven-multi-select
+                     input-model="docTypes"
+                     output-model="prodReqs"
+                     button-label="Name"
+                     item-label="Name"
+                     tick-property="ticked">
+                </div>
+            </div>
+            <div class="row modal-footer">
+                <div>
+                    <input type="button" value="{{buttonText}}" ng-click="processReq()" class="btn btn-default" style="margin-top: 7px;" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+

@@ -1,0 +1,68 @@
+﻿
+
+<div class="row fsEdit" style="visibility: visible; width: 100%" ng-controller="adminInvoiceController">
+    <div class=" modal-header">
+        <div class="row">
+            <div class="col-md-12">
+                <h4 class="modal-title">Transaction Details</h4>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-body">
+        <form>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <label class="control-label " style="font-weight: normal"> Message</label>
+                </div>
+                <div class="col-md-8">
+                    <label>{{rrr.Message}}</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <label class="control-label " style="font-weight: normal"> Status Code :</label>
+                </div>
+                <div class="col-md-8">
+                    <label>{{rrr.Status}}</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <label class="control-label " style="font-weight: normal"> Payment Reference Code(RRR) :</label>
+                </div>
+                <div class="col-md-8">
+                    <label>{{rrr.Rrr}}</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <label class="control-label " style="font-weight: normal">Order Id :</label>
+                </div>
+                <div class="col-md-8">
+                    <label>{{rrr.OrderId}}</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <label class="control-label " style="font-weight: normal">Transaction Time :</label>
+                </div>
+                <div class="col-md-8">
+                    <label>{{rrr.Transactiontime}}</label>
+                </div>
+            </div>
+            <div class="row modal-footer">
+                <div class="col-md-5">
+
+                </div>
+                <div class="col-md-4">
+                    <input ng-if="rrr.Status < 2 && rrr.Transactiontime !== null && rrr.Transactiontime.length > 0" type="button" value="Update Payment" ng-click="insertPayment()" class="btn btn-default" style="margin-top: 7px; color: #fff; background-color: #008000" />
+                </div>
+                <div class="col-md-3">
+                    <input type="button" value="Close" ng-click="closeDetails()" class="btn btn-default" style="margin-top: 7px;" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

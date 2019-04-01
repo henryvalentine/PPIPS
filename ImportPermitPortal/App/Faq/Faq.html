@@ -1,0 +1,19 @@
+﻿
+
+<div class="row">
+    <div class="col-md-12">
+        <h4 class="page-head-line"> FAQs </h4>
+    </div>
+</div>
+<div class="row" ng-controller="faqRController" ng-init="initializeController()">
+    <div class="row">
+        <div class="row" ng-repeat="faq in faqs">
+            <div class="col-md-4">
+                <h4>{{faq.Question}}</h4>
+            </div>
+            <div class="col-md-8">
+                <p>{{faq.Answer}}</p>
+            </div>
+        </div>
+    </div>
+</div>

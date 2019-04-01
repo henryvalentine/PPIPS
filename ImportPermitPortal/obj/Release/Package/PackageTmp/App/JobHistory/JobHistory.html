@@ -1,0 +1,213 @@
+﻿
+
+<fieldset style="border: none; background: whitesmoke" ng-controller="jobHistoryController">
+
+
+    <div class="row" ng-hide="viewApp === true">
+        <div class="row">
+            <div class="col-md-12">
+                <h4 class="page-head-line">Application History</h4>
+            </div>
+        </div>
+        <table style="width: 100%" ng-history>
+            <thead>
+                <tr style="color: #000">
+                    <th style="width: 2%">
+                        S/N
+                    </th>
+                    <th style="width: 20%">
+                        Payment Reference
+                    </th>
+                    <th style="width: 20%">
+                        Company
+                    </th>
+                    <th style="width: 20%">
+                        Estimated Quantity(MT)
+                    </th>
+                    <th style="width: 20%">
+                        Estimated Value($)
+                    </th>
+                    <th style="width: 15%">
+                        Date Applied
+                    </th>
+                    <th style="width: 15%">
+                        Status
+                    </th>
+                    <th style="width: 12%">
+                        Action
+                    </th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+
+        </table>
+    </div>
+    <div class="row" ng-show="viewApp == true" style="width: 90%; border: 3px solid #27ae60;">
+        <div class=" modal-header">
+            <br /><br />
+            <div class="row">
+                <div class="col-md-6">
+                    <h4 class="modal-title page-head-no-line"> Application Details</h4>
+                </div>
+                <div class="col-md-6">
+                    <a ng-click="viewApp = true" style="float: right" class="btn btn-default"><< Back</a>
+                </div>
+            </div>
+        </div>
+        <div class="modal-body">
+            <form id="fsProcessApps">
+                <div class="row">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label style="font-weight:normal">Company</label>
+                        </div>
+                        <div class="col-md-8">
+                            <label class="control-label">{{application.CompanyName}}</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label style="font-weight: normal">Payment Reference(RRR)</label>
+                        </div>
+                        <div class="col-md-8">
+                            <label class="control-label">{{application.ReferenceCode}}</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label style="font-weight:normal">Account Number</label>
+                        </div>
+                        <div class="col-md-8">
+                            <label class="control-label">{{application.BankAccountNumber}}</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label class="control-label " style="font-weight:normal">Total Quantity(MT):</label>
+                        </div>
+                        <div class="col-md-8">
+                            <label class="control-label ">{{application.DerivedQuantityStr}}</label>
+                        </div>
+                    </div>
+                    <div class="row" ng-repeat="fee in application.FeeObjects">
+                        <div class="col-md-4">
+                            <label class="control-label " style="font-weight: normal">{{fee.FeeTypeName}}</label>
+                        </div>
+                        <div class="col-md-8">
+                            <label class="control-label ">&#8358;{{fee.Amount | currency:"":0}}</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label class="control-label " style="font-weight:normal">Total Amount Paid</label>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="control-label">&#8358;{{application.DerivedValue | currency: " "}}</label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label class="control-label " style="font-weight:normal">Payment Option</label>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="control-label ">{{application.PaymentOption}}</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label class="control-label " style="font-weight:normal">Service Description</label>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="control-label ">Import Permit Application Fee</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label class="control-label " style="font-weight:normal">Status</label>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="control-label ">{{application.StatusStr}}</label>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h4><b>Product(s) Included</b></h4>
+                        </div>
+                        <div class="col-md-8"></div>
+                    </div>
+                    <br />
+                    <div class="col-md-12">
+                        <table class="table" ng-docs id="tng">
+                            <tr>
+                                <th style="width: 12%">
+                                    Product Code
+                                </th>
+                                <th style="width: 12%">
+                                    Est. Quantity(MT)
+                                </th>
+                                <th style="width: 11%">
+                                    Est. Value($)
+                                </th>
+                                <th style="width: 18%">
+                                    Country/Countries of Origin
+                                </th>
+                                <th style="width: 18%">
+                                    Discharge Depot
+                                </th>
+                                <!--<th style="width: 10%">
+                                    Form M
+                                </th>-->
+                            </tr>
+                            <tr data-ng-repeat="item in application.ApplicationItemObjects">
+                                <td style="width: 12%">{{item.ProductObject.Code}}</td>
+                                <td style="width: 10%">{{item.EstimatedQuantity | number:0}}</td>
+                                <td style="width: 11%">{{item.EstimatedValue | currency: " "}}</td>
+                                <td style="width: 18%">{{item.CountryOfOriginName}}</td>
+                                <td style="width: 18%">{{item.DischargeDepotName}}</td>
+
+                            </tr>
+                        </table>
+                    </div>
+                    <br />
+                    <div class="col-md-12">
+                        <h4><b>Uploaded Document(s)</b></h4>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12" ng-show="application.DocumentTypeObjects.length < 1">
+                            <h4>NONE</h4>
+                        </div>
+                        <div class="col-md-9">
+                            <table class="table">
+                                <tr data-ng-repeat="t in application.DocumentTypeObjects">
+                                    <td style="width: 20%"><a href="{{t.DocumentPath}}" style="cursor: pointer; color: #008000" target="_blank" title="View Document">{{t.Name}}</a></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="row modal-footer">
+                    <div class="col-md-6">
+                    </div>
+                    <div class="col-md-3">
+                    </div>
+
+                    <div class="col-md-3">
+                      
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-9"></div>
+        <div class="col-md-3">
+
+        </div>
+    </div> <br />
+
+</fieldset>
+
+

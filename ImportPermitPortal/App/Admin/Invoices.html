@@ -1,0 +1,295 @@
+﻿
+
+<div class="row">
+    <div class="col-md-12">
+        <h4 class="page-head-line">Invoices</h4>
+    </div>
+</div>
+
+
+<div class="row" ng-controller="adminInvoiceController" ng-init="initializeController()">
+    <div class="row" ng-hide="preview === true">
+        <table style="width: 100%" ng-ntfs>
+            <thead>
+                <tr style="color: #000">
+                    <th style="width: 2%">
+                        S/N
+                    </th>
+                    <th style="width: 10%">
+                        RRR
+                    </th>
+                    <th style="width: 18%">
+                        Company
+                    </th>
+                    <th style="width: 15%">
+                        Date Generated
+                    </th>
+                    <th style="width: 15%">
+                        Amount(&#8358;)
+                    </th>
+                    <th style="width: 12%">
+                        Payment Option
+                    </th>
+                    <th style="width: 20%">
+                        Service
+                    </th>
+                    <th style="width: 8%">
+                        Status
+                    </th>
+                    <th style="width: 8%">
+                        Action
+                    </th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+
+        </table>
+    </div>
+
+<div class="row fsEdit" style="width: 100%">
+
+<div class="row" style="width: 100%; border: 3px solid #27ae60;" ng-show="notificationInvoice.Id > 0 && preview === true">
+    <br/>
+    <div class="row">
+        <div class="col-md-8">
+            <button class="btn btn-default" id="" style="float: left; color: #000" ng-click="printReceipt()"> Print </button>
+        </div>
+    </div>
+    <br/>
+    <div class="row" id="notificationReceipt">
+        <div class="row">
+            <p style="background-color: #FFF; margin: 0px; padding: 0px;" class="compname shadow">
+                <img height="45" width="187" src="/Content/images/importlogo.png"/>
+            </p>
+        </div>
+        <div class=" modal-header">
+            <div class="row" style="margin-top: 15px">
+                <div class="col-md-9">
+                    <h4 class="modal-title">Invoice</h4>
+                </div>
+                <div class="col-md-3">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="modal-body">
+                <div class="row">
+                    <table class="table">
+                        <tr>
+                            <td style="width: 20%">Reference Code</td>
+                            <td style="width: 30%; font-weight: bold">{{notificationInvoice.ReferenceCode}}</td>
+                        </tr>
+                        <tr>
+                            <td style="width: 20%">Remita Retrieval Reference Code(RRR)</td>
+                            <td style="width: 30%; font-weight: bold">{{notificationInvoice.NotificationObject.Rrr}}</td>
+                        </tr>
+                        <tr>
+                            <td style="width: 20%">Permit Number</td>
+                            <td style="width: 30%; font-weight: bold">{{notificationInvoice.NotificationObject.PermitValue}}</td>
+                        </tr>
+                        <tr>
+                            <td style="width: 20%">Customer</td>
+                            <td style="width: 30%; font-weight: bold">{{notificationInvoice.ImporterName}}</td>
+                        </tr>
+                        <tr ng-repeat="fee in notificationInvoice.InvoiceItemObjects">
+                            <td style="width: 20%">{{fee.FeeTypeName}}</td>
+                            <td style="width: 30%; font-weight: bold">&#8358;{{fee.AmountDue | currency:"":0}}</td>
+                        </tr>
+                        <tr>
+                            <td style="width: 20%" ng-show="notificationInvoice.Status > 1">Total Amount Paid</td>
+                            <td style="width: 20%" ng-show="notificationInvoice.Status < 2">Total Amount Due</td>
+                            <td style="width: 30%; font-weight: bold">&#8358;{{notificationInvoice.TotalAmountDueStr}}</td>
+                        </tr>
+                        <tr>
+                            <td style="width: 20%">Payment Option</td>
+                            <td style="width: 30%; font-weight: bold">{{notificationInvoice.PaymentOption}}</td>
+                        </tr>
+                        <tr>
+                            <td style="width: 20%">Notification Type</td>
+                            <td style="width: 30%; font-weight: bold">{{notificationInvoice.NotificationObject.NotificationClassName}}</td>
+                        </tr>
+                        <tr>
+                            <td style="width: 20%">Cargo Type</td>
+                            <td style="width: 30%; font-weight: bold">{{notificationInvoice.NotificationObject.CargoTypeName}}</td>
+                        </tr>
+                        <tr>
+                            <td style="width: 20%">Service Description</td>
+                            <td style="width: 30%; font-weight: bold">{{notificationInvoice.ServiceDescription}}</td>
+                        </tr>
+                        <tr>
+                            <td style="width: 20%">Application Status</td>
+                            <td style="width: 30%; font-weight: bold">{{notificationInvoice.StatusStr}}</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="row">
+                    <div class="row">
+                        <h4>Details</h4>
+                    </div>
+                    <table class="table" style="width: 100%;">
+                        <tr>
+                            <th style="width: 15%">
+                                Product Code
+                            </th>
+                            <th style="width: 20%">
+                                QuantityTo Discharge(MT)
+                            </th>
+                            <th style="width: 15%">
+                                Vessel Arrival Date
+                            </th>
+                            <th style="width: 15%">
+                                Discharge Date
+                            </th>
+                            <th style="width: 20%">
+                                Port of Origin
+                            </th>
+                            <th style="width: 20%">
+                                Discharge Depot
+                            </th>
+                        </tr>
+                        <tr>
+                            <td style="width: 15%">{{notificationInvoice.NotificationObject.ProductCode}}</td>
+                            <td style="width: 20%">{{notificationInvoice.QuantityToDischargeStr}}</td>
+                            <td style="width: 15%">{{notificationInvoice.ArrivalDateStr}}</td>
+                            <td style="width: 15%">{{notificationInvoice.DischargeDateStr}}</td>
+                            <td style="width: 20%">{{notificationInvoice.PortName}}</td>
+                            <td style="width: 20%">{{notificationInvoice.DepotName}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="row">
+        <div class="col-md-8">
+
+        </div>
+        <div class="col-md-4">
+            <button class="btn btn-default" id="" style="float: left; color: #000" ng-click="preview = false; notificationInvoice == null;"> Close </button>
+        </div>
+    </div>
+    <br/>
+</div>
+
+<div class="row" style="width: 100%; border: 3px solid #27ae60;" ng-show="applicationInvoice.Id > 0 && preview === true">
+    <br/>
+    <div class="row">
+        <div class="col-md-8">
+            <button class="btn btn-default" id="" style="float: left; color: #000" ng-click="printReceipt()"> Print </button>
+        </div>
+    </div>
+    <br/>
+    <div class="row" id="applicationReceipt">
+        <div class="row">
+            <p style="background-color: #FFF; margin: 0px; padding: 0px;" class="compname shadow">
+                <img height="45" width="187" src="/Content/images/importlogo.png"/>
+            </p>
+        </div>
+        <div class=" modal-header">
+            <div class="row" style="margin-top: 15px">
+                <div class="col-md-9">
+                    <h4 class="modal-title">Invoice</h4>
+                </div>
+                <div class="col-md-3">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="modal-body">
+                <div class="row">
+                    <table class="table">
+                        <tr>
+                            <td style="width: 20%">Reference Code</td>
+                            <td style="width: 30%; font-weight: bold">{{applicationInvoice.ReferenceCode}}</td>
+                        </tr>
+                        <tr>
+                            <td style="width: 20%">Payment Reference Code(RRR)</td>
+                            <td style="width: 30%; font-weight: bold">{{applicationInvoice.RRR}}</td>
+                        </tr>
+                        <tr>
+                            <td style="width: 20%">Customer</td>
+                            <td style="width: 30%; font-weight: bold">{{applicationInvoice.ImporterName}}</td>
+                        </tr>
+                        <tr>
+                            <td style="width: 20%">Total Quantity(MT)</td>
+                            <td style="width: 30%; font-weight: bold">{{applicationInvoice.ApplicationObject.DerivedQuantityStr}}</td>
+                        </tr>
+                        <tr ng-repeat="fee in applicationInvoice.FeeObjects">
+                            <td style="width: 20%">{{fee.FeeTypeName}}</td>
+                            <td style="width: 30%; font-weight: bold">&#8358;{{fee.Amount | currency:"":0}}</td>
+                        </tr>
+                        <tr>
+                            <td style="width: 20%" ng-show="applicationInvoice.Status > 1">Total Amount Due</td>
+                            <td style="width: 20%" ng-show="applicationInvoice.Status < 2">Total Amount Due</td>
+                            <td style="width: 30%; font-weight: bold">&#8358;{{applicationInvoice.TotalAmountDueStr}}</td>
+                        </tr>
+                        <tr>
+                            <td style="width: 20%">Payment Option</td>
+                            <td style="width: 30%; font-weight: bold">{{applicationInvoice.PaymentOption}}</td>
+                        </tr>
+                        <tr>
+                            <td style="width: 20%">Service Description</td>
+                            <td style="width: 30%; font-weight: bold">{{applicationInvoice.ServiceDescription}}</td>
+                        </tr>
+                        <tr>
+                            <td style="width: 20%">Application Status</td>
+                            <td style="width: 30%; font-weight: bold">{{applicationInvoice.StatusStr}}</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="row">
+                    <div class="row">
+                        <h4>Details</h4>
+                    </div>
+                    <table class="table" style="width: 100%;">
+                        <tr>
+                            <th style="width: 12%">
+                                Product Code
+                            </th>
+                            <th style="width: 12%">
+                                Est. Quantity(MT)
+                            </th>
+                            <th style="width: 12%">
+                                Est. Value($)
+                            </th>
+                            <th style="width: 12%">
+                                PSF Number
+                            </th>
+                            <th style="width: 13%">
+                                License Code
+                            </th>
+                            <th style="width: 18%">
+                                Country of Origin
+                            </th>
+                            <th style="width: 18%">
+                                Discharge Depot
+                            </th>
+                        </tr>
+                        <tr data-ng-repeat="prd in applicationInvoice.ApplicationObject.ApplicationItemObjects">
+                            <td style="width: 12%">{{prd.ProductObject.Code}}</td>
+                            <td style="width: 12%">{{prd.EstimatedQuantity | number:0}}</td>
+                            <td style="width: 12%">{{prd.EstimatedValue | currency: " "}}</td>
+                            <td style="width: 12%">{{prd.PSFNumber}}</td>
+                            <td style="width: 13%">{{prd.ReferenceLicenseCode}}</td>
+                            <td style="width: 18%">{{prd.CountryOfOriginName}}</td>
+                            <td style="width: 18%">{{prd.DischargeDepotName}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="row">
+        <div class="col-md-8"></div>
+        <div class="col-md-4">
+            <button class="btn btn-default" id="" style="float: left; color: #000" ng-click="preview = false; applicationInvoice == null;"> Close </button>
+        </div>
+    </div>
+    <br/>
+</div>
+</div>
+<br/>
+  
+</div>

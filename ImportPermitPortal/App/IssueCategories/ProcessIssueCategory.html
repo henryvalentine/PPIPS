@@ -1,0 +1,25 @@
+﻿
+
+<div class="row fsEdit" style="visibility: visible; width: 100%" ng-controller="issueCategoryController">
+    <div class=" modal-header">
+        <div class="row">
+            <div class="col-md-12">
+                <h4 class="modal-title">{{issueCategory.Header}}</h4>
+            </div>
+        </div>
+    </div>
+    <div class="modal-body">
+        <form method="POST">
+
+            <div class="row">
+                <label class="control-label ">Issue Category *</label>
+                <input type="text" data-ng-model="issueCategory.Name" class="form-control" />
+            </div>
+            <div class="row modal-footer">
+                <div>
+                    <input type="button" value="{{buttonText}}" ng-click="processIssueCategory()" class="btn btn-default" style="margin-top: 7px;" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

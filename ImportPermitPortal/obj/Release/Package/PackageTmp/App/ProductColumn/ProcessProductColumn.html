@@ -1,0 +1,32 @@
+﻿
+
+<div class="row fsEdit" style="visibility: visible; width: 100%" ng-controller="productColReqController">
+    <div class=" modal-header">
+        <div class="row">
+            <div class="col-md-12">
+                <h4 class="modal-title">{{prodReq.Header}}</h4>
+            </div>
+        </div>
+    </div>
+    <div class="modal-body">
+        <form method="POST">
+            <div class="row">
+                <label class="control-label ">Product *</label>
+                <select ng-model="prodReq.Product" ng-options="prod as prod.Name for prod in products track by prod.ProductId" data-inset="true" class=" form-control" required>
+                    <option value="">-- Select Product --</option>
+                </select>
+            </div>
+            <div class="row">
+                <label class="control-label "> Custom Code *</label>
+                <select ng-model="prodReq.CustomCode" ng-options="customCode as customCode.Name for customCode in customCodes track by customCode.CustomCodeId" data-inset="true" class=" form-control" required>
+                    <option value="">-- Select Custom Code --</option>
+                </select>
+            </div>
+            <div class="row modal-footer">
+                <div>
+                    <input type="button" value="{{buttonText}}" ng-click="processProductCol()" class="btn btn-default" style="margin-top: 7px;" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

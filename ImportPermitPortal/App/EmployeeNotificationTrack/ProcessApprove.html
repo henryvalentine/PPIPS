@@ -1,0 +1,47 @@
+﻿
+
+<div class="row fsEdit" style="visibility: visible; width: 100%" ng-controller="notificationTrackController">
+    <div class=" modal-header">
+        <div class="row">
+            <div class="col-md-12">
+                <h4 class="modal-title">Any Comment?</h4>
+            </div>
+        </div>
+    </div>
+    <div class="modal-body">
+        <form method="POST">
+
+
+
+            <div class="row">
+                <label class="control-label ">Comment</label>
+
+                <textarea ng-model="employee.Description" class="form-control"></textarea>
+            </div>
+
+
+
+            <div class="row modal-footer">
+                <!--<div>
+                    <input type="button" value="Submit" ng-click="processView()" class="btn btn-default" style="margin-top: 7px;"/>
+                </div>-->
+
+
+
+                <div class="row">
+
+                    <div class="col-md-6">
+                       
+                    </div>
+
+                    <div class="col-md-6">
+                        <input type="button" value="Decline" ng-click="cancel()" class="btn btn-default" style="margin-top: 7px;" />
+                        <input type="button" value="Accept" ng-click="processNotificationDialogApprove()" class="btn btn-default" style="margin-top: 7px;" />
+                    </div>
+
+
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

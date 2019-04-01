@@ -1,0 +1,48 @@
+﻿
+
+<div class="row">
+    <div class="col-md-12">
+        <h4 class="page-head-line">Employees</h4>
+    </div>
+</div>
+
+<div class="row" ng-controller="employeeDeskController" ng-init="initializeController()">
+    <div class="row">
+        <div class="col-md-3">
+            <input type="button" value="Print" ng-click="printForm('reqContainer')" class="btn btn-default" style="margin-top: 7px;" />
+        </div>
+    </div><br />
+    <div class="row" id="reqContainer">
+        <table class="table" style="width: 100%" ng-employee>
+            <thead>
+                <tr style="color: #000">
+                    <th style="width: 3%">
+                        S/N
+                    </th>
+                    <th style="width: 15%">
+                        Name
+                    </th>
+                    <th style="width: 15%">
+                        Group
+                    </th>
+                    <th style="width: 15%">
+                        Activity type
+                    </th>
+                    <th style="width: 25%">
+                        Zone
+                    </th>
+                    <th style="width: 10%">
+                        Job Count
+                    </th>
+                    <th style="width: 12%">
+                        Action
+                    </th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+
+        </table>
+    </div>
+    <br/>
+
+</div>

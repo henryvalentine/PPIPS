@@ -1,0 +1,62 @@
+﻿
+
+<div class="row fsEdit" style="visibility: visible; width: 100%" ng-controller="employeeDeskController">
+    <div class=" modal-header">
+        <div class="row">
+            <div class="col-md-12">
+                <h4 class="modal-title">{{employeeDesk.Header}}</h4>
+            </div>
+        </div>
+    </div>
+    <div class="modal-body">
+        <form method="POST">
+            <div class="row">
+                <label class="control-label ">FirstName *</label>
+                <input type="text" data-ng-model="employeeDesk.FirstName" class="form-control"/>
+            </div>
+
+            <div class="row">
+                <label class="control-label ">LastName *</label>
+                <input type="text" data-ng-model="employeeDesk.LastName" class="form-control"/>
+            </div>
+
+          
+            <div class="row">
+                <label class="control-label ">Email *</label>
+                <input type="text" data-ng-model="employeeDesk.Email" class="form-control"/>
+            </div>
+
+            <div class="row">
+                <label class="control-label ">Phone *</label>
+                <input type="text" data-ng-model="employeeDesk.Phone" class="form-control"/>
+            </div>
+
+            <div class="row">
+                <label class="control-label ">Group*</label>
+                <select ng-model="employeeDesk.Group" ng-options="gro as gro.Name for gro in groups track by gro.Id" data-inset="true" class=" form-control" required>
+                    <option value="">-- Select Group--</option>
+                </select>
+            </div>
+
+            <div class="row">
+                <label class="control-label ">Activity Type*</label>
+                <select ng-model="employeeDesk.Type" ng-options="ty as ty.Name for ty in activitytypes track by ty.Id" data-inset="true" class=" form-control" required>
+                    <option value="">-- Select Activity Type --</option>
+                </select>
+            </div>
+
+            <div class="row">
+                <label class="control-label ">Zone*</label>
+                <select ng-model="employeeDesk.Zone" ng-options="zo as zo.Name for zo in zones track by zo.Id" data-inset="true" class=" form-control" required>
+                    <option value="">-- Select Zone --</option>
+                </select>
+            </div>
+
+            <div class="row modal-footer">
+                <div>
+                    <input type="button" value="{{buttonText}}" ng-click="processEmployeeDesk()" class="btn btn-default" style="margin-top: 7px;"/>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

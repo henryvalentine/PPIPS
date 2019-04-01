@@ -1,0 +1,44 @@
+﻿
+<div class="row">
+    <div class="col-md-12">
+        <h4 class="page-head-line">Banks</h4>
+    </div>
+</div>
+
+<fieldset style="border: none; background: whitesmoke" ng-controller="bankController">
+    <div class="row">
+        <div class="col-md-3">
+            <input type="button" value="Print" ng-click="printForm('DataTables_Table_2')" class="btn btn-default" style="margin-top: 7px;" />
+        </div>
+    </div><br />
+    <div class="row" id="reqContainer">
+        <table ng-bank>
+            <thead>
+                <tr style="color: #000">
+                    <th style="width: 3%; text-align: left">
+                        S/N
+                    </th>
+                    <th style="width: 20%; text-align: left">
+                        Bank
+                    </th>
+                    <th style="width: 15%; text-align: left">
+                        Sort Code
+                    </th>
+                    <th style="width: 20%; text-align: left">
+                        Notification Email
+                    </th>
+                    <th style="width: 30%; text-align: left">
+                        Admin User/Contact Person
+                    </th>
+                    <th style="width: 10%">
+                        Action
+                    </th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+
+</fieldset>
+
+

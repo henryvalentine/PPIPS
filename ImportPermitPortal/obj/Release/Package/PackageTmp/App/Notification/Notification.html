@@ -1,0 +1,417 @@
+﻿
+
+<div class="row">
+    <div class="col-md-12">
+        <h4 class="page-head-line"> Vessel Arrival Notification Form </h4>
+    </div>
+</div>
+<div class="row fsEdit" style="width: 100%" ng-controller="notificationController" ng-init="initializeController()">
+
+    <div class="row" ng-hide="summary == true || invoiceStage == true" style="width: 100%; border: 3px solid #27ae60;">
+
+        <div class="modal-body">
+            <form>
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Permit Number*</label>
+                            <label class="control-label ">Permit Number*</label>
+                            <ui-select ng-model="notification.PermitObject" theme="bootstrap" ng-change="serchAppByPermitValue()">
+                                <ui-select-match placeholder=" -- Select Permit --">{{$select.selected.PermitValue}}</ui-select-match>
+                                <ui-select-choices repeat="permit in permits | propsFilter: {PermitValue: $select.search} track by permit.Id">
+                                    <div ng-bind-html="permit.PermitValue  | highlight: $select.search"></div>
+                                </ui-select-choices>
+                            </ui-select>
+                        </div>
+                        <!--<div class="col-md-3" ng-hide="permitApplication.PermitId > 0">
+                            <br/>
+                            <input type="button" value="Continue" ng-click="serchAppByPermitValue()" class="btn btn-default" style="margin-top: 7px;"/>
+                        </div>-->
+                        <div class="col-md-6" ng-if="permitApplication.PermitId > 0">
+                            <label>Notification Category*</label>
+                            <select ng-model="notification.ClassObject" ng-options="class as class.Name for class in classes track by class.Id" ng-disabled="permitApplication.ClassificationId === 2" class=" form-control" required>
+                                <option value="">-- Select Notification Category --</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row" ng-if = "showDetails === true">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Product*</label>
+                                <select ng-model="notification.ApplicationItem" ng-options="applicationItem as applicationItem.ProductObject.Code for applicationItem in applicationItems track by applicationItem.ProductObject.ProductId" class=" form-control" required>
+                                    <option value="">-- Select Product --</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label>Discharge Depot*</label>
+                                <select ng-model="notification.Depot" ng-options="depot as depot.DepotName for depot in notification.ApplicationItem.ThroughPutObjects track by depot.DepotId" class=" form-control">
+                                    <option value="">-- Select Depot --</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Quantity On Vessel*</label>
+                                <input type="text" class="form-control" ng-model="notification.QuantityOnVessel" ui-number-mask="0" />
+                            </div>
+                            <div class="col-md-6">
+                                <label>Quantity To Discharge*</label>
+                                <input type="text" class="form-control" ng-model="notification.QuantityToDischarge" ui-number-mask="0" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="control-label">Vessel Expected Arrival Period</label>
+                                <div class="row">
+                                    <div class="col-md-6" style="padding-left: 0px">
+                                        <p class="input-group">
+                                            <span class="input-group-btn">
+                                                <button type="button" class="btn btn-default" ng-click="openEnDate($event)">From*</button>
+                                            </span>
+                                            <input type="text" class="form-control datepicker" ng-click="open($event, 'IsOpened')" ng-change="compareDates()" datepicker-popup="{{endDateformat}}" is-open="notification.IsOpened" min-date="minEndDate" max-date="maxEndDate" datepicker-options="endDateOptions" name="IsOpened" close-text="Close" ng-model="notification.ArrivalDate" /> <!--date-disabled="disabled(date, mode)"-->
+                                        </p>
+                                    </div>
+                                    <div class="col-md-6" style="padding-right: 0px">
+                                        <p class="input-group">
+                                            <span class="input-group-btn">
+                                                <button type="button" class="btn btn-default" ng-click="openEnDate($event)">To*</button>
+                                            </span>
+                                            <input type="text" class="form-control datepicker" ng-change="compareDates()" ng-click="open($event, 'IsExpOpened')" datepicker-popup="{{endDateformatx}}" is-open="notification.IsExpOpened" min-date="minEndDatex" max-date="maxEndDatex" datepicker-options="endDateOptionsx" name="IsExpOpened" close-text="Close" ng-model="notification.DischargeDate"/> <!--date-disabled="disabledx(date, mode)"-->
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label>Cargo Type*</label>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>
+                                                <input type="radio" ng-model="notification.CargoInformationTypeId" style="cursor: pointer" name="cargoTypeInfo" ng-value="1" />&nbsp; Direct Shipment
+                                            </label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label>
+                                                <input type="radio" ng-model="notification.CargoInformationTypeId" style="cursor: pointer" name="cargoTypeInfo" ng-value="2" />&nbsp; Ship to Ship
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br/>
+                        <div class="col-md-12">
+                            <h4>Load Port</h4>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Country*</label>
+                                <select ng-model="notification.Country" ng-options="country as country.Name for country in notification.ApplicationItem.ApplicationCountryObjects track by country.CountryId" class=" form-control" required>
+                                    <option value="">-- Select Country --</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label>Port*</label>
+                                <input type="text" class="form-control" ng-model="notification.PortName" /> 
+                            </div>
+                        </div>  
+                       
+                        <br/><br/>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4 class="modal-title">Payment Options</h4>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                <div class="well">
+                                    <input type="radio" required name="paymentOption" ng-model="notification.PaymentTypeId" ng-value="1" /> Online
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="well">
+                                    <input type="radio" required name="paymentOption" value="2" ng-model="notification.PaymentTypeId" ng-value="2" /> BANK
+                                </div>
+                            </div>
+
+                            <div class="col-md-10 col-md-offset-1">
+
+                            </div>
+                        </div>
+                        <div class="row modal-footer">
+                            <div class="col-md-7">
+
+                            </div>
+                            <div class="col-md-3">
+                                <input type="button" value="Continue >>" ng-click="getValWithReqs()" ng-disabled="processing == true" class="btn btn-default" style="margin-top: 7px; float: right"/>
+                            </div>
+                            <div class="col-md-1">
+
+                            </div>
+                        </div>
+                    </div>
+                    <br/>
+                </div>
+                <br/>
+            </form>
+        </div>
+    </div>
+
+    <div class="row" ng-show="summary == true" style="visibility: visible; width: 100%; border: 3px solid #27ae60;">
+        <div class="row">
+            <div class="col-md-5">
+                <h3>Notification Summary</h3>
+            </div>
+        </div>
+        <div class="row">
+            <table class="table">
+                <tr>
+                    <td style="width: 20%">Permit Number</td>
+                    <td style="width: 30%; font-weight: bold">{{notification.PermitNumber}}</td> 
+                </tr>
+                <tr>
+                    <td style="width: 20%">Customer</td>
+                    <td style="width: 30%; font-weight: bold">{{notification.CompanyName}}</td>
+                </tr>
+                <tr ng-repeat="fee in notification.fees">
+                    <td style="width: 20%">{{fee.FeeTypeName}}</td>
+                    <td style="width: 30%; font-weight: bold">&#8358;{{fee.Amount | currency:"":0}}</td>
+                </tr>
+                <tr>
+                    <td style="width: 20%">Total Amount Due</td>
+                    <td style="width: 30%; font-weight: bold">&#8358;{{notification.DerivedValue | currency:"":0}}</td>
+                </tr>
+                <tr>
+                    <td style="width: 20%">Payment Option</td>
+                    <td style="width: 30%; font-weight: bold">{{notification.PaymentOption}}</td>
+                </tr>
+                <tr>
+                    <td style="width: 20%">Notification Category</td>
+                    <td style="width: 30%; font-weight: bold">{{notification.NotificationClassName}}</td>
+                </tr>
+                <tr>
+                    <td style="width: 20%">Cargo Type</td>
+                    <td style="width: 30%; font-weight: bold">{{notification.CargoTypeName}}</td>
+                </tr>
+                <tr>
+                    <td style="width: 20%">Service Description</td>
+                    <td style="width: 30%; font-weight: bold">Vessel Arrival Notification Fee</td>
+                </tr>
+                <tr>
+                    <td style="width: 20%">Application Status</td>
+                    <td style="width: 30%; font-weight: bold">Pending</td>
+                </tr>
+            </table>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-12">
+                <h4>Details</h4>
+            </div>
+            <table class="table" style="width: 100%;">
+                <tr>
+                    <th style="width: 15%">
+                        Product Code
+                    </th>
+                    <th style="width: 20%">
+                        QuantityTo Discharge(MT)
+                    </th>
+                    <th style="width: 15%">
+                        Vessel Expected Arrival Period
+                    </th>
+                    <th style="width: 20%">
+                        Port of Origin
+                    </th>
+                    <th style="width: 20%">
+                        Discharge Depot
+                    </th>
+                </tr>
+                <tr>
+                    <td style="width: 15%">{{notification.ProductCode}}</td>
+                    <td style="width: 20%">{{notification.QuantityToDischarge | number:0}}</td>
+                    <td style="width: 15%">{{notification.ArrivalDateStr}}</td>
+                    <td style="width: 20%">{{notification.PortName}}({{notification.Country.Name}})</td>
+                    <td style="width: 20%">{{notification.Depot.DepotName}}</td> 
+                </tr>
+            </table>
+        </div>
+        <br />
+        <div class="col-md-12" ng-docs>
+            <h4><b>What's Next?</b></h4>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="row">
+                        <label>1. Make Payment</label>
+                    </div>
+                    <div class="row">
+                        <label>2. Attach all supporting documents through the acceptable organisations</label>
+                    </div>
+                    <div class="row">
+                        <label>3. Review and submit your Notification</label>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row" id="appDocs">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br /><br />
+        <div class="row">
+            <div class="col-md-8">
+            </div>
+            <div class="col-md-2">
+                <button class=" btn btn-default" ng-click="resetSummary()" style="margin-top: 7px; float: right; color: #000"> << Modify</button>
+            </div>
+            <div class="col-md-2">
+                <button class=" btn btn-default" ng-click="processNotification()" ng-disabled="processing == true" style="margin-top: 7px; float: right; color: #000">Confirm >></button>
+            </div>
+        </div>
+        <br />
+    </div>
+
+<div class="row fsEdit" style="visibility: visible; width: 100%; border: 3px solid #27ae60;" ng-show="pstage == true">
+    <br/>
+    <div class="row">
+        <div class="col-md-8">
+            <button class="btn btn-default" id="" style="float: left; color: #000" ng-click="printReceipt()"> Print </button>
+        </div>
+        <div class="col-md-4">
+          
+        </div>
+    </div>
+    <br/>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row alert alert-success" role="alert" ng-show="positivefeedback === true">
+                <span class="col-md-11">{{success}}</span><span class="col-md-1" style="font-size: 20px; text-align: left; cursor: pointer" title="close" ng-click="positivefeedback = false">x</span>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="row" id="receipt">
+        <div class="row">
+            <p style="background-color: #FFF; margin: 0px; padding: 0px;" class="compname shadow">
+                <img height="45" width="187" src="/Content/images/importlogo.png"/>
+            </p>
+        </div>
+        <div class=" modal-header">
+            <div class="row" style="margin-top: 15px">
+                <div class="col-md-9">
+                    <h4 class="modal-title">Notification Payment Slip</h4>
+                </div>
+                <div class="col-md-3">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="modal-body">
+                <div class="row">
+                    <table class="table">
+                        <tr>
+                            <td style="width: 20%">Reference Code</td>
+                            <td style="width: 30%; font-weight: bold">{{item.ReferenceCode}}</td>
+                        </tr>
+                        <tr>
+                            <td style="width: 20%">Payment Reference Code(RRR)</td>
+                            <td style="width: 30%; font-weight: bold">{{rrr}}</td>
+                        </tr>
+                        <tr>
+                            <td style="width: 20%">Permit Number</td>
+                            <td style="width: 30%; font-weight: bold">{{item.PermitNumber}}</td>
+                        </tr>
+                        <tr>
+                            <td style="width: 20%">Customer</td>
+                            <td style="width: 30%; font-weight: bold">{{item.CompanyName}}</td>
+                        </tr>
+                        <tr ng-repeat="fee in item.fees">
+                            <td style="width: 20%">{{fee.FeeTypeName}}</td>
+                            <td style="width: 30%; font-weight: bold">&#8358;{{fee.Amount | currency:"":0}}</td>
+                        </tr>
+                        <tr>
+                            <td style="width: 20%">Total Amount Due</td>
+                            <td style="width: 30%; font-weight: bold">&#8358;{{item.DerivedValue | currency:"":0}}</td>
+                        </tr>
+                        <tr>
+                            <td style="width: 20%">Payment Option</td>
+                            <td style="width: 30%; font-weight: bold">{{item.PaymentOption}}</td>
+                        </tr>
+                        <tr>
+                            <td style="width: 20%">Notification Type</td>
+                            <td style="width: 30%; font-weight: bold">{{item.NotificationClassName}}</td>
+                        </tr>
+                        <tr>
+                            <td style="width: 20%">Cargo Type</td>
+                            <td style="width: 30%; font-weight: bold">{{item.CargoTypeName}}</td>
+                        </tr>
+                        <tr>
+                            <td style="width: 20%">Service Description</td>
+                            <td style="width: 30%; font-weight: bold">Vessel Arrival Notification Fee</td>
+                        </tr>
+                        <tr>
+                            <td style="width: 20%">Application Status</td>
+                            <td style="width: 30%; font-weight: bold">Pending</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="row">
+                    <div class="row">
+                        <h4>Details</h4>
+                    </div>
+                    <table class="table" style="width: 100%;">
+                        <tr>
+                            <th style="width: 15%">
+                                Product Code
+                            </th>
+                            <th style="width: 20%">
+                                QuantityTo Discharge(MT)
+                            </th>
+                            <th style="width: 25%">
+                                Vessel Expected Arrival Period
+                            </th>
+                            <th style="width: 20%">
+                                Port of Origin
+                            </th>
+                            <th style="width: 20%">
+                                Discharge Depot
+                            </th>
+                        </tr>
+                        <tr>
+                           <td style="width: 15%">{{item.ProductCode}}</td>
+                            <td style="width: 20%">{{item.QuantityToDischarge | number:0}}</td>
+                            <td style="width: 25%">{{item.ArrivalDateStr}}</td>
+                            <td style="width: 20%">{{item.PortName}}({{notification.Country.Name}})</td>
+                            <td style="width: 20%">{{item.Depot.DepotName}}</td> 
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-11">
+                <b>Important:</b>
+                <p style="color: brown; font-weight: bold">Please be sure to make payment and submit your notification withing the next 7 days to avoid attracting an Expeditionary fee of <b>&#8358;{{expenditionaryFee | number:0}}</b>
+                </p>
+            </div>
+        </div>
+        <br/>
+        <div class="row">
+            <div class="col-md-8">
+
+            </div>
+            <div class="col-md-4">
+                <a style="float: right; color: #000" class="btn btn-default" ng-show="onlineOpt === true" ng-click="pay()">Continue to Remita >></a>
+            </div>
+        </div>
+        <br /><br />
+    </div>
+</div>
+    <div class="row">
+    </div>
+</div>
+
+<br /><br /><br />

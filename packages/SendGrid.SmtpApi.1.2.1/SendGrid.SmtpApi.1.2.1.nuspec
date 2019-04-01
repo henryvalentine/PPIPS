@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>SendGrid.SmtpApi</id>
+    <version>1.2.1</version>
+    <title>SendGrid SMTP API</title>
+    <authors>Brandon West</authors>
+    <owners>Brandon West</owners>
+    <licenseUrl>https://github.com/sendgrid/smtpapi-csharp/blob/master/MIT.LICENSE</licenseUrl>
+    <projectUrl>https://github.com/sendgrid/smtpapi-csharp</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Easily build SendGrid SMTP API headers to use with any SMTP library.</description>
+    <summary>Easily build SendGrid SMTP API headers to use with any SMTP library.</summary>
+    <releaseNotes>Unicode values in X-SMTPAPI header are now encoded to ASCII escape sequences. Raise exception when there are null keys or values in the header.</releaseNotes>
+    <copyright>Copyright 2014</copyright>
+    <tags>smtpapi sendgrid email smtp</tags>
+  </metadata>
+</package>

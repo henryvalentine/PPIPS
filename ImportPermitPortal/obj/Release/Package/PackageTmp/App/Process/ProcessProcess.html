@@ -1,0 +1,30 @@
+﻿
+
+<div class="row fsEdit" style="visibility: visible; width: 100%" ng-controller="processController">
+    <div class=" modal-header">
+        <div class="row">
+            <div class="col-md-12">
+                <h4 class="modal-title">{{process.Header}}</h4>
+            </div>
+        </div>
+    </div>
+    <div class="modal-body">
+        <form method="POST">
+            <div class="row">
+                <label class="control-label ">Name *</label>
+                <input type="text" data-ng-model="process.Name" class="form-control"/>
+            </div>
+            <div class="row">
+                <label class="control-label ">Application Stage*</label>
+                <select ng-model="process.ImportStage" ng-options="stage as stage.Name for stage in ImportStages track by stage.Id" data-inset="true" class=" form-control" required>
+                    <option value="">-- Select Application Stage--</option>
+                </select>
+            </div>
+            <div class="row modal-footer">
+                <div>
+                    <input type="button" value="{{buttonText}}" ng-click="processProcess()" class="btn btn-default" style="margin-top: 7px;" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

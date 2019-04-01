@@ -1,0 +1,35 @@
+﻿
+
+<div class="row fsEdit" style="visibility: visible; width: 100%" ng-controller="continueNotificationController">
+    <div class=" modal-header">
+        <div class="row">
+            <div class="col-md-12">
+                <h4 class="modal-title">Change Discharge Depot</h4>
+            </div>
+        </div>
+    </div>
+    <div class="modal-body">
+        <form id="fsProcessApps" method="POST">
+            <div class="row">
+                <div class="col-md-6">
+                    <label class="control-label ">New Discharge Depot*</label>
+                    <ui-select ng-model="depotObject" theme="bootstrap" ng-change="checkDepot(depotObject)">
+                        <ui-select-match placeholder=" -- Search Depot --">{{$select.selected.Name}}</ui-select-match>
+                        <ui-select-choices repeat="depot in depotList | propsFilter: {Name: $select.search} track by depot.Id">
+                            <div ng-bind-html="depot.Name  | highlight: $select.search"></div>
+                        </ui-select-choices>
+                    </ui-select>
+                </div>
+                <div class="col-md-6" ng-if="newDepotSelected === false">
+                    <label class="control-label ">Attach Throughput*</label>
+                    <input type="file" class="form-control" ng-file-select="saveTempDoc($event)" placeholder="Select Document " name="file" />
+                </div>
+            </div>
+            <div class="row modal-footer">
+                <div>
+                    <input type="button" value="Save" ng-click="changeThroughput()" class="btn btn-default" style="margin-top: 7px;" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div> 

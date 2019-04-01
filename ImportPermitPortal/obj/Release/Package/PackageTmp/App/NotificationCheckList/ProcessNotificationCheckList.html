@@ -1,0 +1,51 @@
+﻿
+
+<div class="row fsEdit" style="visibility: visible; width: 100%" ng-controller="notificationCheckListController">
+    <div class=" modal-header">
+        <div class="row">
+            <div class="col-md-12">
+                <h4 class="modal-title">{{step.Header}}</h4>
+            </div>
+        </div>
+    </div>
+    <div class="modal-body">
+        <form method="POST">
+            <div class="row">
+                <label class="control-label ">Check List Item*</label>
+                <input type="text" data-ng-model="notificationCheckList.CheckListItem" class="form-control" />
+            </div>
+
+          
+
+            <div class="row">
+                <label class="control-label ">Criteria Rule*</label>
+                <select ng-model="notificationCheckList.CriteriaRule" ng-options="rule as rule.Name for rule in CriteriaRules track by rule.Id" data-inset="true" class=" form-control" required>
+                    <option value="">-- Select Criteria Rule--</option>
+                </select>
+            </div>
+
+            <!--<div class="row">
+                <label class="control-label ">Expected Value 1*</label>
+                <input type="text" data-ng-model="notificationCheckList.ExpectedValue1" class="form-control" />
+            </div>-->
+
+            <!--<div class="row">
+                <label class="control-label ">Expected Value 2*</label>
+                <input type="text" data-ng-model="notificationCheckList.ExpectedValue2" class="form-control" />
+            </div>-->
+
+            <!--<div class="row">
+                <label class="control-label ">Item Score*</label>
+                <input type="text" data-ng-model="notificationCheckList.ItemScore" class="form-control" />
+            </div>-->
+
+          
+
+            <div class="row modal-footer">
+                <div>
+                    <input type="button" value="{{buttonText}}" ng-click="processNotificationCheckList()" class="btn btn-default" style="margin-top: 7px;" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

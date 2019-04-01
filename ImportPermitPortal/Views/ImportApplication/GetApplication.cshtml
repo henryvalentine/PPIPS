@@ -1,0 +1,91 @@
+﻿@model ImportPermitPortal.DataObjects.ApplicationObject
+
+@{
+    ViewBag.Title = "GetApplication";
+}
+
+<h4>Application Details</h4>
+
+<form style="width: 100%">
+    <div class="row">
+        <div class="col-md-5">
+            <label class="control-label">Company</label>
+        </div>
+        <div class="col-md-7">
+            <label class="control-label">@(Model.ApplicationId)</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-5">
+            <label class="control-label">DerivedTotalQUantity</label>
+        </div>
+        <div class="col-md-7">
+            <label class="control-label">@(Model.DerivedTotalQUantity)</label>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-5">
+            <label class="control-label">Derived Total Value</label>
+        </div>
+        <div class="col-md-7">
+            <label class="control-label">@(Model.DerivedValue)</label>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-5">
+            <label class="control-label">Import Appplication Items Break down</label>
+        </div>
+        <div class="row">
+            @foreach (var app in Model.ApplicationItems)
+            {
+                <div class="row">
+                    <div class="row">
+                        <label class="control-label">@(app.Product.Name)(@app.Product.Code)</label>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5">
+                            <label class="control-label">Estimated Quantity</label>
+                        </div>
+                        <div class="col-md-7">
+                            <label class="control-label">@(app.EstimatedQuantity)</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5">
+                            <label class="control-label">Estimated Value</label>
+                        </div>
+                        <div class="col-md-7">
+                            <label class="control-label">@(app.EstimatedValue)</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5">
+                            <label class="control-label">Port Of Origin</label>
+                        </div>
+                        <div class="col-md-7">
+                            <label class="control-label">@(app.CountryOfOriginName)</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5">
+                            <label class="control-label">Port Of Discharge</label>
+                        </div>
+                        <div class="col-md-7">
+                            <label class="control-label">@(app.DischargeDepotName)</label>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-10">
+        </div>
+        <div class="col-md-2">
+            <a class="btn btn-danger" href="/Application/Applications" style="float: right"><< Applications </a>
+        </div>
+    </div>
+</form>
+<br /><br />

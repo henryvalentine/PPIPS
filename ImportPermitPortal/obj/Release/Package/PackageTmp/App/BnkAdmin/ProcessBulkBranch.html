@@ -1,0 +1,26 @@
+﻿
+
+<div class="row fsEdit" style="visibility: visible; width: 100%" ng-controller="bnkBranchesController">
+    <div class="row modal-header">
+        <div class="col-md-12">
+            <h4 class="modal-title">Bulk Branch Upload</h4>
+        </div>
+    </div>
+    <div class="modal-body">
+        <form method="POST">
+            <div class="row">
+                <div class="row">
+                    <div style="padding-left: 0px" class="col-md-10">
+                        <label>Select file*</label>
+                        <input type="file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" name="file" placeholder="Upload Branches" ng-file-select="processBankBranches($event)" class="form-control" ng-disabled="processing === true">
+                    </div>
+                    <div class="col-md-2">
+                        <br/>
+                        <a class="bankDelTx" title="Download Branch Bulk Template" style="cursor: pointer; float: right; margin-right: 5%" href="/Bank/DownloadContentFromFolder?path=~/BulkTemplates/BankBranch.xlsx"><img src="/Images/downloadExcel.png" style="width: 40px"/></a>
+                    </div>
+                </div>
+            </div>
+            <br/><br/>
+        </form>
+    </div>
+</div>

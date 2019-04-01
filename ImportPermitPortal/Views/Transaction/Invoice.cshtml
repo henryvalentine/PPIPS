@@ -1,0 +1,215 @@
+﻿@model ImportPermitPortal.DataObjects.ApplicationObject
+@{
+    ViewBag.Title = "PPIPS Payment Slip - Thank You";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br /><br/>
+<form  ng-app="py" ng-controller="pyController">
+    <div class="row">
+        <div class="col-md-12">
+        </div>
+        <br />
+        <div class="row fsEdit" style="visibility: visible; width: 100%; border: 3px solid #27ae60;">
+            <br />
+            <div class="row">
+                <div class="col-md-9">
+                    <button class="btn btn-default" id="" style="float: left; color: #000" ng-click="printReceipt()"> Print </button>
+                </div>
+              
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row alert alert-success" role="alert" id="fedMsg">
+                        @{
+                            var msg = "";
+                            if (Model.Id > 0 && Model.PaymentTypeId == 3)
+                            {
+                                msg = "Thank you for applying online. Kindly walk into any of the approved Banks to make your Application Payment using the details below:";
+                            }
+                            else
+                            {
+                                if (Model.Id > 0 && Model.PaymentTypeId < 3)
+                                {
+                                    msg = "Thank you for applying online. Your Application details are shown below:";
+                                }
+                            }
+
+                            if (Model.Id > 0)
+                            {
+                                <span class="col-md-11">@msg</span><span class="col-md-1" style="font-size: 20px; text-align: left; cursor: pointer" title="close" onclick="$('#fedMsg').hide()">x</span>
+                            }
+
+                        }
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="row" id="receipt">
+                <div class="row">
+                    <p style="background-color: #FFF; margin: 0px; padding: 0px;" class="compname shadow">
+                        <img height="45" width="187" src="/Content/images/importlogo.png" />
+                    </p>
+                </div>
+                <div class=" modal-header">
+                    <div class="row" style="margin-top: 15px">
+                        <div class="col-md-9">
+                            <h4 class="modal-title">Payment Slip</h4>
+                        </div>
+                        <div class="col-md-3">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="modal-body">
+                        <div class="row">
+                            <table class="table">
+                                <tr>
+                                    <td style="width: 20%">Payment Reference Code(RRR)</td>
+                                    <td style="width: 30%; font-weight: bold">@Model.ReferenceCode</td>
+                                </tr>
+                                @{
+                                    if (Model.PaymentTypeId == 3)
+                                    {
+                                        <tr>
+                                            <td style="width: 20%">Remita Retrieval Reference Code</td>
+                                            <td style="width: 30%; font-weight: bold">@Model.Rrr</td>
+                                        </tr>
+                                    }
+                                }
+                                <tr>
+                                    <td style="width: 20%">Customer</td>
+                                    <td style="width: 30%; font-weight: bold">@Model.CompanyName</td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 20%">Total Quantity(MT)</td>
+                                    <td style="width: 30%; font-weight: bold">@Model.DerivedQuantityStr</td>
+                                </tr>
+                                @{
+                                    if (Model.FeeObjects != null)
+                                    {
+                                        foreach (var fee in Model.FeeObjects)
+                                        {
+                                            <tr>
+                                                <td style="width: 20%">@fee.FeeTypeName</td>
+                                                <td style="width: 30%; font-weight: bold">&#8358;@fee.AmountStr</td>
+                                            </tr>
+                                        }
+                                    }
+                                }
+
+                                <tr>
+                                    <td style="width: 20%">Total Amount Due</td>
+                                    <td style="width: 30%; font-weight: bold">&#8358;@Model.DerivedValueStr</td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 20%">Payment Option</td>
+                                    <td style="width: 30%; font-weight: bold">@Model.PaymentOption</td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 20%">Service Description</td>
+                                    <td style="width: 30%; font-weight: bold">Import Permit Application Fee</td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 20%">Application Status</td>
+                                    <td style="width: 30%; font-weight: bold">@Model.StatusStr</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="row">
+                            <div class="row">
+                                <h4>Details</h4>
+                            </div>
+                            <table class="table" style="width: 100%;">
+                                <tr>
+                                    <th style="width: 12%">
+                                        Product Code
+                                    </th>
+                                    <th style="width: 12%">
+                                        Est. Quantity(MT)
+                                    </th>
+                                    <th style="width: 12%">
+                                        Est. Value($)
+                                    </th>
+                                    @*<th style="width: 12%">
+                                        PSF Number
+                                    </th>
+                                    <th style="width: 13%">
+                                        License Code
+                                    </th>*@
+                                    <th style="width: 18%">
+                                        Country of Origin
+                                    </th>
+                                    <th style="width: 18%">
+                                        Port of Discharge
+                                    </th>
+                                </tr>
+                                @{
+                                    if (Model.ApplicationItemObjects != null)
+                                    {
+                                        foreach (var prd in Model.ApplicationItemObjects)
+                                        {
+                                            <tr>
+                                                <td style="width: 12%">@prd.ProductObject.Code</td>
+                                                <td style="width: 12%">@prd.EstimatedQuantityStr</td>
+                                                <td style="width: 12%">@prd.EstimatedValueStr</td>
+                                                @*<td style="width: 12%">@prd.PSFNumber</td>
+                                                <td style="width: 13%">@prd.ReferenceLicenseCode</td>*@
+                                                <td style="width: 18%">@prd.CountryOfOriginName</td>
+                                                <td style="width: 18%">@prd.DischargeDepotName</td>
+                                            </tr>
+                                        }
+                                    }
+                                }
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-9">
+        </div>
+      
+    </div>
+</form>
+
+
+<script type="text/javascript">
+
+    angular.module('py', []).
+    controller('pyController', function ($scope)
+    {
+        $scope.printReceipt = function () {
+
+            var printContents = document.getElementById('receipt').innerHTML;
+            var popupWin = '';
+            if (navigator.userAgent.toLowerCase().indexOf('chrome') > -1) {
+                popupWin = window.open('', '_blank', 'width=800,height=700,scrollbars=yes,menubar=no,toolbar=no,location=no,status=yes,titlebar=yes');
+                popupWin.window.focus();
+                popupWin.document.write('<!DOCTYPE html><html><head>' +
+                    '<link rel="stylesheet" type="text/css" href="style.css" />' +
+                    '</head><body onload="window.print()"><div class="reward-body">' + printContents + '</div></html>');
+                popupWin.onbeforeunload = function (event) {
+                    popupWin.close();
+                    return '.\n';
+                };
+                popupWin.onabort = function (event) {
+                    popupWin.document.close();
+                    popupWin.close();
+                }
+            } else {
+                popupWin = window.open('', '_blank', 'width=800,height=700,scrollbars=yes,menubar=no,toolbar=no,location=no,status=yes,titlebar=yes');
+                popupWin.document.open();
+                popupWin.document.write('<html><head><link rel="stylesheet" type="text/css" href="style.css" /></head><body onload="window.print()">' + printContents + '</html>');
+                popupWin.document.close();
+            }
+            popupWin.document.close();
+
+            return true;
+        }
+
+    });
+</script>

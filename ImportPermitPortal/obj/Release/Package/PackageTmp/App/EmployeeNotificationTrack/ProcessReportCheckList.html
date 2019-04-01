@@ -1,0 +1,61 @@
+﻿
+
+<div class="row fsEdit" style="visibility: visible; width: 100%" ng-controller="notificationTrackController">
+    <div class="row alert alert-success" role="alert" ng-show="positivefeedback === true">
+    <span class="col-md-11">{{success}}</span><span class="col-md-1" style="font-size: 20px; text-align: left; cursor: pointer" title="close" ng-click="positivefeedback = false">x</span>
+</div>
+    <div class=" modal-header">
+        <div class="row">
+            <div class="col-md-12">
+                <h4 class="modal-title">Fill Report CheckList</h4>
+            </div>
+        </div>
+    </div>
+    <div class="modal-body">
+        <form id="fsProcessApps1">
+            <div class="row">
+                <div class="row">
+                    <div class="col-md-9">
+                        <h4>Vessel Report Checklist</h4>
+                    </div>
+
+                </div>
+                <br/>
+                <div class="col-md-12">
+                    <table class="table table-striped">
+
+                        <tr data-ng-repeat="item in list">
+                            <td style="width: 60%">{{item.CheckListItem}}</td>
+                            <td style="width: 20%">
+                                <label>
+                                    <input type="radio" name="{{item.Id}}" ng-click="yes(item.Id)" ng-value="Yes" />&nbsp; Yes
+                                </label>
+                            </td>
+                            <td style="width: 20%">
+                                <label style="float: left">
+                                    <input type="radio" name="{{item.Id}}" ng-click="no()" ng-value="No" />&nbsp; No
+                                </label>
+                            </td>
+
+
+                        </tr>
+                        <tr>
+                            <td><a ng-click="BackToDetail()" style="float: right" class="btn btn-primary btn-lg"><< Back</a></td>
+                            <td></td>
+
+
+
+                            <td><input type="button" value="Save CheckList" ng-show="myVar" ng-click="saveCheckList(1)" style="float: right" class="btn btn-primary btn-lg"/></td>
+
+                            <td><input type="button" value="{{buttonText}}" ng-hide="myVar" data-toggle="modal" data-target="#myModal" style="float: right" class="btn btn-primary btn-lg"/></td>
+
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+
+
+        </form>
+    </div>
+</div>

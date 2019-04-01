@@ -1,0 +1,104 @@
+﻿@model ImportPermitPortal.EF.Model.ProcessTracking
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<br /><br /><br /><br /><br /><br />
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>ProcessTracking</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.StepCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StepCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StepStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StepStatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StepActivityType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StepActivityType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProcessStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProcessStatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AssignedTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AssignedTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DueTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DueTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ActualDeliveryDateTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ActualDeliveryDateTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Application.ReferenceCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Application.ReferenceCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Step.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Step.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserProfile.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserProfile.FirstName)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,243 @@
+﻿
+
+<div class="row" ng-controller="importerApplicationController" ng-init="initializeController()">
+    
+<div class="row">
+    <div class="col-md-12">
+        <h4 class="page-head-no-line" ng-cloak>Import Applications : {{companyName}}</h4>
+    </div>
+</div>
+
+<div class="row">
+
+<div class="row" ng-hide="viewApp == true">
+    <table style="width: 100%" ng-apps>
+        <thead>
+        <tr style="color: #000">
+            <th style="width: 2%">
+                S/N
+            </th>
+            <th style="width: 20%">
+                Payment Reference(RRR)
+            </th>
+            <th style="width: 20%">
+                Est. Quantity(MT)
+            </th>
+            <th style="width: 20%">
+                Est. Value($)
+            </th>
+            <th style="width: 15%">
+                Date Applied
+            </th>
+            <th style="width: 15%">
+                Last Modified
+            </th>
+            <th style="width: 15%">
+                Status
+            </th>
+            <th style="width: 12%">
+                Action
+            </th>
+        </tr>
+        </thead>
+        <tbody></tbody>
+
+    </table>
+
+    <div class="row">
+        <div class="col-md-6">
+        </div>
+        <div class="col-md-3">
+
+        </div>
+        <div class="col-md-3">
+            <button class=" btn btn-default" ng-click="goToImporters()" style="margin-top: 7px; float: right; color: #000"><< Back</button>
+        </div>
+    </div>
+</div>
+<div class="row fsEdit" style="width: 100%; border: 3px solid #27ae60;" ng-show="viewApp == true">
+
+    <div class="row">
+        <div class="col-md-12">
+            <h4>Application Details</h4>
+        </div>
+        <br/>
+        <div class="row">
+            <div class="row">
+                <table class="table">
+                    <tr>
+                        <td style="width: 20%">Pyment Reference Code(RRR)</td>
+                        <td style="width: 30%; font-weight: bold">{{application.ReferenceCode}}</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 20%">Customer</td>
+                        <td style="width: 30%; font-weight: bold">{{application.CompanyName}}</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 20%">Total Quantity(MT)</td>
+                        <td style="width: 30%; font-weight: bold">{{application.DerivedTotalQUantity | number:0}}</td>
+                    </tr>
+                    <tr ng-repeat="fee in application.FeeObjects">
+                        <td style="width: 20%">{{fee.FeeTypeName}}</td>
+                        <td style="width: 30%; font-weight: bold">&#8358;{{fee.Amount | currency:"":0}}</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 20%">
+                            <label ng-show="application.ApplicationStatusCode === 1" class="control-label " style="font-weight: normal">Total Amount Due(&#8358;)</label>
+                            <label ng-show="application.ApplicationStatusCode > 1" class="control-label " style="font-weight: normal">Total Amount Paid(&#8358;)</label>
+                        </td>
+                        <td style="width: 30%; font-weight: bold">&#8358;{{application.DerivedValue | currency:"":0}}</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 20%">Payment Option</td>
+                        <td style="width: 30%; font-weight: bold">{{application.PaymentOption}}</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 20%">Service Description</td>
+                        <td style="width: 30%; font-weight: bold">Import Permit Application Fee</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 20%">Application Status</td>
+                        <td style="width: 30%; font-weight: bold"><label class="control-label ">{{application.StatusStr}}</label></td>
+                    </tr>
+                </table>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col-md-4">
+                    <h4><b>Details</b></h4>
+                </div>
+                <div class="col-md-8"></div>
+            </div>
+            <br/>
+            <div class="col-md-12">
+                <table class="table" ng-docs>
+                    <tr>
+                        <th style="width: 12%">
+                            Product Code
+                        </th>
+                        <th style="width: 12%">
+                            Est. Quantity(MT)
+                        </th>
+                        <th style="width: 11%">
+                            Est. Value($)
+                        </th>
+                        <th style="width: 10%">
+                            PSF Number
+                        </th>
+                        <th style="width: 13%">
+                            License Code
+                        </th>
+                        <th style="width: 18%">
+                            Country of Origin
+                        </th>
+                        <th style="width: 18%">
+                            Port of Discharge
+                        </th>
+                    </tr>
+                    <tr data-ng-repeat="item in application.ApplicationItemObjects">
+                        <td style="width: 12%">{{item.ProductObject.Code}}</td>
+                        <td style="width: 10%">{{item.EstimatedQuantity | number:0}}</td>
+                        <td style="width: 11%">{{item.EstimatedValue | currency: " "}}</td>
+                        <td style="width: 10%">{{item.PSFNumber}}</td>
+                        <td style="width: 13%">{{item.ReferenceLicenseCode}}</td>
+                        <td style="width: 18%">{{item.CountryOfOriginName}}</td>
+                        <td style="width: 18%">{{item.DischargeDepotName}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <br/>
+
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-md-12">
+                <h4><b>Uploaded Document(s)</b></h4>
+            </div>
+            <div class="row">
+                <br/>
+                <div class="col-md-12" ng-show="suppliedDocs.length < 1">
+                    <h4>NONE</h4>
+                </div>
+                <div class="col-md-9">
+                    <table class="table">
+                        <tr>
+                            <th style="width: 5%">
+                                S/N
+                            </th>
+                            <th style="width: 20%">
+                                Document
+                            </th>
+                            <th style="width: 5%">
+                                Status
+                            </th>
+                            <th style="width: 5%">
+
+                            </th>
+                        </tr>
+                        <tr data-ng-repeat="s in suppliedDocs">
+                            <td style="width: 5%">{{s.index}}</td>
+                            <td style="width: 20%"><a href="{{s.DocumentPath}}" ng-show="s.DocumentPath != null && s.DocumentPath.length > 0" style="cursor: pointer; color: #008000" target="_blank" title="View Document">{{s.Name}}</a></td>
+                            <td style="width: 5%"></td>
+                            <td style="width: 5%"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col-md-7">
+                    <div class="row" ng-show="bnkDocs.length > 0 || newDpocList.length > 0 || nextDocs.length > 0">
+                        <div class="col-md-5">
+                            <h4>Required Document(s) :</h4>
+                        </div>
+                        <br/>
+                        <div class="col-md-12">
+                            <h5 style="font-weight: bold" ng-show="(bnkDocs.length > 0 || newDpocList.length > 0) && nextDocs.length > 0">(a) To be uploaded by marketer: </h5>
+                            <h5 style="font-weight: bold" ng-show="(bnkDocs.length > 0 || newDpocList.length > 0) && nextDocs.length < 1">to be uploaded by marketer: </h5>
+                        </div>
+                        <br/>
+                        <ol>
+                            <li ng-repeat="doc in bnkDocs" style="margin-top: 14px">
+                                <label>{{doc.Name}}</label>
+                            </li>
+                        </ol>
+                        <ol>
+                            <li ng-repeat="d in newDpocList" style="margin-top: 14px">
+                                <label>{{d.Name}}</label>
+                            </li>
+                        </ol>
+                        <br/>
+                    </div>
+                    <div class="row" ng-show="nextDocs.length > 0">
+                        <div class="col-md-12">
+                            <h5 style="font-weight: bold" ng-show="bnkDocs.length > 0 || newDpocList.length > 0">(b) To be uploaded by others(eg. Bank): </h5>
+                            <h5 style="font-weight: bold" ng-show="bnkDocs.length < 1 && newDpocList.length < 1">Required Document(s) To be uploaded by others(eg. Bank): </h5>
+                        </div>
+                        <br/>
+                        <ol>
+                            <li ng-repeat="s in nextDocs">
+                                <label>&#8226 &nbsp;{{s.Name}}</label>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="col-md-5"></div>
+            </div>
+        </div>
+        <br/>
+        <div class="row">
+            <div class="col-md-3">
+                <button class=" btn btn-default" ng-click="showApps()" style="margin-top: 7px; float: left; color: #000"><< Back</button>
+            </div>
+            <div class="col-md-9">
+
+            </div>
+        </div>
+        <br/>
+    </div>
+    <br/>
+</div>
+</div>
+</div>

@@ -1,0 +1,200 @@
+﻿@using PagedList.Mvc;
+
+@model  PagedList.IPagedList<ImportPermitPortal.EF.Model.Permit>
+
+
+
+
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+@using (Html.BeginForm("Index", "Permits", FormMethod.Get))
+{
+    <p>
+        Find by Permit No: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+        <input type="submit" value="Search" />
+    </p>
+}
+
+<br/><br /><br /><br /><br />
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Import Permit Certificate</h4>
+            </div>
+            <div class="modal-body">
+                <iframe id="iframe" height="500" width="700"></iframe>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                @*<button type="button" class="btn btn-primary">Save changes</button>*@
+            </div>
+        </div>
+    </div>
+</div>
+
+<table class="table table-striped">
+    <tr>
+        @*<th>
+                @Html.ActionLink("Reference Code", "Index", new { sortOrder = ViewBag.ApplicationNoSortParm }, new { @class = "uzo" })
+            </th>*@
+        <th>
+
+            @Html.ActionLink("No", "Index", new { sortOrder = ViewBag.PermitNoSortParm }, new { @class = "label label-success" })
+        </th>
+        <th>
+            Permit No
+        </th>
+        <th>
+            Status
+        </th>
+        <th>
+            Issue Date
+
+        </th>
+        <th>
+            Expiry Date
+
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.ReferenceCode)
+                </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.PermitNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PermitValue)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IssueDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExpiryDate)
+            </td>
+            <td>
+
+            <td>
+                @*@Html.ActionLink("Edit", "Edit", new { id = item.Id }) |*@
+                @*@Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "control-label" }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "control-label" })*@
+                <a href="@item.file" target="_blank" id="mage"><span class="btn btn-primary btn-sm">View Permit</span></a>
+                @*<a href="#" target="_blank" id="@item.file"><span class="label label-success">View</span></a>*@
+
+                @*<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal" id="@item.file">
+                    View Permit
+                </button>*@
+            </td>
+        </tr>
+    }
+
+</table>
+<br />
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+
+@*<style type="text/css">
+
+
+    #iframe {
+        display: none; /* Hide the DIV */
+        position: fixed;
+        _position: absolute; /* hack for internet explorer 6 */
+        height: 300px;
+        width: 600px;
+        background: #FFFFFF;
+        left: 300px;
+        top: 150px;
+        z-index: 100; /* Layering ( on-top of others), if you have lots of layers: I just maximized, you can change it yourself */
+        margin-left: 15px;  
+}
+</style>*@
+
+
+
+<script>
+    $(document).ready(function() {
+        $("#iframe").hide();
+        $(".btn-sm").click(function (e) {
+            var appId = e.target.id;
+            $("iframe").attr("src", appId);
+            $("#iframe").fadeIn(10000);
+
+            //$.ajax({
+            //    url: "/app/GetPdf",
+            //    type: "GET",
+            //    data: { id: appId},  // This line will not be a problem
+            //    dataType: "json",
+            //    contentType: "application/pdf", // This line might be a problem
+            //    success: function (pdf) {
+            //        // What to I need to need to do to display the PDF in the above iframe
+            //        $("#iframe").attr("src", pdf); // HTTP Error 400 - Bad Request.
+            //    }
+            //});
+            
+        });
+
+        $('#myModal').on('shown.bs.modal', function (event) {
+            var button = $(event.relatedTarget); // Button that triggered the modal
+            var recipient = button.data('id');// Extract info from data-* attributes
+            // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+            // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+            $("#iframe").attr("src", recipient);
+        });
+    });
+
+
+</script>
+
+
+@*<script>
+    $(document).ready(function () {
+
+        $(".label-success").click(function (e) {
+            var appId = e.target.id;
+            $.ajax({
+                url: "/app/GetPdf",
+                type: "POST",
+                data: { id: appId },
+
+                dataType: "json",
+                contentType: "application/pdf", // This line might be a problem
+                success: function (pdf) {
+                    // What to I need to need to do to display the PDF in the above iframe
+                    $("#iframe").attr("src", pdf); // HTTP Error 400 - Bad Request.
+                }
+            });
+        });
+    });
+
+
+</script>*@
+
+
+
+
+
+
+

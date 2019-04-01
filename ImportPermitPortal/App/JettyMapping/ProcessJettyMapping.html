@@ -1,0 +1,36 @@
+﻿
+
+<div class="row fsEdit" style="visibility: visible; width: 100%" ng-controller="jettyMappingController">
+    <div class=" modal-header">
+        <div class="row">
+            <div class="col-md-12">
+                <h4 class="modal-title">{{jettyMapping.Header}}</h4>
+            </div>
+        </div>
+    </div>
+    <div class="modal-body">
+        <form method="POST">
+
+
+            <div class="row">
+                <label class="control-label ">Jetty *</label>
+                <select ng-model="jettyMapping.Jetty" ng-options="jo as jo.Name for jo in jettys track by jo.Id" data-inset="true" class=" form-control" required>
+                    <option value="">-- Select Jetty --</option>
+                </select>
+            </div>
+
+            <div class="row">
+                <label class="control-label ">Zone *</label>
+                <select ng-model="jettyMapping.Zone" ng-options="zo as zo.Name for zo in zones track by zo.Id" data-inset="true" class=" form-control" required>
+                    <option value="">-- Select Zone --</option>
+                </select>
+            </div>
+
+            <div class="row modal-footer">
+                <div>
+                    <input type="button" value="{{buttonText}}" ng-click="processJettyMapping()" class="btn btn-default" style="margin-top: 7px;"/>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,110 @@
+﻿
+<br /><br /><br /><br />
+<div class="row">
+    <div class="col-md-12">
+        <h4 class="page-head-line">System Statistics</h4>
+    </div>
+</div>
+<div class="row" ng-controller="sysStatsController" ng-init="initializeController()">
+    <br/>
+    <div class="row" ng-cloak>
+        <table class="table" style="width: 100%">
+            <tr>
+                <td>
+                    <h4>
+                        Item
+                    </h4>
+                </td>
+                <td>
+                    <h4>
+                        Paid
+                    </h4>
+                </td>
+                <td>
+                    <h4>
+                        Submitted
+                    </h4>
+                </td>
+                <td>
+                    <h4>
+                        Processing
+                    </h4>
+                </td>
+                <td>
+                    <h4>
+                        Approved
+                    </h4>
+                </td>
+                <td>
+                    <h4>
+                        Rejected
+                    </h4>
+                </td>
+            </tr>
+            <tr ng-repeat="report in reports">
+                <td>
+                    <h4>
+                        {{report.ItemName}} : {{report.TotalCount}}
+                    </h4>
+                </td>
+                <td>
+                    <div class="col-md-12">
+                        <div class="dashboard-div-wrapper bk-clr-four">
+                            <a href="{{report.PaidAppHref}}" style="cursor: pointer">
+                                <i class="fa dashboard-div-icon">
+                                    {{report.PaidAppCount}}
+                                </i>
+                                <h5>View</h5>
+                            </a>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div class="col-md-12">
+                        <div class="dashboard-div-wrapper bk-clr-three">
+                            <a href="{{report.SubmittedAppCountHref}}" style="cursor: pointer">
+                                <i class="fa dashboard-div-icon">
+                                    {{report.SubmittedAppCount}}
+                                </i>
+                                <h5>View</h5>
+                            </a>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div class="col-md-12">
+                        <div class="dashboard-div-wrapper bk-clr-two">
+                            <a href="{{report.ProcessingAppHref}}" style="cursor: pointer">
+                                <i class="fa dashboard-div-icon">
+                                    {{report.ProcessingAppCount}}
+                                </i>
+                                <h5>View</h5>
+                            </a>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div class="col-md-12">
+                        <div class="dashboard-div-wrapper bk-clr-one">
+                            <a href="{{report.ApprovedAppHref}}" style="cursor: pointer">
+                                <i class="fa dashboard-div-icon"> {{report.ApprovedAppCount}}</i>
+                                <h5>View</h5>
+                            </a>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div class="col-md-12">
+                        <div class="dashboard-div-wrapper progress-bar-warning">
+                            <a href="{{report.RejectedHref}}" style="cursor: pointer">
+                                <i class="fa dashboard-div-icon"> {{report.RejectedAppCount}}</i>
+                                <h5>View</h5>
+                            </a>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<br /><br />

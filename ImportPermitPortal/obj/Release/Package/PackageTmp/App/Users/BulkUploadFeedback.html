@@ -1,0 +1,42 @@
+﻿
+
+
+<div class="row fsEdit" style="width: 100%; border: 3px solid #27ae60;" ng-controller="bnkUsrMgrController">
+    <div class="modal-body">
+        <form>
+            <div class="row">
+                <div class="col-md-12">
+                    <label>{{bMsg}}</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <h4>User(s) successfully registered.</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-5">
+                    <label>Name</label>
+                </div>
+                <div class="col-md-4">
+                    <label>Email</label>
+                </div>
+                <div class="col-md-3">
+                    <label>Password</label>
+                </div>
+            </div>
+            <div class="row" ng-repeat="u in bulkusers">
+                <div class="col-md-5">{{u.Name}}</div>
+                <div class="col-md-4">{{u.Email}}</div>
+                <div class="col-md-3">{{u.Password}}</div>
+            </div>
+            <div class="row modal-footer">
+                <div class="col-md-9"></div>
+                <div class="col-md-3">
+                    <input type="button" value="Close" ng-click="cls()" class="btn btn-default" style="margin-top: 7px;" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+

@@ -1,0 +1,46 @@
+﻿
+
+<div class="row">
+    <div class="col-md-12">
+        <h4 class="page-head-line"> Steps </h4>
+    </div>
+</div>
+
+
+<div class="row" ng-controller="stepController" ng-init="initializeController()">
+    <div class="row">
+        <div class="col-md-3">
+            <input type="button" value="Print" ng-click="printForm('DataTables_Table_2')" class="btn btn-default" style="margin-top: 7px;" />
+        </div>
+    </div><br />
+    <div class="row" id="reqContainer">
+        <table class="table" style="width: 100%" ng-app-step>
+            <thead>
+                <tr style="color: #000">
+                    <th style="width: 3%">
+                        S/N
+                    </th>
+                    <th style="width: 25%">
+                        Step
+                    </th>
+                    <th style="width: 10%">
+                        Sequence
+                    </th>
+                    <th style="width: 25%">
+                        Process
+                    </th>
+                    <th style="width: 25%">
+                        Application Stage
+                    </th>
+                    <th style="width: 12%">
+                        Action
+                    </th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+
+        </table>
+    </div>
+    <br/>
+
+</div>

@@ -1,0 +1,303 @@
+﻿
+
+
+<div class="row" ng-controller="approvedNotificationController" ng-init="initializeController()">
+    <div class="row" ng-hide="viewApp == true">
+        <div class="row">
+            <div class="col-md-12">
+                <h4 class="page-head-line">Approved Notifications</h4>
+            </div>
+        </div>
+        <table style="width: 100%" ng-a-ntfs>
+            <thead>
+                <tr style="color: #000">
+                    <th style="width: 2%">
+                        S/N
+                    </th>
+                    <th style="width: 15%">
+                        Company
+                    </th>
+                    <th style="width: 12%">
+                        Payment Reference(RRR)
+                    </th>
+                    <th style="width: 12%">
+                        Permit No.
+                    </th>
+                    <th style="width: 10%">
+                        Product
+                    </th>
+                    <th style="width: 15%">
+                        Amount Due/Paid(&#8358;)
+                    </th>
+                    <th style="width: 10%">
+                        Discharge Quantity
+                    </th>
+                    <th style="width: 20%">
+                        Vessel Expected Arrival Period
+                    </th>
+                    <th style="width: 8%">
+                        Status
+                    </th>
+                    <th style="width: 7%">
+                        Action
+                    </th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+
+    <div class="row" ng-show="viewApp === true" style="width: 100%; border: 3px solid #27ae60;">
+        <br />
+        <div class=" modal-header">
+            <div class="row">
+                <div class="col-md-8">
+                    <h4 class="page-head-no-line">Notifications Details</h4>
+                </div>
+                <div class="col-md-4">
+                    <a ng-click="initializeApp()" style="float: right" class="btn btn-default acceptbtn"><< Back</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="row">
+                <table class="table">
+                    <tr>
+                        <td style="width: 20%">Payment Reference(RRR)</td>
+                        <td style="width: 30%; font-weight: bold">{{notification.Rrr}}</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 20%">Permit Number</td>
+                        <td style="width: 30%; font-weight: bold">{{notification.PermitValue}}</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 20%">Company</td>
+                        <td style="width: 30%; font-weight: bold">
+                            <a class="control-label" style="cursor: pointer; color: #008000" ng-click="getCompanyInfo(application.ImporterId)">{{notification.ImporterName}}</a>
+                        </td>
+                    </tr>
+                    <tr ng-repeat="fee in notification.FeeObjects">
+                        <td style="width: 20%">
+                            <label class="control-label" style="font-weight: normal">{{fee.FeeTypeName}}</label>
+                        </td>
+                        <td style="width: 30%">
+                            <label class="control-label">&#8358;{{fee.Amount | currency:"":0}}</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 20%">
+                            <label class="control-label " style="font-weight: normal">Total Amount Paid</label>
+                        </td>
+                        <td style="width: 30%">
+                            <label class="control-label ">&#8358;{{notification.AmountDueStr}}</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 20%">Service Description</td>
+                        <td style="width: 30%; font-weight: bold">Vessel Arrival Notification Fee</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 20%">Notification Type</td>
+                        <td style="width: 30%; font-weight: bold">{{notification.NotificationTypeName}}</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 20%">Cargo Type</td>
+                        <td style="width: 30%; font-weight: bold">{{notification.CargoTypeName}}</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 20%">Notification Status</td>
+                        <td style="width: 30%; font-weight: bold">{{notification.StatusStr}}</td>
+                    </tr>
+                </table>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-12">
+                    <h4>Details</h4>
+                </div>
+                <table class="table" style="width: 100%;">
+                    <tr>
+                        <th style="width: 15%">
+                            Product Code
+                        </th>
+                        <th style="width: 20%">
+                            QuantityTo Discharge(MT)
+                        </th>
+                        <th style="width: 15%">
+                            Vessel Expected Arrival Period
+                        </th>
+                        <th style="width: 20%">
+                            Port of Origin
+                        </th>
+                        <th style="width: 20%">
+                            Discharge Depot
+                        </th>
+                    </tr>
+                    <tr>
+                        <td style="width: 15%">{{notification.ProductCode}}</td>
+                        <td style="width: 20%">{{notification.QuantityToDischarge | number:0}}</td>
+                        <td style="width: 15%">{{notification.ArrivalDateStr}}</td>
+                        <td style="width: 20%">{{notification.PortName}}({{notification.CountryName}})</td>
+                        <td style="width: 20%">{{notification.DepotName}}</td>
+                    </tr>
+                </table>
+            </div>
+            <br />
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4><b>Uploaded Document(s)</b></h4>
+                    </div>
+                    <div class="row">
+                        <br />
+                        <div class="col-md-12" ng-show="suppliedDocs.length < 1">
+                            <h4>NONE</h4>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="row">
+                                <table class="table" ng-if="suppliedDocs.length > 0">
+                                    <tr data-ng-repeat="s in suppliedDocs">
+                                        <td style="width: 20%"><a href="{{s.DocumentPath}}" target="_blank" style="cursor: pointer; color: #008000" title="View Document">{{s.Name}}</a></td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <br />
+                            <div class="row" ng-if="bnkDocs.length > 0 ">
+                                <div class="col-md-12">
+                                    <h4>Required Document(s) :</h4>
+                                </div>
+                                <br />
+                                <ul>
+                                    <li ng-repeat="doc in bnkDocs" style="margin-top: 14px">
+                                        <div class="row">
+                                            <div class="col-md-5">
+                                                <label>&#8226 &nbsp;{{doc.Name}} *</label>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="row" ng-if="stadDocs.length > 0">
+                                <div class="col-md-8">
+                                    <h4>Standard Documents</h4>
+                                </div>
+                                <ul>
+                                    <li ng-repeat="d in stadDocs" style="margin-top: 14px">
+                                        <div class="row" ng-if="d.StandardRequirementId > 0 && d.IsUploaded === true">
+                                            <div class="col-md-12">
+                                                &#8226 &nbsp;<a href="{{d.DocumentPath}}" style="cursor: pointer; color: #008000" target="_blank" title="View Document">{{d.Name}}</a>
+                                            </div>
+                                        </div>
+                                        <div class="row" ng-if="d.StandardRequirementId < 1 && d.IsUploaded === false">
+                                            <div class="col-md-12">
+                                                &#8226 &nbsp;<label style="font-weight: normal">{{d.Name}} *</label>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="row" ng-if="hasTrack === true">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4>Current Desk</h4>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table class="table">
+                                <tr>
+                                    <th style="width: 20%">
+                                        Assigned To
+                                    </th>
+                                    <th style="width: 10%">
+                                        Time Assigned
+                                    </th>
+                                    <th style="width: 10%">
+                                        Due Time
+                                    </th>
+                                    <th style="width: 10%">
+                                        Time Processed
+                                    </th>
+                                    <th style="width: 15%">
+                                        Process
+                                    </th>
+                                    <th style="width: 15%">
+                                        Step
+                                    </th>
+                                    <th style="width: 20%">
+                                        Outcome
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <td style="width: 20%">{{currentTrack.EmployeeName}}</td>
+                                    <td style="width: 10%">{{currentTrack.AssignedTimeStr}}</td>
+                                    <td style="width: 10%">{{currentTrack.DueTimeStr}}</td>
+                                    <td style="width: 10%">{{currentTrack.ActualDeliveryDateTimeStr}}</td>
+                                    <td style="width: 15%">{{currentTrack.ProcessName}}</td>
+                                    <td style="width: 15%">{{currentTrack.CurrentStepName}}</td>
+                                    <td style="width: 20%">{{currentTrack.OutComeCodeStr}}</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="row" ng-if="hasHistory === true">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4>Notification Processing History</h4>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table class="table">
+                                <tr>
+                                    <th style="width: 20%">
+                                        Assigned To
+                                    </th>
+                                    <th style="width: 10%">
+                                        Time Assigned
+                                    </th>
+                                    <th style="width: 10%">
+                                        Due Time
+                                    </th>
+                                    <th style="width: 10%">
+                                        Time Processed
+                                    </th>
+                                    <th style="width: 15%">
+                                        Process
+                                    </th>
+                                    <th style="width: 15%">
+                                        Step
+                                    </th>
+                                    <th style="width: 20%">
+                                        Outcome
+                                    </th>
+                                </tr>
+                                <tr ng-repeat="h in histories">
+                                    <td style="width: 20%">{{h.EmployeeName}}</td>
+                                    <td style="width: 10%">{{h.AssignedTimeStr}}</td>
+                                    <td style="width: 10%">{{h.DueTimeStr}}</td>
+                                    <td style="width: 10%">{{h.FinishedTimeStr}}</td>
+                                    <td style="width: 15%">{{h.ProcessName}}</td>
+                                    <td style="width: 15%">{{h.StepName}}</td>
+                                    <td style="width: 20%">{{h.OutComeCodeStr}}</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>

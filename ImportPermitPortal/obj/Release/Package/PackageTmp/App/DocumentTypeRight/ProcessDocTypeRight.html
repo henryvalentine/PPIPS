@@ -1,0 +1,48 @@
+﻿
+
+<div class="row fsEdit" style="visibility: visible; width: 100%" ng-controller="documentTypeRightController">
+    <div class=" modal-header">
+        <div class="row">
+            <div class="col-md-12">
+                <h4 class="modal-title">{{header}}</h4>
+            </div>
+        </div>
+    </div>
+    <div class="modal-body">
+
+        <form method="POST">
+            <div class="row">
+                <label class="control-label ">Role *</label>
+                <select ng-model="aspNetRole" ng-options="role as role.Name for role in roles track by role.Id" data-inset="true" class=" form-control" required>
+                    <option value="">-- Select Role --</option>
+                </select>
+            </div>
+            <div class="row">
+                <div class="row">
+                    <label class="control-label "> Document(s) to Provide*</label>
+                </div>
+                <div style="width: 100%" class="row" isteven-multi-select
+                     input-model="docTypes"
+                     output-model="doctTypeRights"
+                     button-label="Name"
+                     item-label="Name"
+                     tick-property="ticked">
+                </div>
+            </div>
+            <div class="row">
+                <label class="control-label ">Permission(s) *</label>
+                <div class="row">
+                    <label class="control-label "><input type="checkbox" ng-model="read"/>Read</label>
+                </div>
+                <div class="row">
+                    <label class="control-label "><input type="checkbox" ng-model="write"/>Write</label>
+                </div>
+            </div>
+            <div class="row modal-footer">
+                <div>
+                    <input type="button" value="{{buttonText}}" ng-click="processDocTypeRight()" class="btn btn-default" style="margin-top: 7px;"/>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

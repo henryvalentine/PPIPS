@@ -1,0 +1,28 @@
+﻿
+
+<div class="row fsEdit" style="visibility: visible; width: 100%" ng-controller="bnkBranchesController">
+    <div class=" modal-header">
+        <div class="row">
+            <div class="col-md-12">
+                <h4 class="modal-title">{{bankBranch.Header}}</h4>
+            </div>
+        </div>
+    </div>
+    <div class="modal-body">
+        <form method="POST">
+            <div class="row">
+                <label class="control-label ">Branch Name *</label>
+                <input type="text" data-ng-model="bankBranch.Name" class="form-control" />
+            </div>
+            <div class="row">
+                <label class="control-label "> Branch Code *</label>
+                <input type="text" data-ng-model="bankBranch.BranchCode" class="form-control" />
+            </div>
+            <div class="row modal-footer">
+                <div>
+                    <input type="button" value="{{branchButtonText}}" ng-click="processBankBranch()" class="btn btn-default" style="margin-top: 7px;" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

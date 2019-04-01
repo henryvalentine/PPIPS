@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PPIPSPaymentLiveModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="PPIPSPaymentEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="PaymentDistributionSummaries" EntityType="PPIPSPaymentLiveModel.PaymentDistributionSummary" />
+    <EntitySet Name="PaymentLogs" EntityType="PPIPSPaymentLiveModel.PaymentLog" />
+    <EntitySet Name="PaymentReceipts" EntityType="PPIPSPaymentLiveModel.PaymentReceipt" />
+    <EntitySet Name="TransactionInvoices" EntityType="PPIPSPaymentLiveModel.TransactionInvoice" />
+    <EntitySet Name="UnclearedPayments" EntityType="PPIPSPaymentLiveModel.UnclearedPayment" />
+    <AssociationSet Name="FK_UnclearedPayment_PaymentLog" Association="PPIPSPaymentLiveModel.FK_UnclearedPayment_PaymentLog">
+      <End Role="PaymentLog" EntitySet="PaymentLogs" />
+      <End Role="UnclearedPayment" EntitySet="UnclearedPayments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PaymentReceipt_TransactionInvoice" Association="PPIPSPaymentLiveModel.FK_PaymentReceipt_TransactionInvoice">
+      <End Role="TransactionInvoice" EntitySet="TransactionInvoices" />
+      <End Role="PaymentReceipt" EntitySet="PaymentReceipts" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="PaymentDistributionSummary">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ServiceId" Type="Int32" Nullable="false" />
+    <Property Name="Beneficiary" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Amount" Type="Double" Nullable="false" />
+    <Property Name="PaymentReference" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PaymentDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Status" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PaymentLog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Type" Type="Boolean" />
+    <Property Name="PaymentReference" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PaymentAmount" Type="Double" Nullable="false" />
+    <Property Name="PaymentDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PaymentCurrency" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PaymentMethod" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PaymentChannel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ItemName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ItemCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DepositSlipNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BankName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Location" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CustomerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PaymentStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="XmlData" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ExpiryDate" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="UnclearedPayments" Relationship="PPIPSPaymentLiveModel.FK_UnclearedPayment_PaymentLog" FromRole="PaymentLog" ToRole="UnclearedPayment" />
+  </EntityType>
+  <EntityType Name="PaymentReceipt">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TransactionInvoiceId" Type="Int64" Nullable="false" />
+    <Property Name="ReceiptNo" Type="Int64" Nullable="false" />
+    <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="TransactionInvoice" Relationship="PPIPSPaymentLiveModel.FK_PaymentReceipt_TransactionInvoice" FromRole="PaymentReceipt" ToRole="TransactionInvoice" />
+  </EntityType>
+  <EntityType Name="TransactionInvoice">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PaymentMethod" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PaymentGateway" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TotalAmountDue" Type="Double" Nullable="false" />
+    <Property Name="AmountPaid" Type="Double" Nullable="false" />
+    <Property Name="CurrencyCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <Property Name="ServiceDescription" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IsExpired" Type="Boolean" />
+    <Property Name="ExpiryDate" Type="DateTime" Precision="0" />
+    <Property Name="BookDate" Type="DateTime" Precision="0" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="LastModifiedDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="CustomerId" Type="Int64" Nullable="false" />
+    <Property Name="RRR" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="PaymentReceipts" Relationship="PPIPSPaymentLiveModel.FK_PaymentReceipt_TransactionInvoice" FromRole="TransactionInvoice" ToRole="PaymentReceipt" />
+  </EntityType>
+  <EntityType Name="UnclearedPayment">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PaymentLogId" Type="Int64" />
+    <Property Name="ReferenceCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Amount" Type="Double" Nullable="false" />
+    <Property Name="CompanyId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsAssigned" Type="Boolean" />
+    <Property Name="ReferenceNoAssignedTo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DateAssigned" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="PaymentLog" Relationship="PPIPSPaymentLiveModel.FK_UnclearedPayment_PaymentLog" FromRole="UnclearedPayment" ToRole="PaymentLog" />
+  </EntityType>
+  <Association Name="FK_UnclearedPayment_PaymentLog">
+    <End Type="PPIPSPaymentLiveModel.PaymentLog" Role="PaymentLog" Multiplicity="0..1" />
+    <End Type="PPIPSPaymentLiveModel.UnclearedPayment" Role="UnclearedPayment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PaymentLog">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UnclearedPayment">
+        <PropertyRef Name="PaymentLogId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PaymentReceipt_TransactionInvoice">
+    <End Type="PPIPSPaymentLiveModel.TransactionInvoice" Role="TransactionInvoice" Multiplicity="1" />
+    <End Type="PPIPSPaymentLiveModel.PaymentReceipt" Role="PaymentReceipt" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TransactionInvoice">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PaymentReceipt">
+        <PropertyRef Name="TransactionInvoiceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

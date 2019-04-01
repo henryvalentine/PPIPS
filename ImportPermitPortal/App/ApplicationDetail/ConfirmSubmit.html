@@ -1,0 +1,32 @@
+﻿
+
+<div class="row fsEdit" style="visibility: visible; width: 100%" ng-controller="appBankerDetailController">
+    <div class=" modal-header">
+        <div class="row">
+            <div class="col-md-12">
+                <h4 class="modal-title">Confirm Application Submission</h4>
+            </div>
+        </div>
+    </div>
+    <div class="modal-body">
+        <form >
+            <br/>
+            <div class="col-md-12">
+                <label style="font-weight: bold">
+                    Are you sure you really want to submit this application?
+                </label>
+            </div>
+            <br />
+            <div class="col-md-12">
+                <label style="font-weight: bold">
+                    Click the button below to submit application
+                </label>
+            </div>
+            <div class="row modal-footer">
+                <div>
+                    <input type="button" value="Submit" ng-click="appSubmit()" class="btn btn-default" style="margin-top: 7px;"/>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

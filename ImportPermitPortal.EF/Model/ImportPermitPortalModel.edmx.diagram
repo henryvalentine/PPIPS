@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b46ebeb54049429aa41ed3b493ec0a7e" Name="Diagram1">
+        <EntityTypeShape EntityType="ImportPermitLiveModel.C__MigrationHistory" Width="1.5" PointX="5.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.AccountType" Width="1.5" PointX="0.75" PointY="6.75" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.Address" Width="1.5" PointX="4.5" PointY="93.875" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.AddressType" Width="1.5" PointX="4.5" PointY="79" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.Application" Width="1.5" PointX="0.75" PointY="37" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.ApplicationContent" Width="1.5" PointX="7.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.ApplicationCountry" Width="1.5" PointX="5.25" PointY="58" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.ApplicationDepot" Width="1.5" PointX="6" PointY="54.75" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.ApplicationDocument" Width="1.5" PointX="15.25" PointY="39.25" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.ApplicationIssue" Width="1.5" PointX="20.25" PointY="59.25" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.ApplicationItem" Width="1.5" PointX="3" PointY="55.75" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.ApplicationLicenseMapping" Width="1.5" PointX="18" PointY="64.375" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.ApplicationType" Width="1.5" PointX="1.5" PointY="33.875" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.AspNetRole" Width="1.5" PointX="0.75" PointY="4" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.AspNetUserClaim" Width="1.5" PointX="17.25" PointY="16.125" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.AspNetUserLogin" Width="1.5" PointX="17.25" PointY="18.875" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.AspNetUser" Width="1.5" PointX="15" PointY="16.25" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.Bank" Width="1.5" PointX="9" PointY="38.25" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.BankBranch" Width="1.5" PointX="11.25" PointY="42.625" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.BankUser" Width="1.5" PointX="18" PointY="37.75" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.BillOfLadingData" Width="1.5" PointX="19.5" PointY="55.875" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.Calculator" Width="1.5" PointX="2.75" PointY="7.75" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.City" Width="1.5" PointX="2.25" PointY="94.125" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.CompanyCategory" Width="1.5" PointX="7.75" PointY="3.75" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.CompanyDocument" Width="1.5" PointX="20.25" PointY="63" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.Country" Width="1.5" PointX="1.5" PointY="81.125" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.CustomCode" Width="1.5" PointX="3.75" PointY="64.125" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.Depot" Width="1.5" PointX="0.75" PointY="57.875" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.DepotDischarge" Width="1.5" PointX="3" PointY="87.5" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.DepotOwner" Width="1.5" PointX="4.75" PointY="7.75" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.DepotTrunkedOut" Width="1.5" PointX="3" PointY="30.75" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.DischargeParameterAfter" Width="1.5" PointX="20.25" PointY="50.125" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.DischargeParameterBefore" Width="1.5" PointX="14.25" PointY="42.125" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.Document" Width="1.5" PointX="9" PointY="42.625" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.DocumentIssue" Width="1.5" PointX="20" PointY="42" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.DocumentType" Width="1.5" PointX="3.75" PointY="41.5" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.DocumentTypeRight" Width="1.5" PointX="6" PointY="23.125" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.EmployeeDesk" Width="1.5" PointX="15" PointY="32.25" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.ExpenditionaryInvoice" Width="1.5" PointX="14.25" PointY="47" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.Faq" Width="1.5" PointX="5" PointY="3.875" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.FaqCategory" Width="1.5" PointX="2.75" PointY="4.125" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.Fee" Width="1.5" PointX="6.75" PointY="75.625" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.FeeType" Width="1.5" PointX="4.5" PointY="76.5" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.FormMDetail" Width="1.5" PointX="11.25" PointY="51.25" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.Group" Width="1.5" PointX="12.75" PointY="33.5" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.ImportApplicationHistory" Width="1.5" PointX="3" PointY="38" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.ImportClass" Width="1.5" PointX="6.75" PointY="38.625" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.ImportClassificationRequirement" Width="1.5" PointX="22.75" PointY="58.125" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.Importer" Width="1.5" PointX="1.5" PointY="63.5" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.ImporterAddress" Width="1.5" PointX="6.75" PointY="70.125" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.ImportRequirement" Width="1.5" PointX="22.75" PointY="61.625" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.ImportSetting" Width="1.5" PointX="7.75" PointY="6.75" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.ImportStage" Width="1.5" PointX="10.5" PointY="65.875" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.Invoice" Width="1.5" PointX="6.75" PointY="64.125" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.InvoiceItem" Width="1.5" PointX="9" PointY="69.25" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.Issue" Width="1.5" PointX="18" PointY="29.5" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.IssueCategory" Width="1.5" PointX="13.5" PointY="13" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.IssueLog" Width="1.5" PointX="15.75" PointY="12.625" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.IssueType" Width="1.5" PointX="12" PointY="69.75" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.Jetty" Width="1.5" PointX="1.5" PointY="73.375" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.JettyMapping" Width="1.5" PointX="23" PointY="65.5" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.LabParameter" Width="1.5" PointX="17.25" PointY="61" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.Link" Width="1.5" PointX="0.75" PointY="1" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.Message" Width="1.5" PointX="18" PointY="25.5" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.MessageTemplate" Width="1.5" PointX="15.75" PointY="24.625" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.Notification" Width="1.5" PointX="9" PointY="48.875" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.NotificationBanker" Width="1.5" PointX="11.25" PointY="45.75" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.NotificationCheckList" Width="1.5" PointX="9" PointY="63" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.NotificationCheckListOutcome" Width="1.5" PointX="11.25" PointY="55.625" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.NotificationDischageData" Width="1.5" PointX="22.5" PointY="47.125" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.NotificationDocument" Width="1.5" PointX="11.25" PointY="59.75" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.NotificationHistory" Width="1.5" PointX="17.25" PointY="51.25" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.NotificationInspection" Width="1.5" PointX="14.25" PointY="50.125" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.NotificationInspectionQueue" Width="1.5" PointX="17.25" PointY="56.125" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.NotificationIssue" Width="1.5" PointX="14.25" PointY="60.625" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.NotificationVessel" Width="1.5" PointX="14.25" PointY="56.75" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.Page" Width="1.5" PointX="15" PointY="28.125" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.PaymentDetail" Width="1.5" PointX="11.25" PointY="73.875" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.Permit" Width="1.5" PointX="6.75" PointY="41.25" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.PermitApplication" Width="1.5" PointX="9" PointY="34.875" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.Person" Width="1.5" PointX="10.5" PointY="29.375" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.Port" Width="1.5" PointX="1.5" PointY="77.375" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.Process" Width="1.5" PointX="12.75" PointY="65.625" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.ProcessingHistory" Width="1.5" PointX="23.25" PointY="42.125" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.ProcessTracking" Width="1.5" PointX="23.25" PointY="53" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.Product" Width="1.5" PointX="0.75" PointY="51.125" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.ProductBanker" Width="1.5" PointX="5.25" PointY="60.625" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.ProductColour" Width="1.5" PointX="9.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.ProductColumn" Width="1.5" PointX="6" PointY="52" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.ProductDocumentRequirement" Width="1.5" PointX="6" PointY="49" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.Recertification" Width="1.5" PointX="11.25" PointY="107.875" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.RecertificationHistory" Width="1.5" PointX="13.5" PointY="103.75" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.RecertificationIssue" Width="1.5" PointX="13.5" PointY="108.125" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.RecertificationProcess" Width="1.5" PointX="16.5" PointY="107.625" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.RecertificationResult" Width="1.5" PointX="17.25" PointY="43.875" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.ReferenceLicense" Width="1.5" PointX="3.75" PointY="67" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.ReferenceLicenseType" Width="1.5" PointX="1.5" PointY="90.625" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.Region" Width="1.5" PointX="1.5" PointY="84.625" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.SignOffDocument" Width="1.5" PointX="18" PointY="34.25" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.StandardRequirement" Width="1.5" PointX="3.75" PointY="71" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.StandardRequirementType" Width="1.5" PointX="1.5" PointY="97.625" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.Step" Width="1.5" PointX="15" PointY="64.625" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.StepActivityType" Width="1.5" PointX="12.75" PointY="36.625" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.StepsInGroup" Width="1.5" PointX="9.75" PointY="3.75" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.StorageProviderRequirement" Width="1.5" PointX="6" PointY="35.75" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.StorageProviderType" Width="1.5" PointX="0.75" PointY="48.125" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.StorageTank" Width="1.5" PointX="3" PointY="47.25" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.Structure" Width="1.5" PointX="1.5" PointY="70.625" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.ThroughPut" Width="1.5" PointX="8.25" PointY="58" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.Transaction" Width="1.5" PointX="9" PointY="73.75" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.UnitOfMeasurement" Width="1.5" PointX="0.75" PointY="43.25" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.UserLink" Width="1.5" PointX="3" PointY="0.875" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.UserProfile" Width="1.5" PointX="12.75" PointY="28.75" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.Vessel" Width="1.5" PointX="20.25" PointY="45.875" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.VesselArrivalDocument" Width="1.5" PointX="5.25" PointY="45.75" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.VesselArrivalNotice" Width="1.5" PointX="3" PointY="51.375" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.WorkFlow" Width="1.5" PointX="9.75" PointY="6.75" />
+        <EntityTypeShape EntityType="ImportPermitLiveModel.Zone" Width="1.5" PointX="12.75" PointY="39.375" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_Address_City" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_ImporterAddress_Address" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_ImporterAddress_AddressType" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_Application_ApplicationType" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_Application_Importer" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_Application_Invoice" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_ApplicationDocument_Application" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_ApplicationIssues_Application" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_ApplicationItem_Application" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_ApplicationLicenseMapping_Application" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_ImportApplicationHistory_Application" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_PermitApplication_Application" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_ProcessingHistory_ImportApplication" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_ProcessTracking_ImportApplication" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_SignOffDocument_Application" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_ApplicationCountry_ApplicationItem" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_ApplicationCountry_Country" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_ApplicationDepot_Depot" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_ApplicationDepot_Product" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_ApplicationDocument_Document" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_ApplicationIssues_IssueType" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_ApplicationItem_Product" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_ApplicationItem_StorageProviderType" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_ProductBanker_ApplicationItem" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_ThroughPut_ApplicationItem" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_ApplicationLicenseMapping_ReferenceLicense" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_DocumentTypeRight_AspNetRoles" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_User_Id" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_dbo_AspNetUsers_dbo_UserProfiles_UserInfo_Id" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_ApplicationBanker_Bank" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_Bank_Importer" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_BankBranch_Bank" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_FormMDetail_Bank" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_ProductBanker_Bank" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_BankUser_BankBranch" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_BankUser_UserProfiles" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_BillOfLadingData_LabParameter" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_BillOfLadingData_NotificationInspection" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_City_Country" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_CompanyDocument_Document" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_CompanyDocument_Importer" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_Country_Region" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_Port_Country" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_ProductColumn_CustomCode" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_Depot_Importer" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_Depot_Jetty" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_DepotDischarge_Depot" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_DepotTrunkedOut_Depot" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_Notification_Depot" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_NotificationDischageData_Depot" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_NotificationInspection_Jetty" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_StorageTank_Depot" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_ThroughPut_Depot" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_DischargeParameterAfter_Notification" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_DischargeParameterAfter_StorageTank" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_NotificationDischageData_DischargeParameterAfter" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_DischargeParameterBefore_Notification" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_DischargeParameterBefore_StorageTank" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_NotificationDischageData_DischargeParameterBefore" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_ApplicationBanker_Document" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_Document_DocumentType" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_Document_Importer" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_DocumentIssue_Document" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_FormMDetail_Document" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_NotificationDocument_Document" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_ProductBanker_Document" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_ThroughPut_Document" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_VesselArrivalDocument_Document" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_DocumentIssue_IssueType" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_DocumentIssue_UserProfiles" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_DocumentTypeRight_DocumentType" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_ImportClassificationRequirement_DocumentType" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_ImportRequirement_DocumentType" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_NotificationCheckList_DocumentType" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_ProductRequirement_DocumentType" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_StorageProviderRequirement_DocumentType" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_EmployeeDesk_Group" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_EmployeeDesk_StepActivityType" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_EmployeeDesk_UserProfiles1" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_EmployeeDesk_Zone" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_ImportRecertificationResult_EmployeeDesk" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_NotificationHistory_EmployeeDesk" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_NotificationInspectionQueue_EmployeeDesk" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_ProcessingHistory_EmployeeDesk" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_ProcessTracking_EmployeeDesk" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_RecertificationHistory_EmployeeDesk" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_RecertificationProcess_EmployeeDesk" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_ExpenditionaryInvoice_Invoice" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_ExpenditionaryInvoice_Notification" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_Faq_FaqCategory" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_Fee_FeeType" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_Fee_ImportStage" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_InvoiceItem_Fee" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_FormMDetail_Notification" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_Step_Group" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_ImportClassificationRequirement_ImportClass" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_Notification_ImportClass" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_ImportClassificationRequirement_ImportStage" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_Importer_Structure" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_ImporterAddress_Importer" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_Invoice_Importer" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_Notification_Company" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_Permit_Importer" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_Person_Importer" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_ReferenceLicense_Importer" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_StandardRequirement_Importer" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_ImportRequirement_ImportStage" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_Process_ImportStage" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_InvoiceItem_Invoice" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_Notification_Invoice" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_Transaction_Invoice" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_Issue_IssueLog" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_Issue_UserProfiles" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_Issue_UserProfiles1" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_IssueLog_IssueCategory" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_NotificationIssue_IssueType" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_RecertificationIssue_IssueType" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_Jetty_Port" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_JettyMapping_Jetty" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_JettyMapping_Zone" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_UserLink_Link" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_Message_MessageTemplate" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_Message_UserProfiles" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_ApplicationBanker_Notification" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_ImportRecertificationResult_Notification" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_Notification_Permit" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_Notification_Port" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_Notification_Product" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_NotificationCheckListOutcome_Notification" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_NotificationDischageData_Notification" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_NotificationDocument_Notification" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_NotificationHistory_Notification" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_NotificationInspection_Notification" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_NotificationInspectionQueue_Notification" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_NotificationIssue_NotificationIssue" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_NotificationVessel_Notification" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_Recertification_Notification1" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_ApplicationBanker_Product" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_ApplicationBanker_UserProfiles" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_NotificationCheckListOutcome_NotificationCheckList" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_NotificationDischageData_StorageTank1" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_NotificationDischageData_Vessel" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_NotificationHistory_Step" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_NotificationInspection_Product" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_NotificationInspectionQueue_Step" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_NotificationVessel_Vessel" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_Page_UserProfiles" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_PaymentDetail_Transaction" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_PermitApplication_Permit" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_UserProfiles_Person" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_Step_Process" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_ProcessingHistory_Step" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_ProcessTracking_Step" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_ProductColumn_Product" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_ProductRequirement_Product" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_StorageTank_Product" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_ThroughPut_Product" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_VesselArrivalNotice_Product" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_RecertificationHistory_Recertification" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_RecertificationIssue_Recertification" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_RecertificationProcess_Recertification" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_RecertificationHistory_Step" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_RecertificationProcess_Step" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_ReferenceLicense_ReferenceLicenseType" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_SignOffDocument_UserProfiles" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_StandardRequirement_StandardRequirementType" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_Step_StepActivityType" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_StorageProviderRequirement_StorageProviderType" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_StorageTank_UnitOfMeasurement" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_VesselArrivalNotice_Vessel" />
+        <AssociationConnector Association="ImportPermitLiveModel.FK_VesselArrivalDocument_VesselArrivalNotice" />
+        <AssociationConnector Association="ImportPermitLiveModel.AspNetUserRoles" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

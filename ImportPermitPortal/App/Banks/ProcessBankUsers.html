@@ -1,0 +1,57 @@
+﻿
+
+<div class="row fsEdit" style="width: 100%" ng-controller="bankController">
+    <div class=" modal-header">
+        <div class="row">
+            <div class="col-md-12">
+                <h4 class="modal-title">{{user.Header}}</h4>
+            </div>
+        </div>
+    </div>
+    <div class="modal-body">
+        <form method="POST">
+            <div class="row">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label class="control-label ">Last Name *</label>
+                        <input type="text" class="form-control" ng-model="user.LastName" />
+                    </div>
+                    <div class="col-md-6">
+                        <label class="control-label ">Other Name(s) *</label>
+                        <input type="text" class="form-control" ng-model="user.FirstName"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label class="control-label ">Email *</label>
+                        <input type="text" class="form-control" name="Email" ng-model="user.Email"/>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="control-label ">PhoneNumber *</label>
+                        <input type="text" ng-model="user.PhoneNumber" class="form-control"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label class="control-label ">Bank Branch Name *</label>
+                        <input type="text" data-ng-model="user.BankBranchName" class="form-control" /> 
+                    </div>
+                    <div class="col-md-6">
+                        <label class="control-label ">Bank Branch Code *</label>
+                        <input type="text" data-ng-model="user.BranchCode" class="form-control" />
+                    </div>
+                </div>
+                <br />
+                <div class="row modal-footer">
+                    <div class="col-md-9">
+                        <label class="control-label" ng-show="edit == true" style="float: left"><input type="checkbox" ng-model="user.IsActive" />&nbsp;Is User Active?</label>
+                    </div>
+                    <div class="col-md-3">
+                        <input type="button" value="{{buttonText}}" ng-click="processBankUser()" class="btn btn-default" style="margin-top: 7px; float:right" />
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+

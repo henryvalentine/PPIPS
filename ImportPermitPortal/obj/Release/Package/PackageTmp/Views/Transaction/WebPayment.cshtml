@@ -1,0 +1,245 @@
+﻿@model ImportPermitPortal.DataObjects.ApplicationObject
+@{
+    ViewBag.Title = "DPR-PPIPS - Payment Confirmation";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br /><br/>
+<form ng-app="py" ng-controller="pyController">
+   
+    @if (Model.Id > 0)
+    {
+        <div class="row">
+            <br />
+            <div class="row fsEdit" style="visibility: visible; width: 100%; border: 3px solid #27ae60;">
+                <br />
+                <div class="row">
+                    <div class="col-md-9">
+                        <button class="btn btn-default" id="" style="float: left; color: #000" ng-click="printReceipt()"> Print </button>
+                    </div>
+                   
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="row alert alert-success" role="alert" id="fedMsg">
+                           @{
+                                const string msg = "Transaction Successful! Thank you for applying and paying online. Your Application and payment details are shown below:";
+
+                                if (Model.Id > 0)
+                                {
+                                    <span class="col-md-11">@msg</span><span class="col-md-1" style="font-size: 20px; text-align: left; cursor: pointer" title="close" onclick=" $('#fedMsg').hide() ">x</span>
+                                }
+
+                            }
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="row" id="receipt">
+                    <div class="row">
+                        <p style="background-color: #FFF; margin: 0px; padding: 0px;" class="compname shadow">
+                            <img height="45" width="187" src="/Content/images/importlogo.png" />
+                        </p>
+                    </div>
+                    <div class=" modal-header">
+                        <div class="row" style="margin-top: 15px">
+                            <div class="col-md-9">
+                                <h4 class="modal-title">Payment Slip</h4>
+                            </div>
+                            <div class="col-md-3">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="modal-body">
+                            <div class="row">
+                                <table class="table">
+                                    <tr>
+                                        <td style="width: 20%">Reference Code</td>
+                                        <td style="width: 30%; font-weight: bold">@Model.ReferenceCode</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 20%">Payment Reference Code(RRR)</td>
+                                        <td style="width: 30%; font-weight: bold">@Model.Rrr</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 20%">Customer</td>
+                                        <td style="width: 30%; font-weight: bold">@Model.CompanyName</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 20%">Total Quantity(MT)</td>
+                                        <td style="width: 30%; font-weight: bold">@Model.DerivedQuantityStr</td>
+                                    </tr>
+                                    @{
+                                        if (Model.FeeObjects != null)
+                                        {
+                                            foreach (var fee in Model.FeeObjects)
+                                            {
+                                                <tr>
+                                                    <td style="width: 20%">@fee.FeeTypeName</td>
+                                                    <td style="width: 30%; font-weight: bold">&#8358;@fee.AmountStr</td>
+                                                </tr>
+                                            }
+                                        }
+                                    }
+
+                                    <tr>
+                                        <td style="width: 20%">Total Amount Paid</td>
+                                        <td style="width: 30%; font-weight: bold">&#8358;@Model.AmountPaid.ToString("n")</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 20%">Payment Option</td>
+                                        <td style="width: 30%; font-weight: bold">@Model.PaymentOption</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 20%">Service Description</td>
+                                        <td style="width: 30%; font-weight: bold">@Model.ServiceDescription</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 20%">Application Status</td>
+                                        <td style="width: 30%; font-weight: bold">@Model.StatusStr</td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="row">
+                                @{
+        if (Model.ApplicationItemObjects != null)
+        {
+            <div class="row">
+                <h4>Product(s)</h4>
+            </div>
+                                    <table class="table" style="width: 100%;">
+                                        <tr>
+                                            <th style="width: 12%">
+                                                Product Code
+                                            </th>
+                                            <th style="width: 12%">
+                                                Est. Quantity(MT)
+                                            </th>
+                                            <th style="width: 12%">
+                                                Est. Value($)
+                                            </th>
+                                            @*<th style="width: 12%">
+                                                PSF Number
+                                            </th>
+                                            <th style="width: 13%">
+                                                License Code
+                                            </th>*@
+                                            <th style="width: 18%">
+                                                Country of Origin
+                                            </th>
+                                            <th style="width: 18%">
+                                                Port of Discharge
+                                            </th>
+                                        </tr>
+                                        @foreach (var prd in Model.ApplicationItemObjects)
+                                        {
+                                            <tr>
+                                                <td style="width: 12%">@prd.ProductObject.Code</td>
+                                                <td style="width: 12%">@prd.EstimatedQuantityStr</td>
+                                                <td style="width: 12%">@prd.EstimatedValueStr</td>
+                                                @*<td style="width: 12%">@prd.PSFNumber</td>
+                                                <td style="width: 13%">@prd.ReferenceLicenseCode</td>*@
+                                                <td style="width: 18%">@prd.CountryOfOriginName</td>
+                                                <td style="width: 18%">@prd.DischargeDepotName</td>
+                                            </tr>
+                                        }
+
+                                    </table>
+        }
+                                }
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    }
+    else
+    {
+        <br/> <br/> <br/><br />
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3>Transaction failed!</h3>
+                    </div>
+                </div>
+                <br /><br />
+                <div class="row">
+                    <div class="col-md-3">
+                        <label >Reson : </label>
+                    </div>
+                    <div class="col-md-7" style="padding-left: 0px">
+                        <span style="color: #f94c4c; font-weight: bold">@Model.StatusStr</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3" >
+                        <label>Reference Code : </label>
+                    </div>
+                    <div class="col-md-7" style="padding-left: 0px">
+                        <span>@Model.ReferenceCode</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label>Payment Reference Code(RRR) : </label>
+                    </div>
+                    <div class="col-md-7" style="padding-left: 0px">
+                        <span>@Model.Rrr</span>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-12">
+                        <p>We are sorry for the occurence of the above mentioned error. <br/>Please do contact our support unit quoting the Payment Reference (RRR) and or the Reference Code for an immediate solution. <br/> Thanks. <br/><br/>DPR-PPIPS Team. </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <br /> <br /> <br /><br /><br /><br />
+    }
+    
+</form>
+
+
+
+
+<script type="text/javascript">
+
+    angular.module('py', []).
+    controller('pyController', function ($scope)
+    {
+        $scope.printReceipt = function () {
+
+            var printContents = document.getElementById('receipt').innerHTML;
+            var popupWin = '';
+            if (navigator.userAgent.toLowerCase().indexOf('chrome') > -1) {
+                popupWin = window.open('', '_blank', 'width=800,height=700,scrollbars=yes,menubar=no,toolbar=no,location=no,status=yes,titlebar=yes');
+                popupWin.window.focus();
+                popupWin.document.write('<!DOCTYPE html><html><head>' +
+                    '<link rel="stylesheet" type="text/css" href="/Content/bootstrap.css"  /></head><body onload="window.print()"><div class="col-md-12">' + printContents + '</div></div></html>');
+                popupWin.onbeforeunload = function (event) {
+                    popupWin.close();
+                    return '.\n';
+                };
+                popupWin.onabort = function (event) {
+                    popupWin.document.close();
+                    popupWin.close();
+                }
+            } else {
+                popupWin = window.open('', '_blank', 'width=800,height=700,scrollbars=yes,menubar=no,toolbar=no,location=no,status=yes,titlebar=yes');
+                popupWin.document.open();
+                popupWin.document.write('<html><head><link rel="stylesheet" type="text/css" href="/Content/bootstrap.css"  /></head><body onload="window.print()"><div class="col-md-12">' + printContents + '</div></div></html>');
+                popupWin.document.close();
+            }
+            popupWin.document.close();
+
+            return true;
+        }
+
+    });
+</script>

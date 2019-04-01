@@ -1,0 +1,62 @@
+﻿
+
+<div class="row fsEdit" style="visibility: visible; width: 100%" ng-controller="appBankerDetailController">
+    <div class=" modal-header">
+        <div class="row">
+            <div class="col-md-12">
+                <h4 class="modal-title">Update Product : {{ApplicationItem.ProductObject.Code}}</h4>
+            </div>
+        </div>
+    </div>
+    <div class="modal-body">
+        <form >
+            <div class="row">
+                <div class="col-md-6">
+                    <label>Storage Provision*</label>
+                    <select ng-model="ApplicationItem.StorageProviderTypeObject" ng-options="provider as provider.Name for provider in providerTypes track by provider.Id" data-inset="true" class=" form-control" required>
+                        <option value="">-- Select Storage Option --</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row" ng-show="ApplicationItem.StorageProviderTypeObject.Name === 'Own Depot' || ApplicationItem.StorageProviderTypeObject.Id === 1">
+                <div class="col-md-12">
+                    <label class="control-label ">Depot License Number*</label>
+                    <input type="text" data-ng-model="ApplicationItem.DepotLicense" class="form-control" ng-class="depotClass" ng-blur="verifyCode(ApplicationItem.DepotLicense)" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row">
+                        <label class="control-label ">Discharge Depot*</label>
+                    </div>
+                    <div class="row" isteven-multi-select
+                         input-model="depotList"
+                         output-model="appDepotList"
+                         button-label="Name"
+                         item-label="Name"
+                         tick-property="ticked" ng-disabled="ApplicationItem.StorageProviderTypeObject.Name === 'Own Depot' || ApplicationItem.StorageProviderTypeObject.Id === 1">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row">
+                        <label>Sponsoring Bank(s)*</label>
+                    </div>
+                    <div class="row" isteven-multi-select
+                         input-model="banks"
+                         output-model="appBankers"
+                         button-label="Name"
+                         item-label="Name"
+                         tick-property="ticked">
+                    </div>
+                </div>
+            </div>
+            <div class="row modal-footer">
+                <div>
+                    <input type="button" value="{{buttonText}}" ng-click="editProduct()" class="btn btn-default" style="margin-top: 7px;" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

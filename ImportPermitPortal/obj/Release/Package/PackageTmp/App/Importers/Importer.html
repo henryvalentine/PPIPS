@@ -1,0 +1,273 @@
+﻿
+
+<div class="row">
+    <div class="col-md-12">
+        <h4 class="page-head-no-line">Importer Profile</h4>
+    </div>
+</div>
+
+<div class="row fsEdit" style="width: 100%; border: 3px solid #27ae60;" ng-controller="importerController" ng-init="initializeController()">
+    <div class="row">
+        <div class=" modal-header">
+            <div class="row">
+
+            </div>
+            <div class="row" style="margin-top: 2px;">
+                <div class="col-md-12 alert alert-danger" role="alert" ng-show="isError === true">
+                    <span class="col-md-11">{{appError}}</span><span class="col-md-1" style="font-size: 20px; text-align: left; cursor: pointer" title="close" ng-click="appError = '';isError = false;">x</span>
+                </div>
+                <div class="col-md-12 alert alert-success" role="alert" ng-show="isSuccess === true">
+                    <span class="col-md-11">{{appSuccess}}</span><span class="col-md-1" style="font-size: 20px; text-align: left; cursor: pointer" title="close" ng-click="appSuccess = '';isSuccess = false;">x</span>
+                </div>
+            </div>
+        </div>
+        <br/>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-md-6">
+                <h4 class="modal-title">General Information</h4>
+            </div>
+        </div>
+        <br />
+        <form ng-hide="isEditInitiated === true;">
+            <div class="row">
+                <div class="col-md-4">
+                    <label class="control-label" style="font-weight: normal">Email</label>
+                </div>
+                <div class="col-md-8">
+                    <label class="control-label">{{company.Email}}</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <label class="control-label" style="font-weight: normal">Phone Number</label>
+                </div>
+                <div class="col-md-8">
+                    <label class="control-label">{{company.PhoneNumber}}</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <label class="control-label" style="font-weight: normal">Registered Company Name</label>
+                </div>
+                <div class="col-md-8">
+                    <label class="control-label">{{company.Name}}</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <label class="control-label " style="font-weight: normal">Trading Name</label>
+                </div>
+                <div class="col-md-8">
+                    <label class="control-label">{{company.ShortNme}}</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <label class="control-label " style="font-weight: normal">{{bizCategory}}</label>
+                </div>
+                <div class="col-md-8">
+                    <label class="control-label">{{company.RCNumber}}</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <label class="control-label " style="font-weight: normal">TIN</label>
+                </div>
+                <div class="col-md-8">
+                    <label class="control-label">{{company.TIN}}</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <label class="control-label " style="font-weight: normal">Business Type</label>
+                </div>
+                <div class="col-md-8">
+                    <label class="control-label">{{company.Structure.Name}}</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <label class="control-label " style="font-weight: normal">Business Commencement Date</label>
+                </div>
+                <div class="col-md-8">
+                    <label class="control-label">{{company.BusinessCommencementDate}}</label>
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col-md-11" style="padding-right: 0px">
+                    <h4>Company Operational Address</h4>
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="row" ng-repeat="addObj in company.CompanyAddressObjects">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label class="control-label " style="font-weight: normal">Address Line 1</label>
+                        </div>
+                        <div class="col-md-8">
+                            <label class="control-label">{{addObj.AddressLine1}}</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label class="control-label " style="font-weight: normal">Address Line 2</label>
+                        </div>
+                        <div class="col-md-8">
+                            <label class="control-label">{{addObj.AddressLine2}}</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label class="control-label " style="font-weight: normal">Country</label>
+                        </div>
+                        <div class="col-md-8">
+                            <label class="control-label">{{addObj.CountryObject.Name}}</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label class="control-label " style="font-weight: normal">City</label>
+                        </div>
+                        <div class="col-md-8">
+                            <label class="control-label" ng-if="addObj.CityObject.CityId > 0">{{addObj.CityObject.Name}}</label>
+                        </div>
+                    </div>
+                    <br/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-9"></div>
+               <div class="col-md-3">
+                    <input type="button" ng-click="isEditInitiated = true;" value="Edit" style="float: right; margin-top: 30px" class="btn btn-default" />
+                </div>
+            </div>
+            <br />
+        </form>
+        <form ng-show="isEditInitiated === true;">
+            <div class="row">
+                <div class="col-md-6">
+                    <label class="control-label ">Registered Company Name</label>
+                    <input type="text" data-ng-model="company.Name" class="form-control"/>
+                </div>
+                <div class="col-md-6">
+                    <label class="control-label ">Trading Name</label>
+                    <input type="text" data-ng-model="company.ShortNme" class="form-control"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label class="control-label ">{{bizCategory}}</label>
+                    <input type="text" data-ng-model="company.RCNumber" class="form-control"/>
+                </div>
+                <div class="col-md-6">
+                    <label class="control-label ">TIN*</label>
+                    <input type="text" data-ng-model="company.TIN" class="form-control"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label>Business Type*</label>
+                    <select ng-model="company.Structure" ng-change="toggleHolder(company.Structure.StructureId)" ng-options="structure as structure.Name for structure in structures track by structure.StructureId" class=" form-control" required>
+                        <option value="">-- Select Business Type --</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label class="control-label ">Business Commencement Date*</label>
+                    <p class="input-group">
+                        <input type="text" class="form-control datepicker" ng-click="openEnDatep($event)" datepicker-popup="{{endDateformatp}}" is-open="endDateOpenedp"
+                               min-date="minEndDatep" max-date="maxEndDatep"
+                               datepicker-options="endDateOptionsp" date-disabled="disabledp(date, mode)" close-text="Close" ng-model="company.BusinessCommencementDate"/>
+                        <span class="input-group-btn">
+                                <button type="button" class="btn btn-default" ng-click="openEnDatep($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                            </span>
+                    </p>
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col-md-11" style="padding-right: 0px">
+                    <h4>Company Operational Address</h4>
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="row" ng-repeat="addObj in company.CompanyAddressObjects">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label class="control-label ">Address Line 1*</label>
+                            <input type="text" data-ng-model="addObj.AddressLine1" class="form-control"/>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="control-label ">Address Line 2</label>
+                            <input type="text" data-ng-model="addObj.AddressLine2" class="form-control"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label class="control-label ">Country*</label>
+                            <select ng-model="addObj.CountryObject" ng-options="country as country.Name for country in countries track by country.Id" class=" form-control" required>
+                                <option value="">-- Select Country --</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="control-label ">City*</label>
+                            <select ng-model="addObj.CityObject" ng-options="city as city.Name for city in addObj.CountryObject.CityObjects track by city.CityId" class=" form-control" required>
+                                <option value="">-- Select City --</option>
+                            </select>
+                        </div>
+                    </div>
+                    <br/>
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col-md-8"></div>
+                <div class="col-md-2">
+                    <input type="button" ng-click="isEditInitiated = false;" value="Cancel" style="float: right; margin-top: 30px" class="btn btn-default" />
+                </div>
+                <div class="col-md-2">
+                    <input type="button" ng-click="processCompanyInformation()" value="Submit" ng-disabled="processing === true" style="float: right; margin-top: 30px" class="btn btn-default"/>
+                </div>
+            </div>
+            <br/>
+        </form>
+    </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-3">
+            <div class="dashboard-div-wrapper">
+                <a href="{{apphref}}" style="cursor: pointer; color: #008000; font-size: 1.1em">
+                    Import Applications : {{appCount}}
+                </a>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="dashboard-div-wrapper ">
+                <a href="{{ntfhref}}" style="cursor: pointer; color: #008000; font-size: 1.1em">
+                    Vessel Arrival Notifications : {{ntfCount}}
+                </a>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="dashboard-div-wrapper">
+                <a href="{{ptfhref}}" style="cursor: pointer; color: #008000; font-size: 1.1em">
+                    Permits : {{ptCount}}
+                </a>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="dashboard-div-wrapper">
+                <a href="{{rtfhref}}" style="cursor: pointer; color: #008000; font-size: 1.1em">
+                    Product Certifications : {{rctCount}}
+                </a>
+            </div>
+        </div>
+    </div>
+    <br />
+</div>
+
+<br /><br />

@@ -1,0 +1,1420 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ImportPermitLiveModelStoreContainer" CdmEntityContainer="ImportPermitEntities">
+    <EntitySetMapping Name="C__MigrationHistory">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.C__MigrationHistory">
+        <MappingFragment StoreEntitySet="__MigrationHistory">
+          <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+          <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AccountTypes">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.AccountType">
+        <MappingFragment StoreEntitySet="AccountType">
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="AccountTypeId" ColumnName="AccountTypeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Addresses">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.Address">
+        <MappingFragment StoreEntitySet="Address">
+          <ScalarProperty Name="CityId" ColumnName="CityId" />
+          <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+          <ScalarProperty Name="AddressLine2" ColumnName="AddressLine2" />
+          <ScalarProperty Name="AddressLine1" ColumnName="AddressLine1" />
+          <ScalarProperty Name="AddressId" ColumnName="AddressId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AddressTypes">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.AddressType">
+        <MappingFragment StoreEntitySet="AddressType">
+          <ScalarProperty Name="DateAdded" ColumnName="DateAdded" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="AddressTypeId" ColumnName="AddressTypeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Applications">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.Application">
+        <MappingFragment StoreEntitySet="Application">
+          <ScalarProperty Name="ApplicationTypeId" ColumnName="ApplicationTypeId" />
+          <ScalarProperty Name="PreviousPermitNo" ColumnName="PreviousPermitNo" />
+          <ScalarProperty Name="InvoiceId" ColumnName="InvoiceId" />
+          <ScalarProperty Name="ClassificationId" ColumnName="ClassificationId" />
+          <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+          <ScalarProperty Name="DateApplied" ColumnName="DateApplied" />
+          <ScalarProperty Name="ApplicationStatusCode" ColumnName="ApplicationStatusCode" />
+          <ScalarProperty Name="DerivedValue" ColumnName="DerivedValue" />
+          <ScalarProperty Name="DerivedTotalQUantity" ColumnName="DerivedTotalQUantity" />
+          <ScalarProperty Name="ImporterId" ColumnName="ImporterId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ApplicationContents">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.ApplicationContent">
+        <MappingFragment StoreEntitySet="ApplicationContent">
+          <ScalarProperty Name="IsInUse" ColumnName="IsInUse" />
+          <ScalarProperty Name="Href" ColumnName="Href" />
+          <ScalarProperty Name="BodyContent" ColumnName="BodyContent" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ApplicationCountries">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.ApplicationCountry">
+        <MappingFragment StoreEntitySet="ApplicationCountry">
+          <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+          <ScalarProperty Name="ApplicationItemId" ColumnName="ApplicationItemId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ApplicationDepots">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.ApplicationDepot">
+        <MappingFragment StoreEntitySet="ApplicationDepot">
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="ThroughputId" ColumnName="ThroughputId" />
+          <ScalarProperty Name="DepotId" ColumnName="DepotId" />
+          <ScalarProperty Name="ApplicationItemId" ColumnName="ApplicationItemId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ApplicationDocuments">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.ApplicationDocument">
+        <MappingFragment StoreEntitySet="ApplicationDocument">
+          <ScalarProperty Name="DocumentId" ColumnName="DocumentId" />
+          <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+          <ScalarProperty Name="ApplicationDocumentId" ColumnName="ApplicationDocumentId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ApplicationIssues">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.ApplicationIssue">
+        <MappingFragment StoreEntitySet="ApplicationIssues">
+          <ScalarProperty Name="IssueDate" ColumnName="IssueDate" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+          <ScalarProperty Name="IssueTypeId" ColumnName="IssueTypeId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ApplicationItems">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.ApplicationItem">
+        <MappingFragment StoreEntitySet="ApplicationItem">
+          <ScalarProperty Name="StorageProviderTypeId" ColumnName="StorageProviderTypeId" />
+          <ScalarProperty Name="DateImported" ColumnName="DateImported" />
+          <ScalarProperty Name="OutstandingQuantity" ColumnName="OutstandingQuantity" />
+          <ScalarProperty Name="ImportedQuantityValue" ColumnName="ImportedQuantityValue" />
+          <ScalarProperty Name="TotalImportedQuantity" ColumnName="TotalImportedQuantity" />
+          <ScalarProperty Name="ReferenceLicenseCode" ColumnName="ReferenceLicenseCode" />
+          <ScalarProperty Name="PSFNumber" ColumnName="PSFNumber" />
+          <ScalarProperty Name="EstimatedValue" ColumnName="EstimatedValue" />
+          <ScalarProperty Name="EstimatedQuantity" ColumnName="EstimatedQuantity" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ApplicationLicenseMappings">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.ApplicationLicenseMapping">
+        <MappingFragment StoreEntitySet="ApplicationLicenseMapping">
+          <ScalarProperty Name="IsConfirmed" ColumnName="IsConfirmed" />
+          <ScalarProperty Name="ReferenceLicenseId" ColumnName="ReferenceLicenseId" />
+          <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ApplicationTypes">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.ApplicationType">
+        <MappingFragment StoreEntitySet="ApplicationType">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetRoles">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.AspNetRole">
+        <MappingFragment StoreEntitySet="AspNetRoles">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserClaims">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.AspNetUserClaim">
+        <MappingFragment StoreEntitySet="AspNetUserClaims">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+          <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserLogins">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.AspNetUserLogin">
+        <MappingFragment StoreEntitySet="AspNetUserLogins">
+          <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+          <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUsers">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.AspNetUser">
+        <MappingFragment StoreEntitySet="AspNetUsers">
+          <ScalarProperty Name="UserInfo_Id" ColumnName="UserInfo_Id" />
+          <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+          <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+          <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+          <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+          <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Banks">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.Bank">
+        <MappingFragment StoreEntitySet="Bank">
+          <ScalarProperty Name="NotificationEmail" ColumnName="NotificationEmail" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ImporterId" ColumnName="ImporterId" />
+          <ScalarProperty Name="SortCode" ColumnName="SortCode" />
+          <ScalarProperty Name="BankId" ColumnName="BankId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BankBranches">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.BankBranch">
+        <MappingFragment StoreEntitySet="BankBranch">
+          <ScalarProperty Name="BankId" ColumnName="BankId" />
+          <ScalarProperty Name="BranchCode" ColumnName="BranchCode" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BankUsers">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.BankUser">
+        <MappingFragment StoreEntitySet="BankUser">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="BranchId" ColumnName="BranchId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BillOfLadingDatas">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.BillOfLadingData">
+        <MappingFragment StoreEntitySet="BillOfLadingData">
+          <ScalarProperty Name="ValueIndicated" ColumnName="ValueIndicated" />
+          <ScalarProperty Name="LabParameterId" ColumnName="LabParameterId" />
+          <ScalarProperty Name="NotificationInspectionId" ColumnName="NotificationInspectionId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Calculators">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.Calculator">
+        <MappingFragment StoreEntitySet="Calculator">
+          <ScalarProperty Name="Counter" ColumnName="Counter" />
+          <ScalarProperty Name="QuantityTrunkedOut" ColumnName="QuantityTrunkedOut" />
+          <ScalarProperty Name="QuantityInCountry" ColumnName="QuantityInCountry" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cities">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.City">
+        <MappingFragment StoreEntitySet="City">
+          <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="CityId" ColumnName="CityId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CompanyCategories">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.CompanyCategory">
+        <MappingFragment StoreEntitySet="CompanyCategory">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="CompanyCategoryId" ColumnName="CompanyCategoryId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CompanyDocuments">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.CompanyDocument">
+        <MappingFragment StoreEntitySet="CompanyDocument">
+          <ScalarProperty Name="ImporterId" ColumnName="ImporterId" />
+          <ScalarProperty Name="DocumentId" ColumnName="DocumentId" />
+          <ScalarProperty Name="CompanyDocumentId" ColumnName="CompanyDocumentId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Countries">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.Country">
+        <MappingFragment StoreEntitySet="Country">
+          <ScalarProperty Name="RegionId" ColumnName="RegionId" />
+          <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CustomCodes">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.CustomCode">
+        <MappingFragment StoreEntitySet="CustomCode">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="CustomCodeId" ColumnName="CustomCodeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Depots">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.Depot">
+        <MappingFragment StoreEntitySet="Depot">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
+          <ScalarProperty Name="IssueDate" ColumnName="IssueDate" />
+          <ScalarProperty Name="DepotLicense" ColumnName="DepotLicense" />
+          <ScalarProperty Name="ImporterId" ColumnName="ImporterId" />
+          <ScalarProperty Name="JettyId" ColumnName="JettyId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DepotDischarges">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.DepotDischarge">
+        <MappingFragment StoreEntitySet="DepotDischarge">
+          <ScalarProperty Name="DepotId" ColumnName="DepotId" />
+          <ScalarProperty Name="DischargedDate" ColumnName="DischargedDate" />
+          <ScalarProperty Name="QuantityDischargedInDepot" ColumnName="QuantityDischargedInDepot" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DepotOwners">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.DepotOwner">
+        <MappingFragment StoreEntitySet="DepotOwner">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DepotTrunkedOuts">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.DepotTrunkedOut">
+        <MappingFragment StoreEntitySet="DepotTrunkedOut">
+          <ScalarProperty Name="DepotId" ColumnName="DepotId" />
+          <ScalarProperty Name="TrunkedOutDate" ColumnName="TrunkedOutDate" />
+          <ScalarProperty Name="QuantityTrunkedOutInDepot" ColumnName="QuantityTrunkedOutInDepot" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DischargeParameterAfters">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.DischargeParameterAfter">
+        <MappingFragment StoreEntitySet="DischargeParameterAfter">
+          <ScalarProperty Name="EquivVolInM_1515C" ColumnName="EquivVolInM@1515C" />
+          <ScalarProperty Name="NetVol_1515C" ColumnName="NetVol@1515C" />
+          <ScalarProperty Name="VolCorrFactor" ColumnName="VolCorrFactor" />
+          <ScalarProperty Name="SG_515C" ColumnName="SG@515C" />
+          <ScalarProperty Name="NetVolOfOil_TkTc" ColumnName="NetVolOfOil@TkTc" />
+          <ScalarProperty Name="VolOfWaterLTRS" ColumnName="VolOfWaterLTRS" />
+          <ScalarProperty Name="SGtC_Lab" ColumnName="SGtC@Lab" />
+          <ScalarProperty Name="CrossVol_TkPcLTRS" ColumnName="CrossVol@TkPcLTRS" />
+          <ScalarProperty Name="TankTC" ColumnName="TankTC" />
+          <ScalarProperty Name="TankGuage" ColumnName="TankGuage" />
+          <ScalarProperty Name="NotificationId" ColumnName="NotificationId" />
+          <ScalarProperty Name="TankId" ColumnName="TankId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DischargeParameterBefores">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.DischargeParameterBefore">
+        <MappingFragment StoreEntitySet="DischargeParameterBefore">
+          <ScalarProperty Name="EquivVolInM_1515C" ColumnName="EquivVolInM@1515C" />
+          <ScalarProperty Name="NetVol_1515C" ColumnName="NetVol@1515C" />
+          <ScalarProperty Name="VolCorrFactor" ColumnName="VolCorrFactor" />
+          <ScalarProperty Name="SG_515C" ColumnName="SG@515C" />
+          <ScalarProperty Name="NetVolOfOil_TkTc" ColumnName="NetVolOfOil@TkTc" />
+          <ScalarProperty Name="VolOfWaterLTRS" ColumnName="VolOfWaterLTRS" />
+          <ScalarProperty Name="SGtC_Lab" ColumnName="SGtC@Lab" />
+          <ScalarProperty Name="CrossVol_TkPcLTRS" ColumnName="CrossVol@TkPcLTRS" />
+          <ScalarProperty Name="TankTC" ColumnName="TankTC" />
+          <ScalarProperty Name="TankGuage" ColumnName="TankGuage" />
+          <ScalarProperty Name="NotificationId" ColumnName="NotificationId" />
+          <ScalarProperty Name="TankId" ColumnName="TankId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Documents">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.Document">
+        <MappingFragment StoreEntitySet="Document">
+          <ScalarProperty Name="IsValid" ColumnName="IsValid" />
+          <ScalarProperty Name="IpAddress" ColumnName="IpAddress" />
+          <ScalarProperty Name="DocumentPath" ColumnName="DocumentPath" />
+          <ScalarProperty Name="UploadedById" ColumnName="UploadedById" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="DateUploaded" ColumnName="DateUploaded" />
+          <ScalarProperty Name="ImporterId" ColumnName="ImporterId" />
+          <ScalarProperty Name="DocumentTypeId" ColumnName="DocumentTypeId" />
+          <ScalarProperty Name="DocumentId" ColumnName="DocumentId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DocumentIssues">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.DocumentIssue">
+        <MappingFragment StoreEntitySet="DocumentIssue">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="FiledById" ColumnName="FiledById" />
+          <ScalarProperty Name="IssueTypeId" ColumnName="IssueTypeId" />
+          <ScalarProperty Name="IssueDate" ColumnName="IssueDate" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DocumentId" ColumnName="DocumentId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DocumentTypes">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.DocumentType">
+        <MappingFragment StoreEntitySet="DocumentType">
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="DocumentTypeId" ColumnName="DocumentTypeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DocumentTypeRights">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.DocumentTypeRight">
+        <MappingFragment StoreEntitySet="DocumentTypeRight">
+          <ScalarProperty Name="DocumentTypeId" ColumnName="DocumentTypeId" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="Permission" ColumnName="Permission" />
+          <ScalarProperty Name="DocumentTypeRightId" ColumnName="DocumentTypeRightId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmployeeDesks">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.EmployeeDesk">
+        <MappingFragment StoreEntitySet="EmployeeDesk">
+          <ScalarProperty Name="RecertificationCount" ColumnName="RecertificationCount" />
+          <ScalarProperty Name="NotificationCount" ColumnName="NotificationCount" />
+          <ScalarProperty Name="ApplicationCount" ColumnName="ApplicationCount" />
+          <ScalarProperty Name="IsUserAvailable" ColumnName="IsUserAvailable" />
+          <ScalarProperty Name="ActivityTypeId" ColumnName="ActivityTypeId" />
+          <ScalarProperty Name="ZoneId" ColumnName="ZoneId" />
+          <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="JobCount" ColumnName="JobCount" />
+          <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+          <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ExpenditionaryInvoices">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.ExpenditionaryInvoice">
+        <MappingFragment StoreEntitySet="ExpenditionaryInvoice">
+          <ScalarProperty Name="InvoiceId" ColumnName="InvoiceId" />
+          <ScalarProperty Name="NotificationId" ColumnName="NotificationId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Faqs">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.Faq">
+        <MappingFragment StoreEntitySet="Faq">
+          <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+          <ScalarProperty Name="Answer" ColumnName="Answer" />
+          <ScalarProperty Name="Question" ColumnName="Question" />
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FaqCategories">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.FaqCategory">
+        <MappingFragment StoreEntitySet="FaqCategory">
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Fees">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.Fee">
+        <MappingFragment StoreEntitySet="Fee">
+          <ScalarProperty Name="BillableToPrincipal" ColumnName="BillableToPrincipal" />
+          <ScalarProperty Name="PaymentGatewaySplit" ColumnName="PaymentGatewaySplit" />
+          <ScalarProperty Name="VendorSplit" ColumnName="VendorSplit" />
+          <ScalarProperty Name="PrincipalSplit" ColumnName="PrincipalSplit" />
+          <ScalarProperty Name="CurrencyCode" ColumnName="CurrencyCode" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="ImportStageId" ColumnName="ImportStageId" />
+          <ScalarProperty Name="FeeTypeId" ColumnName="FeeTypeId" />
+          <ScalarProperty Name="FeeId" ColumnName="FeeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FeeTypes">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.FeeType">
+        <MappingFragment StoreEntitySet="FeeType">
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="FeeTypeId" ColumnName="FeeTypeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FormMDetails">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.FormMDetail">
+        <MappingFragment StoreEntitySet="FormMDetail">
+          <ScalarProperty Name="BankId" ColumnName="BankId" />
+          <ScalarProperty Name="DateAttached" ColumnName="DateAttached" />
+          <ScalarProperty Name="AttachedDocumentId" ColumnName="AttachedDocumentId" />
+          <ScalarProperty Name="LetterOfCreditNo" ColumnName="LetterOfCreditNo" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="FormMReference" ColumnName="FormMReference" />
+          <ScalarProperty Name="DateIssued" ColumnName="DateIssued" />
+          <ScalarProperty Name="NotificationId" ColumnName="NotificationId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Groups">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.Group">
+        <MappingFragment StoreEntitySet="Group">
+          <ScalarProperty Name="UpdatedTime" ColumnName="UpdatedTime" />
+          <ScalarProperty Name="CreatedTime" ColumnName="CreatedTime" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ImportApplicationHistories">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.ImportApplicationHistory">
+        <MappingFragment StoreEntitySet="ImportApplicationHistory">
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Event" ColumnName="Event" />
+          <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ImportClasses">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.ImportClass">
+        <MappingFragment StoreEntitySet="ImportClass">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ImportClassificationRequirements">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.ImportClassificationRequirement">
+        <MappingFragment StoreEntitySet="ImportClassificationRequirement">
+          <ScalarProperty Name="DocumentTypeId" ColumnName="DocumentTypeId" />
+          <ScalarProperty Name="ImportStageId" ColumnName="ImportStageId" />
+          <ScalarProperty Name="ClassificationId" ColumnName="ClassificationId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Importers">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.Importer">
+        <MappingFragment StoreEntitySet="Importer">
+          <ScalarProperty Name="BusinessCommencementDate" ColumnName="BusinessCommencementDate" />
+          <ScalarProperty Name="TotalExpatriate" ColumnName="TotalExpatriate" />
+          <ScalarProperty Name="TotalStaff" ColumnName="TotalStaff" />
+          <ScalarProperty Name="ShortNme" ColumnName="ShortNme" />
+          <ScalarProperty Name="DateAdded" ColumnName="DateAdded" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="LogoPath" ColumnName="LogoPath" />
+          <ScalarProperty Name="StructureId" ColumnName="StructureId" />
+          <ScalarProperty Name="RCNumber" ColumnName="RCNumber" />
+          <ScalarProperty Name="TIN" ColumnName="TIN" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ImporterAddresses">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.ImporterAddress">
+        <MappingFragment StoreEntitySet="ImporterAddress">
+          <ScalarProperty Name="IsRegisteredSameAsOperational" ColumnName="IsRegisteredSameAsOperational" />
+          <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+          <ScalarProperty Name="ImporterId" ColumnName="ImporterId" />
+          <ScalarProperty Name="AddressId" ColumnName="AddressId" />
+          <ScalarProperty Name="AddressTypeId" ColumnName="AddressTypeId" />
+          <ScalarProperty Name="ImporterAddressId" ColumnName="ImporterAddressId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ImportRequirements">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.ImportRequirement">
+        <MappingFragment StoreEntitySet="ImportRequirement">
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="DocumentTypeId" ColumnName="DocumentTypeId" />
+          <ScalarProperty Name="ImportStageId" ColumnName="ImportStageId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ImportSettings">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.ImportSetting">
+        <MappingFragment StoreEntitySet="ImportSetting">
+          <ScalarProperty Name="MessageLifeSpan" ColumnName="MessageLifeSpan" />
+          <ScalarProperty Name="PermitValidity" ColumnName="PermitValidity" />
+          <ScalarProperty Name="PermitExpiryTolerance" ColumnName="PermitExpiryTolerance" />
+          <ScalarProperty Name="DischargeQuantityTolerance" ColumnName="DischargeQuantityTolerance" />
+          <ScalarProperty Name="VesselDischargeLeadTime" ColumnName="VesselDischargeLeadTime" />
+          <ScalarProperty Name="VesselArrivalLeadTime" ColumnName="VesselArrivalLeadTime" />
+          <ScalarProperty Name="PriceVolumeThreshold" ColumnName="PriceVolumeThreshold" />
+          <ScalarProperty Name="ApplicationLifeCycle" ColumnName="ApplicationLifeCycle" />
+          <ScalarProperty Name="ApplicationExpiry" ColumnName="ApplicationExpiry" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ImportStages">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.ImportStage">
+        <MappingFragment StoreEntitySet="ImportStage">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Invoices">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.Invoice">
+        <MappingFragment StoreEntitySet="Invoice">
+          <ScalarProperty Name="ServiceDescriptionId" ColumnName="ServiceDescriptionId" />
+          <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
+          <ScalarProperty Name="RRR" ColumnName="RRR" />
+          <ScalarProperty Name="ImporterId" ColumnName="ImporterId" />
+          <ScalarProperty Name="DateAdded" ColumnName="DateAdded" />
+          <ScalarProperty Name="IPAddress" ColumnName="IPAddress" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="AmountPaid" ColumnName="AmountPaid" />
+          <ScalarProperty Name="TotalAmountDue" ColumnName="TotalAmountDue" />
+          <ScalarProperty Name="PaymentTypeId" ColumnName="PaymentTypeId" />
+          <ScalarProperty Name="ReferenceCode" ColumnName="ReferenceCode" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="InvoiceItems">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.InvoiceItem">
+        <MappingFragment StoreEntitySet="InvoiceItem">
+          <ScalarProperty Name="AmountDue" ColumnName="AmountDue" />
+          <ScalarProperty Name="FeeId" ColumnName="FeeId" />
+          <ScalarProperty Name="InvoiceId" ColumnName="InvoiceId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Issues">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.Issue">
+        <MappingFragment StoreEntitySet="Issue">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="ResolvedById" ColumnName="ResolvedById" />
+          <ScalarProperty Name="AffectedUserId" ColumnName="AffectedUserId" />
+          <ScalarProperty Name="IssueLogId" ColumnName="IssueLogId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="IssueCategories">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.IssueCategory">
+        <MappingFragment StoreEntitySet="IssueCategory">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="IssueLogs">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.IssueLog">
+        <MappingFragment StoreEntitySet="IssueLog">
+          <ScalarProperty Name="DateResolved" ColumnName="DateResolved" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="Issue" ColumnName="Issue" />
+          <ScalarProperty Name="IssueCategoryId" ColumnName="IssueCategoryId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="IssueTypes">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.IssueType">
+        <MappingFragment StoreEntitySet="IssueType">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Jetties">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.Jetty">
+        <MappingFragment StoreEntitySet="Jetty">
+          <ScalarProperty Name="PortId" ColumnName="PortId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="JettyMappings">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.JettyMapping">
+        <MappingFragment StoreEntitySet="JettyMapping">
+          <ScalarProperty Name="ZoneId" ColumnName="ZoneId" />
+          <ScalarProperty Name="JettyId" ColumnName="JettyId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LabParameters">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.LabParameter">
+        <MappingFragment StoreEntitySet="LabParameter">
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Links">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.Link">
+        <MappingFragment StoreEntitySet="Link">
+          <ScalarProperty Name="LinkUrl" ColumnName="LinkUrl" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Messages">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.Message">
+        <MappingFragment StoreEntitySet="Message">
+          <ScalarProperty Name="MessageBody" ColumnName="MessageBody" />
+          <ScalarProperty Name="DateSent" ColumnName="DateSent" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="MessageTemplateId" ColumnName="MessageTemplateId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MessageTemplates">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.MessageTemplate">
+        <MappingFragment StoreEntitySet="MessageTemplate">
+          <ScalarProperty Name="Footer" ColumnName="Footer" />
+          <ScalarProperty Name="MessageContent" ColumnName="MessageContent" />
+          <ScalarProperty Name="Subject" ColumnName="Subject" />
+          <ScalarProperty Name="EventTypeId" ColumnName="EventTypeId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Notifications">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.Notification">
+        <MappingFragment StoreEntitySet="Notification">
+          <ScalarProperty Name="InvoiceId" ColumnName="InvoiceId" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="ImporterId" ColumnName="ImporterId" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DischargeDate" ColumnName="DischargeDate" />
+          <ScalarProperty Name="ArrivalDate" ColumnName="ArrivalDate" />
+          <ScalarProperty Name="CargoInformationTypeId" ColumnName="CargoInformationTypeId" />
+          <ScalarProperty Name="QuantityOnVessel" ColumnName="QuantityOnVessel" />
+          <ScalarProperty Name="QuantityToDischarge" ColumnName="QuantityToDischarge" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="DischargeDepotId" ColumnName="DischargeDepotId" />
+          <ScalarProperty Name="PortOfOriginId" ColumnName="PortOfOriginId" />
+          <ScalarProperty Name="PermitId" ColumnName="PermitId" />
+          <ScalarProperty Name="ClassificationId" ColumnName="ClassificationId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NotificationBankers">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.NotificationBanker">
+        <MappingFragment StoreEntitySet="NotificationBanker">
+          <ScalarProperty Name="NotificationId" ColumnName="NotificationId" />
+          <ScalarProperty Name="IpAddress" ColumnName="IpAddress" />
+          <ScalarProperty Name="ApprovedBy" ColumnName="ApprovedBy" />
+          <ScalarProperty Name="LastUpdateBy" ColumnName="LastUpdateBy" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="AttachedDocumentId" ColumnName="AttachedDocumentId" />
+          <ScalarProperty Name="ActualQuantity" ColumnName="ActualQuantity" />
+          <ScalarProperty Name="TransactionAmount" ColumnName="TransactionAmount" />
+          <ScalarProperty Name="FinancedQuantity" ColumnName="FinancedQuantity" />
+          <ScalarProperty Name="DateAdded" ColumnName="DateAdded" />
+          <ScalarProperty Name="BankId" ColumnName="BankId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NotificationCheckLists">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.NotificationCheckList">
+        <MappingFragment StoreEntitySet="NotificationCheckList">
+          <ScalarProperty Name="DocumentTypeId" ColumnName="DocumentTypeId" />
+          <ScalarProperty Name="CheckListItem" ColumnName="CheckListItem" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NotificationCheckListOutcomes">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.NotificationCheckListOutcome">
+        <MappingFragment StoreEntitySet="NotificationCheckListOutcome">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+          <ScalarProperty Name="NotificationCheckListId" ColumnName="NotificationCheckListId" />
+          <ScalarProperty Name="NotificationId" ColumnName="NotificationId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NotificationDischageDatas">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.NotificationDischageData">
+        <MappingFragment StoreEntitySet="NotificationDischageData">
+          <ScalarProperty Name="Consignee" ColumnName="Consignee" />
+          <ScalarProperty Name="QuantityDiff" ColumnName="QuantityDiff" />
+          <ScalarProperty Name="ActualQuantityReceived" ColumnName="ActualQuantityReceived" />
+          <ScalarProperty Name="BillOfLadingQuantity" ColumnName="BillOfLadingQuantity" />
+          <ScalarProperty Name="EndProductDischargeDate" ColumnName="EndProductDischargeDate" />
+          <ScalarProperty Name="StartProductDischargeDate" ColumnName="StartProductDischargeDate" />
+          <ScalarProperty Name="VesselArrivalDate" ColumnName="VesselArrivalDate" />
+          <ScalarProperty Name="DischargeParameterAfterId" ColumnName="DischargeParameterAfterId" />
+          <ScalarProperty Name="DischargeParameterBeforeId" ColumnName="DischargeParameterBeforeId" />
+          <ScalarProperty Name="DepotId" ColumnName="DepotId" />
+          <ScalarProperty Name="VesselId" ColumnName="VesselId" />
+          <ScalarProperty Name="TankId" ColumnName="TankId" />
+          <ScalarProperty Name="NotificationId" ColumnName="NotificationId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NotificationDocuments">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.NotificationDocument">
+        <MappingFragment StoreEntitySet="NotificationDocument">
+          <ScalarProperty Name="DateAttached" ColumnName="DateAttached" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="DocumentId" ColumnName="DocumentId" />
+          <ScalarProperty Name="NotificationId" ColumnName="NotificationId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NotificationHistories">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.NotificationHistory">
+        <MappingFragment StoreEntitySet="NotificationHistory">
+          <ScalarProperty Name="FinishedTime" ColumnName="FinishedTime" />
+          <ScalarProperty Name="OutComeCode" ColumnName="OutComeCode" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="DueTime" ColumnName="DueTime" />
+          <ScalarProperty Name="AssignedTime" ColumnName="AssignedTime" />
+          <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+          <ScalarProperty Name="StepId" ColumnName="StepId" />
+          <ScalarProperty Name="NotificationId" ColumnName="NotificationId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NotificationInspections">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.NotificationInspection">
+        <MappingFragment StoreEntitySet="NotificationInspection">
+          <ScalarProperty Name="FileWay" ColumnName="FileWay" />
+          <ScalarProperty Name="VesselArrivalDate" ColumnName="VesselArrivalDate" />
+          <ScalarProperty Name="InspectionSubmittionDate" ColumnName="InspectionSubmittionDate" />
+          <ScalarProperty Name="LoadPortCoQAvailable" ColumnName="LoadPortCoQAvailable" />
+          <ScalarProperty Name="QuantityAfterSTS" ColumnName="QuantityAfterSTS" />
+          <ScalarProperty Name="QuantityOnBillOfLading" ColumnName="QuantityOnBillOfLading" />
+          <ScalarProperty Name="SubmittionStatus" ColumnName="SubmittionStatus" />
+          <ScalarProperty Name="DischargeCompletionDate" ColumnName="DischargeCompletionDate" />
+          <ScalarProperty Name="DischargeCommencementDate" ColumnName="DischargeCommencementDate" />
+          <ScalarProperty Name="InspectorComment" ColumnName="InspectorComment" />
+          <ScalarProperty Name="InspectionDate" ColumnName="InspectionDate" />
+          <ScalarProperty Name="RecommendationId" ColumnName="RecommendationId" />
+          <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+          <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+          <ScalarProperty Name="DepotId" ColumnName="DepotId" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="QuantityDischarged" ColumnName="QuantityDischarged" />
+          <ScalarProperty Name="QuantityOnVessel" ColumnName="QuantityOnVessel" />
+          <ScalarProperty Name="NotificationId" ColumnName="NotificationId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NotificationInspectionQueues">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.NotificationInspectionQueue">
+        <MappingFragment StoreEntitySet="NotificationInspectionQueue">
+          <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+          <ScalarProperty Name="StepId" ColumnName="StepId" />
+          <ScalarProperty Name="StepCode" ColumnName="StepCode" />
+          <ScalarProperty Name="ActualDeliveryDateTime" ColumnName="ActualDeliveryDateTime" />
+          <ScalarProperty Name="DueTime" ColumnName="DueTime" />
+          <ScalarProperty Name="OutComeCode" ColumnName="OutComeCode" />
+          <ScalarProperty Name="InspectionDate" ColumnName="InspectionDate" />
+          <ScalarProperty Name="AssignedTime" ColumnName="AssignedTime" />
+          <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+          <ScalarProperty Name="NotificationId" ColumnName="NotificationId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NotificationIssues">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.NotificationIssue">
+        <MappingFragment StoreEntitySet="NotificationIssue">
+          <ScalarProperty Name="IssueDate" ColumnName="IssueDate" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="NotificationId" ColumnName="NotificationId" />
+          <ScalarProperty Name="IssueTypeId" ColumnName="IssueTypeId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NotificationVessels">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.NotificationVessel">
+        <MappingFragment StoreEntitySet="NotificationVessel">
+          <ScalarProperty Name="DateAdded" ColumnName="DateAdded" />
+          <ScalarProperty Name="VesselClassTypeId" ColumnName="VesselClassTypeId" />
+          <ScalarProperty Name="NotificationId" ColumnName="NotificationId" />
+          <ScalarProperty Name="VesselId" ColumnName="VesselId" />
+          <ScalarProperty Name="NotificationVesselId" ColumnName="NotificationVesselId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pages">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.Page">
+        <MappingFragment StoreEntitySet="Page">
+          <ScalarProperty Name="LastedUpdatedById" ColumnName="LastedUpdatedById" />
+          <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="PageContent" ColumnName="PageContent" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Alias" ColumnName="Alias" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PaymentDetails">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.PaymentDetail">
+        <MappingFragment StoreEntitySet="PaymentDetail">
+          <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+          <ScalarProperty Name="PaymentItemDescription" ColumnName="PaymentItemDescription" />
+          <ScalarProperty Name="PaymentItemCode" ColumnName="PaymentItemCode" />
+          <ScalarProperty Name="DepositSlipNo" ColumnName="DepositSlipNo" />
+          <ScalarProperty Name="BankName" ColumnName="BankName" />
+          <ScalarProperty Name="ReceiptNo" ColumnName="ReceiptNo" />
+          <ScalarProperty Name="TransactionId" ColumnName="TransactionId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Permits">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.Permit">
+        <MappingFragment StoreEntitySet="Permit">
+          <ScalarProperty Name="ImporterId" ColumnName="ImporterId" />
+          <ScalarProperty Name="DateAdded" ColumnName="DateAdded" />
+          <ScalarProperty Name="QuantityImported" ColumnName="QuantityImported" />
+          <ScalarProperty Name="PermitStatus" ColumnName="PermitStatus" />
+          <ScalarProperty Name="PermitValue" ColumnName="PermitValue" />
+          <ScalarProperty Name="file" ColumnName="file" />
+          <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
+          <ScalarProperty Name="IssueDate" ColumnName="IssueDate" />
+          <ScalarProperty Name="PermitNo" ColumnName="PermitNo" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PermitApplications">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.PermitApplication">
+        <MappingFragment StoreEntitySet="PermitApplication">
+          <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+          <ScalarProperty Name="PermitId" ColumnName="PermitId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="People">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.Person">
+        <MappingFragment StoreEntitySet="Person">
+          <ScalarProperty Name="LogoPath" ColumnName="LogoPath" />
+          <ScalarProperty Name="IsImporter" ColumnName="IsImporter" />
+          <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
+          <ScalarProperty Name="ImporterId" ColumnName="ImporterId" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ports">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.Port">
+        <MappingFragment StoreEntitySet="Port">
+          <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Processes">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.Process">
+        <MappingFragment StoreEntitySet="Process">
+          <ScalarProperty Name="ExpectedDeliveryDuration" ColumnName="ExpectedDeliveryDuration" />
+          <ScalarProperty Name="SequenceNumber" ColumnName="SequenceNumber" />
+          <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ImportStageId" ColumnName="ImportStageId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProcessingHistories">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.ProcessingHistory">
+        <MappingFragment StoreEntitySet="ProcessingHistory">
+          <ScalarProperty Name="FinishedTime" ColumnName="FinishedTime" />
+          <ScalarProperty Name="OutComeCode" ColumnName="OutComeCode" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="DueTime" ColumnName="DueTime" />
+          <ScalarProperty Name="AssignedTime" ColumnName="AssignedTime" />
+          <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+          <ScalarProperty Name="StepId" ColumnName="StepId" />
+          <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProcessTrackings">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.ProcessTracking">
+        <MappingFragment StoreEntitySet="ProcessTracking">
+          <ScalarProperty Name="OutComeCode" ColumnName="OutComeCode" />
+          <ScalarProperty Name="StepCode" ColumnName="StepCode" />
+          <ScalarProperty Name="ActualDeliveryDateTime" ColumnName="ActualDeliveryDateTime" />
+          <ScalarProperty Name="DueTime" ColumnName="DueTime" />
+          <ScalarProperty Name="AssignedTime" ColumnName="AssignedTime" />
+          <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+          <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+          <ScalarProperty Name="StepId" ColumnName="StepId" />
+          <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.Product">
+        <MappingFragment StoreEntitySet="Product">
+          <ScalarProperty Name="Availability" ColumnName="Availability" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductBankers">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.ProductBanker">
+        <MappingFragment StoreEntitySet="ProductBanker">
+          <ScalarProperty Name="BankAccountNumber" ColumnName="BankAccountNumber" />
+          <ScalarProperty Name="DocumentId" ColumnName="DocumentId" />
+          <ScalarProperty Name="BankId" ColumnName="BankId" />
+          <ScalarProperty Name="ApplicationItemId" ColumnName="ApplicationItemId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductColours">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.ProductColour">
+        <MappingFragment StoreEntitySet="ProductColour">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductColumns">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.ProductColumn">
+        <MappingFragment StoreEntitySet="ProductColumn">
+          <ScalarProperty Name="CustomCodeId" ColumnName="CustomCodeId" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="ProductColumnId" ColumnName="ProductColumnId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductDocumentRequirements">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.ProductDocumentRequirement">
+        <MappingFragment StoreEntitySet="ProductDocumentRequirement">
+          <ScalarProperty Name="DocumentTypeId" ColumnName="DocumentTypeId" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Recertifications">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.Recertification">
+        <MappingFragment StoreEntitySet="Recertification">
+          <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+          <ScalarProperty Name="DateApplied" ColumnName="DateApplied" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="NotificationId" ColumnName="NotificationId" />
+          <ScalarProperty Name="ReferenceCode" ColumnName="ReferenceCode" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RecertificationHistories">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.RecertificationHistory">
+        <MappingFragment StoreEntitySet="RecertificationHistory">
+          <ScalarProperty Name="FinishedTime" ColumnName="FinishedTime" />
+          <ScalarProperty Name="OutComeCode" ColumnName="OutComeCode" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="DueTime" ColumnName="DueTime" />
+          <ScalarProperty Name="AssignedTime" ColumnName="AssignedTime" />
+          <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+          <ScalarProperty Name="StepId" ColumnName="StepId" />
+          <ScalarProperty Name="RecertificationId" ColumnName="RecertificationId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RecertificationIssues">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.RecertificationIssue">
+        <MappingFragment StoreEntitySet="RecertificationIssue">
+          <ScalarProperty Name="IssueDate" ColumnName="IssueDate" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="RecertificationId" ColumnName="RecertificationId" />
+          <ScalarProperty Name="IssueTypeId" ColumnName="IssueTypeId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RecertificationProcesses">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.RecertificationProcess">
+        <MappingFragment StoreEntitySet="RecertificationProcess">
+          <ScalarProperty Name="OutComeCode" ColumnName="OutComeCode" />
+          <ScalarProperty Name="StepCode" ColumnName="StepCode" />
+          <ScalarProperty Name="ActualDeliveryDateTime" ColumnName="ActualDeliveryDateTime" />
+          <ScalarProperty Name="DueTime" ColumnName="DueTime" />
+          <ScalarProperty Name="AssignedTime" ColumnName="AssignedTime" />
+          <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+          <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+          <ScalarProperty Name="StepId" ColumnName="StepId" />
+          <ScalarProperty Name="RecertificationId" ColumnName="RecertificationId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RecertificationResults">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.RecertificationResult">
+        <MappingFragment StoreEntitySet="RecertificationResult">
+          <ScalarProperty Name="RecommendationId" ColumnName="RecommendationId" />
+          <ScalarProperty Name="ProductColour" ColumnName="ProductColour" />
+          <ScalarProperty Name="SubmittionStatus" ColumnName="SubmittionStatus" />
+          <ScalarProperty Name="DischargeApproval" ColumnName="DischargeApproval" />
+          <ScalarProperty Name="CaptainName" ColumnName="CaptainName" />
+          <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+          <ScalarProperty Name="Spec" ColumnName="Spec" />
+          <ScalarProperty Name="LimitVariance" ColumnName="LimitVariance" />
+          <ScalarProperty Name="DoctorTest" ColumnName="DoctorTest" />
+          <ScalarProperty Name="MSEP" ColumnName="MSEP" />
+          <ScalarProperty Name="FreezingPoint" ColumnName="FreezingPoint" />
+          <ScalarProperty Name="DieselIndex" ColumnName="DieselIndex" />
+          <ScalarProperty Name="Ethanol" ColumnName="Ethanol" />
+          <ScalarProperty Name="Benzene" ColumnName="Benzene" />
+          <ScalarProperty Name="REIDVapourPressure" ColumnName="REIDVapourPressure" />
+          <ScalarProperty Name="ResearchOctaneNumber" ColumnName="ResearchOctaneNumber" />
+          <ScalarProperty Name="TotalAcidity" ColumnName="TotalAcidity" />
+          <ScalarProperty Name="TotalSulphur" ColumnName="TotalSulphur" />
+          <ScalarProperty Name="FinalBoilingPoint" ColumnName="FinalBoilingPoint" />
+          <ScalarProperty Name="InitialBoilingPoint" ColumnName="InitialBoilingPoint" />
+          <ScalarProperty Name="Colour" ColumnName="Colour" />
+          <ScalarProperty Name="Flashpoint" ColumnName="Flashpoint" />
+          <ScalarProperty Name="Density" ColumnName="Density" />
+          <ScalarProperty Name="NotificationId" ColumnName="NotificationId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ReferenceLicenses">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.ReferenceLicense">
+        <MappingFragment StoreEntitySet="ReferenceLicense">
+          <ScalarProperty Name="ImporterId" ColumnName="ImporterId" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
+          <ScalarProperty Name="IssueDate" ColumnName="IssueDate" />
+          <ScalarProperty Name="LicenceCode" ColumnName="LicenceCode" />
+          <ScalarProperty Name="ReferenceLicenseTypeId" ColumnName="ReferenceLicenseTypeId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ReferenceLicenseTypes">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.ReferenceLicenseType">
+        <MappingFragment StoreEntitySet="ReferenceLicenseType">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Regions">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.Region">
+        <MappingFragment StoreEntitySet="Region">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SignOffDocuments">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.SignOffDocument">
+        <MappingFragment StoreEntitySet="SignOffDocument">
+          <ScalarProperty Name="IPAddress" ColumnName="IPAddress" />
+          <ScalarProperty Name="DateUploaded" ColumnName="DateUploaded" />
+          <ScalarProperty Name="UploadedById" ColumnName="UploadedById" />
+          <ScalarProperty Name="DocumentPath" ColumnName="DocumentPath" />
+          <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StandardRequirements">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.StandardRequirement">
+        <MappingFragment StoreEntitySet="StandardRequirement">
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+          <ScalarProperty Name="ValidTo" ColumnName="ValidTo" />
+          <ScalarProperty Name="ValidFrom" ColumnName="ValidFrom" />
+          <ScalarProperty Name="DocumentPath" ColumnName="DocumentPath" />
+          <ScalarProperty Name="ImporterId" ColumnName="ImporterId" />
+          <ScalarProperty Name="StandardRequirementTypeId" ColumnName="StandardRequirementTypeId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StandardRequirementTypes">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.StandardRequirementType">
+        <MappingFragment StoreEntitySet="StandardRequirementType">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Steps">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.Step">
+        <MappingFragment StoreEntitySet="Step">
+          <ScalarProperty Name="IsLocationRequired" ColumnName="IsLocationRequired" />
+          <ScalarProperty Name="ExpectedDeliveryDuration" ColumnName="ExpectedDeliveryDuration" />
+          <ScalarProperty Name="Instructions" ColumnName="Instructions" />
+          <ScalarProperty Name="ActivityTypeId" ColumnName="ActivityTypeId" />
+          <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+          <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+          <ScalarProperty Name="SequenceNumber" ColumnName="SequenceNumber" />
+          <ScalarProperty Name="ProcessId" ColumnName="ProcessId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StepActivityTypes">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.StepActivityType">
+        <MappingFragment StoreEntitySet="StepActivityType">
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StepsInGroups">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.StepsInGroup">
+        <MappingFragment StoreEntitySet="StepsInGroups">
+          <ScalarProperty Name="UpdatedTime" ColumnName="UpdatedTime" />
+          <ScalarProperty Name="CreatedTime" ColumnName="CreatedTime" />
+          <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+          <ScalarProperty Name="StepId" ColumnName="StepId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StorageProviderRequirements">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.StorageProviderRequirement">
+        <MappingFragment StoreEntitySet="StorageProviderRequirement">
+          <ScalarProperty Name="DocumentTypeId" ColumnName="DocumentTypeId" />
+          <ScalarProperty Name="StorageProviderTypeId" ColumnName="StorageProviderTypeId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StorageProviderTypes">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.StorageProviderType">
+        <MappingFragment StoreEntitySet="StorageProviderType">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StorageTanks">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.StorageTank">
+        <MappingFragment StoreEntitySet="StorageTank">
+          <ScalarProperty Name="UoMId" ColumnName="UoMId" />
+          <ScalarProperty Name="Capacity" ColumnName="Capacity" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="TankNo" ColumnName="TankNo" />
+          <ScalarProperty Name="DepotId" ColumnName="DepotId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Structures">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.Structure">
+        <MappingFragment StoreEntitySet="Structure">
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="StructureId" ColumnName="StructureId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ThroughPuts">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.ThroughPut">
+        <MappingFragment StoreEntitySet="ThroughPut">
+          <ScalarProperty Name="IPAddress" ColumnName="IPAddress" />
+          <ScalarProperty Name="DocumentId" ColumnName="DocumentId" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="DepotId" ColumnName="DepotId" />
+          <ScalarProperty Name="ApplicationItemId" ColumnName="ApplicationItemId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Transactions">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.Transaction">
+        <MappingFragment StoreEntitySet="Transaction">
+          <ScalarProperty Name="DateAdded" ColumnName="DateAdded" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="TransactionMethodId" ColumnName="TransactionMethodId" />
+          <ScalarProperty Name="TransactionReference" ColumnName="TransactionReference" />
+          <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="InvoiceId" ColumnName="InvoiceId" />
+          <ScalarProperty Name="TransactionTypeId" ColumnName="TransactionTypeId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UnitOfMeasurements">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.UnitOfMeasurement">
+        <MappingFragment StoreEntitySet="UnitOfMeasurement">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserLinks">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.UserLink">
+        <MappingFragment StoreEntitySet="UserLink">
+          <ScalarProperty Name="LinkId" ColumnName="LinkId" />
+          <ScalarProperty Name="LinkSequence" ColumnName="LinkSequence" />
+          <ScalarProperty Name="UserProfileId" ColumnName="UserProfileId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserProfiles">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.UserProfile">
+        <MappingFragment StoreEntitySet="UserProfiles">
+          <ScalarProperty Name="IsFirstLogin" ColumnName="IsFirstLogin" />
+          <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
+          <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vessels">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.Vessel">
+        <MappingFragment StoreEntitySet="Vessel">
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
+          <ScalarProperty Name="IssueDate" ColumnName="IssueDate" />
+          <ScalarProperty Name="VesselLicense" ColumnName="VesselLicense" />
+          <ScalarProperty Name="DateAdded" ColumnName="DateAdded" />
+          <ScalarProperty Name="Capacity" ColumnName="Capacity" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="VesselId" ColumnName="VesselId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VesselArrivalDocuments">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.VesselArrivalDocument">
+        <MappingFragment StoreEntitySet="VesselArrivalDocument">
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="ReferenceNo" ColumnName="ReferenceNo" />
+          <ScalarProperty Name="DocumentId" ColumnName="DocumentId" />
+          <ScalarProperty Name="VesselArrivalNoticeId" ColumnName="VesselArrivalNoticeId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VesselArrivalNotices">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.VesselArrivalNotice">
+        <MappingFragment StoreEntitySet="VesselArrivalNotice">
+          <ScalarProperty Name="ShuttleVesselId" ColumnName="ShuttleVesselId" />
+          <ScalarProperty Name="MotherVesselId" ColumnName="MotherVesselId" />
+          <ScalarProperty Name="DishargeDate" ColumnName="DishargeDate" />
+          <ScalarProperty Name="ArrivalDate" ColumnName="ArrivalDate" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="ShipmentIdentitificationNo" ColumnName="ShipmentIdentitificationNo" />
+          <ScalarProperty Name="VesselArrivalNoticeId" ColumnName="VesselArrivalNoticeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WorkFlows">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.WorkFlow">
+        <MappingFragment StoreEntitySet="WorkFlow">
+          <ScalarProperty Name="UpdatedTime" ColumnName="UpdatedTime" />
+          <ScalarProperty Name="CreatedTime" ColumnName="CreatedTime" />
+          <ScalarProperty Name="WorkFlowEvent" ColumnName="WorkFlowEvent" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Zones">
+      <EntityTypeMapping TypeName="ImportPermitLiveModel.Zone">
+        <MappingFragment StoreEntitySet="Zone">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="AspNetUserRoles" TypeName="ImportPermitLiveModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+      <EndProperty Name="AspNetUser">
+        <ScalarProperty Name="Id" ColumnName="UserId" />
+      </EndProperty>
+      <EndProperty Name="AspNetRole">
+        <ScalarProperty Name="Id" ColumnName="RoleId" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,360 @@
+﻿
+<div class="row" style="width: 100%" ng-controller="continueNotificationController" ng-init="initializeController()">
+
+    <div class="row" style="width: 100%; border: 3px solid #27ae60;" ng-hide="ntStat.invoiceStage === true">
+        <div class="row">
+            <div class="col-md-5">
+                <h3>Notification Completion</h3>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table">
+                    <tr>
+                        <td style="width: 20%">Payment Reference Code (RRR)</td>
+                        <td style="width: 30%; font-weight: bold">{{notification.Rrr}}</td>
+                    </tr>
+                    <tr ng-repeat="fee in notification.FeeObjects">
+                        <td style="width: 20%">{{fee.FeeTypeName}}</td>
+                        <td style="width: 30%; font-weight: bold">&#8358;{{fee.AmountStr}}</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 20%">
+                            <label ng-show="notification.Status === 1" class="control-label " style="font-weight: normal">Total Amount Due</label>
+                            <label ng-show="notification.Status > 1" class="control-label " style="font-weight: normal">Total Amount Paid</label>
+                        </td>
+                        <td style="width: 30%">
+                            <label class="control-label ">&#8358;{{notification.AmountDueStr}}</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 20%">Notification Type</td>
+                        <td style="width: 30%; font-weight: bold">{{notification.ImportClassName}}</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 20%">Cargo Type</td>
+                        <td style="width: 30%; font-weight: bold">{{notification.CargoTypeName}}</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 20%">Application Status</td>
+                        <td style="width: 30%; font-weight: bold">{{notification.StatusStr}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="row">
+                <div class="col-md-10">
+                    <h4>Product</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-10">
+                    <table class="table" style="width: 100%;">
+                        <tr>
+                            <th style="width: 15%">
+                                Product Code
+                            </th>
+                            <th style="width: 20%">
+                                Discharge Quantity(MT)
+                            </th>
+                            <th style="width: 30%">
+                                Vessel Expected Arrival Period
+                            </th>
+                            <th style="width: 20%">
+                                Port of Origin
+                            </th>
+                            <th style="width: 20%">
+                                Discharge Depot
+                            </th>
+                        </tr>
+                        <tr>
+                            <td style="width: 15%">{{notification.ProductCode}}</td>
+                            <td style="width: 20%">{{notification.QuantityToDischargeStr}}</td>
+                            <td style="width: 30%">{{notification.ArrivalDateStr}}</td>
+                            <td style="width: 20%">{{notification.PortName}}</td>
+                            <td style="width: 20%">{{notification.DepotName}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <a style="cursor: pointer; color: #008000; font-weight: bold" ng-click="changeDepotInfo()" title="Change Discharge Depot">Change Discharge Depot</a>
+            </div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="row">
+                <div class="col-md-12">
+                    <h4>Notification Documents: </h4>
+                </div>
+                <br />
+                <div class="col-md-12" ng-show="suppliedDocs.length < 1">
+                    <label>NONE</label>
+                </div>
+                <br />
+                <div class="col-md-12">
+                    <div class="col-md-9">
+                        <table class="table">
+                            <tr>
+                                <th style="width: 5%">
+                                    S/N
+                                </th>
+                                <th style="width: 20%">
+                                    Document
+                                </th>
+                                <th style="width: 5%">
+                                    Action
+                                </th>
+                            </tr>
+                            <tr data-ng-repeat="s in suppliedDocs">
+                                <td style="width: 5%">{{s.index}}</td>
+                                <td style="width: 20%"><a href="{{s.DocumentPath}}" ng-show="s.DocumentPath != null && s.DocumentPath.length > 0" style="cursor: pointer; color: #008000" target="_blank" title="View Document">{{s.Name}}</a></td>
+                                <td style="width: 5%">
+                                    <img src="/Images/edit.png" style="float: left; cursor: pointer" ng-click="editDoc(s.DocumentId)" ng-show="s.StageId === 1 && notification.Status < 3" />
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <hr />
+            <div class="row" ng-show="bnkDocs.length > 0 || nextDocs.length > 0">
+
+                <div class="col-md-5">
+                    <h4>Required Document(s) :</h4>
+                </div>
+                <br />
+                <div class="col-md-12">
+                    <h5 style="font-weight: bold" ng-show="bnkDocs.length > 0 && nextDocs.length > 0">(a) To be uploaded by marketer: </h5>
+                    <h5 style="font-weight: bold" ng-show="bnkDocs.length > 0 && nextDocs.length < 1">To be uploaded by marketer: </h5>
+                </div>
+                <hr />
+                <div class="row">
+                    <div class="col-md-10">
+                        <ul>
+                            <li ng-repeat="doc in bnkDocs">
+                                <div class="row" style="margin-top: 10px;">
+                                    <div class="col-md-5">
+                                        <label>{{doc.Name}}</label>
+                                    </div>
+                                    <div class="col-md-3" style="padding-right: 0px">
+                                        <input type="file" class="form-control" id="{{doc.DocumentTypeId}}j" ng-file-select="ProcessDocument($event)" placeholder="Select Document " name="file" />
+                                    </div>
+                                    <div class="col-md-1" style="padding-left: 0px">
+                                        <div class="row" style="padding-left: 7px; margin-top: 14px" id="infoDiv{{doc.DocumentTypeId}}"></div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="row" ng-show="nextDocs.length > 0">
+                <hr />
+                <div class="col-md-12">
+                    <h5 style="font-weight: bold" ng-show="bnkDocs.length > 0 && nextDocs.length > 0">(b) To be uploaded by others(eg. Bank): </h5>
+                    <h5 style="font-weight: bold" ng-show="bnkDocs.length < 1 && nextDocs.length > 0">To be uploaded by others(eg. Bank): </h5>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-10">
+                        <ul>
+                            <li ng-repeat="s in nextDocs">
+                                <div class="col-md-8">
+                                    <label>&#8226 &nbsp;{{s.Name}}</label>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr />
+        <div class="row">
+
+            <div class="row">
+                <div class="col-md-3" style="padding-right: 0px">
+                    <h3>Vessel Information</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>Mother Vessel Name*</label>
+                        <input type="text" class="form-control" ng-model="ms.Name" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>Shuttle Vessel*</label>
+                        <ui-select ng-model="notification.VesselObject" theme="bootstrap">
+                            <ui-select-match placeholder=" -- Select Shuttle Vessel --">{{$select.selected.Name}}</ui-select-match>
+                            <ui-select-choices repeat="vessel in vessels | propsFilter: {Name: $select.search} track by vessel.VesselId">
+                                <div ng-bind-html="vessel.Name  | highlight: $select.search"></div>
+                            </ui-select-choices>
+                        </ui-select>
+                    </div>
+                </div>
+                <!--<div class="row">
+                    <div class="col-md-6">
+                        <label>Shuttle Vessel License Number*</label>
+                        <input type="text" class="form-control" ng-model="licenseNumber" ng-class="pgenClass" ng-blur="verifyLicense(licenseNumber)"/>
+                    </div>
+                </div>-->
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <button class=" btn btn-default" ng-click="submitVessels()" style="margin-top: 12px; color: #000">Save Vessel Information</button>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-7">
+                <hr />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-7">
+                <h4>Notification Submission : </h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <h4>Declaration</h4>
+                <label>
+                    <input type="checkbox" ng-model="ntStat.accept" /> &nbsp; I hereby declare that all information I have provided for this Notification are valid.
+                </label>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-2">
+                <button class=" btn btn-default" ng-click="NotificationSubmit()" style="margin-top: 7px; float: left; color: #000">submit Notification</button>
+            </div>
+            <div class="col-md-3">
+
+            </div>
+        </div>
+        <br />
+    </div>
+
+    <div class="row fsEdit" style="width: 100%; border: 3px solid #27ae60;" ng-show="ntStat.invoiceStage===true">
+        <br />
+        <div class="row">
+            <div class="col-md-8">
+                <button class="btn btn-default" id="" style="float: left; color: #000" ng-click="printReceipt()"> Print </button>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row alert alert-success" role="alert" ng-show="positivefeedback === true">
+                    <span class="col-md-11">{{success}}</span><span class="col-md-1" style="font-size: 20px; text-align: left; cursor: pointer" title="close" ng-click="positivefeedback = false">x</span>
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="row" id="receipt">
+            <div class="row">
+                <p style="background-color: #FFF; margin: 0px; padding: 0px;" class="compname shadow">
+                    <img height="45" width="187" src="/Content/images/importlogo.png" />
+                </p>
+            </div>
+            <div class=" modal-header">
+                <div class="row" style="margin-top: 15px">
+                    <div class="col-md-9">
+                        <h4 class="modal-title">Notification Payment Slip for Expenditionary fee</h4>
+                    </div>
+                    <div class="col-md-3">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="modal-body">
+                    <div class="row">
+                        <table class="table">
+                            <tr>
+                                <td style="width: 20%">Payment Reference Code(RRR)</td>
+                                <td style="width: 30%; font-weight: bold">{{ntStat.rrr}}</td>
+                            </tr>
+                            <tr>
+                                <td style="width: 20%">Customer</td>
+                                <td style="width: 30%; font-weight: bold">{{notification.CompanyName}}</td>
+                            </tr>
+                            <tr>
+                                <td style="width: 20%">Expenditionary Fee</td>
+                                <td style="width: 30%; font-weight: bold">&#8358;{{NotificationRequirementDetails.ExpenditionaryFee.Amount | currency:"":0}}</td>
+                            </tr>
+                            <tr>
+                                <td style="width: 20%">Total Amount Due</td>
+                                <td style="width: 30%; font-weight: bold">&#8358;{{NotificationRequirementDetails.ExpenditionaryFee.Amount | currency:"":0}}</td>
+                            </tr>
+                            <tr>
+                                <td style="width: 20%">Payment Option</td>
+                                <td style="width: 30%; font-weight: bold">{{notification.PaymentOption}}</td>
+                            </tr>
+                            <tr>
+                                <td style="width: 20%">Service Description</td>
+                                <td style="width: 30%; font-weight: bold">Vessel Arrival Notification Expenditionary Fee</td>
+                            </tr>
+                            <tr>
+                                <td style="width: 20%">Payment Status</td>
+                                <td style="width: 30%; font-weight: bold">Pending</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="row">
+                        <div class="row">
+                            <h4>Details</h4>
+                        </div>
+                        <table class="table" style="width: 100%;">
+                            <tr>
+                                <th style="width: 15%">
+                                    Product Code
+                                </th>
+                                <th style="width: 20%">
+                                    Discharge Quantity(MT)
+                                </th>
+                                <th style="width: 30%">
+                                    Vessel Expected Arrival Period
+                                </th>
+                                <th style="width: 20%">
+                                    Port of Origin
+                                </th>
+                                <th style="width: 20%">
+                                    Discharge Depot
+                                </th>
+                            </tr>
+                            <tr>
+                                <td style="width: 15%">{{notification.ProductCode}}</td>
+                                <td style="width: 20%">{{notification.QuantityToDischargeStr}}</td>
+                                <td style="width: 30%">{{notification.ArrivalDateStr}}</td>
+                                <td style="width: 20%">{{notification.PortName}}</td>
+                                <td style="width: 20%">{{notification.DepotName}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8">
+
+                </div>
+                <div class="col-md-4">
+                    <a style="float: right; color: #000" class="btn btn-default" ng-show="ntStat.onlineOpt === true" ng-click="pay()">Continue to Remita >></a>
+                </div>
+            </div>
+            <br /><br />
+        </div>
+    </div>
+
+</div>
+
+<br /><br />

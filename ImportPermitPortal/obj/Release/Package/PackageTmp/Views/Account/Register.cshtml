@@ -1,0 +1,151 @@
+﻿@model ImportPermitPortal.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Register";
+}
+<div class="row">
+      <br/><br />
+        <div class="col-md-5 ">
+            <div class="col-md-12">
+                @Html.ValidationSummary(true)
+            </div>
+            <div class="col-md-12">
+
+                @{
+                    if (ViewBag.ConfirmStat != null)
+                    {
+                        if (ViewBag.ConfirmStat > 0)
+                        {
+                            <label class="control-label" style="color: #008000">
+
+                                @Html.Raw(ViewBag.RegisterationSuccessful);
+
+                            </label>
+                        }
+
+                        if (ViewBag.ConfirmStat < 1)
+                        {
+                            <label class="control-label" style="color: brown">
+
+                                @Html.Raw(ViewBag.RegisterationSuccessful);
+
+                            </label>
+                        }
+                    }
+                }
+                <div class="col-md-12">
+                    <div class="col-md-4">
+                        <a href="/Account/Login" style="float: left; color: #fff; width: 100%" class="btn btn-primary">Login</a>
+                    </div>
+                    <div class="col-md-4">
+                        <a href="/Account/Register" style="float: left; color: #fff; width: 100%" class="btn btn-primary">Register</a>
+                    </div>
+                </div>
+                <div class="col-md-12" style="border-width: 1px; border-color: #d8bfd8 ">
+                    <form action="/Account/Register" method="POST">
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary()
+                        <div class="col-md-12">
+                            <label class="control-label ">Company Name *</label>
+                            <input type="text" class="form-control" name="CompanyName" value="@Model.CompanyName"/>
+                            @Html.ValidationMessageFor(model => model.CompanyName)
+                        </div>
+                        <div class="col-md-12">
+                            <label class="control-label ">Company Registration Number</label>
+                            <input type="text" class="form-control" name="RCNumber" value="@Model.RCNumber"/>
+                            @Html.ValidationMessageFor(model => model.RCNumber)
+                        </div>
+                        <div class="col-md-12">
+                            <label class="control-label ">Email *</label>
+                            <input type="text" class="form-control" name="Email" value="@Model.Email" />
+                            @Html.ValidationMessageFor(model => model.Email)
+                        </div>
+                        <div class="col-md-12">
+                            @Html.LabelFor(model => model.PhoneNumber, new { @class = "control-label" })*
+                            <input type="text" name="PhoneNumber" class="form-control" value="@Model.PhoneNumber"/>
+                            @Html.ValidationMessageFor(model => model.PhoneNumber)
+                        </div>
+                        <div class="col-md-12">
+                            <label class="control-label ">Password *</label>
+                            <input type="password" class="form-control" name="Password" />
+                            @Html.ValidationMessageFor(model => model.Password)
+                        </div>
+                        <div class="col-md-12">
+                            <label class="control-label ">Confirm Password *</label>
+                            <input type="password" class="form-control" name="ConfirmPassword" />
+                            @Html.ValidationMessageFor(model => model.ConfirmPassword)
+                        </div>
+                        <br /><br />
+                        <div class="col-md-12">
+                            <div class="col-md-7">
+                            </div>
+                            <div class="col-md-5">
+                                <input type="submit" class="btn btn-default" value="Register" style="float: right" />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-md-7 adv bg1" id="right-col">
+
+            <div class="col-md-12">
+                <h2 class="txtcenter" style="color: #fff">Getting Started</h2>
+            </div>
+            <div class="col-md-12">
+                <div class="col-md-5">
+                    <div class="icon">
+                        <img src="/Content/Images/icon-lg1.png">
+                    </div>
+                </div>
+                <div class="col-md-7">
+                    <h3 style="color: #fff">Step by Step</h3>
+                    <a href="/img/LP-2014-GUIDELINES.pdf" target="_blank" class="white">Online Application Guide</a><br>
+                    <a href="/img/LP-2014-GUIDELINES.pdf" target="_blank" class="white">Permit Fee Schedules</a><br>
+                    <a href="#" class="white">Online Permit Printing Guide</a><br>
+                    <a href="/activation/resend/" class="white">Resend Activation Email</a><br>
+                    <a href="/validate/" class="white">Validating a Permit</a><br>
+                    <a href="/page/faq/" class="white">FAQ</a><br>
+                </div>
+            </div>
+            <br class="clear"><br>
+            <div class="col-md-12">
+                <div class="col-md-5">
+                    <div class="icon">
+                        <img src="/Content/Images/icon-lg2.png">
+                    </div>
+                </div>
+                <div class="col-md-7">
+                    <h3>
+                        <a href="/registration/">Company Account Creation</a>
+                    </h3>
+                    <p>
+                        Create account to use resources on this portal. Note that Account creation
+                        is not required to validate a permit.
+                    </p>
+                </div>
+            </div>
+            <br class="clear"><br>
+            <div class="col-md-12">
+                <div class="col-md-5">
+                    <div class="icon">
+                        <img src="/Content/Images/icon-lg3.png">
+                    </div>
+                </div>
+                <div class="col-md-7">
+                    <h3>
+                        <a>Manage Permit</a>
+                    </h3>
+                    <p>Login to apply for a new license, renew or manage your OGISP account</p>
+                </div>
+            </div>
+            <div class="clear">
+                <br><br>
+            </div>
+        </div>
+
+    </div>
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }

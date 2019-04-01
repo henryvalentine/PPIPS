@@ -1,0 +1,44 @@
+﻿
+
+<div class="row fsEdit" style="visibility: visible; width: 100%" ng-controller="applicationContentController">
+    <div class=" modal-header">
+        <div class="row">
+            <div class="col-md-12">
+                <h4 class="modal-title">{{applicationContent.Header}}</h4>
+            </div>
+        </div>
+    </div>
+    <div class="modal-body">
+        <form method="POST">
+            <div class="row">
+                <div class="col-md-6">
+                    <label class="control-label " style="font-weight: normal">Title*</label>
+                    <input type="text" class="form-control" ng-model="applicationContent.Title"/>
+                </div>
+                <div class="col-md-6">
+                    <label class="control-label " style="font-weight: normal">Link/Url*</label>
+                    <input type="text" class="form-control" ng-model="applicationContent.Href" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <label class="control-label " style="font-weight: normal">Content Body*</label>
+                    <textarea type="text" class="form-control" ng-model="applicationContent.BodyContent"></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <label class="control-label "><input type="checkbox" ng-model="applicationContent.IsInUse" />&nbsp;Is Active?</label>
+                </div>
+            </div>
+            <div class="row modal-footer">
+                <div class="col-md-9">
+
+                </div>
+                <div class="col-md-3">
+                    <input type="button" value="{{buttonText}}" ng-click="processApplicationContent()" class="btn btn-default" style="margin-top: 7px;" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,81 @@
+﻿
+
+<div class="row">
+    <div class="col-md-12">
+        <h4 class="page-head-line">Application Settings</h4>
+    </div>
+</div>
+<div class="row" ng-controller="appSettingController" ng-init="getAppSetting()">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <div class="row" style="border: 3px solid #27ae60;">
+            <div class="col-md-12">
+                <h3>Import Settings</h3>
+            </div>
+            <br />
+            <br/>
+            <div class="col-md-12">
+                <h3>Application Settings</h3>
+            </div>
+            <br/>
+            <div class="col-md-12">
+                <label>Application Expiry (Days) *</label>
+                <input type="text" class="form-control" ng-disabled="startEdit === false" ng-model="appSetting.ApplicationExpiry"/>
+            </div>
+            <div class="col-md-12">
+                <label>Application Life Cycle (Days)*</label>
+                <input type="text" class="form-control" ng-disabled="startEdit === false" ng-model="appSetting.ApplicationLifeCycle"/>
+            </div>
+            <div class="col-md-12">
+                <label>Application Price-Volume Threshold*</label>
+                <input type="text" class="form-control" ng-disabled="startEdit === false" ng-model="appSetting.PriceVolumeThreshold"/>
+            </div>
+            <br/>
+            <div class="col-md-12">
+                <h3>Notification Settings</h3>
+            </div>
+            <br/>
+            <div class="col-md-12">
+                <label>Vessel Arrival Lead Time(Days)*</label>
+                <input type="text" class="form-control" ng-disabled="startEdit === false" ng-model="appSetting.VesselArrivalLeadTime"/>
+            </div>
+            <div class="col-md-12">
+                <label>Vessel Discharge Lead Time(Days)*</label>
+                <input type="text" class="form-control" ng-disabled="startEdit === false" ng-model="appSetting.VesselDischargeLeadTime"/>
+            </div>
+            <div class="col-md-12">
+                <label>Vessel Discharge Quantity Tolerance(%)</label>
+                <input type="text" class="form-control" ng-disabled="startEdit === false" ng-model="appSetting.DischargeQuantityTolerance"/>
+            </div>
+            <br/>
+
+            <div class="col-md-12">
+                <h3>Notification Settings</h3>
+            </div>
+            <br/>
+            <div class="col-md-12">
+                <label>Permit Validity(Days)*</label>
+                <input type="text" class="form-control" ng-disabled="startEdit === false" ng-model="appSetting.PermitValidity" />
+            </div>
+            <div class="col-md-12">
+                <label>Permit Expiry Tolerance(Days)</label>
+                <input type="text" class="form-control" ng-disabled="startEdit === false" ng-model="appSetting.PermitExpiryTolerance" />
+            </div>
+            <div class="col-md-12">
+                <div class="col-md-6"></div>
+                <div class="col-md-3" style="padding-right: 2px">
+                    <input type="button" value="Edit" ng-click="startEdit = true" ng-show="edit === true" class="btn btn-default" style="margin-top: 7px; float: right"/>
+                </div>
+                <div class="col-md-3" style="padding-right: 2px">
+                    <input type="button" value="Save" ng-click="processAppSetting()" class="btn btn-default" style="margin-top: 7px; float: right"/>
+                </div>
+            </div>
+            <br/>
+        </div>
+    </div>
+    <div class="col-md-2"></div>
+</div>
+<br/>
+<br /><br />
+<br /><br />
+<br />

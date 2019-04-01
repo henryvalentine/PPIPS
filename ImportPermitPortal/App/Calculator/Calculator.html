@@ -1,0 +1,128 @@
+﻿
+
+<div class="row">
+    <div class="col-md-12">
+        <h4 class="page-head-line">Calculator</h4>
+    </div>
+</div>
+
+<div class="row fsEdit" style="visibility: visible; width: 100%" ng-controller="calculatorController" ng-init="initializeController()">
+
+    <div class=" modal-header" ng-hide="viewApp == true">
+        <div class="row">
+            <div class="col-md-12">
+              
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <label class="control-label">{{calculator.Company}}</label>
+
+            </div>
+        </div>
+
+        <div class="modal-body">
+            <form method="POST">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label class="control-label ">Trucked Out *</label>
+                        <input type="text" data-ng-model="calculator.Out" class="form-control" />
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <label class="control-label ">Depot *</label>
+                        <select ng-model="calculator.Depot" ng-options="prod as prod.Name for prod in Depots track by prod.Id" data-inset="true" class=" form-control" required>
+                            <option value="">-- Select Port --</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <label class="control-label ">Date:</label>
+
+
+                        <p class="input-group">
+                            <input type="text" class="form-control" datepicker-popup="{{format}}" is-open="opened1" min-date="" max-date="" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" ng-model="calculator.OutDate" />
+                            <span class="input-group-btn">
+                                <button type="button" class="btn btn-default" ng-click="openInspectionDate($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                            </span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="row modal-footer">
+                    <div class="col-md-6">
+                        <div>
+                            <input type="button" value="Submit" ng-click="processCalculator()" class="btn btn-default" style="margin-top: 7px;" />
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+
+    <div class=" modal-header" ng-show="viewGood">
+        <div class="row">
+            <div class="row alert alert-success" role="alert" ng-show="positivefeedback === true">
+                <span class="col-md-11">{{success}}</span><span class="col-md-1" style="font-size: 20px; text-align: left; cursor: pointer" title="close" ng-click="positivefeedback = false">x</span>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <h4 class="modal-title">Permit Details</h4>
+            </div>
+            <div class="col-md-6">
+                <a ng-click="initializeApp()" style="float: right" class="btn btn-default acceptbtn"><< Back</a>
+            </div>
+
+        </div>
+
+
+
+        <div class="modal-body">
+            <form id="fsProcessApps55">
+                <div class="row">
+                    <div class="col-md-4">
+                        <label class="control-label ">Quantity In Country:</label>
+                    </div>
+                    <div class="col-md-8">
+                        <label class="control-label ">{{application.QuantityInCountry}}</label>
+                    </div>
+                </div>
+
+
+
+
+
+            </form>
+        </div>
+    </div>
+
+
+
+    <div class=" modal-header" ng-show="viewBad">
+        <div class="col-md-12 alert alert-danger" role="alert" ng-show="negativefeedback === true">
+            <span class="col-md-11">{{appError}}</span><span class="col-md-1" style="font-size: 20px; text-align: left; cursor: pointer" title="close" ng-click="appError = '';isError = false;">x</span>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <h4 class="modal-title"></h4>
+            </div>
+            <div class="col-md-6">
+                <a ng-click="initializeApp()" style="float: right" class="btn btn-default acceptbtn"><< Back</a>
+            </div>
+
+        </div>
+
+
+
+
+    </div>
+</div>

@@ -1,0 +1,716 @@
+﻿@model  ImportPermitPortal.Models.LoginViewModel
+
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script type="text/javascript">
+    //widgetId1 = grecaptcha.render('example1',
+    //    {
+    //    'sitekey': 'your_site_key',
+    //    'theme': 'light'
+    //});
+
+</script>
+<div class="row" ng-app="access" ng-controller="accessController" ng-init="getStructures()">
+    <div class="row" ng-hide="regSuccess === true">
+        <div class="col-md-5 ">
+            <br /><br />
+            <br /><br />
+            <div class="col-md-12">
+
+                <h1 class="form-signin-heading text-center">PPIPS</h1>
+                <h4 class="text-center">Petroleum Products Import Permit System</h4>
+
+                <div class="col-md-12" ng-hide="reqsp === true">
+                    <br />
+                    <div>
+                        <a class="btn btn-lg btn-success btn-block buttonRadius1 textUpper" href="/ngc.html#VerifyPermit/VerifyPermit">
+                            Click here to
+
+                            Verify Permit
+                        </a>
+                    </div>
+                    <br />
+                </div>
+
+                <div class="col-md-12">
+                    <label ng-show="response === true" class="control-label" style="color: #008000" ng-cloak>{{success}}</label>
+                    <label class="control-label" ng-show="response === false" style="color: brown" ng-cloak>{{error}}</label>
+                    @{
+                        if (ViewBag.ConfirmStat != null)
+                        {
+                            if (ViewBag.ConfirmStat > 0)
+                            {
+                                <label class="control-label" id="sFdBck" style="color: #008000" ng-hide="login === false">
+
+                                    @Html.Raw(ViewBag.RegisterationSuccessful)
+
+                                </label>
+
+                            }
+
+                            if (ViewBag.ConfirmStat < 1)
+                            {
+                                <label class="control-label" id="eFdBck" style="color: brown" ng-hide="login === false">
+
+                                    @Html.Raw(ViewBag.RegisterationSuccessful)
+
+                                </label>
+                            }
+                        }
+}
+                </div>
+                <br />
+                <div class="row" ng-show="login === true">
+                    <div class="col-md-12 white loginLabelBox">
+                        <p>
+                            @*<strong>Please login with your credentials</strong>*@
+                        </p>
+                    </div>
+
+                    <div class="col-md-12" style="border-width: 1px; border-color: #d8bfd8">
+                        <form action="/Account/Login" method="POST">
+                            <div id="login-form" class="content-box">
+                                <div class="content-box-wrapper pad20A">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <span class="input-group-addon covertop"><i class="glyphicon glyphicon-envelope"></i></span>
+                                            <input type="email" value="" placeholder="Email address" name="Email" style="font-size: 1em" id="Email" data-val-required="The Email field
+
+is required." data-val-email="The Email field is not a valid e-mail address." data-val="true" class="form-control covertop" autofocus="autofocus">
+                                            @Html.ValidationMessageFor(model => model.Email)
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                                            <input type="password" placeholder="Password" style="font-size: 1em" name="Password" id="Password" data-val-required="The Password field is
+
+required." data-val="true" class="form-control">
+                                            @Html.ValidationMessageFor(model => model.Password)
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-9">
+                                        <p style="margin-top: 8px">
+                                            <label style="font-weight: normal">New Company?</label>&nbsp; <a href="#" ng-click="showRegForm()" style="color: #498307;">REGISTER</a>
+                                        </p>
+                                    </div>
+                                    <div class="col-md-3" style="padding-right: 0px">
+                                        <button class="col-md-12 btn btn-signIn pull-right buttonRadius1" type="submit">Login</button>
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <a ng-click="showpssW()" style="color: #498307; cursor: pointer" switch-target="#login-forgot" title="Recover password">
+                                            Forgot your password?
+
+                                        </a>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <a style="color: #498307; cursor: pointer" ng-click="showAcLink()">Request Activation Email</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <br />
+                        </form>
+                    </div>
+
+                    <div class="row" style="border-width: 1px; border-color: #d8bfd8">
+                        <img src="/Images/dpr_ppips_payment_options.png" style="width:100%" />
+                    </div>
+                    <br>
+                    <strong>Collecting Banks:</strong>
+                    <br>
+                    <div class="banks">
+                        <img class="bank-logo" title="GTB" alt="GTB" src="/Images/gtbank.jpg">
+                        <img class="bank-logo" title="Stanbic IBTC" alt="Stanbic IBTC" src="/Images/stanbicibtc.png">
+                        <img class="bank-logo" title="keystone Bank" alt="keystone Bank" src="/Images/keystonebank.jpg">
+                        <img class="bank-logo" title="Diamond Bank" alt="Diamond Bank" src="/Images/diamondbank.jpg">
+                        <img class="bank-logo" title="Skye Bank" alt="Skye Bank" src="/Images/skyebank.jpg">
+                        <img class="bank-logo" title="FCMB" alt="FCMB" src="/Images/fcmb.jpg">
+                        <img class="bank-logo" title="Access Bank" alt="Access Bank" src="/Images/access.gif">
+                        <img class="bank-logo" title="Sterling Bank" alt="Sterling Bank" src="/Images/sterling.jpg">
+                        <img class="bank-logo" title="Eco Bank" alt="Eco Bank" src="/Images/echo.jpg">
+                        <img class="bank-logo" title="Wema Bank" alt="Wema Bank" src="/Images/wemabank.jpg">
+                        <img class="bank-logo" title="Heritage Bank" alt="Heritage Bank" src="/Images/HB.png">
+                        <img class="bank-logo" title="UBA Bank" alt="UBA Bank" src="/Images/uba.gif">
+                        <img class="bank-logo" title="Union Bank" alt="Union Bank" src="/Images/union.jpg">
+                        <img class="bank-logo" title="First Bank" alt="First Bank" src="/Images/firstbank.gif">
+                        <img class="bank-logo" title="Fidelity Bank" alt="Fidelity Bank" src="/Images/fidelity.gif">
+                        <img class="bank-logo" title="Zenith Bank" alt="Zenith Bank" src="/Images/zenith.png">
+                        
+                        @*<img class="bank-logo" title="FinBank" alt="FinBank" src="/Images/finbank.jpg">*@
+                        <img class="bank-logo" title="Unity Bank" alt="Unty Bank" src="/Images/unitybank.jpg">
+                        <img class="bank-logo" title="Enterprise Bank" alt="Enterprise Bank" src="/Images/enterprisebank.png">
+                       
+                    </div>
+                </div>
+
+                <div class="row" ng-class="showFrgPss">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon covertop"><i class="glyphicon glyphicon-envelope"></i></span>
+                                <input type="email" ng-model="resPssEm" value="" placeholder="Email address" style="font-size: 1em" data-val-required="The Email field is required."
+                                       data-val-email="The Email field is not a valid e-mail address." data-val="true" class="form-control covertop" autofocus="autofocus">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="col-md-5">
+                            <button class="col-md-12 btn btn-signIn pull-left buttonRadius1" ng-click="recPss()">Recover Password</button>
+                        </div>
+                        <div class="col-md-3">
+                            <a ng-click="showAuth()" style="cursor: pointer" class="btn btn-link" title="Cancel">Cancel</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" ng-class="showRqEm">
+                    <div class=" row form-group">
+                        <label>Email address *</label>
+                        <div class="input-group">
+                            <span class="input-group-addon covertop"><i class="glyphicon glyphicon-envelope"></i></span>
+                            <input type="email" ng-model="linkEm" style="font-size: 1em" class="form-control" placeholder="Provide your email">
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="col-md-5" style="padding-left: 0px;">
+                            <button class="col-md-12 btn btn-signIn pull-left buttonRadius1" ng-click="reqLink()">Get Activation Link</button>
+                        </div>
+                        <div class="col-md-3">
+                            <a ng-click="showAuth()" style="cursor: pointer" class="btn btn-md btn-link switch-button" title="Cancel">Cancel</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" ng-show="register === true" ng-cloak style="position: relative;">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <p>
+                                <h3>Account Creation Form</h3><br />
+                                <strong style="margin-top: 7px">Fields with (*) are required.</strong>
+                            </p>
+                        </div>
+                        <div class="col-md-3">
+                            <br />
+                            <button class="col-md-12 btn btn-signIn pull-right buttonRadius1" ng-click="showLoginForm()" ng-disabled="processing === true" style="background-color:
+
+#498307; color: #fff; font-weight: bold; margin-top: 7px;">
+                                LOGIN
+                            </button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="row">
+                            <div class="col-md-12 input-group">
+                                <span class="input-group-addon">
+                                    <i class="glyphicon glyphicon-envelope"></i>
+                                </span>
+                                <input type="email" style="font-size: 1em" class="form-control" ng-model="company.Email" placeholder="Email*" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12  input-group">
+                                <span class="input-group-addon">
+                                    <i class="glyphicon glyphicon-lock"></i>
+                                </span>
+                                <input type="password" style="font-size: 1em" class="form-control" ng-model="company.Password" placeholder="Portal Password*" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 input-group">
+                                <span class="input-group-addon covertop">
+                                    <i class="glyphicon glyphicon-home"></i>
+                                </span>
+                                <input type="text" style="font-size: 1em" class="form-control" ng-model="company.ImporterName" placeholder="Company Name as shown on CAC Certificate*" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 input-group">
+                                <span class="input-group-addon">
+                                    <i class="glyphicon glyphicon-briefcase"></i>
+                                </span>
+                                <select ng-model="company.Structure" ng-change="toggleHolder(company.Structure.StructureId)" ng-options="bizType as bizType.Name for bizType in
+
+Structures track by bizType.StructureId" data-inset="true" class=" form-control" required>
+                                    <option value="">-- Select Business Type *--</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row  input-group">
+                            <span class="input-group-addon">
+                                <i class="glyphicon glyphicon-barcode"></i>
+                            </span>
+                            <input type="text" style="font-size: 1em" class="form-control" ng-model="company.RCNumber" placeholder="{{holder}}" valid-number />
+                        </div>
+                        <div class="row  input-group">
+                            <span class="input-group-addon">
+                                <i class="glyphicon glyphicon-barcode"></i>
+                            </span>
+                            <input type="text" class="form-control" style="font-size: 1em" ng-model="company.TIN" placeholder="Tax Identification Number (TIN)*" valid-number />
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 input-group">
+                                <span class="input-group-addon">
+                                    <i class="glyphicon glyphicon-phone"></i>
+                                </span>
+                                <input type="text" style="font-size: 1em" class="form-control" name="PhoneNumber" ng-model="company.PhoneNumber" placeholder="Mobile Phone Number e.g 2348012345678*" valid-number />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-9" id="captchContaner" style="margin-top: 7px">
+
+                            </div>
+                            <div class="col-md-3">
+                                <input type="button" ng-click="signUp()" value="Submit" ng-disabled="processing === true" style="float: right; margin-top: 30px" id="rcptch" class="btn btn-default" />
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <img src="/Images/min-loader.gif" class="loader" ng-show="processing === true" />
+            </div>
+            <!-- LiveZilla Tracking Code (ALWAYS PLACE IN BODY ELEMENT) -->
+            <div id="livezilla_tracking" style="display: none"></div>
+            <script type="text/javascript">
+                var script = document.createElement("script");
+                script.async = true;
+                script.type = "text/javascript";
+                var src = "https://livezilla.dpr.gov.ng/server.php?a=12950&request=track&output=jcrpt&ovlp=MjI_&ovlc=IzczYmUyOA__&ovlct=I2ZmZmZmZg__&ovlt=T25saW5lIC0gQ2hhdCB3aXRoIHVz&ovlto=T2ZmbGluZSAtIExlYXZlIGEgbWVzc2FnZQ__&ovls=MQ_&eca=MQ__&ecw=Mjgw&ech=OTA_&ecmb=Mjc_&echt=UXVlc3Rpb25zPw__&echst=Q2hhdCB3aXRoIHVzIGxpdmU_&ecoht=UXVlc3Rpb25zPw__&ecohst=UGxlYXNlIGxlYXZlIGEgbWVzc2FnZQ__&ecfs=I0YwRkZENQ__&ecfe=I0QzRjI5OQ__&echc=IzZFQTMwQw__&ecslw=Mg__&ecsgs=IzY1OUYyQQ__&ecsge=IzczQkUyOA__&ecsa=MQ__&ecsb=NA__&ecsx=Mw__&ecsy=Mw__&ecsc=IzQ2NDY0Ng__&nse=" +
+                Math.random();
+                setTimeout("script.src=src;document.getElementById('livezilla_tracking').appendChild(script)", 1);
+            </script><noscript>
+                <img src="https://livezilla.dpr.gov.ng/server.php?a=12950&amp;request=track&amp;output=nojcrpt" width="0" height="0" style="visibility: hidden;" alt="">
+            </noscript>
+            <!--
+
+            http://www.LiveZilla.net Tracking Code -->
+
+        </div>
+        <div class="col-md-7 adv bg1">
+            <br /><br />
+            <div class="col-md-12">
+                <h2 class="txtcenter">Getting Started</h2>
+            </div>
+            <div class="row howto">
+                <div class="col-md-5">
+                    <div class="icon">
+                        <img src="/Content/Images/icon-lg1.png">
+                    </div>
+                </div>
+                <div class="col-md-7">
+                    <h3>Step by Step</h3>
+                    <a class="white" target="_blank" href="/Manuals/PPIPSImporterusermanual_A1.pdf">Application Guide</a><br>
+                    <a class="white" href="/Manuals/REVISEDIMPORTGUIDELINESV.pdf">Online Permit Printing Guide</a><br>
+                    <a href="ngc.html#FeeStructure/FeeStructure">Permit Fee Schedules</a><br>
+                    <a class="white" href="/ngc.html#VerifyPermit/VerifyPermit">Validate a Permit</a><br>
+                    <a class="white" href="/faq">FAQ</a><br>
+                </div>
+            </div>
+            <div class="row howto">
+                <div class="col-md-5">
+                    <div class="icon">
+                        <img src="/Content/Images/icon-lg2.png">
+                    </div>
+                </div>
+                <div class="col-md-7">
+                    <h3>
+                        <a class="white" href="#">Company Account Creation</a>
+                    </h3>
+                    <p>
+                        Create account to use resources on this portal. Note that Account creation
+                        is not required to validate a permit.
+                    </p>
+                </div>
+            </div>
+            <div class="row howto">
+                <div class="col-md-5">
+                    <div class="icon">
+                        <img src="/Content/Images/icon-lg3.png">
+                    </div>
+                </div>
+                <div class="col-md-7">
+                    <h3>
+                        <a class="white" href="/login/">Manage Account</a>
+                    </h3>
+                    <p>Login to apply for a new license, Submit Vessel Arrival Notification, or initiate Product Certification</p>
+                </div>
+            </div>
+            <div class="clear">
+                <br /><br />
+            </div>
+        </div>
+    </div>
+    <div class="row" ng-show="regSuccess === true">
+        <br /><br /><br />
+        <div class="col-md-12">
+            <h2>
+                Congratulations!
+            </h2>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+
+                <p ng-model="msgF" style="font-weight: bold">
+                    You have succesfully created an account on PPIPS Portal. An email has been sent to your email <b style="color: blue" id="msgEm"></b> for account
+
+                    activation. <br />
+                    Kindly check your email inbox and/or junk mail folder to confirm that the email was received.<br />
+                    Please Click <a style="color: #498307; cursor: pointer" ng-click="showAcLink()">here</a> to resend the Activation Link, if you can't find it in your
+
+                    Mailbox or Junkmail Folder
+                </p>
+                <h3> Next steps</h3>
+                <ol>
+                    <li>
+                        Activate your account by following the activation link in the email
+                    </li>
+                    <li>
+                        Login to the PPIPS portal to perform the various tasks (eg. Application Submission) associated with your account
+                    </li>
+                </ol>
+
+
+                <h3> Need help?</h3>
+                <ol>
+                    <li>
+                        Read our FAQ
+                    </li>
+                    <li>
+                        Browse through our Video tutorials
+                    </li>
+                    <li>
+                        Contact us for help or enquiry
+                    </li>
+                    <li>
+                        Activate your account by following the activation link therein
+                    </li>
+                </ol>
+
+            </div>
+        </div>
+        <br /><br />
+        <div class="row">
+            <div class="col-md-3" style="padding-left: 0px">
+                <a style="float: left; color: #000" class="btn btn-default" href="http://ppips2.shopkeeper.ng/Account/Login">Home</a>
+            </div>
+            <div class="col-md-9">
+            </div>
+        </div>
+    </div>
+
+    <div aria-hidden="false" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="modalPopup" class="modal fade in" style="display: block;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+                    <h3 class="modal-title" id="myModalLabel"></h3>
+                </div>
+                <div id="modalBody">
+                    <div class="modal-body">
+                        
+                      </div>
+                    <div class="modal-footer"><button aria-hidden="true" data-dismiss="modal" class="btn">Close</button></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+
+
+<script type="text/javascript">
+
+    $(function () {
+
+        if (''.length > 0) {
+            //alert('');
+
+            $("#modalPopup").on('show.bs.modal', function () {
+                var modal = $(this);
+                modal.find('.modal-title').text('Email Confirmed');
+                modal.find('.modal-body').text('');
+            });
+            $("#modalPopup").modal('show');
+        }
+        else if ('True' == 'True')
+        {
+            $("#modalPopup").on('show.bs.modal', function ()
+            {
+                var modal = $(this);
+                modal.find('.modal-title').html('<b>IMPORTANT NOTICE</b>');
+                modal.find('.modal-body').html('<p>All financial documents in support of an Import Permit or a Vessel Arrival Notice must be directly uploaded by the Sponsoring Bank(s). Any bank sponsoring/financing importation of petroleum product(s) into Nigeria is hereby required to forward a signed letter authorizing DPR to create an administrator account for it on the PPIPS Portal to enable it perform the requisite tasks. </p><br />' +
+                       '<p>The letter should be sent to ppips@dpr.gov.ng to include the following details: </p><br />Designee’s 	Full Name: <br />' +
+                        'Designation: <br />Email: <br />Telephone:');
+                modal.find('.modal-footer').html('<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>');
+            });
+            $("#modalPopup").modal('show');
+        }
+    });
+
+    angular.module('access', [])
+        .directive('validNumber', function () {
+             return {
+                 require: '?ngModel',
+                 link: function (scope, element, attrs, ngModelCtrl) {
+                     if (!ngModelCtrl) {
+                         return;
+                     }
+
+                     ngModelCtrl.$parsers.push(function (val) {
+                         if (angular.isUndefined(val)) {
+                             val = '';
+                         }
+                         var clean = val.replace(/[^0-9]+/g, '');
+                         if (val !== clean) {
+                             ngModelCtrl.$setViewValue(clean);
+                             ngModelCtrl.$render();
+                         }
+                         return clean;
+                     });
+
+                     element.bind('keypress', function (event) {
+                         if (event.keyCode === 32) {
+                             event.preventDefault();
+                         }
+                     });
+                 }
+             };
+         }).
+        controller('accessController', function ($scope, $http)
+        {
+            $scope.stopUi = function ()
+            {
+                $scope.busy = true;
+            };
+            $scope.toggleHolder = function (sel)
+            {
+                if (sel > 0) {
+                    if (sel === 2) {
+                        $scope.holder = "CAC Business Number *";
+                    } else {
+                        $scope.holder = "CAC Registration Number *";
+                    }
+                }
+
+            }
+            var ccxv = '';
+            $scope.showRegForm = function ()
+            {
+                $scope.rcp = false;
+                $scope.login = false;
+                $scope.register = true;
+                $scope.reqsp = true;
+                $scope.showFrgPss = 'hide';
+                $scope.showRqEm = 'hide';
+                angular.element('#captchContaner').html('');
+                ccxv = grecaptcha.render('captchContaner',
+                        {
+                            'sitekey': '6LfmJ_8SAAAAAIrLKP482vzhgHKPmcK2hTEH-25f',
+                            'theme': 'light'
+                        });
+            }
+
+            $scope.showLoginForm = function ()
+            {
+                $scope.register = false;
+                $scope.reqsp = false;
+                $scope.login = true;
+                $scope.showFrgPss = 'hide';
+                $scope.showRqEm = 'hide';
+                $scope.holder = "CAC Registration Number *";
+            }
+
+            $scope.InitializeAccess = function ()
+            {
+                $scope.showLoginForm();
+                $scope.company = { 'Email': '', 'Password': '', 'Structure': { 'StructureId': '', 'Name': 'Select Business Type' }, 'PhoneNumber': '', 'TIN': '',
+
+                    'RCNumber': '', 'ImporterName': '' };
+
+            };
+
+            $scope.getStructures = function ()
+            {
+                $scope.InitializeAccess();
+                $http({ method: 'GET', url: '/Structure/GetStructures' }).success(function (response)
+                {
+                    $scope.Structures = response;
+                });
+            };
+
+
+
+            $scope.recaptchaCallback = function ()
+            {
+
+                $scope.rcp = true;
+            };
+
+            $scope.login = function ()
+            {
+                if ($scope.reg.Email == null || $scope.reg.Email.length < 1)
+                {
+                    alert('Please provide your Email.');
+                    return;
+                }
+                if ($scope.reg.Password == null || $scope.reg.Password.length < 1)
+                {
+                    alert('Please provide your Password.');
+                    return;
+                }
+                $http.post('/Account/Login', $scope.reg).success(function (response)
+                {
+                    if (response.Code < 1)
+                    {
+                        alert(response.Error);
+                    }
+                });
+            }
+
+            $scope.signUp = function ()
+            {
+                var hh = grecaptcha.getResponse(ccxv);
+
+                if (hh == null || hh.trim().length < 1)
+                {
+                    alert('Please solve the Recaptcha Challenge before proceeding.');
+                    return;
+                }
+
+                if ($scope.company.Email == null || $scope.company.Email.length < 1)
+                {
+                    alert('Please provide your Email.');
+                    return;
+                }
+                if ($scope.company.Password == null || $scope.company.Password.length < 1)
+                {
+                    alert('Please provide your Password.');
+                    return;
+                }
+
+                if ($scope.company.Structure.StructureId == null || $scope.company.Structure.StructureId < 1)
+                {
+                    alert('Please Select Business Type.');
+                    return;
+                }
+
+                if ($scope.company.RCNumber == null || $scope.company.RCNumber.length < 1)
+                {
+                    alert('Please provide your ' + $scope.holder);
+                    return;
+                }
+
+                if ($scope.company.TIN == null || $scope.company.TIN.length < 1)
+                {
+                    alert('Please provide your Tax Indentification Number.');
+                    return;
+                }
+
+                var company = { 'Email': $scope.company.Email, 'Password': $scope.company.Password, 'StructureId': $scope.company.Structure.StructureId, 'RcCh' : hh,
+
+                    'PhoneNumber': $scope.company.PhoneNumber, 'TIN': $scope.company.TIN, 'RCNumber': $scope.company.RCNumber, 'ImporterName': $scope.company.ImporterName };
+                $scope.processing = true;
+                $http.post('/Account/Register', company).success(function (response)
+                {
+                    $scope.processing = false;
+                    if (response.Code < 1)
+                    {
+                        alert(response.Error);
+                        return;
+                    }
+
+                    $scope.regSuccess = true;
+                    angular.element('#msgEm').html($scope.company.Email);
+                    $scope.company = { 'Email': '', 'Password': '', 'Structure': { 'StructureId': '', 'Name': 'Select Business Type' }, 'PhoneNumber': '', 'TIN': '',
+
+                        'RCNumber': '', 'ImporterName': '' };
+                    //$scope.response = true;
+                });
+            }
+
+            $scope.showAcLink = function () {
+
+                $scope.success = '';
+                $scope.reqsp = true;
+                $scope.error = '';
+                $scope.showFrgPss = 'hide';
+                $scope.showRqEm = 'show';
+                $scope.register = false;
+                $scope.regSuccess = false;
+                $scope.login = false;
+            }
+
+            $scope.showpssW = function ()
+            {
+                $scope.success = '';
+                $scope.error = '';
+                $scope.reqsp = true;
+                $scope.showFrgPss = 'show';
+                $scope.showRqEm = 'hide';
+                $scope.register = false;
+                $scope.login = false;
+            }
+
+            $scope.showAuth = function ()
+            {
+                $scope.showFrgPss = 'hide';
+                $scope.showRqEm = 'hide';
+                $scope.reqsp = false;
+                $scope.register = false;
+                $scope.login = true;
+            }
+
+            $scope.reqLink = function ()
+            {
+                if ($scope.linkEm == null || $scope.linkEm.length < 1)
+                {
+                    alert('Please provide your Email.');
+                    return;
+                }
+
+                $scope.processing = true;
+                $http.post('/Account/RequestActivationLink?rEmail=' + $scope.linkEm).success(function (response)
+                {
+                    $scope.processing = false;
+                    if (response.Code < 1)
+                    {
+                        alert(response.Error);
+                        $scope.processing = false;
+                        return;
+                    }
+
+                    alert(response.Error);
+
+                });
+            }
+
+            $scope.recPss = function ()
+            {
+                if ($scope.resPssEm == null || $scope.resPssEm.length < 1)
+                {
+                    alert('Please provide your Email.');
+                    return;
+                }
+
+                $scope.processing = true;
+                $http.post('/Account/RequestNewPassword?rEmail=' + $scope.resPssEm).success(function (response) {
+                    $scope.processing = false;
+                    if (response.Code < 1)
+                    {
+                        alert(response.Error);
+                        $scope.processing = false;
+                        return;
+                    }
+
+                    alert(response.Error);
+
+                });
+            }
+        });
+</script>
